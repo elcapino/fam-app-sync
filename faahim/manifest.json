@@ -1,0 +1,1 @@
+{"name": "فاهم – Faahim", "short_name": "فاهم", "start_url": "./", "display": "standalone", "background_color": "#05502b", "theme_color": "#05502b", "icons": [{"src": "icon.png", "sizes": "512x512", "type": "image/png"}, {"src": "logo.svg", "sizes": "any", "type": "image/svg+xml"}], "id": "/fam-app-sync/faahim/", "scope": "./"}

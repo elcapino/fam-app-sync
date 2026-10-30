@@ -1,0 +1,61 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>بيتي – Baiti</title><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#0b3d2e"><link rel="icon" href="logo.svg">
+<style>
+@font-face{font-family:Cairo;src:url(fonts/Cairo.ttf)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{--g:#0b3d2e;--g2:#14674a;--r:#c8102e;--s:#e9d8b4;--gold:#d4a017;--ink:#1d1d1d}
+html,body{height:100%;overflow:hidden;font-family:Cairo,sans-serif;background:var(--s);color:var(--ink)}
+#app{height:100dvh;display:flex;flex-direction:column;max-width:1100px;margin:auto;
+ background:linear-gradient(180deg,#0b3d2e 0 175px,transparent 175px),repeating-linear-gradient(45deg,#e9d8b4 0 14px,#e3cfa6 14px 28px)}
+header{color:#fff;padding:10px 14px 0;position:relative}
+.top{display:flex;align-items:center;gap:10px}
+.logo{width:44px;height:44px}
+.brand{font-weight:900;font-size:22px;line-height:1.5}.brand small{display:block;font-size:12px;line-height:1.2;color:var(--gold);font-weight:700}
+.lang{margin-inline-start:auto;background:var(--gold);color:#000;border:0;border-radius:20px;padding:6px 14px;font:900 14px Cairo}
+.date{font-size:12.5px;opacity:.95;margin-top:4px;font-weight:700}
+.sadu{height:8px;margin:6px -14px 0;background:repeating-linear-gradient(90deg,var(--r) 0 10px,#fff 10px 14px,#000 14px 24px,#fff 24px 28px,var(--g2) 28px 38px,#fff 38px 42px)}
+.hero{display:flex;gap:12px;align-items:center;background:#fff;margin:10px 12px 0;border-radius:18px;padding:10px 12px;box-shadow:0 4px 14px #0003;border-bottom:4px solid var(--gold)}
+.ring{width:84px;height:84px;flex:none}
+.hero h2{font-size:17px;font-weight:900}.hero p{font-size:13px;font-weight:700;color:#444}
+.demo{display:inline-block;background:var(--r);color:#fff;font-size:11px;border-radius:8px;padding:0 6px;font-weight:900}
+.next{font-size:13px;font-weight:900;color:var(--g2)}
+main{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:10px;padding:12px;min-height:0}
+.t{border:0;border-radius:18px;color:#fff;font:900 15px/1.25 Cairo;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;box-shadow:0 4px 0 #0004;position:relative;overflow:hidden;text-shadow:0 1px 2px #0006}
+.t .i{font-size:30px;text-shadow:none}.t b{font-size:12px;background:#0005;border-radius:10px;padding:0 8px}
+.t::after{content:"";position:absolute;inset:auto -20% -40% auto;width:70%;height:70%;border-radius:50%;background:#fff1}
+.c1{background:#14674a}.c2{background:#b5122b}.c3{background:#8a5a12}.c4{background:#1f4e79}.c5{background:#5b3b8c}.c6{background:#0f7c86}.c7{background:#a63d00}.c8{background:#3d4a1e}.c9{background:#333}
+footer{text-align:center;font-size:11.5px;font-weight:700;padding:2px 0 8px;color:#3a2a10}
+#sh{position:fixed;inset:0;background:#0007;display:none;z-index:9}
+#sh.on{display:block}
+.sheet{position:absolute;inset:auto 0 0 0;max-width:820px;margin:auto;max-height:88dvh;background:#fffaf0;border-radius:22px 22px 0 0;display:flex;flex-direction:column;border-top:6px solid var(--gold)}
+.sh-h{display:flex;align-items:center;padding:12px 16px;gap:8px;font-weight:900;font-size:18px;color:var(--g)}
+.x{margin-inline-start:auto;border:0;background:var(--g);color:#fff;border-radius:50%;width:34px;height:34px;font-size:18px}
+.sh-b{overflow:auto;padding:0 14px 18px;font-size:14px}
+.row{background:#fff;border-radius:12px;padding:9px 11px;margin:6px 0;box-shadow:0 1px 3px #0002;display:flex;gap:8px;align-items:center}
+.row .f{flex:1}.row small{color:#555;font-weight:700;display:block}
+.chk{width:26px;height:26px;accent-color:var(--g2);flex:none}
+.ph{font-weight:900;color:#fff;background:var(--g2);border-radius:10px;padding:5px 10px;margin:12px 0 4px;display:flex;justify-content:space-between}
+a.l{color:#1f4e79;font-weight:900;font-size:12.5px}
+.btn{border:0;border-radius:12px;background:var(--g2);color:#fff;font:900 14px Cairo;padding:8px 14px;margin:6px 4px 0 0}
+.btn.r{background:var(--r)}
+input,select,textarea{font:700 14px Cairo;border:2px solid #d9c9a3;border-radius:10px;padding:6px 8px;width:100%;background:#fff}
+.frm{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#f3e9d2;border-radius:12px;padding:8px;margin:6px 0}
+.frm .w{grid-column:1/-1}
+.sum{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0}
+.sum div{background:var(--g);color:#fff;border-radius:12px;padding:6px;text-align:center;font-weight:900;font-size:12px}.sum div b{display:block;font-size:16px;color:var(--gold)}
+.bar{height:10px;background:#e5d6b3;border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--g2),var(--gold))}
+.tl{position:relative;padding-inline-start:18px}.tl::before{content:"";position:absolute;inset-inline-start:6px;top:0;bottom:0;width:3px;background:var(--gold)}
+.tl .row::before{content:"";position:absolute;inset-inline-start:1px;width:13px;height:13px;border-radius:50%;background:var(--c,#aaa);border:2px solid #fff}
+.tl .row{position:relative}
+.pics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.pics img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+.note{font-size:12px;background:#fff3cd;border-radius:10px;padding:6px 9px;margin:6px 0;font-weight:700}
+@media(min-width:700px){main{grid-template-columns:repeat(3,1fr);gap:14px;padding:16px}.t{font-size:20px}.t .i{font-size:44px}.t b{font-size:15px}#app{background:linear-gradient(180deg,#0b3d2e 0 200px,transparent 200px),repeating-linear-gradient(45deg,#e9d8b4 0 14px,#e3cfa6 14px 28px)}.brand{font-size:28px}.hero h2{font-size:22px}.hero p{font-size:15px}.ring{width:110px;height:110px}}
+@media(max-height:700px){.t .i{font-size:22px}.t{font-size:13px}.hero{padding:6px 10px}.ring{width:64px;height:64px}}
+</style></head><body><div id="app">
+<header><div class="top"><img class="logo" src="logo.svg" alt=""><div class="brand" id="bn"></div><button class="lang" id="lg"></button></div>
+<div class="date" id="dt"></div><div class="sadu"></div></header>
+<div class="hero"><svg class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#eee1c2" stroke-width="12"/><circle id="rg" cx="50" cy="50" r="42" fill="none" stroke="#14674a" stroke-width="12" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" transform="rotate(-90 50 50)"/><text id="pc" x="50" y="58" text-anchor="middle" font-size="24" font-weight="900" fill="#0b3d2e" font-family="Cairo"></text></svg>
+<div><h2 id="pn"></h2><p id="pm"></p><div class="next" id="nx"></div></div></div>
+<main id="tiles"></main><footer>© 2026 حمد الكعبي – جميع الحقوق محفوظة</footer></div>
+<div id="sh"><div class="sheet"><div class="sh-h"><span id="st"></span><button class="x" onclick="closeS()">✕</button></div><div class="sh-b" id="sb"></div></div></div>
+<script src="steps.js"></script><script src="app.js"></script></body></html>

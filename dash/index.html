@@ -1,0 +1,79 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#05080b"><link rel="apple-touch-icon" href="icon-180.png"><meta name="apple-mobile-web-app-capable" content="yes"><title>لوحة حمد · v3</title>
+<style>
+@font-face{font-family:Cairo;src:url(fonts/Cairo.ttf)}
+:root{--bg:#05080b;--pan:#0b1218cc;--ln:#173040;--tx:#e8f1f2;--mu:#7f97a3;--neo:#2ef2c4;--cy:#38bdf8;--gd:#e2b867;--sand:#c89b5e;--red:#ff5d6c;--amb:#ffb547;--mono:ui-monospace,"Cascadia Code",Consolas,monospace}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden}
+body{font-family:Cairo,"Segoe UI",sans-serif;background:var(--bg);color:var(--tx);font-size:15px}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.app{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;padding:10px 14px 8px;gap:8px}
+header{display:flex;align-items:center;gap:14px;border:1px solid var(--ln);border-radius:14px;padding:6px 14px;background:linear-gradient(90deg,#0b1a20cc,#120f08cc);position:relative;overflow:hidden}
+header svg.sky{position:absolute;inset:auto 0 0 0;width:100%;height:46px;opacity:.55}
+.logo{font-weight:800;font-size:24px;letter-spacing:.5px;z-index:1}.logo b{color:var(--neo);text-shadow:0 0 12px #2ef2c488}
+.tag{font-family:var(--mono);font-size:11px;color:var(--gd);z-index:1}
+.dt{margin-inline-start:auto;text-align:end;z-index:1}.dt .t{font-family:var(--mono);font-size:22px;color:var(--neo)}.dt .d{font-size:12.5px;color:var(--mu)}
+.btn{z-index:1;border:1px solid var(--neo);background:#06221c;color:var(--neo);border-radius:8px;padding:4px 10px;font:600 13px var(--mono);cursor:pointer}
+.grid{flex:1;min-height:0;display:grid;gap:8px;grid-template-columns:1.25fr 1fr 1fr 1.25fr;grid-template-rows:1fr 1fr 1fr;
+grid-template-areas:"brief house house sugg" "kids house house sugg" "kids apps spend wait" }
+.c{background:var(--pan);border:1px solid var(--ln);border-radius:14px;padding:9px 12px;min-height:0;overflow:hidden;position:relative;backdrop-filter:blur(3px)}
+.c::before{content:"";position:absolute;inset:0;border-radius:14px;pointer-events:none;background:linear-gradient(135deg,#2ef2c40d,transparent 40%)}
+.c h2{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:7px}
+.c h2 .k{font:11px var(--mono);color:var(--cy);opacity:.8}
+.dot{width:9px;height:9px;border-radius:50%;margin-inline-start:auto;box-shadow:0 0 8px currentColor}
+.f0{background:var(--neo);color:var(--neo)}.f1{background:var(--amb);color:var(--amb)}.f2{background:var(--red);color:var(--red)}
+.mu{color:var(--mu);font-size:12.5px}.mono{font-family:var(--mono)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:4px 0;border-top:1px dashed #173040}
+.pill{font:11.5px var(--mono);padding:1px 8px;border-radius:20px;border:1px solid currentColor;white-space:nowrap}
+.ok{color:var(--neo)}.wt{color:var(--amb)}.bd{color:var(--red)}.gd{color:var(--gd)}
+.brief li{margin:1px 0;font-size:14px}.brief ul{margin:0;padding-inline-start:18px}.brief li::marker{content:"› ";color:var(--neo);font-family:var(--mono)}
+/* house: falaj timeline */
+.hs{display:flex;gap:16px;align-items:center;height:calc(100% - 26px)}
+.ring{flex:0 0 132px}.ring text{font-family:var(--mono)}
+.falaj{flex:1;display:flex;flex-direction:column;gap:3px;position:relative;padding-inline-start:20px}
+.falaj::before{content:"";position:absolute;inset-inline-start:7px;top:6px;bottom:6px;width:3px;border-radius:3px;background:linear-gradient(var(--cy),#0e3a4d)}
+.st{position:relative;font-size:14px;display:flex;gap:10px;align-items:center}
+.st::before{content:"";position:absolute;inset-inline-start:-18px;top:7px;width:11px;height:11px;border-radius:50%;border:2px solid var(--ln);background:var(--bg)}
+.st.done::before{background:var(--neo);border-color:var(--neo)}.st.wait::before{border-color:var(--amb)}.st.next::before{border-color:var(--cy);box-shadow:0 0 8px var(--cy)}
+.kid{border-top:1px dashed #173040;padding:4px 0}.kid b{font-size:14.5px}.kid .n{display:flex;gap:6px;margin:2px 0}
+.kid .it{font-size:12.5px;color:#c6d6db;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{height:8px;background:#0f202a;border-radius:6px;overflow:hidden;margin:3px 0 6px}.bar i{display:block;height:100%;border-radius:6px}
+.sg{border-top:1px dashed #173040;padding:4px 0}.sg .t{font-weight:700;font-size:14px}.sg .b{font-size:12.5px;color:#c6d6db}
+.sg .s{font-size:12.5px;color:var(--gd)}.sg a{color:var(--cy);font:11px var(--mono);text-decoration:none}
+.fld{font:10.5px var(--mono);color:var(--bg);background:var(--neo);border-radius:4px;padding:0 5px;margin-inline-end:5px}
+.dev{display:flex;flex-wrap:wrap;gap:2px 8px;font:11px var(--mono);margin-top:1px}
+.heat{display:flex;gap:4px;margin-top:4px;align-items:flex-end;height:24px;flex:0 0 24px}.heat i{flex:1;border-radius:3px;background:var(--neo)}
+footer{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mu)}footer .mono{color:var(--gd)}
+.sugg .list{height:calc(100% - 26px);overflow:auto;scrollbar-width:thin}
+.nav{display:none}
+@media (max-width:760px){
+ .grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px}
+ .grid .c{flex:0 0 100%;scroll-snap-align:center}
+ header{flex-wrap:wrap;gap:4px 10px}.logo{font-size:21px}.dt .t{font-size:18px}
+ .hs{flex-direction:column}.ring{flex:0 0 auto}
+ .nav{display:flex;justify-content:center;gap:6px}.nav i{width:7px;height:7px;border-radius:50%;background:#173040}.nav i.on{background:var(--neo);width:20px;border-radius:4px}
+ footer{flex-direction:column;align-items:center}
+}
+</style></head><body>
+<canvas id="bg"></canvas>
+<div class="app">
+<header>
+ <svg class="sky" viewBox="0 0 1000 60" preserveAspectRatio="none">
+  <!-- Jebel Hafeet ridge -->
+  <path d="M0 60 L0 46 C80 42 140 30 210 22 C260 16 300 8 340 10 C390 13 430 26 500 34 C560 40 620 44 700 48 L1000 52 L1000 60Z" fill="#2a1d0c" stroke="#e2b86766"/>
+  <!-- Al Jahili fort -->
+  <g fill="#c89b5e" opacity=".9"><rect x="780" y="34" width="70" height="20"/><rect x="845" y="22" width="22" height="32" rx="10"/>
+  <path d="M780 34 l5-5 5 5 5-5 5 5 5-5 5 5 5-5 5 5 5-5 5 5 5-5 5 5 5-5 5 5z"/></g>
+  <!-- palms -->
+  <g stroke="#2ef2c4" fill="none" stroke-width="1.6" opacity=".8"><path d="M900 56 Q902 40 898 28"/><path d="M898 28 q-14 -2 -20 6 M898 28 q14 -4 20 4 M898 28 q-6 -10 -14 -10 M898 28 q8 -10 16 -8"/>
+  <path d="M940 56 Q942 44 940 34"/><path d="M940 34 q-10 0 -15 6 M940 34 q10 -3 15 3 M940 34 q-4 -8 -10 -8 M940 34 q6 -8 12 -6"/></g>
+  <!-- circuit traces -->
+  <g stroke="#38bdf8" stroke-width="1" fill="#38bdf8" opacity=".5"><path d="M0 56 H120 l10 -8 H260" fill="none"/><circle cx="260" cy="48" r="2.4"/><path d="M500 56 H620 l8 -6 H700" fill="none"/><circle cx="700" cy="50" r="2.4"/></g>
+ </svg>
+ <div><div class="logo" id="ttl"></div><div class="tag">&gt; AL_AIN://ceo.dashboard v3 <span id="blink">▌</span></div></div>
+ <div class="dt"><div class="t" id="clk"></div><div class="d" id="dte"></div></div>
+ <button class="btn" id="lang">EN<<script src="loader.js"></script>
+<script>if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js")</script></body>x.stroke()}}
+x.fillStyle='rgba(56,189,248,.5)';for(const p of P){x.beginPath();x.arc(p.x,p.y,1.4,0,7);x.fill()}requestAnimationFrame(f)}
+addEventListener('resize',rs);rs();f()})();
+</script></body></html>

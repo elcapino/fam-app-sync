@@ -299,14 +299,40 @@ Object.assign(U,{about:['عن اقرأ','About IQRA'],news:['من الصف ال�
 function hmk(){return `<button class="hmk" dir="ltr" onclick="go('#/about')"><bdi>IQRA</bdi> · <bdi>اقرأ</bdi> · <bdi>© ${new Date().getFullYear()} HMK</bdi></button>`}
 function newsAll(){const n=D.news||{};return D.grades.flatMap(g=>(n[g.id]||[]).map(x=>({...x,G:g})))}
 function newsCard(){const a=newsAll();if(!a.length)return '';const x=a[0],s=Sb(x.G,x.sid);
- return `<button class="topic news" style="flex:none" onclick="go('#/news/${x.g}')"><span style="font-size:22px">📌</span><span>${t('news')} · ${a.length}<br><small style="color:var(--mu)">${x.G.label} ${s?s.icon:''} ${trx(x.t)}</small></span><span class="s">›</span></button>`}
+ return `<button class="topic news" style="flex:none" onclick="go('#/news/${x.g}')"><span style="font-size:22px">📌</span><span>${t('news')} · ${a.length}<br><small style="color:var(--mu)">${x.G.label} ${s?s.icon:''} ${ntit(x)}</small></span><span class="s">›</span></button>`}
 function news(gid){const n=D.news||{};gid=G(gid)?gid:(D.grades.find(g=>(n[g.id]||[]).length)||D.grades[0]).id;CURG=gid;head(t('news'),1);nav('home');const g=G(gid),L=(n[gid]||[]).slice(0,6);
  A.innerHTML=`<div class="tabs" style="flex:none">${D.grades.map(x=>`<button class="${x.id==gid?'on':''}" onclick="go('#/news/${x.id}',1)">${x.label} · ${(n[x.id]||[]).length}</button>`).join('')}</div>
- <div class="panel fill"><b>${t('newsd')}</b><div class="cards grow" style="grid-auto-rows:1fr">${L.length?L.map(x=>{const s=Sb(g,x.sid);const tip=U.k_tip[x.k]||U.k_tip['📌'];return `<button class="nw" onclick="go('#/g/${gid}/s/${x.sid}')"><b>${x.k} ${s?s.icon+' '+sname(s):''} · ${P.lang=='en'?x.ken:x.kar} · ${x.d.slice(5)}</b><span>${trx(x.t)}</span><small style="color:var(--mu)">${tip[L1()]} ›</small></button>`}).join(''):`<div class="kc">${t('nonews')}</div>`}</div>
+ <div class="panel fill"><b>${t('newsd')}</b><div class="cards grow" style="grid-auto-rows:1fr">${L.length?L.map(x=>{const s=Sb(g,x.sid);const tip=U.k_tip[x.k]||U.k_tip['📌'];return `<button class="nw" onclick="go('#/g/${gid}/s/${x.sid}')"><b>${x.k} ${s?s.icon+' '+sname(s):''} · ${P.lang=='en'?x.ken:x.kar} · ${x.d.slice(5)}</b><span>${ntit(x)}</span><small style="color:var(--mu)">${tip[L1()]} ›</small></button>`}).join(''):`<div class="kc">${t('nonews')}</div>`}</div>
  <small style="color:var(--mu)">${t('synced')}: <span dir="ltr">${(D.news_synced||'').replace('T',' ')} · © HMK</span></small></div>`}
 function about(){CURG='';head(t('about'),1);nav('card');
  A.innerHTML=`<div class="panel center fill"><div style="font-size:46px;line-height:1;font-weight:800;letter-spacing:2px">IQRA</div><h2 style="margin:0">اقرأ</h2>
- <p>${t('ab1')}</p><p>${t('ab2')}</p><div class="lb"><div>Version<b>1.5</b></div><div>${t('synced')}<b>${(D.news_synced||'—').slice(0,10)}</b></div></div>
+ <p>${t('ab1')}</p><p>${t('ab2')}</p><div class="lb"><div>Version<b>1.6</b></div><div>${t('synced')}<b>${(D.news_synced||'—').slice(0,10)}</b></div></div>
  <h3 dir="ltr" style="margin:6px 0 0">© ${new Date().getFullYear()} HMK</h3><small>${t('ab3')} · IQRA™ / اقرأ</small></div>`}
 
 addEventListener('hashchange',route);route();
+/* ===== v1.6 fixes · © HMK ===== */
+Object.assign(U,{ex_go:['اشرح لي','Explain'],ig_go:['إنفوجرافيك','Infographic'],q_go:['اختبار سريع','Quick quiz'],pr_go:['تدريب','Practice'],more:['المزيد','More']});
+function ntit(x){const s=x.t||'',A1=/[\u0600-\u06FF]/,s0=x.G&&x.sid?Sb(x.G,x.sid):(D.grades.map(g=>Sb(g,x.sid)).find(Boolean));
+ if(P.lang=='en'&&A1.test(s)){const lat=s.replace(/[\u0600-\u06FF][\u0600-\u06FF\s،,.:()\-–]*/g,' ').replace(/[\s:–\-(),]+$/,'').replace(/\(\s*\)/g,'').replace(/\s+/g,' ').trim();
+  return /[A-Za-z]{3}/.test(lat)?lat:(x.ken+(s0?' · '+s0.en:''))}
+ return s}
+function home(){CURG='';head(t('app'));nav('home');document.body.classList.remove('kg');const dd=P.daily==today;
+ const allT=D.grades.flatMap(g=>facts(g).map(o=>({...o,g}))),f=allT[(FI+new Date().getDate())%allT.length];
+ const last=P.lastT&&allT.find(o=>o.g.id+o.x.id==P.lastT);
+ A.innerHTML=`<div class="hero hero16">${crest}<div><h1>Merryland International School</h1></div><div class="hx"><b>${rank()}</b><small>Lv ${level()}</small></div></div>
+ <div class="stats"><span class="glass">⭐ ${P.stars} ${t('stars')}</span><span class="glass">🔥 ${streak()} ${t('days')}</span><span class="glass">🎯 ${Object.keys(P.done).length} ${t('lessons')}</span></div>
+ <button class="daily" style="flex:none" onclick="${dd?`toast(t('dailydone'))`:`go('#/daily')`}"><i>${dd?'✅':'🎯'}</i><span>${t('daily')}<small>${dd?t('dailydone'):t('dailyd')}</small></span></button>
+ <button class="factc fc16" onclick="FI++;home()"><span class="fl">${t('dyk')} · ${f.g.label} ${f.s.icon}</span><span class="ft">${trx(f.x.simp)}</span><small>${t('tapnext')} ↻</small></button>
+ ${last?`<button class="topic tp16" onclick="go('#/g/${last.g.id}/s/${last.s.id}/t/${last.x.id}')"><span style="font-size:22px">${last.s.icon}</span><span>${t('cont')} · <b>${last.g.label}</b><br><small style="color:var(--mu)">${P.lang=='en'?last.x.en:last.x.ar} · ${sname(last.s)}</small></span><span class="s">▶️</span></button>`:''}
+ ${newsCard().replace('class="topic news"','class="topic news tp16"')}<div class="grades g16">${D.grades.map(g=>{const ts=facts(g),dn=ts.filter(o=>P.done[g.id+o.x.id]).length;return `<button class="grade gy-${g.id}" onclick="go('#/g/${g.id}')"><span class="em">${g.id=='y1'?'✏️':g.id=='y6'?'🚀':'🔬'}</span><b>${g.label}</b><small>${g.id=='y1'?'KG-II':g.alt}</small><small class="n">${dn}/${ts.length}</small><i class="pr" style="width:${dn/ts.length*100}%"></i></button>`}).join('')}</div>`+hmk()}
+function subject(id,sid,ph,pg){const g=G(id),s=Sb(g,sid);ph=ph||'now';pg=+pg||0;head(s.icon+' '+sname(s)+' · '+g.label,1);nav('home');
+ const ts=s.topics.filter(x=>x.phase==ph),per=4,np=Math.ceil(ts.length/per)||1,sl=ts.slice(pg*per,pg*per+per),h=hob(id,sid),B=`#/g/${id}/s/${sid}/t/`;
+ const card=x=>{const few=sl.length<=2,pts=few?x.points.slice(0,sl.length==1?4:0):[];
+  return `<div class="topic t16 ${few?'few':''}" role="button" onclick="go('${B}${x.id}')"><div class="th"><span style="font-size:24px">${PH[ph]}</span><span class="tt">${P.lang=='en'?x.en:x.ar}<br><span class="tag q16">${tq(x).length} ${t('qs')}</span>${tr(x.due)?` <span class="tag q16">${tr(x.due)}</span>`:''}</span><span class="s">${P.done[id+x.id]?'✅':'▶️'}</span></div>
+  ${sl.length<4?`<span class="sm">⚡ ${tr(x.simp)}</span>`:''}${few?`<span class="pts">${pts.map(q=>`<span>✔ ${tr(q)}</span>`).join('')}<span>⚠️ ${tr(x.mist)}</span><span>🎯 ${tr(x.examtip)}</span></span>
+  <span class="acts ${sl.length==2?'a4':''}">${[['explain','⚡','ex_go'],['ig','📊','ig_go'],['prac','🧩','pr_go']].map(([m,i,k])=>`<button onclick="event.stopPropagation();go('${B}${x.id}/${m}')"><i>${i}</i>${t(k)}</button>`).join('')}<button onclick="event.stopPropagation();go('#/q/${id}/${sid}/${x.id}')"><i>🏆</i>${t('q_go')}</button></span>`:''}</div>`};
+ A.innerHTML=`<div class="tabs glass">${Object.keys(PH).map(k=>`<button class="${k==ph?'on':''}" onclick="go('#/g/${id}/s/${sid}/${k}',1)">${PH[k]} ${t(k)}</button>`).join('')}</div>
+ <div style="color:var(--mu);font-size:13px;flex:none;padding:0 4px">${t(ph+'d')}</div>
+ <div class="list fill">${sl.map(card).join('')||`<div class="panel center fill">${t('soon')}</div>`}</div>
+ ${np>1?`<div class="pager"><button onclick="go('#/g/${id}/s/${sid}/${ph}/${Math.max(0,pg-1)}',1)">‹</button>${pg+1}/${np}<button onclick="go('#/g/${id}/s/${sid}/${ph}/${Math.min(np-1,pg+1)}',1)">›</button></div>`:''}
+ ${h?`<div class="hob">${h}</div>`:''}`}

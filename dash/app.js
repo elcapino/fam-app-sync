@@ -1,8 +1,8 @@
 /* © 2026 حمد الكعبي – جميع الحقوق محفوظة */
 
 const D=window.DASH;let L=localStorage.getItem('lang')||'ar';
-const T={ar:{ttl:'لوحة <b>حمد</b>',brief:'الملخص اليومي',house:'بناء البيت',kids:'دراسة العيال',apps:'التطبيقات',spend:'المصاريف والسقوف',wait:'ينتظر قرارك',sugg:'مقترحات لك',dev:'الأجهزة',wins:'إنجازات الأسبوع',due:'واجبات',test:'اختبارات',nw:'جديد',step:'أول خطوة',src:'المصدر',reset:'يتجدد',built:'آخر بناء',done:'تم',wt:'ينتظر',nx:'التالي',td:'لاحقاً',live:'شغّال',down:'متوقف',next:'الدوام الجاي'},
-en:{ttl:'Hamad <b>Board</b>',brief:'Daily brief',house:'House build',kids:'Kids study',apps:'Apps',spend:'Spend vs caps',wait:'Waiting on you',sugg:'Suggestions for you',dev:'Devices',wins:'Wins this week',due:'due',test:'tests',nw:'new',step:'First step',src:'source',reset:'resets',built:'built',done:'done',wt:'waiting',nx:'next',td:'later',live:'live',down:'down',next:'Next school day'}};
+const T={ar:{ttl:'لوحة <b>حمد</b>',brief:'الملخص اليومي',house:'بناء البيت',kids:'دراسة العيال',apps:'التطبيقات',spend:'المصاريف والسقوف',wait:'ينتظر قرارك',sugg:'مقترحات لك',dev:'الأجهزة',wins:'إنجازات الأسبوع',due:'واجبات',test:'اختبارات',nw:'جديد',step:'أول خطوة',src:'المصدر',reset:'يتجدد',built:'آخر بناء',done:'تم',wt:'ينتظر',nx:'التالي',td:'لاحقاً',live:'شغّال',down:'متوقف',next:'الدوام الجاي',usage:'الاستهلاك',grok:'Grok المدير',left:'باقي',perday:'باليوم',rt:'توزيع الأدوار',job:'المهمة',pri:'الأساسي',fb:'البديل عند 80%',more:'التفاصيل ›',unk:'غير معروف'},
+en:{ttl:'Hamad <b>Board</b>',brief:'Daily brief',house:'House build',kids:'Kids study',apps:'Apps',spend:'Spend vs caps',wait:'Waiting on you',sugg:'Suggestions for you',dev:'Devices',wins:'Wins this week',due:'due',test:'tests',nw:'new',step:'First step',src:'source',reset:'resets',built:'built',done:'done',wt:'waiting',nx:'next',td:'later',live:'live',down:'down',next:'Next school day',usage:'Usage',grok:'Grok manager',left:'left',perday:'/day',rt:'Routing by strength',job:'Job',pri:'Primary',fb:'Fallback at 80%',more:'Details ›',unk:'unknown'}};
 const t=k=>T[L][k],tx=o=>o&&typeof o=='object'?(o[L]??o.ar):o;
 function age(s){if(!s)return 2;const h=(Date.now()-new Date(s.replace(' ','T')))/36e5;return h<12?0:h<48?1:2}
 const dot=k=>`<i class="dot f${age(D.fresh[k])}" title="${D.fresh[k]||''}"></i>`;
@@ -30,10 +30,18 @@ h+=card('apps','apps','apps',D.apps.map(a=>`<div class="row" style="padding:2px 
 `<div class="mu" style="margin-top:3px">${t('dev')}</div><div class="dev">${D.devices.map(d=>`<span><span class="${d.on?'ok':'bd'}">●</span>${d.n.replace('LAPTOP-216GHTKJ','LAPTOP').replace('DESKTOP-ALM0UPS','DESKTOP')}</span>`).join('')}</div>`);
 h+=card('spend','spend','spend',D.spend.map(s=>{const p=Math.min(100,s.v/s.cap*100);return `<div class="row" style="border:0"><span>${s.k}</span><span class="mono">$${s.v} / $${s.cap}</span></div>
 <div class="bar"><i style="width:${p}%;background:${p>80?'var(--red)':p>60?'var(--amb)':'linear-gradient(90deg,var(--neo),var(--cy))'}"></i></div>`}).join('')+`<div class="mu">${t('reset')}: ${D.spend_reset}</div>`);
+const U=D.usage;const ub=u=>{const p=u.pct==null?0:Math.min(100,u.pct);return `<div><div class="row" style="border:0"><span>${u.name}</span><span class="mono">${u.pct==null?t('unk'):u.unit=='$'?'$'+u.used+(u.cap?' / $'+u.cap:''):u.pct+'%'}</span></div><div class="bar"><i style="width:${p}%;background:${p>80?'var(--red)':p>60?'var(--amb)':'linear-gradient(90deg,var(--neo),var(--cy))'}"></i></div></div>`};
+if(U){const G=U.tools.find(x=>x.id=='grok'),hl=Math.max(.1,(new Date(G.reset.slice(0,16).replace(' ','T')+':00+04:00')-Date.now())/864e5);
+h+=card('usage','usage','usage',`<div class="row" style="border:0"><b>${t('grok')}: ${G.pct}%</b><span class="mono mu">${t('left')} ${(100-G.pct).toFixed(1)}% · ≈${((100-G.pct)/hl).toFixed(1)}%${t('perday')} · ${t('reset')} ${G.reset}</span></div>
+<div class="ug">${U.tools.filter(x=>x.id!='grok').map(ub).join('')}</div><div class="mu" style="cursor:pointer;margin-top:4px" onclick="document.getElementById('up').style.display='block'">${t('more')}</div>`);}
 h+=card('wait','wait','waiting',D.waiting.map((w,i)=>`<div class="row"><span>${tx(w)}</span><span class="pill gd mono">#${i+1}</span></div>`).join(''));
 h+=card('sugg','sugg','sugg',`<div class="list">${D.sugg.map(s=>`<div class="sg"><div class="t"><span class="fld">${s.f}</span>${tx(s)}</div><div class="b">${tx(s.b)}</div>
 <div class="s">▸ ${t('step')}: ${tx(s.s)}</div><a href="${s.u}" target="_blank">↗ ${t('src')} · ${s.d}</a></div>`).join('')}</div>`,'sugg');
 const g=document.getElementById('g');g.innerHTML=h;
+let up=document.getElementById('up');if(!up){up=document.createElement('div');up.id='up';document.body.appendChild(up)}
+if(U)up.innerHTML=`<span class="x" onclick="this.parentNode.style.display='none'">✕</span><h2>${t('usage')}</h2><div class="mu">${U.updated}</div>${U.tools.map(ub).join('')}
+<table><tr><th>${t('job')}</th><th>${t('pri')}</th><th>${t('fb')}</th></tr>${D.routing.map(r=>`<tr><td>${tx(r.j)}</td><td>${r.p}</td><td>${r.f}</td></tr>`).join('')}</table>
+<div class="mu" style="margin-top:6px">${U.tools.map(u=>u.name+': '+u.source).join('<br>')}</div>`;
 const n=g.children.length,nav=document.getElementById('nav');nav.innerHTML=Array.from({length:n},()=>'<i></i>').join('');
 g.scrollLeft=0;const upd=()=>{const i=Math.min(n-1,Math.round(Math.abs(g.scrollLeft)/(g.clientWidth+10)));[...nav.children].forEach((e,j)=>e.className=j==i?'on':'')};g.onscroll=upd;upd();clock()}
 function clock(){const d=new Date(),lc=L=='ar'?'ar-AE':'en-GB';

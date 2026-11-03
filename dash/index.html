@@ -15,7 +15,7 @@ header svg.sky{position:absolute;inset:auto 0 0 0;width:100%;height:46px;opacity
 .dt{margin-inline-start:auto;text-align:end;z-index:1}.dt .t{font-family:var(--mono);font-size:22px;color:var(--neo)}.dt .d{font-size:12.5px;color:var(--mu)}
 .btn{z-index:1;border:1px solid var(--neo);background:#06221c;color:var(--neo);border-radius:8px;padding:4px 10px;font:600 13px var(--mono);cursor:pointer}
 .grid{flex:1;min-height:0;display:grid;gap:8px;grid-template-columns:1.25fr 1fr 1fr 1.25fr;grid-template-rows:1fr 1fr 1fr;
-grid-template-areas:"brief house house sugg" "kids house house sugg" "kids apps spend wait" }
+grid-template-areas:"brief house house sugg" "kids apps spend sugg" "kids usage usage wait" }
 .c{background:var(--pan);border:1px solid var(--ln);border-radius:14px;padding:9px 12px;min-height:0;overflow:hidden;position:relative;backdrop-filter:blur(3px)}
 .c::before{content:"";position:absolute;inset:0;border-radius:14px;pointer-events:none;background:linear-gradient(135deg,#2ef2c40d,transparent 40%)}
 .c h2{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:7px}
@@ -54,6 +54,7 @@ footer{display:flex;justify-content:space-between;font-size:11.5px;color:var(--m
  .nav{display:flex;justify-content:center;gap:6px}.nav i{width:7px;height:7px;border-radius:50%;background:#173040}.nav i.on{background:var(--neo);width:20px;border-radius:4px}
  footer{flex-direction:column;align-items:center}
 }
+.ug{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 10px}.ug .row{font-size:12px}@media (max-width:760px){.ug{grid-template-columns:1fr 1fr}}#up{position:fixed;inset:0;z-index:50;background:#071419;padding:16px;overflow:auto;display:none}#up table{width:100%;border-collapse:collapse;font-size:13px}#up td,#up th{border-bottom:1px solid #14303c;padding:5px;text-align:start}#up .x{float:inline-end;cursor:pointer;font-size:20px}
 </style></head><body>
 <canvas id="bg"></canvas>
 <div class="app">
@@ -72,8 +73,11 @@ footer{display:flex;justify-content:space-between;font-size:11.5px;color:var(--m
  </svg>
  <div><div class="logo" id="ttl"></div><div class="tag">&gt; AL_AIN://ceo.dashboard v3 <span id="blink">▌</span></div></div>
  <div class="dt"><div class="t" id="clk"></div><div class="d" id="dte"></div></div>
- <button class="btn" id="lang">EN<<script src="loader.js"></script>
-<script>if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js")</script></body>x.stroke()}}
-x.fillStyle='rgba(56,189,248,.5)';for(const p of P){x.beginPath();x.arc(p.x,p.y,1.4,0,7);x.fill()}requestAnimationFrame(f)}
-addEventListener('resize',rs);rs();f()})();
-</script></body></html>
+ <button class="btn" id="lang">EN</button>
+</header>
+<div class="grid" id="g"></div>
+<div class="nav" id="nav"></div>
+<footer><span>© 2026 حمد الكعبي – جميع الحقوق محفوظة</span><span class="mono" id="built"></span></footer>
+</div>
+<script src="loader.js"></script>
+<script>if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js")</script></body></html>

@@ -11177,8 +11177,10 @@ window.HEYYA={
   ],
   "y1": []
  },
- "news_synced": "2026-11-02T23:45",
- "version": "2026-11-02.2345",
+ "news_synced": "2026-11-03T07:51",
+ "version": "2026-11-03.0751",
+ "appVersion": "1.7",
+ "versionCode": 8,
  "brand": {
   "en": "IQRA",
   "ar": "اقرأ",

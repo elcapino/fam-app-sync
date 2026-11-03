@@ -112,7 +112,7 @@ const IGC=['#2a4aa8','#12a77a','#e0752d','#8e44ad','#d6336c','#0b7285'];
 function infographic(x,s){const ig=x.ig,it=ig.items;
  const hd=`<div class="ig-h"><span class="e">${s.icon}</span><span><small style="opacity:.8;font-size:11px;display:block">${t('igkey')} · ${t(ig.kind=='steps'?'igsteps':'igcmp')}</small>${P.lang=='en'?x.en:x.ar}</span></div>`;
  const body=ig.kind=='steps'?it.map((v,k)=>`${k?`<div class="ig-ar">${P.lang=='ar'?'▼':'▼'}</div>`:''}<div class="ig-step"><span class="n" style="background:${IGC[k%6]}">${v.i}</span><span class="c"><span class="k">${k+1}</span>${tr(v)}</span></div>`).join('')
-  :`<div class="ig-cmp">${it.map((v,k)=>`<div style="background:linear-gradient(160deg,${IGC[k%6]},${IGC[k%6]}cc)"><i>${v.i}</i>${tr(v)}</div>`).join('')}</div>`;
+  :`<div class="ig-cmp" style="grid-template-columns:repeat(${it.length==3||it.length>4?3:Math.min(2,it.length)},minmax(0,1fr))">${it.map((v,k)=>`<div style="background:linear-gradient(160deg,${IGC[k%6]},${IGC[k%6]}cc)"><i>${v.i}</i>${tr(v)}</div>`).join('')}</div>`;
  return `<div class="ig">${hd}<div class="igb grow">${body}</div><div class="ig-f">💡 ${tr(x.simp)}</div><div class="two"><div class="kc"><b>⚠️</b>${tr(x.mist)}</div><div class="kc"><b>🎯</b>${tr(x.examtip)}</div></div></div>`}
 /* lesson */
 let SEC='explain',PR='flip';
@@ -306,7 +306,7 @@ function news(gid){const n=D.news||{};gid=G(gid)?gid:(D.grades.find(g=>(n[g.id]|
  <small style="color:var(--mu)">${t('synced')}: <span dir="ltr">${(D.news_synced||'').replace('T',' ')} · © HMK</span></small></div>`}
 function about(){CURG='';head(t('about'),1);nav('card');
  A.innerHTML=`<div class="panel center fill"><div style="font-size:46px;line-height:1;font-weight:800;letter-spacing:2px">IQRA</div><h2 style="margin:0">اقرأ</h2>
- <p>${t('ab1')}</p><p>${t('ab2')}</p><div class="lb"><div>Version<b>1.6</b></div><div>${t('synced')}<b>${(D.news_synced||'—').slice(0,10)}</b></div></div>
+ <p>${t('ab1')}</p><p>${t('ab2')}</p><div class="lb"><div>Version<b>1.7</b></div><div>${t('synced')}<b>${(D.news_synced||'—').slice(0,10)}</b></div></div>
  <h3 dir="ltr" style="margin:6px 0 0">© ${new Date().getFullYear()} HMK</h3><small>${t('ab3')} · IQRA™ / اقرأ</small></div>`}
 
 addEventListener('hashchange',route);route();
@@ -336,3 +336,29 @@ function subject(id,sid,ph,pg){const g=G(id),s=Sb(g,sid);ph=ph||'now';pg=+pg||0;
  <div class="list fill">${sl.map(card).join('')||`<div class="panel center fill">${t('soon')}</div>`}</div>
  ${np>1?`<div class="pager"><button onclick="go('#/g/${id}/s/${sid}/${ph}/${Math.max(0,pg-1)}',1)">‹</button>${pg+1}/${np}<button onclick="go('#/g/${id}/s/${sid}/${ph}/${Math.min(np-1,pg+1)}',1)">›</button></div>`:''}
  ${h?`<div class="hob">${h}</div>`:''}`}
+
+/* Fit dense panels to the available viewport without hiding lesson text.
+   Cache every computed size before scaling so nested elements do not compound. */
+function fit16(){
+ document.querySelectorAll('#pb,#app>.panel.fill,#app>.panel.center').forEach(pb=>{
+  const els=[pb,...pb.querySelectorAll('*')].filter(e=>!(e instanceof SVGElement));
+  els.forEach(e=>{if(e.dataset.fitOriginal!==undefined)e.style.fontSize=e.dataset.fitOriginal});
+  const sizes=els.map(e=>parseFloat(getComputedStyle(e).fontSize));
+  const bad=()=>els.some(e=>{
+   const s=getComputedStyle(e),r=e.getBoundingClientRect();
+   if(!r.width||!r.height||s.display==='inline'||s.position==='absolute'||s.position==='fixed')return false;
+   if(e.closest('.flip .b'))return false;
+   const p=e.parentElement.getBoundingClientRect();
+   return r.top<p.top-2||r.bottom>p.bottom+2||
+    (s.overflowY!=='visible'&&e.scrollHeight>e.clientHeight+2)||
+    (s.overflowX!=='visible'&&e.scrollWidth>e.clientWidth+2);
+  });
+  for(let k=1;k<=10&&bad();k++)els.forEach((e,i)=>{
+   if(e.dataset.fitOriginal===undefined)e.dataset.fitOriginal=e.style.fontSize;
+   e.style.fontSize=Math.max(11,sizes[i]*Math.pow(.95,k)).toFixed(2)+'px';
+  });
+ });
+}
+new MutationObserver(()=>{cancelAnimationFrame(window.FR);window.FR=requestAnimationFrame(fit16)}).observe(A,{childList:true,subtree:true});
+fit16();document.fonts.ready.then(fit16);
+addEventListener('resize',()=>{clearTimeout(window.FT);window.FT=setTimeout(fit16,120)});

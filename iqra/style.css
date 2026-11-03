@@ -210,3 +210,46 @@ body.dark .blk.hi,body.dark .kc{color:var(--ink)}
 @media (max-height:720px){.panel{padding:9px;gap:5px}.panel.center>div:first-child{font-size:40px!important}.av button{height:36px;font-size:21px}.badges span{padding:2px 7px;font-size:12px}.lb div{padding:2px 8px}}
 .t16 .pts{flex:none!important;flex-basis:auto!important}.t16 .sm{flex:none}
 .t16 .acts{max-height:230px}.t16 .acts.a4{max-height:64px}
+
+/* v1.7 layout: infographic grid, no overlap, no clipped text */
+.ig{justify-content:flex-start;min-height:0;overflow:hidden}
+.ig>.ig-h,.ig>.ig-f,.ig>.two{flex:none}
+.igb{min-height:0;overflow:hidden;justify-content:safe center}
+.igb .ig-cmp{display:grid;grid-auto-rows:minmax(0,1fr);min-height:0;align-content:stretch}
+.igb .ig-cmp div{min-height:0;min-width:0;overflow:hidden;overflow-wrap:break-word;hyphens:auto;padding:8px 6px}
+.igb .ig-cmp div i{font-size:clamp(20px,6vw,30px);margin-bottom:2px}
+.igb .ig-step{min-height:0}.igb .ig-step .c{min-height:0;overflow:hidden}
+.panel.fill>.grow,.ig>.grow{justify-content:safe center}
+.kc,.blk,.warn,.msg{overflow-wrap:break-word;min-width:0}
+header .t{line-height:1.4}
+.tabs.sm button{font-size:min(10px,2.65vw)}
+nav button i{width:fit-content;margin-inline:auto}
+#pb .tabs button{white-space:normal;line-height:1.2;overflow:visible;text-overflow:clip}
+header .pill{flex:none;direction:ltr;unicode-bidi:isolate;display:inline-flex;align-items:center;gap:3px;line-height:1.3;overflow:visible}
+.hero16{align-items:center;overflow:visible}.hero16 .hx{line-height:1.2;padding:3px 8px}.hero16 .hx b{font-size:13px;line-height:1.2}.hero16 .hx small{line-height:1.1;display:block}
+
+/* Explicit rows keep infographic cards between the heading and takeaway. */
+.ig{display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;gap:8px;flex:1;overflow:visible}
+.ig>.igb{display:flex;flex-direction:column;min-height:0;overflow:visible}
+.igb .ig-cmp{width:100%;height:100%;flex:1;gap:7px}
+.igb .ig-cmp>div{overflow:visible}
+.ig-step{flex:none!important;min-height:44px!important}
+.ig-step .c{min-height:44px!important;height:auto!important}
+#blank{display:inline-block;min-width:44px;padding:0 6px!important;vertical-align:baseline;line-height:1.2}
+.factc:before{display:none}
+.hero16>div:nth-child(2){min-width:0}
+.hero16 .hx{flex:none}
+.t16 .acts i{line-height:1.1}
+
+/* Keep decorative paint inside the home card and allow complete text lines. */
+.hero16:after{display:none}
+.fc16 .ft{display:block;-webkit-line-clamp:unset;overflow:visible;line-height:1.65}
+.tp16>span:nth-child(2){overflow:visible}
+/* Profile sections reserve enough room for the three badge rows. */
+#app:has(.av)>.panel.center{gap:5px;padding:10px;line-height:1.45}
+#app:has(.av)>.panel.center>div:first-child{font-size:40px!important;line-height:1.3!important}
+#app:has(.av)>.panel:has(.av){padding:9px;gap:5px}
+#app:has(.av) .av button{height:35px;font-size:22px}
+#app:has(.av) .badges{min-height:90px;flex:none;overflow:visible}
+#app:has(.av)>.panel.fill{gap:5px;padding:9px}
+header .t{display:block;-webkit-line-clamp:unset;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;font-size:13px;line-height:1.45}

@@ -1,4 +1,4 @@
-const C="hd-v3.1",A=["./","index.html","app.js","loader.js","fonts/Cairo.ttf","icon-192.png","manifest.webmanifest"];
+const C="hd-v3.2",A=["./","index.html","app.js","loader.js","fonts/Cairo.ttf","icon-192.png","manifest.webmanifest"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(C).then(c=>c.addAll(A)));self.skipWaiting()});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x.startsWith("hd-")&&x!=C).map(x=>caches.delete(x)))));self.clients.claim()});
 self.addEventListener("fetch",e=>{const u=new URL(e.request.url);if(!u.pathname.includes("/dash/"))return;

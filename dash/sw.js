@@ -1,4 +1,4 @@
-const C='hmk-projnav-v1',A=['./','index.html','app.js','manifest.webmanifest','icon-192.png','icon-512.png','fonts/IBMPlexSansArabic-Regular.ttf','fonts/IBMPlexSansArabic-SemiBold.ttf','fonts/IBMPlexSansArabic-Bold.ttf'];
+const C='hmk-noscroll-v1',A=['./','index.html','app.js','hq.html','manifest.webmanifest','icon-192.png','icon-512.png','fonts/IBMPlexSansArabic-Regular.ttf','fonts/IBMPlexSansArabic-SemiBold.ttf','fonts/IBMPlexSansArabic-Bold.ttf'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(A)).then(()=>self.skipWaiting())));
 self.addEventListener('fetch',e=>{if(e.request.url.includes('.enc.json'))return;e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))});
 

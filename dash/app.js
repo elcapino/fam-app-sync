@@ -150,8 +150,8 @@ function pReports(i){const ds=D.docs||[],A=L=='ar';const cnt={all:ds.length};ds.
  <div id="rlw" style="display:flex;flex-direction:column;flex:1;min-height:0">${rlist()}</div><div class="cp">${L=='ar'?'© حمد الكعبي — جميع الحقوق محفوظة':'© Hamad Al Kaabi. All rights reserved.'}</div>`}
 function rr(){const w=$('#rlw');if(!w)return;w.innerHTML=rlist();bind()}
 function rrAll(){const k=PAGES.indexOf('reports'),pg=$('#pages').children[k];pg.innerHTML=pReports(k);bind()}
-function pHq(i){return `<iframe id="hqf" src="hq.html" title="HQ" style="flex:1;min-height:0;width:100%;border:1px solid var(--line);border-radius:14px;background:#1e0f3a"></iframe>`}
-function hqSend(){const f=$('#hqf');if(f&&f.contentWindow&&D&&D.hq)f.contentWindow.postMessage({hq:D.hq},'*')}
+function pHq(i){return `<iframe id="hqf" src="hq.html?lang=${L}" title="HQ" style="flex:1;min-height:0;width:100%;border:1px solid var(--line);border-radius:14px;background:#1e0f3a"></iframe>`}
+function hqSend(){const f=$('#hqf');if(f&&f.contentWindow&&D&&D.hq)f.contentWindow.postMessage({hq:D.hq,lang:L},'*')}
 addEventListener('message',e=>{if(e.data&&e.data.hqReady)hqSend()});
 const RND={hq:pHq,sum:pSum,proj:pProj,agency:pAgency,house:pHouse,market:pMarket,spend:pSpend,ideas:pIdeas,reports:pReports,daily:pDailyBrief,ai:pAI,project:pProject,existing:pExisting};
 function animate(root){requestAnimationFrame(()=>{root.querySelectorAll('.bar i[data-w]').forEach(e=>e.style.width=e.dataset.w+'%');root.querySelectorAll('.rg').forEach(e=>{e.style.transition='stroke-dasharray 1.2s cubic-bezier(.2,.8,.2,1)';e.setAttribute('stroke-dasharray',e.dataset.d)})})}

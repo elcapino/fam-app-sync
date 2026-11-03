@@ -101,6 +101,41 @@ header{gap:6px;padding-inline:10px}header>.logo{flex:1;min-width:0;letter-spacin
 .ai-tabs{flex:none;margin:0}.ai-tabs button{padding:6px 0;font-size:12px}.ai-controls{display:flex;align-items:center;gap:8px;justify-content:space-between;flex:none}.ai-controls select{max-width:46%;border:1px solid var(--line);border-radius:9px;background:var(--bg2);color:var(--tx);padding:5px;font:11px Plex}.ai-controls .mu{font-size:8px}
 .ai-items{display:flex;flex-direction:column;gap:8px;flex:1;min-height:0}.ai-card{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-evenly;padding:9px 11px;gap:3px}.ai-meta{display:flex;justify-content:space-between;gap:5px;color:var(--mu);font-size:9px}.ai-card h3{font-size:12px;line-height:1.5;margin:0;color:var(--gold2)}.ai-field b{font-size:9px;color:var(--mu);font-weight:400}.ai-field p{font-size:10.5px;line-height:1.5;margin:0}.ai-card>p{font-size:12px;line-height:1.6;margin:0}.ai-card-bottom{display:flex;align-items:center;justify-content:space-between;gap:5px}.ai-card-bottom .chip{font-size:8px;padding:2px 6px}.ai-card-bottom a{font-size:10px;color:var(--gold2)}.ai-notes{font-size:8px;line-height:1.5;text-align:center;flex:none}
 body[data-page=ai] .ph h2{font-size:17px}body[data-page=ai] .pg{gap:6px}body[data-page=ai] .ai-card{gap:2px}body[data-page=ai] .ai-card h3{line-height:1.4}
+/* Content grows in normal flow; each page scrolls above the navigation. */
+.pg{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;padding-bottom:16px}
+.pg>*{flex-shrink:0}.pg>.fill{flex:1 0 auto}.pg>.c{min-height:min-content}
+.ph{flex-wrap:wrap}.ph .mu{overflow-wrap:anywhere}.row>*{min-width:0}
+.market-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;flex:none;margin:0}
+.market-tabs button{font-size:11px;padding:7px 4px;line-height:1.6;white-space:normal}
+.market-notes{font-size:11px;line-height:1.75}.market-notes strong{color:var(--gold2)}
+.market-notes p{margin:5px 0}.market-notes summary{cursor:pointer;color:var(--warn);font-size:10px}
+.signal{line-height:1.7}.signal-heading{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.signal-heading h3{font-size:14px;margin:0}.signal-heading>bdi{font-size:17px;font-weight:700;color:var(--gold2)}
+.signal-heading small{font-size:10px}.signal-meta{display:flex;gap:10px;flex-wrap:wrap;font-size:11px}
+.signal-context{margin-top:9px;font-size:11px}.signal-context>b{color:var(--mu)}
+.market-event{border-top:1px solid var(--line);padding:7px 0;font-size:11px;line-height:1.7;overflow-wrap:anywhere}
+.market-event p{margin:4px 0;color:var(--mu)}.pg a{color:var(--gold2);overflow-wrap:anywhere}
+.pg bdi{unicode-bidi:isolate}.signal .mu{overflow-wrap:anywhere}
+
+.idea-intro h3{font-size:17px;line-height:1.7;margin:0;color:var(--gold2)}
+.idea-intro p,.idea-policy{font-size:11px;line-height:1.8;margin:4px 0}
+.idea-intro details{font-size:10px;margin-top:7px}.idea-intro summary{cursor:pointer}
+#ideas-search{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;background:var(--bg2);color:var(--tx);font:12px Plex;padding:10px}
+.idea-card{display:flex;flex-direction:column;gap:12px;line-height:1.8;padding:15px;min-width:0;overflow-wrap:anywhere}
+.idea-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}.idea-score{font-size:26px;color:var(--gold2);font-weight:700}.idea-score small{font-size:12px;color:var(--mu)}
+.idea-card h3{font-size:17px;line-height:1.7;margin:0;color:var(--gold2)}
+.idea-trigger{padding:10px;border-inline-start:2px solid var(--gold);background:#ffffff06;border-radius:8px;font-size:11px}.idea-trigger>b,.idea-trigger>a{display:block}
+.idea-field{font-size:12px}.idea-field b{font-size:10px;color:var(--mu)}.idea-field p{margin:2px 0}
+.idea-criteria{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.idea-criteria>div{padding:7px;background:#ffffff07;border-radius:8px;display:flex;flex-direction:column;font-size:10px}.idea-criteria bdi{color:var(--gold2);font-size:13px}
+.idea-actions{display:flex;flex-wrap:wrap;gap:7px}.idea-actions button{flex:1 1 130px;border:1px solid var(--line);border-radius:9px;background:var(--bg2);color:var(--gold2);font:11px Plex;padding:10px;cursor:pointer;white-space:normal}
+.idea-card>.mu{font-size:9px}.idea-history{border-bottom:1px solid var(--line);padding:12px 0}#shb p{overflow-wrap:anywhere;line-height:1.9}
+/* Project navigation: keep portfolio cards above the five main destinations. */
+body[data-page=proj] .project-grid{flex:1;min-height:0;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(72px,1fr)}
+body[data-page=proj] .project-card{min-width:0;overflow-wrap:anywhere}
+body[data-page=proj] .project-card b{min-width:0}
+body[data-page=proj] .project-actions button:last-child{grid-column:auto}
+body[data-page=project] .project-doc{white-space:normal;overflow-wrap:anywhere;width:100%}
+body[data-page=project] .ph h2{overflow-wrap:anywhere;min-width:0}
 </style></head><body>
 <div id="lk"><div class="bx"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#c9a24a" stroke-width="1.5"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/></svg><div class="logo" style="font-size:24px;margin-top:6px">HMK</div>
 <p class="mu" id="lkt">كلمة السر · Passphrase</p><input id="pw" type="password" autocomplete="off"><button id="go">دخول · Unlock</button><p id="er" style="color:var(--bad);min-height:1.2em;font-size:13px"></p><p class="cp">© حمد الكعبي — جميع الحقوق محفوظة<br>© Hamad Al Kaabi. All rights reserved.</p></div></div>

@@ -39,7 +39,20 @@ function md(s){return esc(s).replace(/^#{1,4} (.*)$/gm,'<h4>$1</h4>').replace(/\
 const docsOf=p=>(D.docs||[]).filter(d=>!p||d.p==p);
 function docList(p){const ds=docsOf(p);return ds.length?ds.map(d=>`<div class="row" style="cursor:pointer" data-doc="${(D.docs||[]).indexOf(d)}"><span class="clamp" style="flex:1">${esc(d.t)}</span><span class="mu num">${esc(d.m.slice(5))}</span></div>`).join(''):`<p class="mu">${t('none')}</p>`}
 const status=s=>`<span class="chip ${s}">${t(s)}</span>`;
-function pSum(i){const k=K(),pr=k.projects||[],w=D.waiting||[],wins=(D.wins||[]).reduce((a,x)=>a+x.n,0),sp=D.spend||[],tv=sp.reduce((a,s)=>a+s.v,0),tc=sp.reduce((a,s)=>a+s.cap,0);
+let SUMMARY_TAB=0;
+function pSum(i){const A=L=='ar';return `<div class="seg summary-tabs" role="tablist" aria-label="${A?'الملخص':'Summary'}"><button role="tab" data-summary="0" aria-selected="${SUMMARY_TAB==0}" class="${SUMMARY_TAB==0?'on':''}">${A?'الملخص التنفيذي':'Executive summary'}</button><button role="tab" data-summary="1" aria-selected="${SUMMARY_TAB==1}" class="${SUMMARY_TAB==1?'on':''}">${A?'موجز اليوم':"Today's Brief"}</button></div>`+(SUMMARY_TAB?pDailyBrief():pSummary(i))}
+function pDailyBrief(){const A=L=='ar',b=D.dailyBrief;
+ if(!b)return `<div class="c">${A?'الموجز غير متاح بعد؛ أعد التحديث لاحقاً.':'Brief unavailable; refresh later.'}</div>`;
+ const stale=Date.now()-Date.parse(b.generated_at)>24*3600000;
+ const item=x=>`<div class="brief-item"><a href="${esc(/^https?:\/\//.test(x.url)?x.url:'#')}" target="_blank" rel="noopener noreferrer">${esc(tx(x.title))}</a><div class="brief-impact">↳ ${esc(tx(x.impact))}</div></div>`;
+ const card=(key,label,icon)=>`<article class="c brief-card"><h3><span>${icon}</span>${label}</h3>${(b[key]||[]).map(item).join('')}</article>`;
+ return `<div class="daily-brief"><div class="brief-heading"><b>${A?'موجز اليوم':"Today's Brief"}</b><span class="mu">${esc(b.generated_at.slice(0,16).replace('T',' '))} UAE${stale?' · '+(A?'قديم':'STALE'):''}</span></div>
+ ${card('economy',A?'الاقتصاد · الإمارات والعالم':'Economy · UAE & world','◈')}
+ ${card('politics',A?'السياسة':'Politics','◎')}
+ ${card('sports',A?'الرياضة':'Sports','◇')}
+ <article class="c brief-card brief-dates"><h3>◷ ${A?'المواعيد · ١٤ يوماً':'Key dates · next 14 days'}</h3>${(b.dates||[]).map(x=>`<div class="brief-item"><div><span class="num">${esc(x.date.slice(5))}</span> · <a href="${esc(/^https?:\/\//.test(x.url)?x.url:'#')}" target="_blank" rel="noopener noreferrer">${esc(tx(x.title))}</a></div><div class="brief-impact">↳ ${esc(tx(x.impact))}</div></div>`).join('')}</article>
+ <article class="c brief-card brief-watch"><h3>◉ ${A?'ما نراقبه اليوم':'What to watch today'}</h3>${(b.watch||[]).map(x=>`<div class="brief-watch-line">• ${esc(tx(x))}</div>`).join('')}</article></div>`}
+function pSummary(i){const k=K(),pr=k.projects||[],w=D.waiting||[],wins=(D.wins||[]).reduce((a,x)=>a+x.n,0),sp=D.spend||[],tv=sp.reduce((a,s)=>a+s.v,0),tc=sp.reduce((a,s)=>a+s.cap,0);
  const wk=D.wins||[],mx=Math.max(1,...wk.map(x=>x.n)),W=330,bw=W/Math.max(1,wk.length);
  return ph(i,'sum',esc(D.updated||''))+`<div class="g4">
  <div class="c kpi"><div class="v">${N(pr.filter(p=>p.s=='go').length)}<small> / ${N(pr.length)}</small></div><div class="l">${t('kp_active')}</div></div>
@@ -131,6 +144,7 @@ function goPage(i,inst){CUR=Math.max(0,Math.min(PAGES.length-1,i));const pg=$('#
 function mark(){$('#nav').querySelectorAll('button').forEach((b,j)=>{b.classList.toggle('on',j==CUR);b.setAttribute('aria-selected',j==CUR)});document.body.dataset.page=PAGES[CUR];const pg=$('#pages').children[CUR];if(pg&&!pg.dataset.an){pg.dataset.an=1;pg.querySelectorAll('.c').forEach((c,j)=>{c.classList.add('fade');c.style.animationDelay=j*60+'ms'});animate(pg)}}
 let st;$('#pages').addEventListener('scroll',()=>{clearTimeout(st);st=setTimeout(()=>{const w=$('#pages').clientWidth,x=Math.abs($('#pages').scrollLeft);const ch=[...$('#pages').children];let best=0,bd=1e9;ch.forEach((c,j)=>{const d=Math.abs(c.getBoundingClientRect().left);if(d<bd){bd=d;best=j}});CUR=best;mark()},80)},{passive:true});
 function bind(){const P=$('#pages');
+ P.querySelectorAll('[data-summary]').forEach(e=>e.onclick=()=>{SUMMARY_TAB=+e.dataset.summary;const pg=P.children[PAGES.indexOf('sum')];pg.innerHTML=pSum(PAGES.indexOf('sum'));bind()});
  P.querySelectorAll('[data-st]').forEach(e=>e.onclick=ev=>{ev.stopPropagation();ST=+e.dataset.st;const k=PAGES.indexOf('spend'),pg=$('#pages').children[k];pg.innerHTML=pSpend(k);bind();animate(pg)});
  P.querySelectorAll('[data-mt]').forEach(e=>e.onclick=ev=>{ev.stopPropagation();MT=+e.dataset.mt;mr()});
  P.querySelectorAll('[data-doc]').forEach(e=>e.onclick=ev=>{ev.stopPropagation();const d=D.docs[+e.dataset.doc];sheet(d.t,`<div class="mu">${esc(d.m)} · ${esc(d.f)}</div>${md(d.b)}`)});

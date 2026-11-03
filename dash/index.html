@@ -75,7 +75,19 @@ footer button.on{background:#d4af371f}footer button.on:after{content:"";position
 #fut .rot{transform-origin:330px 170px;animation:rot 90s linear infinite}@keyframes rot{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){#fut .rot{animation:none}}
 .ib.th svg{fill:none}
-.seg{display:flex;gap:4px;padding:3px;margin:0 0 8px;border-radius:12px;background:#ffffff10;border:1px solid #ffffff1a}.seg button{flex:1;border:0;background:none;color:inherit;font:600 12.5px Plex,sans-serif;padding:7px 0;border-radius:9px;cursor:pointer}.seg button.on{background:var(--gold);color:#160b27}[data-theme=future] .seg button.on{background:linear-gradient(90deg,#00e0c6,#2f7bff);color:#fff}.tbl.mk{font-size:11.5px}.tbl.mk td,.tbl.mk th{padding:5px 3px}.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:10.5px}</style></head><body>
+.seg{display:flex;gap:4px;padding:3px;margin:0 0 8px;border-radius:12px;background:#ffffff10;border:1px solid #ffffff1a}.seg button{flex:1;border:0;background:none;color:inherit;font:600 12.5px Plex,sans-serif;padding:7px 0;border-radius:9px;cursor:pointer}.seg button.on{background:var(--gold);color:#160b27}[data-theme=future] .seg button.on{background:linear-gradient(90deg,#00e0c6,#2f7bff);color:#fff}.tbl.mk{font-size:11.5px}.tbl.mk td,.tbl.mk th{padding:5px 3px}.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:10.5px}
+/* HMK 1.3: the daily brief occupies the summary's remaining viewport. */
+.summary-tabs{flex:none;margin:0}.summary-tabs button{font-size:11px;padding:6px 0}
+.daily-brief{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px}
+.brief-heading{display:flex;align-items:center;justify-content:space-between;gap:5px;font-size:14px;flex:none}
+.brief-heading .mu{font-size:8px}.brief-card{padding:7px 10px;flex:1.1;min-height:0;display:flex;flex-direction:column;justify-content:space-evenly;border-inline-start:2px solid var(--gold)}
+.brief-card h3{font-size:12px;line-height:1.3;margin:0 0 3px;flex:none}
+.brief-item{font-size:10.5px;line-height:1.4;padding:2px 0;border-top:1px solid #ffffff0c}
+.brief-item a{color:var(--tx);text-decoration:none;font-weight:600}.brief-item a:focus-visible{outline:1px solid var(--gold)}
+.brief-impact{color:var(--mu);font-size:9.5px;line-height:1.4;margin-top:1px}
+.brief-dates{flex:1.1}.brief-watch{flex:0.6;border-inline-start-color:var(--ok)}
+.brief-watch-line{font-size:10px;line-height:1.5}
+</style></head><body>
 <div id="lk"><div class="bx"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#c9a24a" stroke-width="1.5"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/></svg><div class="logo" style="font-size:24px;margin-top:6px">HMK</div>
 <p class="mu" id="lkt">كلمة السر · Passphrase</p><input id="pw" type="password" autocomplete="off"><button id="go">دخول · Unlock</button><p id="er" style="color:var(--bad);min-height:1.2em;font-size:13px"></p><p class="cp">© حمد الكعبي — جميع الحقوق محفوظة<br>© Hamad Al Kaabi. All rights reserved.</p></div></div>
 <svg id="fut" viewBox="0 0 412 915" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="fg" x1="0" x2="1"><stop offset="0" stop-color="#4fc3ff"/><stop offset="1" stop-color="#d8b45a"/></linearGradient></defs>

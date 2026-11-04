@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T04:07:52.698582+00:00",
+  "generated_at": "2026-11-04T04:15:01.709156+00:00",
   "devices": [
     {
       "name": "PC",
@@ -32,7 +32,7 @@
       "id": "pages",
       "name": "GitHub Pages",
       "status": "up",
-      "last_seen": "2026-11-04T04:07:52.698582+00:00",
+      "last_seen": "2026-11-04T04:15:01.709156+00:00",
       "evidence": "HTTP reachability",
       "usage_updated": "2026-11-04 08:07 UTC+4",
       "used": null,
@@ -40,7 +40,18 @@
       "unit": null,
       "period": null,
       "day_used": null,
-      "day_cap": null
+      "day_cap": null,
+      "role": "Delivery",
+      "description": "Host the published dashboard.",
+      "tip": "Check fresh deployed assets after each release.",
+      "ideas": [
+        "Share a public dashboard",
+        "Publish a lightweight report"
+      ],
+      "runs": 0,
+      "successful_runs": 0,
+      "success_rate": null,
+      "last_runs": []
     },
     {
       "id": "codex",
@@ -48,55 +59,127 @@
       "status": "unknown",
       "last_seen": null,
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04T04:06:42.815Z",
+      "usage_updated": "2026-11-04T04:07:53.094Z",
       "used": 23.0,
       "cap": 100,
       "unit": "%",
       "period": "week",
       "day_used": null,
-      "day_cap": null
+      "day_cap": null,
+      "role": "Engineering",
+      "description": "Implement, debug and validate changes in a repository.",
+      "tip": "State acceptance criteria and run focused checks.",
+      "ideas": [
+        "Fix a reproducible bug",
+        "Automate a repetitive check"
+      ],
+      "runs": 0,
+      "successful_runs": 0,
+      "success_rate": null,
+      "last_runs": []
     },
     {
       "id": "claude",
       "name": "Claude API",
-      "status": "unknown",
-      "last_seen": null,
-      "evidence": "No authenticated health probe",
+      "status": "down",
+      "last_seen": "2026-11-04T04:14:30.117074+00:00",
+      "evidence": "Latest agent call",
       "usage_updated": "2026-11-04 08:07 UTC+4",
       "used": 6.77,
       "cap": 20,
       "unit": "$",
       "period": "month",
       "day_used": null,
-      "day_cap": null
+      "day_cap": null,
+      "role": "Strategy & review",
+      "description": "Review designs, explain tradeoffs and check final drafts.",
+      "tip": "Reuse concise context; reserve premium calls for difficult reviews.",
+      "ideas": [
+        "Review a release checklist",
+        "Compare two architecture proposals"
+      ],
+      "runs": 1,
+      "successful_runs": 0,
+      "success_rate": 0.0,
+      "last_runs": [
+        {
+          "timestamp": "2026-11-04T04:14:30.117074+00:00",
+          "success": false,
+          "status": "blocked"
+        }
+      ]
     },
     {
       "id": "gemini",
       "name": "Gemini API",
-      "status": "unknown",
-      "last_seen": "2026-11-03T06:25:19.744391+00:00",
-      "evidence": "No authenticated health probe",
+      "status": "down",
+      "last_seen": "2026-11-04T04:14:30.259542+00:00",
+      "evidence": "Latest agent call",
       "usage_updated": "2026-11-04 08:07 UTC+4",
       "used": 1.89,
       "cap": 75,
       "unit": "$",
       "period": "month",
       "day_used": 0.0301,
-      "day_cap": 15
+      "day_cap": 15,
+      "role": "Research & synthesis",
+      "description": "Summarize public sources and compare evidence.",
+      "tip": "Batch related sources; reuse summaries before another call.",
+      "ideas": [
+        "Build a source comparison",
+        "Summarize public documentation"
+      ],
+      "runs": 13,
+      "successful_runs": 0,
+      "success_rate": 0.0,
+      "last_runs": [
+        {
+          "timestamp": "2026-11-04T04:14:30.259542+00:00",
+          "success": false,
+          "status": "blocked"
+        },
+        {
+          "timestamp": "2026-11-03T06:25:19.744391+00:00",
+          "success": false,
+          "status": "blocked"
+        },
+        {
+          "timestamp": "2026-11-03T06:25:19.742930+00:00",
+          "success": false,
+          "status": "blocked"
+        }
+      ]
     },
     {
       "id": "deepseek",
       "name": "DeepSeek API",
-      "status": "unknown",
-      "last_seen": null,
-      "evidence": "No authenticated health probe",
+      "status": "down",
+      "last_seen": "2026-11-04T04:14:30.378553+00:00",
+      "evidence": "Latest agent call",
       "usage_updated": "2026-11-04 08:07 UTC+4",
       "used": 0.0,
       "cap": 5,
       "unit": "USD",
       "period": "2026-11",
       "day_used": null,
-      "day_cap": null
+      "day_cap": null,
+      "role": "Economical drafting",
+      "description": "Draft small functions and provide a second opinion.",
+      "tip": "Use small bounded tasks; require checks before accepting code.",
+      "ideas": [
+        "Draft a utility function",
+        "Review a small algorithm"
+      ],
+      "runs": 1,
+      "successful_runs": 0,
+      "success_rate": 0.0,
+      "last_runs": [
+        {
+          "timestamp": "2026-11-04T04:14:30.378553+00:00",
+          "success": false,
+          "status": "blocked"
+        }
+      ]
     },
     {
       "id": "nlm",
@@ -110,7 +193,18 @@
       "unit": null,
       "period": "-",
       "day_used": null,
-      "day_cap": null
+      "day_cap": null,
+      "role": "Knowledge library",
+      "description": "Organize public source notebooks and grounded summaries.",
+      "tip": "Manual workflow; no automated API connection is confirmed.",
+      "ideas": [
+        "Create a public reference notebook",
+        "Prepare a source based briefing"
+      ],
+      "runs": 0,
+      "successful_runs": 0,
+      "success_rate": null,
+      "last_runs": []
     },
     {
       "id": "chatgpt",
@@ -118,13 +212,59 @@
       "status": "unknown",
       "last_seen": null,
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04T04:06:42.815Z",
+      "usage_updated": "2026-11-04T04:07:53.094Z",
       "used": 23.0,
       "cap": 100,
       "unit": "%",
       "period": "week",
       "day_used": null,
-      "day_cap": null
+      "day_cap": null,
+      "role": "Planning & communication",
+      "description": "Turn requirements into plans and clear explanations.",
+      "tip": "Use the existing plan allowance; usage below shares the Codex snapshot.",
+      "ideas": [
+        "Clarify project requirements",
+        "Draft reusable instructions"
+      ],
+      "runs": 0,
+      "successful_runs": 0,
+      "success_rate": null,
+      "last_runs": [],
+      "plan": "ChatGPT plan \u00b7 price and tier unverified; shared Codex weekly usage snapshot"
+    },
+    {
+      "id": "free",
+      "name": "Free tools",
+      "status": "unknown",
+      "used": null,
+      "cap": null,
+      "role": "Local & free tools",
+      "description": "Run inexpensive drafts and repeatable local work.",
+      "tip": "Try local work first and escalate only when quality requires it.",
+      "ideas": [
+        "Normalize a public dataset",
+        "Create a draft outline"
+      ],
+      "runs": 17,
+      "successful_runs": 0,
+      "success_rate": 0.0,
+      "last_runs": [
+        {
+          "timestamp": "2026-11-04T04:14:30.378485+00:00",
+          "success": false,
+          "status": "failed"
+        },
+        {
+          "timestamp": "2026-11-04T04:14:30.259453+00:00",
+          "success": false,
+          "status": "failed"
+        },
+        {
+          "timestamp": "2026-11-04T04:14:30.116941+00:00",
+          "success": false,
+          "status": "failed"
+        }
+      ]
     }
   ],
   "programs": [
@@ -133,74 +273,118 @@
       "installed": true,
       "startup": "Not listed",
       "runtime": "Unknown",
-      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00",
+      "role": "Track changes and recover versions.",
+      "tip": "Verify runtime before relying on this program; installed does not mean connected.",
+      "runs": null,
+      "success_rate": null
     },
     {
       "name": "Python",
       "installed": true,
       "startup": "Not listed",
       "runtime": "Unknown",
-      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00",
+      "role": "Automate collection, validation and reports.",
+      "tip": "Verify runtime before relying on this program; installed does not mean connected.",
+      "runs": null,
+      "success_rate": null
     },
     {
       "name": "Ollama",
       "installed": true,
       "startup": "Configured",
       "runtime": "Unknown",
-      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00",
+      "role": "Run local models when a model server is available.",
+      "tip": "Verify runtime before relying on this program; installed does not mean connected.",
+      "runs": null,
+      "success_rate": null
     },
     {
       "name": "OneDrive",
       "installed": true,
       "startup": "Configured",
       "runtime": "Unknown",
-      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00",
+      "role": "Synchronize approved working files.",
+      "tip": "Verify runtime before relying on this program; installed does not mean connected.",
+      "runs": null,
+      "success_rate": null
     },
     {
       "name": "Discord",
       "installed": true,
       "startup": "Configured",
       "runtime": "Unknown",
-      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00",
+      "role": "Team communication when explicitly requested.",
+      "tip": "Verify runtime before relying on this program; installed does not mean connected.",
+      "runs": null,
+      "success_rate": null
     },
     {
       "name": "Edge",
       "installed": true,
       "startup": "Not listed",
       "runtime": "Unknown",
-      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00",
+      "role": "Browser testing and public source reading.",
+      "tip": "Verify runtime before relying on this program; installed does not mean connected.",
+      "runs": null,
+      "success_rate": null
     },
     {
       "name": "Adobe Acrobat",
       "installed": true,
       "startup": "Configured",
       "runtime": "Unknown",
-      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00",
+      "role": "Read and review approved PDF documents.",
+      "tip": "Verify runtime before relying on this program; installed does not mean connected.",
+      "runs": null,
+      "success_rate": null
     },
     {
       "name": "Upscayl",
       "installed": true,
       "startup": "Not listed",
       "runtime": "Unknown",
-      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00",
+      "role": "Upscale visual assets locally.",
+      "tip": "Verify runtime before relying on this program; installed does not mean connected.",
+      "runs": null,
+      "success_rate": null
     }
   ],
   "routines": [
     {
       "name": "gemini agent",
-      "last_run": "2026-11-03T06:25:19.744391+00:00",
+      "last_run": "2026-11-04T04:14:30.259542+00:00",
+      "status": "fail",
+      "stale": false
+    },
+    {
+      "name": "claude agent",
+      "last_run": "2026-11-04T04:14:30.117074+00:00",
+      "status": "fail",
+      "stale": false
+    },
+    {
+      "name": "deepseek agent",
+      "last_run": "2026-11-04T04:14:30.378553+00:00",
       "status": "fail",
       "stale": false
     },
     {
       "name": "free agent",
-      "last_run": "2026-11-03T06:25:19.874941+00:00",
+      "last_run": "2026-11-04T04:14:30.378485+00:00",
       "status": "fail",
       "stale": false
     },
     {
       "name": "free_remote agent",
-      "last_run": "2026-11-03T06:25:19.744370+00:00",
+      "last_run": "2026-11-04T04:14:30.259514+00:00",
       "status": "fail",
       "stale": false
     },
@@ -212,7 +396,7 @@
     },
     {
       "name": "Alerts monitor",
-      "last_run": "2026-11-04T03:28:44.242936+00:00",
+      "last_run": "2026-11-04T04:09:04.959932+00:00",
       "status": "unknown",
       "evidence": "Log modification; completion unverified"
     },
@@ -256,5 +440,37 @@
     "Unknown means no reliable telemetry.",
     "Usage is a recorded snapshot, not a live billing total.",
     "Device heartbeat is online for 30 minutes; older heartbeats are offline."
+  ],
+  "advice_cache": {
+    "date": "2026-11-04",
+    "providers": [
+      {
+        "provider": "claude",
+        "status": "blocked_or_unavailable",
+        "actual_provider": null,
+        "ideas": [],
+        "integrations": []
+      },
+      {
+        "provider": "gemini",
+        "status": "blocked_or_unavailable",
+        "actual_provider": null,
+        "ideas": [],
+        "integrations": []
+      },
+      {
+        "provider": "deepseek",
+        "status": "blocked_or_unavailable",
+        "actual_provider": null,
+        "ideas": [],
+        "integrations": []
+      }
+    ]
+  },
+  "integrations": [
+    "Local scripts collect and validate \u2192 free draft \u2192 one premium final review.",
+    "Cache public research daily and reuse it across briefs and notebooks.",
+    "Route small coding drafts to economical tools; send only difficult cases for deeper review.",
+    "Deduplicate jobs and stop retries after repeated failures; keep monthly and daily caps visible."
   ]
 }

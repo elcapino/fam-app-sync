@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-04T02:49:25.859498+00:00",
+  "devices": [
+    {
+      "name": "PC",
+      "status": "unknown",
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00",
+      "evidence": "Audit snapshot only; no heartbeat"
+    },
+    {
+      "name": "S26",
+      "status": "unknown",
+      "last_seen": null,
+      "evidence": "No heartbeat configured"
+    },
+    {
+      "name": "Laptop 1",
+      "status": "unknown",
+      "last_seen": null,
+      "evidence": "No heartbeat configured"
+    },
+    {
+      "name": "Laptop 2",
+      "status": "unknown",
+      "last_seen": null,
+      "evidence": "No heartbeat configured"
+    }
+  ],
+  "services": [
+    {
+      "id": "pages",
+      "name": "GitHub Pages",
+      "status": "up",
+      "last_seen": "2026-11-04T02:49:25.859498+00:00",
+      "evidence": "HTTP reachability",
+      "usage_updated": "2026-11-04 06:30 UTC+4",
+      "used": null,
+      "cap": null,
+      "unit": null,
+      "period": null,
+      "day_used": null,
+      "day_cap": null
+    },
+    {
+      "id": "codex",
+      "name": "Codex",
+      "status": "unknown",
+      "last_seen": null,
+      "evidence": "No authenticated health probe",
+      "usage_updated": "2026-11-03T15:11:23.681Z",
+      "used": 22.0,
+      "cap": 100,
+      "unit": "%",
+      "period": "week",
+      "day_used": null,
+      "day_cap": null
+    },
+    {
+      "id": "claude",
+      "name": "Claude API",
+      "status": "unknown",
+      "last_seen": null,
+      "evidence": "No authenticated health probe",
+      "usage_updated": "2026-11-04 06:30 UTC+4",
+      "used": 6.77,
+      "cap": 20,
+      "unit": "$",
+      "period": "month",
+      "day_used": null,
+      "day_cap": null
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini API",
+      "status": "unknown",
+      "last_seen": "2026-11-03T06:25:19.744391+00:00",
+      "evidence": "No authenticated health probe",
+      "usage_updated": "2026-11-04 06:30 UTC+4",
+      "used": 1.87,
+      "cap": 75,
+      "unit": "$",
+      "period": "month",
+      "day_used": 0.0129,
+      "day_cap": 15
+    },
+    {
+      "id": "nlm",
+      "name": "NotebookLM",
+      "status": "unknown",
+      "last_seen": null,
+      "evidence": "No authenticated health probe",
+      "usage_updated": "2026-11-04 06:30 UTC+4",
+      "used": null,
+      "cap": null,
+      "unit": null,
+      "period": "-",
+      "day_used": null,
+      "day_cap": null
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "status": "unknown",
+      "last_seen": null,
+      "evidence": "No authenticated health probe",
+      "usage_updated": "2026-11-03T15:11:23.681Z",
+      "used": 22.0,
+      "cap": 100,
+      "unit": "%",
+      "period": "week",
+      "day_used": null,
+      "day_cap": null
+    }
+  ],
+  "programs": [
+    {
+      "name": "Git",
+      "installed": true,
+      "startup": "Not listed",
+      "runtime": "Unknown",
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+    },
+    {
+      "name": "Python",
+      "installed": true,
+      "startup": "Not listed",
+      "runtime": "Unknown",
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+    },
+    {
+      "name": "Ollama",
+      "installed": true,
+      "startup": "Configured",
+      "runtime": "Unknown",
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+    },
+    {
+      "name": "OneDrive",
+      "installed": true,
+      "startup": "Configured",
+      "runtime": "Unknown",
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+    },
+    {
+      "name": "Discord",
+      "installed": true,
+      "startup": "Configured",
+      "runtime": "Unknown",
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+    },
+    {
+      "name": "Edge",
+      "installed": true,
+      "startup": "Not listed",
+      "runtime": "Unknown",
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+    },
+    {
+      "name": "Adobe Acrobat",
+      "installed": true,
+      "startup": "Configured",
+      "runtime": "Unknown",
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+    },
+    {
+      "name": "Upscayl",
+      "installed": true,
+      "startup": "Not listed",
+      "runtime": "Unknown",
+      "last_seen": "2026-11-03T17:48:42.8361781+04:00"
+    }
+  ],
+  "routines": [
+    {
+      "name": "gemini agent",
+      "last_run": "2026-11-03T06:25:19.744391+00:00",
+      "status": "fail",
+      "stale": false
+    },
+    {
+      "name": "free agent",
+      "last_run": "2026-11-03T06:25:19.874941+00:00",
+      "status": "fail",
+      "stale": false
+    },
+    {
+      "name": "free_remote agent",
+      "last_run": "2026-11-03T06:25:19.744370+00:00",
+      "status": "fail",
+      "stale": false
+    },
+    {
+      "name": "Daily agent routine",
+      "last_run": "2026-11-03T06:25:20.141001+00:00",
+      "status": "unknown",
+      "evidence": "Log modification; completion unverified"
+    },
+    {
+      "name": "Alerts monitor",
+      "last_run": "2026-11-04T02:30:00.652901+00:00",
+      "status": "unknown",
+      "evidence": "Log modification; completion unverified"
+    },
+    {
+      "name": "Paper daily",
+      "status": "unknown",
+      "scheduled": true,
+      "last_run": null,
+      "evidence": "Schedule present; no structured completion record"
+    },
+    {
+      "name": "TV daily",
+      "status": "unknown",
+      "scheduled": true,
+      "last_run": null,
+      "evidence": "Schedule present; no structured completion record"
+    },
+    {
+      "name": "Projects daily",
+      "status": "unknown",
+      "scheduled": true,
+      "last_run": null,
+      "evidence": "Schedule present; no structured completion record"
+    },
+    {
+      "name": "Agent daily",
+      "status": "unknown",
+      "scheduled": true,
+      "last_run": null,
+      "evidence": "Schedule present; no structured completion record"
+    },
+    {
+      "name": "Agent weekly",
+      "status": "unknown",
+      "scheduled": true,
+      "last_run": null,
+      "evidence": "Schedule present; no structured completion record"
+    }
+  ],
+  "notes": [
+    "Unknown means no reliable telemetry.",
+    "Usage is a recorded snapshot, not a live billing total.",
+    "Device heartbeat is online for 30 minutes; older heartbeats are offline."
+  ]
+}

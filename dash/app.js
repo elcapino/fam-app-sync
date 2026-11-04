@@ -97,29 +97,50 @@ function pHouse(i){const h=D.house||{},k=K(),r=k.house_risks||{},col={done:'var(
  return ph(i,'house')+`<div class="c" style="display:flex;align-items:center;gap:14px">${ring(sitep,128,t('prog'))}<div style="flex:1"><div style="display:flex;gap:6px;margin-bottom:8px"><span class="chip bad">${t('high')} ${N(r.high||0)}</span><span class="chip hold">${t('med')} ${N(r.med||0)}</span></div><div style="font-size:12px;line-height:1.6">${esc(tx(h.note))}</div></div></div>
  <div class="c"><h3>${t('stages')}<span class="mu">${N((h.pct||0)+'%')}</span></h3>${(h.stages||[]).map(s=>`<div class="row" style="padding:4px 0"><span class="dot" style="background:${col[s.s]||'#5a4785'}"></span><span style="flex:1">${esc(tx(s))}</span></div>`).join('')}</div>
  <div class="c fill tap" data-docs="house"><h3>${t('risks')}<span class="mu">${t('docs')} ›</span></h3>${(L=='ar'?r.ar:r.en||[]).map((x,j)=>`<div class="row" style="padding:4px 0"><span class="dot" style="background:${j<(r.high||0)?'var(--bad)':'var(--warn)'}"></span><span class="clamp" style="flex:1">${esc(x)}</span></div>`).join('')}</div>`}
-let MT=0,MC='upcoming';
-function pMarket(i){
- const A=L=='ar',m=D.marketReference;
- if(!m)return ph(i,'market')+`<div class="c">${A?'مرجع السوق قيد التحديث في البناء اليومي':'Market reference awaits the daily build'}</div>`;
- const safe=u=>{try{const p=new URL(u);return p.protocol==='https:'?esc(p.href):'#'}catch{return '#'}};
- const link=(url,label)=>`<a href="${safe(url)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`;
- const tabs=[A?'كل الإشارات':'All signals',A?'المعادن والنفط':'Metals & oil',A?'FX والخليج':'FX & Gulf',A?'أسهم مرشحة':'Equity candidates',A?'BTC / ETH':'BTC / ETH',A?'التواريخ المهمة':'Key dates'];
- const seg=`<div class="seg market-tabs" role="tablist">${tabs.map((x,k)=>`<button role="tab" aria-selected="${k==MT}" data-mt="${k}" class="${k==MT?'on':''}">${x}</button>`).join('')}</div>`;
- const ev=e=>`<div class="market-event"><div><bdi class="num">${esc(e.date)}</bdi> · ${link(e.url,tx(e.title))}</div><p>${esc(tx(e.impact))}</p>${e.status==='tentative'?`<span class="mu">${A?'موعد مبدئي — تحقق من المصدر':'Tentative — verify with source'}</span>`:''}${e.checked?`<div class="mu">${A?'تاريخ تحقق الجدول':'Schedule checked'}: <bdi>${esc(e.checked)}</bdi></div>`:''}</div>`;
- const unavailable=A?'غير متاح':'Unavailable',cached=A?'محفوظ — قديم/متأخر':'Cached — stale/delayed';
- let body='';
- if(MT===5){
-  const rows=MC==='archive'?m.archive:m.calendar;
-  body=`<div class="seg"><button data-mc="upcoming" class="${MC==='upcoming'?'on':''}">${A?'القادمة':'Upcoming'} (${m.calendar.length})</button><button data-mc="archive" class="${MC==='archive'?'on':''}">${A?'أرشيف الأحداث':'Past events'} (${m.archive.length})</button></div><div class="c"><h3>${A?'مرجع الأحداث وتأثيرها المحتمل':'Events & possible impact'}</h3><p class="mu">${A?'التواريخ حسب جهة الإصدار؛ الوقت بتوقيت الإمارات إن توفر. قد تتغير المواعيد. الأثر تعليمي ولا يحدد اتجاه السعر.':'Dates follow the issuer; UAE time where available. Schedules may change. Impact notes do not predict price direction.'}</p>${rows.map(e=>ev(e)+(e.timeDubai?`<div class="mu">${A?'توقيت الإمارات':'UAE time'}: <bdi>${esc(e.timeDubai.slice(11,16))}</bdi></div>`:'')).join('')||unavailable}</div>`;
-  if(MC==='upcoming')body+=`<div class="c"><h3>${A?'بانتظار موعد رسمي':'Awaiting an official date'}</h3><p class="mu">${A?'لا نفترض موعداً للمصرف الإماراتي أو لنتائج الشركات غير المعلنة. راجع الروابط الرسمية.':'No assumed CBUAE or unannounced corporate dates. Check official links.'}</p>${m.pending.map(e=>`<div class="market-event">${link(e.url,tx(e.title))}<p>${esc(tx(e.impact))}</p></div>`).join('')}</div>`;
- }else{
-  const cats=MT===1?['metals','oil']:MT===2?['fx','indices']:MT===3?['stocks']:MT===4?['crypto']:null;
-  body=m.signals.filter(s=>!cats||cats.includes(s.category)).map(s=>`<article class="c signal"><div class="signal-heading"><h3>${esc(A?s.ar:s.en)}</h3><bdi class="num">${s.px==null?'—':nf(s.px)} <small>${esc(s.unit)}</small></bdi></div><div class="signal-meta"><bdi class="num ${s.chg>0?'up':s.chg<0?'dn':''}">${s.chg==null?'—':(s.chg>0?'+':'')+nf(s.chg)+'%'}</bdi><span>${s.status==='cached'?cached:s.status==='unavailable'?unavailable:A?'مرجع متأخر محتمل':'May be delayed'}</span></div><div class="mu">${link(s.url,'TradingView')} · <bdi>${esc(s.sym)}</bdi><br>${s.timeBasis==='daily candle'?(A?'وقت شمعة اليوم':'Daily candle time'):(A?'وقت النسخة المحفوظة':'Cached snapshot time')}: <bdi>${esc(s.asof||'—')}</bdi></div><div class="signal-context"><b>${A?'أحداث مرتبطة محتملة':'Possible related events'}</b>${s.events.map(ev).join('')||`<p class="mu">${A?'لا حدث حديث موثق متاح؛ لا نفترض سبباً.':'No recent sourced event available; no cause assumed.'}</p>`}</div></article>`).join('');
+// The scan's stock/coin universe is provisionally halal; explicit flags take precedence.
+function marketRows(m=D.market||{}){
+ const coins=new Set((m.coins||[]).map(x=>x.sym));
+ const screened=new Set([...(m.stocks||[]),...(m.coins||[])].map(x=>x.sym));
+ const policy=/halal only/i.test(m.halal?.en||'');
+ const bySym=new Map();
+ for(const key of ['coins','stocks','watch','index','deals'])for(const x of m[key]||[]){
+  if(!x.sym)continue;
+  const prev=bySym.get(x.sym);
+  bySym.set(x.sym,prev?{...x,...prev}:x);
  }
- const failed=(m.health||[]).filter(x=>!x.ok);
- return ph(i,'market')+seg+`<div class="c market-notes"><strong>${A?'تعليمي فقط · لا نصيحة أو تنفيذ تداول':'Educational only · no advice or trade execution'}</strong><p>${esc(tx(m.halal))}</p><p>${esc(tx(m.method))}</p><div class="mu">${A?'بناء المرجع':'Reference built'}: <bdi>${esc(m.built)}</bdi></div>${failed.length?`<details><summary>${A?'بعض المصادر غير متاحة؛ تظهر النسخة المحفوظة أو حالة عدم التوفر':'Some sources unavailable; showing cached data or unavailable status'} (${failed.length})</summary>${failed.map(x=>`<div class="mu">${esc(x.source)} · ${esc(x.error||'No parsed dates')}</div>`).join('')}</details>`:''}</div>`+body;
+ const rows=[...bySym.values()].map(x=>{
+  const flag=x.halal??x.is_halal??x.isHalal;
+  const halal=flag===true||['halal','compliant','yes'].includes(String(flag).toLowerCase())||(flag==null&&policy&&screened.has(x.sym));
+  const type=coins.has(x.sym)||/^(BINANCE|COINBASE|KRAKEN):/.test(x.sym)?'crypto':'stocks';
+  return {...x,halal,type};
+ });
+ const enabled=new Set(rows.filter(x=>x.tv==='SB').map(x=>x.type));
+ const rank=x=>x.tv==='SB'?(x.halal?0:1):x.tv==='B'?2:3;
+ const score=x=>Number.isFinite(Number(x.tvs))?Number(x.tvs):-Infinity;
+ return rows.filter(x=>enabled.has(x.type)&&['SB','B','S','SS'].includes(x.tv))
+  .sort((a,b)=>rank(a)-rank(b)||score(b)-score(a)||a.sym.localeCompare(b.sym));
 }
-function mr(){const k=PAGES.indexOf('market'),pg=$('#pages').children[k];pg.innerHTML=pMarket(k);pg.scrollTop=0;bind()}
+function pMarket(i){
+ const A=L==='ar',m=D.market||{},rows=marketRows(m);
+ const ratings={SB:A?'شراء قوي':'Strong buy',B:A?'شراء':'Buy',S:A?'بيع':'Sell',SS:A?'بيع قوي':'Strong sell'};
+ return ph(i,'market')+`<div class="market-list" aria-label="${A?'إشارات السوق':'Market signals'}">${rows.map(x=>`<article class="market-item"><button type="button" class="market-row" data-market-sym="${esc(x.sym)}" aria-expanded="false"><span class="market-name"><strong>${esc(A?x.ar||x.en||x.sym:x.en||x.ar||x.sym)}</strong><bdi class="mu">${esc(x.sym)}</bdi></span><span class="market-type">${x.type==='crypto'?(A?'عملة':'Crypto'):(A?'أسهم':'Stocks')}</span><span class="market-rating ${x.tv==='SB'||x.tv==='B'?'up':'dn'}">${ratings[x.tv]}${x.halal?`<small>${A?'حلال*':'Halal*'}</small>`:''}</span><span class="num">${x.px==null?'—':nf(x.px)}<small class="mu">${esc(x.tvs??'—')}</small></span></button></article>`).join('')||`<p class="mu">${A?'لا توجد فئة بها شراء قوي حالياً':'No category has a strong buy currently.'}</p>`}</div><p class="market-footnote mu">${esc(tx(m.halal)||'')}<br>${esc(tx(m.disc)||'')}</p>`;
+}
+function bindMarket(){
+ document.querySelectorAll('[data-market-sym]').forEach(button=>button.onclick=()=>{
+  const wasOpen=button.getAttribute('aria-expanded')==='true';
+  document.querySelectorAll('.market-chart').forEach(x=>x.remove());
+  document.querySelectorAll('[data-market-sym]').forEach(x=>x.setAttribute('aria-expanded','false'));
+  if(wasOpen)return;
+  button.setAttribute('aria-expanded','true');
+  const chart=document.createElement('div');chart.className='market-chart';
+  const frame=document.createElement('iframe');
+  frame.title=button.dataset.marketSym+' — Daily TradingView chart';
+  const config=new URLSearchParams({symbol:button.dataset.marketSym,interval:'D',theme:TH==='future'?'dark':'dark',style:'1',locale:L==='ar'?'ar':'en',hide_top_toolbar:'1',hide_side_toolbar:'1',allow_symbol_change:'0',save_image:'0',width:'100%',height:'220'});
+  frame.src='https://s.tradingview.com/widgetembed/?'+config;
+  frame.height='220';frame.setAttribute('loading','eager');frame.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+  chart.append(frame);button.after(chart);
+ });
+}
 function pSpend0(i){const sp=D.spend||[];const tv=sp.reduce((a,s)=>a+s.v,0),tc=sp.reduce((a,s)=>a+s.cap,0);
  return ph(i,'spend',t('reset')+' '+N(esc(D.spend_reset||'')))+`<div class="c" style="display:flex;align-items:center;gap:14px">${ring(Math.round(100*tv/tc),118,t('total'))}<div><div style="font:700 24px Plex">${N('$'+tv.toFixed(1))}</div><div class="mu">${N('/ $'+tc)} · ${t('caps')}</div></div></div>
  <div class="c fill" style="justify-content:space-around">${sp.map(s=>{const p=Math.round(100*s.v/s.cap);return `<div><div style="display:flex;font-size:13px"><b style="flex:1">${esc(s.k)}</b><span class="mu num">$${s.v} / $${s.cap} · ${p}%</span></div><div style="display:flex;margin-top:6px">${bar(p,p>80)}</div></div>`}).join('')}</div>
@@ -196,8 +217,6 @@ function bind(){const P=$('#pages');
  P.querySelectorAll('[data-project-doc-step]').forEach(e=>e.onclick=()=>{const np=Math.max(1,Math.ceil(docsOf(PROJECT_ID).length/7));PROJECT_DOC_PAGE=(PROJECT_DOC_PAGE+ +e.dataset.projectDocStep+np)%np;redrawPage('project')});
  P.querySelectorAll('[data-summary]').forEach(e=>e.onclick=()=>{SUMMARY_TAB=+e.dataset.summary;const pg=P.children[PAGES.indexOf('sum')];pg.innerHTML=pSum(PAGES.indexOf('sum'));bind()});
  P.querySelectorAll('[data-st]').forEach(e=>e.onclick=ev=>{ev.stopPropagation();ST=+e.dataset.st;const k=PAGES.indexOf('spend'),pg=$('#pages').children[k];pg.innerHTML=pSpend(k);bind();animate(pg)});
- P.querySelectorAll('[data-mc]').forEach(e=>e.onclick=()=>{MC=e.dataset.mc;mr()});
- P.querySelectorAll('[data-mt]').forEach(e=>e.onclick=ev=>{ev.stopPropagation();MT=+e.dataset.mt;mr()});
  P.querySelectorAll('[data-doc]').forEach(e=>e.onclick=ev=>{ev.stopPropagation();const d=D.docs[+e.dataset.doc];sheet(d.t,`<div class="mu">${esc(d.m)} · ${esc(d.f)}</div>${md(d.b)}`)});
  P.querySelectorAll('[data-docs]').forEach(e=>e.onclick=ev=>{ev.stopPropagation();sheet(t(e.dataset.docs=='ideas'?'ideas':e.dataset.docs+'_p')+' · '+t('docs'),docList(e.dataset.docs));bindSheet()});
  P.querySelectorAll('[data-go="wait"]').forEach(e=>e.onclick=()=>sheet(t('waiting'),(D.waiting||[]).map((x,j)=>`<div class="row"><b class="num" style="color:var(--gold)">${j+1}</b><span style="flex:1">${esc(tx(x))}</span></div>`).join('')));
@@ -235,7 +254,7 @@ function nsDraw(){const pg=$('#pages .pg');if(!pg)return;$('#back').hidden=!NS_S
  else{const per=Math.max(2,Math.min(7,Math.floor((pg.clientHeight-150)/64)));count=Math.max(1,Math.ceil(NS_ROWS.length/per));NS_PAGE=Math.min(NS_PAGE,count-1);NS_ROWS.slice(NS_PAGE*per,(NS_PAGE+1)*per).forEach((r,i)=>{const b=document.createElement('button');b.className='ns-topic';b.innerHTML=`<span class="ns-num">${String(NS_PAGE*per+i+1).padStart(2,'0')}</span><span>${esc(r.title)}</span><b>‹</b>`;b.onclick=()=>{if(r.open){if(r.open==='status'){location.href='status.html';return}if(PAGES.includes(r.open))goPage(PAGES.indexOf(r.open),true);else{PROJECT_ID=r.open;goPage(PAGES.indexOf('project'),true)}}else nsOpen(r.title,r.value)};body.append(b)});if(!NS_ROWS.length)body.textContent=t('none')}
  pager.innerHTML=`<button ${NS_PAGE===0?'disabled':''} aria-label="Previous">‹</button><span>${L==='ar'?'صفحة':'Page'} ${NS_PAGE+1} / ${count}</span><button ${NS_PAGE>=count-1?'disabled':''} aria-label="Next">›</button>`;const bs=pager.querySelectorAll('button');bs[0].onclick=()=>{NS_PAGE--;nsDraw()};bs[1].onclick=()=>{NS_PAGE++;nsDraw()};}
 render=function(){if(!D)return;document.documentElement.lang=L;document.documentElement.dir=L==='ar'?'rtl':'ltr';$('#lang').textContent=L==='ar'?'EN':'ع';$('#upd').textContent=t('upd')+' '+(D.built||D.updated||'');$('#nav').innerHTML=MAIN.map(p=>`<button data-p="${p}" role="tab"><svg viewBox="0 0 24 24"><path d="${I[p]}"/></svg><span>${t('s_'+p)}</span></button>`).join('');$('#nav').querySelectorAll('button').forEach(b=>b.onclick=()=>goPage(PAGES.indexOf(b.dataset.p),true));goPage(CUR,true)};
-goPage=function(i){CUR=Math.max(0,Math.min(PAGES.length-1,i));NS_STACK=[];NS_PAGE=0;NS_TEXT=null;const p=PAGES[CUR];document.body.dataset.page=p;$('#nav').querySelectorAll('button').forEach(b=>{const on=b.dataset.p===(MAIN.includes(p)?p:'proj');b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});$('#pages').innerHTML='<section class="pg"></section>';$('#back').onclick=nsBack;$('#back').hidden=p==='sum';if(p==='hq'){$('#pages .pg').innerHTML=pHq(i);$('#hqf').onload=hqSend;hqSend();return}NS_TITLE=p==='project'?t(PROJECT_ID):t(p);NS_ROWS=nsHome(p);nsDraw()};
+goPage=function(i){CUR=Math.max(0,Math.min(PAGES.length-1,i));NS_STACK=[];NS_PAGE=0;NS_TEXT=null;const p=PAGES[CUR];document.body.dataset.page=p;$('#nav').querySelectorAll('button').forEach(b=>{const on=b.dataset.p===(MAIN.includes(p)?p:'proj');b.classList.toggle('on',on);b.setAttribute('aria-selected',on)});$('#pages').innerHTML='<section class="pg"></section>';$('#back').onclick=nsBack;$('#back').hidden=p==='sum';if(p==='market'){$('#pages .pg').innerHTML=pMarket(i);bindMarket();return}if(p==='hq'){$('#pages .pg').innerHTML=pHq(i);$('#hqf').onload=hqSend;hqSend();return}NS_TITLE=p==='project'?t(PROJECT_ID):t(p);NS_ROWS=nsHome(p);nsDraw()};
 sheet=function(title,html){const el=document.createElement('div');el.innerHTML=html;nsOpen(title,el.innerText||el.textContent)};
 
 load().catch(()=>{$('#er').textContent='offline'});

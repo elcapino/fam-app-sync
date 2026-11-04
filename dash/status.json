@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T12:45:43.284349+00:00",
+  "generated_at": "2026-11-04T14:15:01.896214+00:00",
   "devices": [
     {
       "name": "PC",
@@ -32,9 +32,9 @@
       "id": "pages",
       "name": "GitHub Pages",
       "status": "up",
-      "last_seen": "2026-11-04T12:45:43.284349+00:00",
+      "last_seen": "2026-11-04T14:15:01.896214+00:00",
       "evidence": "HTTP reachability",
-      "usage_updated": "2026-11-04 15:05 UTC+4",
+      "usage_updated": "2026-11-04 18:07 UTC+4",
       "used": null,
       "cap": null,
       "unit": null,
@@ -59,8 +59,8 @@
       "status": "unknown",
       "last_seen": null,
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04T11:03:13.991Z",
-      "used": 0.0,
+      "usage_updated": "2026-11-04T13:54:30.552Z",
+      "used": 1.0,
       "cap": 100,
       "unit": "%",
       "period": "week",
@@ -84,7 +84,7 @@
       "status": "unknown",
       "last_seen": "2026-11-04T04:14:30.117074+00:00",
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04 15:05 UTC+4",
+      "usage_updated": "2026-11-04 18:07 UTC+4",
       "used": 7.28,
       "cap": 20,
       "unit": "$",
@@ -115,12 +115,12 @@
       "status": "unknown",
       "last_seen": "2026-11-04T04:14:30.259542+00:00",
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04 15:05 UTC+4",
-      "used": 1.91,
+      "usage_updated": "2026-11-04 18:07 UTC+4",
+      "used": 1.92,
       "cap": 75,
       "unit": "$",
       "period": "month",
-      "day_used": 0.0531,
+      "day_used": 0.0578,
       "day_cap": 15,
       "role": "Research & synthesis",
       "description": "Summarize public sources and compare evidence.",
@@ -156,7 +156,7 @@
       "status": "unknown",
       "last_seen": "2026-11-04T04:14:30.378553+00:00",
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04 15:05 UTC+4",
+      "usage_updated": "2026-11-04 18:07 UTC+4",
       "used": 0.0,
       "cap": 5,
       "unit": "USD",
@@ -187,7 +187,7 @@
       "status": "unknown",
       "last_seen": null,
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04 15:05 UTC+4",
+      "usage_updated": "2026-11-04 18:07 UTC+4",
       "used": null,
       "cap": null,
       "unit": null,
@@ -212,8 +212,8 @@
       "status": "unknown",
       "last_seen": null,
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04T11:03:13.991Z",
-      "used": 0.0,
+      "usage_updated": "2026-11-04T13:54:30.552Z",
+      "used": 1.0,
       "cap": 100,
       "unit": "%",
       "period": "week",
@@ -442,6 +442,42 @@
     "Usage is a recorded snapshot, not a live billing total.",
     "Device heartbeat is online for 30 minutes; older heartbeats are offline."
   ],
+  "uptime": {
+    "checked_at": "2026-11-04T14:14:03.801260+00:00",
+    "checks": [
+      {
+        "url": "https://elcapino.github.io/fam-app-sync/dash/",
+        "code": "200",
+        "status": "up"
+      },
+      {
+        "url": "https://elcapino.github.io/fam-app-sync/dash/status.html",
+        "code": "200",
+        "status": "up"
+      },
+      {
+        "url": "https://elcapino.github.io/fam-app-sync/iqra/",
+        "code": "200",
+        "status": "up"
+      },
+      {
+        "url": "https://elcapino.github.io/fam-app-sync/faahim/",
+        "code": "200",
+        "status": "up"
+      },
+      {
+        "url": "https://elcapino.github.io/fam-app-sync/baiti/",
+        "code": "200",
+        "status": "up"
+      },
+      {
+        "url": "https://elcapino.github.io/fam-app-sync/",
+        "code": "200",
+        "status": "up"
+      }
+    ],
+    "failures": []
+  },
   "advice_cache": {
     "date": "2026-11-04",
     "providers": [

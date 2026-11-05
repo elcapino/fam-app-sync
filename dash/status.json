@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-04T18:30:02.102724+00:00",
+  "generated_at": "2026-11-05T02:30:02.295662+00:00",
   "devices": [
     {
       "name": "PC",
@@ -32,9 +32,9 @@
       "id": "pages",
       "name": "GitHub Pages",
       "status": "up",
-      "last_seen": "2026-11-04T18:30:02.102724+00:00",
+      "last_seen": "2026-11-05T02:30:02.295662+00:00",
       "evidence": "HTTP reachability",
-      "usage_updated": "2026-11-04 22:29 UTC+4",
+      "usage_updated": "2026-11-04 22:34 UTC+4",
       "used": null,
       "cap": null,
       "unit": null,
@@ -59,8 +59,8 @@
       "status": "unknown",
       "last_seen": null,
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04T18:19:47.301Z",
-      "used": 3.0,
+      "usage_updated": "2026-11-04T18:34:05.902Z",
+      "used": 4.0,
       "cap": 100,
       "unit": "%",
       "period": "week",
@@ -82,9 +82,9 @@
       "id": "claude",
       "name": "Claude API",
       "status": "unknown",
-      "last_seen": "2026-11-04T04:14:30.117074+00:00",
-      "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04 22:29 UTC+4",
+      "last_seen": "2026-11-05T02:30:01.723865+00:00",
+      "evidence": "Public payload review blocked; connection unverified",
+      "usage_updated": "2026-11-04 22:34 UTC+4",
       "used": 7.28,
       "cap": 20,
       "unit": "$",
@@ -98,10 +98,15 @@
         "Review a release checklist",
         "Compare two architecture proposals"
       ],
-      "runs": 1,
+      "runs": 2,
       "successful_runs": 0,
       "success_rate": 0.0,
       "last_runs": [
+        {
+          "timestamp": "2026-11-05T02:30:01.723865+00:00",
+          "success": false,
+          "status": "blocked"
+        },
         {
           "timestamp": "2026-11-04T04:14:30.117074+00:00",
           "success": false,
@@ -113,9 +118,9 @@
       "id": "gemini",
       "name": "Gemini API",
       "status": "unknown",
-      "last_seen": "2026-11-04T04:14:30.259542+00:00",
-      "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04 22:29 UTC+4",
+      "last_seen": "2026-11-05T02:30:01.891854+00:00",
+      "evidence": "Public payload review blocked; connection unverified",
+      "usage_updated": "2026-11-04 22:34 UTC+4",
       "used": 1.94,
       "cap": 75,
       "unit": "$",
@@ -129,10 +134,15 @@
         "Build a source comparison",
         "Summarize public documentation"
       ],
-      "runs": 13,
+      "runs": 14,
       "successful_runs": 0,
       "success_rate": 0.0,
       "last_runs": [
+        {
+          "timestamp": "2026-11-05T02:30:01.891854+00:00",
+          "success": false,
+          "status": "blocked"
+        },
         {
           "timestamp": "2026-11-04T04:14:30.259542+00:00",
           "success": false,
@@ -142,11 +152,6 @@
           "timestamp": "2026-11-03T06:25:19.744391+00:00",
           "success": false,
           "status": "blocked"
-        },
-        {
-          "timestamp": "2026-11-03T06:25:19.742930+00:00",
-          "success": false,
-          "status": "blocked"
         }
       ]
     },
@@ -154,9 +159,9 @@
       "id": "deepseek",
       "name": "DeepSeek API",
       "status": "unknown",
-      "last_seen": "2026-11-04T04:14:30.378553+00:00",
-      "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04 22:29 UTC+4",
+      "last_seen": "2026-11-05T02:30:02.086712+00:00",
+      "evidence": "Public payload review blocked; connection unverified",
+      "usage_updated": "2026-11-04 22:34 UTC+4",
       "used": 0.0,
       "cap": 5,
       "unit": "USD",
@@ -170,10 +175,15 @@
         "Draft a utility function",
         "Review a small algorithm"
       ],
-      "runs": 1,
+      "runs": 2,
       "successful_runs": 0,
       "success_rate": 0.0,
       "last_runs": [
+        {
+          "timestamp": "2026-11-05T02:30:02.086712+00:00",
+          "success": false,
+          "status": "blocked"
+        },
         {
           "timestamp": "2026-11-04T04:14:30.378553+00:00",
           "success": false,
@@ -187,7 +197,7 @@
       "status": "unknown",
       "last_seen": null,
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04 22:29 UTC+4",
+      "usage_updated": "2026-11-04 22:34 UTC+4",
       "used": null,
       "cap": null,
       "unit": null,
@@ -212,8 +222,8 @@
       "status": "unknown",
       "last_seen": null,
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-04T18:19:47.301Z",
-      "used": 3.0,
+      "usage_updated": "2026-11-04T18:34:05.902Z",
+      "used": 4.0,
       "cap": 100,
       "unit": "%",
       "period": "week",
@@ -245,23 +255,23 @@
         "Normalize a public dataset",
         "Create a draft outline"
       ],
-      "last_seen": "2026-11-04T04:14:30.378485+00:00",
-      "runs": 17,
+      "last_seen": "2026-11-05T02:30:02.086621+00:00",
+      "runs": 20,
       "successful_runs": 0,
       "success_rate": 0.0,
       "last_runs": [
         {
-          "timestamp": "2026-11-04T04:14:30.378485+00:00",
+          "timestamp": "2026-11-05T02:30:02.086621+00:00",
           "success": false,
           "status": "failed"
         },
         {
-          "timestamp": "2026-11-04T04:14:30.259453+00:00",
+          "timestamp": "2026-11-05T02:30:01.891747+00:00",
           "success": false,
           "status": "failed"
         },
         {
-          "timestamp": "2026-11-04T04:14:30.116941+00:00",
+          "timestamp": "2026-11-05T02:30:01.723027+00:00",
           "success": false,
           "status": "failed"
         }
@@ -361,31 +371,31 @@
   "routines": [
     {
       "name": "gemini agent",
-      "last_run": "2026-11-04T04:14:30.259542+00:00",
+      "last_run": "2026-11-05T02:30:01.891854+00:00",
       "status": "fail",
       "stale": false
     },
     {
       "name": "claude agent",
-      "last_run": "2026-11-04T04:14:30.117074+00:00",
+      "last_run": "2026-11-05T02:30:01.723865+00:00",
       "status": "fail",
       "stale": false
     },
     {
       "name": "deepseek agent",
-      "last_run": "2026-11-04T04:14:30.378553+00:00",
+      "last_run": "2026-11-05T02:30:02.086712+00:00",
       "status": "fail",
       "stale": false
     },
     {
       "name": "free agent",
-      "last_run": "2026-11-04T04:14:30.378485+00:00",
+      "last_run": "2026-11-05T02:30:02.086621+00:00",
       "status": "fail",
       "stale": false
     },
     {
       "name": "free_remote agent",
-      "last_run": "2026-11-04T04:14:30.259514+00:00",
+      "last_run": "2026-11-05T02:30:01.891823+00:00",
       "status": "fail",
       "stale": false
     },
@@ -397,7 +407,7 @@
     },
     {
       "name": "Alerts monitor",
-      "last_run": "2026-11-04T16:41:24.273495+00:00",
+      "last_run": "2026-11-04T18:31:52.812698+00:00",
       "status": "unknown",
       "evidence": "Log modification; completion unverified"
     },
@@ -479,7 +489,7 @@
     "failures": []
   },
   "advice_cache": {
-    "date": "2026-11-04",
+    "date": "2026-11-05",
     "providers": [
       {
         "provider": "claude",

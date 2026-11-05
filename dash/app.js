@@ -22,7 +22,7 @@ en:{sum:'Executive summary',proj:'Project portfolio',agency:'AI WhatsApp agency'
 const t=k=>T[L][k]||k,tx=o=>o==null?'':typeof o=='string'?o:(o[L]||o.ar||o.en||''),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const nf=n=>Number(n).toLocaleString("en-US"),N=n=>`<span class="num">\u2066${n}\u2069</span>`;
 const I={sum:'M3 13a9 9 0 0 1 18 0M12 13l4-4M3 17h18M7 21h10',proj:'M3 7h18v13H3zM8 7V4h8v3M3 12h18',agency:'M4 4h16v12H9l-5 4zM8 9h8M8 12h5',house:'M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-5h4v5',market:'M3 20h18M4 16l5-5 4 3 7-8M15 6h5v5',spend:'M3 7h18v12H3zM3 11h18M7 15h4M17 3v4M7 3v4',ideas:'M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z',reports:'M6 3h9l4 4v14H6zM15 3v4h4M9 12h7M9 16h5',hq:'M4 21V9l8-5 8 5v12M9 21v-6h6v6M8 11h2M14 11h2'};
-const PAGES=['sum','hq','proj','agency','market','spend','ideas','reports','daily','ai','project','existing'];
+const PAGES=['sum','hq','proj','agency','house','market','spend','ideas','reports','daily','ai','project','existing','org','ecosystem','team'];
 const MAIN=['sum','hq','proj','ai','spend'];
 const PROJECT_PAGES=new Set(['agency','market','ideas','reports','project','existing']);
 Object.assign(T.ar,{daily:'موجز اليوم',s_daily:'موجز اليوم',ai:'تطورات الذكاء الاصطناعي',s_ai:'التطورات',existing:'الاقتراحات الحالية',project:'المشروع'});
@@ -192,8 +192,8 @@ function pReports(i){const ds=D.docs||[],A=L=='ar';const cnt={all:ds.length};ds.
 function rr(){const w=$('#rlw');if(!w)return;w.innerHTML=rlist();bind()}
 function rrAll(){const k=PAGES.indexOf('reports'),pg=$('#pages').children[k];pg.innerHTML=pReports(k);bind()}
 function pHq(i){return `<iframe id="hqf" src="hq.html?lang=${L}" title="HQ" style="flex:1;min-height:0;width:100%;border:1px solid var(--line);border-radius:14px;background:#1e0f3a"></iframe>`}
-function hqSend(){const f=$('#hqf');if(f&&f.contentWindow&&D&&D.hq)f.contentWindow.postMessage({hq:{...D.hq,agentComparison:D.agentComparison},lang:L},'*')}
-addEventListener('message',e=>{if(e.data&&e.data.hqReady)hqSend()});
+function hqSend(){const f=$('#hqf');if(f&&f.contentWindow&&D&&D.hq)f.contentWindow.postMessage({hq:{...D.hq,agentComparison:D.agentComparison},lang:L},location.origin)}
+addEventListener('message',e=>{if(e.source===$('#hqf')?.contentWindow&&e.origin===location.origin&&e.data?.hqReady)hqSend()});
 const RND={hq:pHq,sum:pSum,proj:pProj,agency:pAgency,house:pHouse,market:pMarket,spend:pSpend,ideas:pIdeas,reports:pReports,daily:pDailyBrief,ai:pAI,project:pProject,existing:pExisting};
 function animate(root){requestAnimationFrame(()=>{root.querySelectorAll('.bar i[data-w]').forEach(e=>e.style.width=e.dataset.w+'%');root.querySelectorAll('.rg').forEach(e=>{e.style.transition='stroke-dasharray 1.2s cubic-bezier(.2,.8,.2,1)';e.setAttribute('stroke-dasharray',e.dataset.d)})})}
 function render(){if(!D)return;document.documentElement.lang=L;document.documentElement.dir=L=='ar'?'rtl':'ltr';$('#lang').textContent=L=='ar'?'EN':'ع';$('#upd').textContent=t('upd')+' '+(D.built||D.updated||'');

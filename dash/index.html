@@ -153,6 +153,8 @@ body[data-page=market] .pg>*{flex-shrink:0}
 .market-rating{font-size:10px}.market-row small{display:block;font-size:9px}.market-row>.num{text-align:end;font-size:11px}
 .market-chart{height:220px;width:100%;background:var(--bg2)}.market-chart iframe{display:block;border:0;width:100%;height:220px}
 .market-footnote{font-size:10px;line-height:1.6;overflow-wrap:anywhere;margin:0}
+/* v18: fill the available topic area with the original cards. */
+.ns-topic{max-height:none;border-inline-start:3px solid var(--gold)}
 </style></head><body>
 <div id="lk"><div class="bx"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#c9a24a" stroke-width="1.5"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/></svg><div class="logo" style="font-size:24px;margin-top:6px">HMK</div>
 <p class="mu" id="lkt">كلمة السر · Passphrase</p><input id="pw" type="password" autocomplete="off"><button id="go">دخول · Unlock</button><p id="er" style="color:var(--bad);min-height:1.2em;font-size:13px"></p><p class="cp">© حمد الكعبي — جميع الحقوق محفوظة<br>© Hamad Al Kaabi. All rights reserved.</p></div></div>
@@ -168,4 +170,4 @@ body[data-page=market] .pg>*{flex-shrink:0}
 <button class="ib" id="lock" aria-label="lock"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></button></header>
 <main id="pages"></main><footer id="nav"></footer></div>
 <div id="sh"><div class="in"><div class="gr"></div><h2 id="sht"></h2><div class="bd" id="shb"></div></div></div><div id="ptr"></div>
-<script src="app.js"></script></body></html>
+<script src="org-content.js"></script><script src="app.js"></script><script src="v18.js"></script></body></html>

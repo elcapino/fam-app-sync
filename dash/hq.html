@@ -36,11 +36,12 @@ h2{font-size:13px;color:#d4af37;margin:4px 0 6px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{background:#5b2d91;border:1px solid #d4af37;color:#fff;padding:4px 10px;border-radius:14px;font-size:12px}
 .empty{color:#9a86c4;font-size:12px;padding:6px}
-</style>
+#filters{display:flex;gap:5px;padding:5px 8px;background:#2a1450;flex:none}#filters button{flex:1;border:1px solid #5b2d91;border-radius:14px;background:#3b1f6b;color:#cbb8ee;padding:4px 2px;font:11px system-ui;cursor:pointer}#filters button.on{background:#d4af37;color:#1e0f3a;border-color:#d4af37}</style>
 </head>
 <body>
 <div id="app">
   <header><h1>مقر الشركة الذكي</h1><div id="clock">--:--</div></header>
+  <nav id="filters" aria-label="حالة الموظفين"><button data-f="all" class="on">الكل</button><button data-f="working">يعمل الآن</button><button data-f="error">متعطل</button><button data-f="idle">خامل</button></nav>
   <div id="stage"><canvas id="cv"></canvas><div id="tip"></div></div>
   <div id="panel"></div>
   <nav id="tabs">
@@ -58,7 +59,9 @@ const $=s=>document.querySelector(s);
 const FALLBACK={generated:new Date().toISOString(),rooms:[{id:"ops",name:"العمليات"},{id:"dev",name:"التطوير"},{id:"mkt",name:"التسويق"},{id:"fin",name:"المالية"}],
 agents:[{id:"ceo",name:"المدير",role:"الرئيس التنفيذي",room:"hall",kind:"agent",active:true,last_run:new Date().toISOString(),runs:120,ok:115,level:9,status:"ok",note:"يدير الجميع"}],
 ceo_id:"ceo",brief:{date:"",your_part:[],needs_you:[]},meeting:{week:"",broke:[],wins:[]},skills:[]};
-let D=null;
+let D=null,filter='all';
+function matches(a){return filter==='all'||(filter==='error'?a.status==='fail':filter==='working'?a.active&&a.status!=='fail':!a.active&&a.status!=='fail')}
+document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));$('#tip').style.display='none';renderPanel()});
 
 function setData(data){
   D=data;D.rooms=D.rooms||[];D.agents=D.agents||[];D.skills=D.skills||[];
@@ -101,7 +104,7 @@ function renderPanel(){
     if((m.wins||[]).length){h+='<h2>الإنجازات</h2>';m.wins.forEach(w=>h+='<div class="card win">★ '+esc(w)+'</div>');}
   }else if(tab==='levels'){
     h+='<h2>المستويات</h2>';
-    D.agents.slice().sort((a,b)=>(b.level||0)-(a.level||0)).forEach(a=>{
+    D.agents.filter(matches).slice().sort((a,b)=>(b.level||0)-(a.level||0)).forEach(a=>{
       const l=Math.max(1,Math.min(10,a.level||1));
       h+='<div class="lv"><span class="n">'+esc(a.name)+'</span><span class="bar"><i style="width:'+l*10+'%"></i></span><span class="v">'+l+'/10</span></div>';});
   }else{
@@ -340,10 +343,10 @@ function frame(t){
   text('المدير',ceoDesk.x+ceoDesk.w/2,ceoDesk.y+ceoDesk.h+14,C.gold,6,'center');
   // bots sorted by y
   const all=bots.concat([ceoBot]).sort((a,b)=>a.y-b.y);
-  all.forEach(b=>{drawBot(b,t);});
-  all.forEach(b=>drawLabel(b));
+  all.filter(b=>matches(b.a)).forEach(b=>{drawBot(b,t);});
+  all.filter(b=>matches(b.a)).forEach(b=>drawLabel(b));
   // fail bubbles
-  bots.forEach(b=>{if(b.a.status==='fail'){const k=Math.round(Math.sin(t/250+b.ph));bubble(b.x+3,b.y-5+k,'!',C.red);}});
+  bots.forEach(b=>{if(matches(b.a)&&b.a.status==='fail'){const k=Math.round(Math.sin(t/250+b.ph));bubble(b.x+3,b.y-5+k,'!',C.red);}});
   // temp bubbles
   const now=performance.now();bubbles=bubbles.filter(q=>q.until>now);
   bubbles.forEach(q=>bubble(q.x(),q.y(),q.s,q.c));
@@ -376,7 +379,7 @@ function showTip(b){
 cv.addEventListener('pointerdown',e=>{
   const r=cv.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*W,y=(e.clientY-r.top)/r.height*H;
   let best=null,bd=1e9;
-  bots.concat(ceoBot?[ceoBot]:[]).forEach(b=>{
+  bots.concat(ceoBot?[ceoBot]:[]).filter(b=>matches(b.a)).forEach(b=>{
     const d=Math.hypot(x-(b.x+3),y-(b.y+4));if(d<bd){bd=d;best=b;}});
   if(best&&bd<10)showTip(best);else{$('#tip').style.display='none';tipBot=null;}
 });

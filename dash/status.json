@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-05T11:00:01.524572+00:00",
+  "generated_at": "2026-11-05T11:30:01.427860+00:00",
   "devices": [
     {
       "name": "PC",
@@ -32,9 +32,9 @@
       "id": "pages",
       "name": "GitHub Pages",
       "status": "up",
-      "last_seen": "2026-11-05T11:00:01.524572+00:00",
+      "last_seen": "2026-11-05T11:30:01.427860+00:00",
       "evidence": "HTTP reachability",
-      "usage_updated": "2026-11-05 14:58 UTC+4",
+      "usage_updated": "2026-11-05 15:01 UTC+4",
       "used": null,
       "cap": null,
       "unit": null,
@@ -84,7 +84,7 @@
       "status": "unknown",
       "last_seen": "2026-11-05T02:30:01.723865+00:00",
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-05 14:58 UTC+4",
+      "usage_updated": "2026-11-05 15:01 UTC+4",
       "used": 7.79,
       "cap": 20,
       "unit": "$",
@@ -120,7 +120,7 @@
       "status": "unknown",
       "last_seen": "2026-11-05T02:30:01.891854+00:00",
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-05 14:58 UTC+4",
+      "usage_updated": "2026-11-05 15:01 UTC+4",
       "used": 1.99,
       "cap": 75,
       "unit": "$",
@@ -161,7 +161,7 @@
       "status": "unknown",
       "last_seen": "2026-11-05T02:30:02.086712+00:00",
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-05 14:58 UTC+4",
+      "usage_updated": "2026-11-05 15:01 UTC+4",
       "used": 0.0,
       "cap": 5,
       "unit": "USD",
@@ -197,7 +197,7 @@
       "status": "unknown",
       "last_seen": null,
       "evidence": "No authenticated health probe",
-      "usage_updated": "2026-11-05 14:58 UTC+4",
+      "usage_updated": "2026-11-05 15:01 UTC+4",
       "used": null,
       "cap": null,
       "unit": null,
@@ -453,7 +453,7 @@
     "Device heartbeat is online for 30 minutes; older heartbeats are offline."
   ],
   "uptime": {
-    "checked_at": "2026-11-05T06:00:02.142008+00:00",
+    "checked_at": "2026-11-05T11:00:02.020545+00:00",
     "checks": [
       {
         "url": "https://elcapino.github.io/fam-app-sync/dash/",

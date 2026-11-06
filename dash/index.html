@@ -102,7 +102,7 @@ header{gap:6px;padding-inline:10px}header>.logo{flex:1;min-width:0;letter-spacin
 .ai-items{display:flex;flex-direction:column;gap:8px;flex:1;min-height:0}.ai-card{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:space-evenly;padding:9px 11px;gap:3px}.ai-meta{display:flex;justify-content:space-between;gap:5px;color:var(--mu);font-size:9px}.ai-card h3{font-size:12px;line-height:1.5;margin:0;color:var(--gold2)}.ai-field b{font-size:9px;color:var(--mu);font-weight:400}.ai-field p{font-size:10.5px;line-height:1.5;margin:0}.ai-card>p{font-size:12px;line-height:1.6;margin:0}.ai-card-bottom{display:flex;align-items:center;justify-content:space-between;gap:5px}.ai-card-bottom .chip{font-size:8px;padding:2px 6px}.ai-card-bottom a{font-size:10px;color:var(--gold2)}.ai-notes{font-size:8px;line-height:1.5;text-align:center;flex:none}
 body[data-page=ai] .ph h2{font-size:17px}body[data-page=ai] .pg{gap:6px}body[data-page=ai] .ai-card{gap:2px}body[data-page=ai] .ai-card h3{line-height:1.4}
 /* Content grows in normal flow; each page scrolls above the navigation. */
-.pg{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;padding-bottom:16px}
+.pg{overflow:hidden;overscroll-behavior:contain;padding-bottom:16px}
 .pg>*{flex-shrink:0}.pg>.fill{flex:1 0 auto}.pg>.c{min-height:min-content}
 .ph{flex-wrap:wrap}.ph .mu{overflow-wrap:anywhere}.row>*{min-width:0}
 .market-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;flex:none;margin:0}
@@ -143,7 +143,7 @@ body[data-page=project] .ph h2{overflow-wrap:anywhere;min-width:0}
 .ns-body{flex:1;min-height:0;display:flex;flex-direction:column;gap:9px}.ns-topic{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;flex:1;max-height:70px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(110deg,var(--card),var(--bg2));color:var(--tx);text-align:start;padding:8px 12px;font:14px Plex;cursor:pointer}.ns-topic>span:nth-child(2){flex:1;min-width:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.ns-topic b{color:var(--gold2)}.ns-num{color:var(--gold2);font:11px Plex}.ns-pager{flex:none;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--mu)}.ns-pager button{height:40px;width:48px;border:1px solid var(--line);border-radius:10px;background:var(--bg2);color:var(--gold2);font-size:22px}.ns-pager button:disabled{opacity:.3}.ns-copy{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/2 Plex;margin:0}.ns-body a{overflow-wrap:anywhere;color:var(--gold2)}#sh{display:none!important}button:focus-visible,a:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
 @media(min-width:800px){.pg{max-width:1000px;margin:auto;padding:24px 30px}.ns-topic{max-height:76px;font-size:16px}.ns-heading h2{font-size:25px}}
 /* Market has one scrolling surface above the fixed navigation. */
-body[data-page=market] .pg{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;gap:10px}
+body[data-page=market] .pg{overflow:hidden;overscroll-behavior:contain;gap:10px}
 body[data-page=market] .pg>*{flex-shrink:0}
 .market-list{border:1px solid var(--line);border-radius:12px;min-width:0;overflow:hidden}
 .market-item+.market-item{border-top:1px solid var(--line)}

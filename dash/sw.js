@@ -1,4 +1,4 @@
-const C='hmk-v18-20261105',A=['./','index.html','app.js','v18.js','org-content.js','hq.html','manifest.webmanifest','icon-192.png','icon-512.png','fonts/IBMPlexSansArabic-Regular.ttf','fonts/IBMPlexSansArabic-SemiBold.ttf','fonts/IBMPlexSansArabic-Bold.ttf'];
+const C='hmk-v19-20261105',A=['./','index.html','app.js','v18.js','v19.js','v19.css','status-v19.js','org-content.js','hq.html','manifest.webmanifest','icon-192.png','icon-512.png','fonts/IBMPlexSansArabic-Regular.ttf','fonts/IBMPlexSansArabic-SemiBold.ttf','fonts/IBMPlexSansArabic-Bold.ttf'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(A)).then(()=>self.skipWaiting())));
 self.addEventListener('fetch',e=>{if(e.request.url.includes('.enc.json')||/status\.(json|html)/.test(e.request.url))return;e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)))});
 

@@ -29,7 +29,7 @@ const c21Gap=(ar,en)=>L==='ar'?ar:en;
 
 
 
-const c21Priv=s=>/kids|child|study|أطفال|اطفال|دراسة/i.test(String(s||''));
+const c21Priv=s=>/kids|child|study|game|games|أطفال|اطفال|دراسة|لعبة|العاب|ألعاب/i.test(String(s||''));
 const c21TitleAr=v=>{
  if(v==null)return '';
  if(typeof v==='string')return v;

@@ -29,7 +29,7 @@ h2{font-size:13px;color:#d4af37;margin:4px 0 6px}
 .card .fx{color:#d4af37;margin-top:3px;font-size:12px}
 .win{color:#9be59b}
 .lv{display:flex;align-items:center;gap:8px;margin-bottom:5px;font-size:12px}
-.lv .n{flex:0 0 74px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lv .n{flex:0 0 64px;max-width:64px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .lv .bar{flex:1;height:10px;background:#1e0f3a;border:1px solid #5b2d91;border-radius:2px;overflow:hidden}
 .lv .bar i{display:block;height:100%;background:linear-gradient(90deg,#a8852a,#d4af37)}
 .lv .v{flex:0 0 34px;text-align:left;color:#d4af37;direction:ltr}
@@ -61,8 +61,8 @@ let D=null,filter='all';
 function isRole(a){return !!(a&&(a.kind==='role'||a.probe==='organization_unverified'||a.status==='organization_unverified'||a.id==='ceo'||a.id==='coo'));}function matches(a){if(!a)return false;if(filter==='all')return true;if(filter==='error')return a.status==='fail';if(filter==='working')return !isRole(a)&&!!a.active&&a.status!=='fail'&&(a.status==='ok'||a.status==='up'||a.status==='working');/* idle = documented idle tools/workers only — roles are غير مؤكد, not خامل */return !isRole(a)&&!a.active&&a.status!=='fail';}
 document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;panelPage=0;document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));$('#tip').style.display='none';renderPanel()});
 
-function setData(data){window.hmkSetHq=setData;
-  const privateEntry=v=>{const s=String(v==null?'':typeof v==='object'?JSON.stringify(v):v);return /kids|child|study|أطفال|اطفال|دراسة/i.test(s)};
+function setData(data){
+  const privateEntry=v=>{const s=String(v==null?'':typeof v==='object'?JSON.stringify(v):v);return /kids|child|study|game|games|أطفال|اطفال|دراسة|لعبة|العاب|ألعاب/i.test(s)};
   D=data||{};D.rooms=(D.rooms||[]).filter(r=>!privateEntry(r));
   D.agents=(D.agents||[]).filter(a=>!privateEntry(a)&&!privateEntry(a&&a.name)&&!privateEntry(a&&a.room)&&!privateEntry(a&&a.id));
   D.skills=(D.skills||[]).filter(s=>!privateEntry(s));
@@ -89,7 +89,6 @@ function load(){
 addEventListener('message',e=>{
   if(e.data&&e.data.hq&&(e.source===parent||e.source===window)&&(e.origin===location.origin||!e.origin))setData(e.data.hq);
 });
-window.hmkSetHq=setData;
 
 /* ---------- clock ---------- */
 function tick(){const d=new Date();$('#clock').textContent=d.toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'});}
@@ -120,7 +119,9 @@ function renderPanel(){
     h+='<h2>المستويات</h2>';
     D.agents.filter(matches).slice().sort((a,b)=>(b.level||0)-(a.level||0)).forEach(a=>{
       const l=Math.max(1,Math.min(10,a.level||1));
-      h+='<div class="lv"><span class="n">'+esc(a.name)+'</span><span class="bar"><i style="width:'+l*10+'%"></i></span><span class="v">'+l+'/10</span></div>';});
+      const raw=String(a.name||a.id||'');
+      const nm=raw.length>9?raw.slice(0,8)+'…':raw;
+      h+='<div class="lv"><span class="n" title="'+esc(raw)+'">'+esc(nm)+'</span><span class="bar"><i style="width:'+l*10+'%"></i></span><span class="v">'+l+'/10</span></div>';});
   }else{
     h+='<h2>مكتبة المهارات</h2><div class="chips">';
     if(!D.skills.length)h+='<div class="empty">لا توجد مهارات</div>';
@@ -163,15 +164,36 @@ function buildOffice(){
   if(!D)return;
   const top=30; // sky/mountain strip
   const areaY=top+2,areaH=H-areaY-2;
-  // rooms: ceo hub in center, rooms around in grid
-  let rooms=D.rooms.slice();
-  const ids=new Set(rooms.map(r=>r.id));
-  D.agents.forEach(a=>{if(a.id!==D.ceo_id&&!ids.has(a.room)){ids.add(a.room);rooms.push({id:a.room,name:a.room});}});
-  const n=Math.max(rooms.length,1);
-  const cols=n<=2?1:2; // columns of rooms left and right of central corridor
-  // layout: left column rooms | corridor with ceo | right column rooms
-  const left=[],right=[];
-  rooms.forEach((r,i)=>(i%2===0?left:right).push(r));
+  /* Canonical 6 project rooms only — never spawn tool/HR/studio rooms */
+  const CANON=[
+    {id:'shop',name:'متجر شوبيفاي',aka:['shop','shopify','store','elcapino','drop']},
+    {id:'trade',name:'التداول',aka:['trade','trading','market']},
+    {id:'research',name:'البحث',aka:['research','ideas','rnd']},
+    {id:'house',name:'بناء البيت',aka:['house']},
+    {id:'fahem',name:'فاهم',aka:['fahem']},
+    {id:'meet',name:'غرفة الاجتماعات',aka:['meet','meeting','leadership','ops','agency']}
+  ];
+  const akaMap=Object.create(null);
+  CANON.forEach(c=>c.aka.forEach(a=>{akaMap[a]=c.id;}));
+  const byId=Object.create(null);CANON.forEach(c=>{byId[c.id]={id:c.id,name:c.name};});
+  (D.rooms||[]).forEach(r=>{
+    if(!r||!r.id)return;
+    const id=akaMap[String(r.id).toLowerCase()]||(byId[r.id]?r.id:null);
+    if(id&&byId[id]&&r.name) byId[id].name=r.name;
+  });
+  /* Remap agents into canon rooms; orphans -> meet (text detail only, no new room) */
+  D.agents=(D.agents||[]).map(a=>{
+    if(!a)return a;
+    if(a.id===D.ceo_id||a.id==='ceo'||a.id==='coo'||a.id==='prompt'||a.id==='qa'||a.id==='quality'){
+      return {...a,room:'meet'};
+    }
+    const raw=String(a.room||'').toLowerCase();
+    const mapped=akaMap[raw]||(byId[a.room]?a.room:'meet');
+    return {...a,room:mapped};
+  });
+  let rooms=CANON.map(c=>byId[c.id]);
+  // layout order matches old screenshot: L shop/trade/research · R house/fahem/meet
+  const left=[rooms[0],rooms[1],rooms[2]], right=[rooms[3],rooms[4],rooms[5]];
   const corrW=Math.max(30,Math.floor(W*0.26));
   const sideW=Math.floor((W-corrW-6)/2);
   roomsL=[];bots=[];
@@ -204,7 +226,7 @@ function buildOffice(){
     });
   });
   // ceo bot
-  const ca=D.agents.find(a=>a.id===D.ceo_id)||{id:'ceo',name:'المدير',role:'الرئيس التنفيذي',level:10,runs:0,status:'ok',active:true,note:''};
+  const ca=D.agents.find(a=>a.id===D.ceo_id||a.id==='ceo')||{id:'ceo',name:'المدير',role:'الرئيس التنفيذي',level:10,runs:0,status:'organization_unverified',active:false,kind:'role',probe:'organization_unverified',note:''};
   ceoBot={a:ca,desk:ceoDesk,hx:ceoDesk.x+Math.floor(ceoDesk.w/2)-3,hy:ceoDesk.y-8,x:0,y:0,ph:7,state:'idle',isCeo:true};
   ceoBot.x=ceoBot.hx;ceoBot.y=ceoBot.hy;
   bubbles=[];
@@ -309,10 +331,8 @@ function bubble(x,y,s,col){
 /* walking logic */
 let walker=null,nextWalk=2500;
 function recentOK(b){
-  const a=b.a;if(!a||isRole(a)||a.active===false)return false;if(a.status!=='ok'&&a.status!=='up')return false;
-  if(!a.last_run)return false;
-  const age=Date.now()-new Date(a.last_run).getTime();
-  return age<48*3600*1000||!isFinite(age)===false&&age<7*86400000;
+  /* Decorative motion only — any real non-role staff may walk; status does not gate motion */
+  const a=b&&b.a;if(!a||isRole(a)||a.kind==='role')return false;return true;
 }
 function startWalk(t){
   if(walker)return;

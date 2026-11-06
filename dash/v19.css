@@ -5,3 +5,14 @@ body{background:linear-gradient(145deg,#100c17,#241331)!important}header{backgro
 
 #lk .bx{height:min(680px,88dvh);display:flex;flex-direction:column;justify-content:space-evenly;border-top:4px solid #C8102E;border-bottom:4px solid #00843D;background:#291c3a}#lk .cp{color:white}
 .ns-heading h2{display:block;-webkit-line-clamp:unset;overflow:visible;font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+
+/* phone one-screen: no page scroll; sheets use pager only */
+html,body{height:100%;overflow:hidden!important}
+#pages,.pg,#pages .pg{overflow:hidden!important;min-height:0}
+.ns-body{overflow:hidden!important}
+.v17-scroll{overflow:hidden!important}
+.sheet,.sh,#sh{overflow:hidden!important}
+
+/* fit-phone-pg */
+.pg{max-height:100%;height:100%;overflow:hidden!important;box-sizing:border-box}
+#pages{overflow:hidden!important;display:flex;flex-direction:column}

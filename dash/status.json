@@ -463,7 +463,7 @@
     "Device heartbeat is online for 30 minutes; older heartbeats are offline."
   ],
   "uptime": {
-    "checked_at": "2026-11-06T04:00:02.569661+00:00",
+    "checked_at": "2026-11-06T04:15:01.785774+00:00",
     "checks": [
       {
         "url": "https://elcapino.github.io/fam-app-sync/dash/",

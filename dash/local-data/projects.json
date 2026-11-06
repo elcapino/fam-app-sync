@@ -1,0 +1,499 @@
+{
+  "schemaVersion": 2,
+  "hmkPagesOrder": [
+    "sum",
+    "hq",
+    "proj",
+    "agency",
+    "house",
+    "market",
+    "spend",
+    "ideas",
+    "reports",
+    "daily",
+    "ai",
+    "project",
+    "existing",
+    "org",
+    "ecosystem",
+    "team"
+  ],
+  "expectedKpiProjectCount": 7,
+  "kpiProjectCount": 7,
+  "kpiProjectIds": [
+    "elcapino",
+    "agency",
+    "house",
+    "market",
+    "ideas",
+    "drop",
+    "fahem"
+  ],
+  "kpiSourceCount": 7,
+  "countsConsistent": true,
+  "publicCandidates": {
+    "dash": "https://elcapino.github.io/fam-app-sync/dash/",
+    "apk": "https://elcapino.github.io/fam-app-sync/dash/HMK.apk",
+    "hq": "https://elcapino.github.io/fam-app-sync/dash/hq.html",
+    "status": "https://elcapino.github.io/fam-app-sync/dash/status.html",
+    "status_json": "https://elcapino.github.io/fam-app-sync/dash/status.json"
+  },
+  "channelsTruth": {
+    "whatsapp_owner_hmk_command": {
+      "linked": false,
+      "mode": "needs_link",
+      "truth": "external_ack_vs_queued",
+      "note": "FAHEM WA outbox is owner-ME only; not HMK command channel"
+    },
+    "telegram_owner_hmk_command": {
+      "linked": false,
+      "mode": "needs_link",
+      "truth": "external_ack_vs_queued",
+      "note": "FAHEM TG bot is project bot, not HMK command channel"
+    },
+    "ceo_portal": {
+      "queuePath": "local-source",
+      "processor": "local-source",
+      "pendingOnly": "status=pending",
+      "doneNotVerifiedAck": true,
+      "note": "queue status=done means legacy deliver ran; not verified external ack for HMK owner feed"
+    },
+    "devices": {
+      "linked": false,
+      "mode": "unavailable",
+      "truth": "no_device_heartbeat",
+      "note": "local-source"
+    },
+    "web_to_ceo": {
+      "staticJsCannotSendToAgent": true,
+      "publicUnauthWebhookForbidden": true,
+      "honestMode": "draft_only_local"
+    }
+  },
+  "projects": [
+    {
+      "id": "elcapino",
+      "type": "project",
+      "program": "elcapino",
+      "category": "platform",
+      "title": {
+        "ar": "ELCAPINO",
+        "en": "ELCAPINO"
+      },
+      "localRoute": {
+        "type": "hmk_page",
+        "page": "sum"
+      },
+      "publicUrl": null,
+      "publicCandidate": "https://elcapino.github.io/fam-app-sync/dash/",
+      "linkStatus": "verify_skipped",
+      "hmkPageOrderIndex": 0,
+      "kpi": {
+        "status": "go",
+        "pct": 90,
+        "note_ar": "لوحة تنفيذية v2",
+        "note_en": "Executive dashboard v2"
+      },
+      "detailsSource": "events"
+    },
+    {
+      "id": "agency",
+      "type": "project",
+      "program": "agency",
+      "category": "operations",
+      "title": {
+        "ar": "وكالة واتساب AI",
+        "en": "AI WhatsApp agency"
+      },
+      "localRoute": {
+        "type": "hmk_page",
+        "page": "agency"
+      },
+      "publicUrl": null,
+      "publicCandidate": "https://elcapino.github.io/fam-app-sync/dash/",
+      "linkStatus": "verify_skipped",
+      "hmkPageOrderIndex": 3,
+      "kpi": {
+        "status": "go",
+        "pct": 45,
+        "note_ar": "الأسعار معتمدة · العرض التجريبي 15/15",
+        "note_en": "Prices approved · demo 15/15"
+      },
+      "detailsSource": "events"
+    },
+    {
+      "id": "house",
+      "type": "project",
+      "program": "house",
+      "category": "operations",
+      "title": {
+        "ar": "البيت",
+        "en": "House"
+      },
+      "localRoute": {
+        "type": "hmk_page",
+        "page": "house"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 4,
+      "kpi": {
+        "status": "go",
+        "pct": 12,
+        "note_ar": null,
+        "note_en": null
+      },
+      "detailsSource": "events"
+    },
+    {
+      "id": "market",
+      "type": "project",
+      "program": "market",
+      "category": "markets",
+      "title": {
+        "ar": "إشارات السوق",
+        "en": "Market signals"
+      },
+      "localRoute": {
+        "type": "hmk_page",
+        "page": "market"
+      },
+      "publicUrl": null,
+      "publicCandidate": "https://elcapino.github.io/fam-app-sync/dash/",
+      "linkStatus": "verify_skipped",
+      "hmkPageOrderIndex": 5,
+      "kpi": {
+        "status": "watch",
+        "pct": 100,
+        "note_ar": "إشارات فقط · بدون تداول",
+        "note_en": "Signals only · no trading"
+      },
+      "detailsSource": "events"
+    },
+    {
+      "id": "ideas",
+      "type": "project",
+      "program": "ideas",
+      "category": "research",
+      "title": {
+        "ar": "أفكار الإمارات",
+        "en": "UAE ideas"
+      },
+      "localRoute": {
+        "type": "hmk_page",
+        "page": "ideas"
+      },
+      "publicUrl": null,
+      "publicCandidate": "https://elcapino.github.io/fam-app-sync/dash/",
+      "linkStatus": "verify_skipped",
+      "hmkPageOrderIndex": 7,
+      "kpi": {
+        "status": "wait",
+        "pct": 30,
+        "note_ar": "10 أفكار بانتظار الاعتماد",
+        "note_en": "10 ideas awaiting approval"
+      },
+      "detailsSource": "events"
+    },
+    {
+      "id": "drop",
+      "type": "project",
+      "program": "drop",
+      "category": "commerce",
+      "title": {
+        "ar": "دروبشيبنج",
+        "en": "Dropshipping"
+      },
+      "localRoute": {
+        "type": "hmk_project_open",
+        "page": "project",
+        "projectId": "drop"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 11,
+      "kpi": {
+        "status": "hold",
+        "pct": 20,
+        "note_ar": "تجربة باقة 299 فقط · Helium 10 معلّق",
+        "note_en": "299 bundle test only · Helium 10 on hold"
+      },
+      "detailsSource": "events"
+    },
+    {
+      "id": "fahem",
+      "type": "project",
+      "program": "fahem",
+      "category": "operations",
+      "title": {
+        "ar": "فاهم",
+        "en": "FAHEM"
+      },
+      "localRoute": {
+        "type": "hmk_project_open",
+        "page": "project",
+        "projectId": "fahem"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 11,
+      "kpi": {
+        "status": "go",
+        "pct": 80,
+        "note_ar": "شغّال على واتساب وتيليجرام",
+        "note_en": "Live on WhatsApp + Telegram"
+      },
+      "detailsSource": "events"
+    }
+  ],
+  "sections": [
+    {
+      "id": "hq",
+      "type": "section",
+      "program": "elcapino",
+      "category": "platform",
+      "title": {
+        "ar": "AI HQ",
+        "en": "AI HQ"
+      },
+      "localRoute": {
+        "type": "hmk_page",
+        "page": "hq"
+      },
+      "publicUrl": null,
+      "publicCandidate": "https://elcapino.github.io/fam-app-sync/dash/hq.html",
+      "linkStatus": "verify_skipped",
+      "hmkPageOrderIndex": 1,
+      "kpi": null,
+      "detailsSource": "events"
+    },
+    {
+      "id": "proj",
+      "type": "section",
+      "program": "elcapino",
+      "category": "platform",
+      "title": {
+        "ar": "المشاريع",
+        "en": "Projects hub"
+      },
+      "localRoute": {
+        "type": "hmk_page",
+        "page": "proj"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 2,
+      "kpi": null,
+      "detailsSource": "events"
+    },
+    {
+      "id": "spend",
+      "type": "section",
+      "program": "elcapino",
+      "category": "platform",
+      "title": {
+        "ar": "الإنفاق",
+        "en": "Spend"
+      },
+      "localRoute": {
+        "type": "hmk_page",
+        "page": "spend"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 6,
+      "kpi": null,
+      "detailsSource": "events"
+    },
+    {
+      "id": "reports",
+      "type": "section",
+      "program": "reports",
+      "category": "reporting",
+      "title": {
+        "ar": "التقارير",
+        "en": "Reports"
+      },
+      "localRoute": {
+        "type": "hmk_page",
+        "page": "reports"
+      },
+      "publicUrl": null,
+      "publicCandidate": "https://elcapino.github.io/fam-app-sync/dash/status.html",
+      "linkStatus": "verify_skipped",
+      "hmkPageOrderIndex": 8,
+      "kpi": null,
+      "detailsSource": "events"
+    },
+    {
+      "id": "daily",
+      "type": "section",
+      "program": "elcapino",
+      "category": "reporting",
+      "title": {
+        "ar": "اليومي",
+        "en": "Daily"
+      },
+      "localRoute": {
+        "type": "hmk_page",
+        "page": "daily"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 9,
+      "kpi": null,
+      "detailsSource": "events"
+    },
+    {
+      "id": "ai",
+      "type": "section",
+      "program": "elcapino",
+      "category": "platform",
+      "title": {
+        "ar": "الذكاء",
+        "en": "AI updates"
+      },
+      "localRoute": {
+        "type": "hmk_page",
+        "page": "ai"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 10,
+      "kpi": null,
+      "detailsSource": "events"
+    },
+    {
+      "id": "books",
+      "type": "feed_program",
+      "program": "books",
+      "category": "knowledge",
+      "title": {
+        "ar": "كتب",
+        "en": "Books feed"
+      },
+      "localRoute": {
+        "type": "hmk_project_open",
+        "page": "project",
+        "projectId": "books"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 11,
+      "kpi": null,
+      "detailsSource": "events"
+    },
+    {
+      "id": "history",
+      "type": "feed_program",
+      "program": "history",
+      "category": "knowledge",
+      "title": {
+        "ar": "التراث",
+        "en": "History feed"
+      },
+      "localRoute": {
+        "type": "hmk_project_open",
+        "page": "project",
+        "projectId": "history"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 11,
+      "kpi": null,
+      "detailsSource": "events"
+    },
+    {
+      "id": "trading",
+      "type": "feed_program",
+      "program": "trading",
+      "category": "markets",
+      "title": {
+        "ar": "تداول",
+        "en": "Trading feed"
+      },
+      "localRoute": {
+        "type": "hmk_project_open",
+        "page": "project",
+        "projectId": "trading"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 11,
+      "kpi": null,
+      "detailsSource": "events"
+    },
+    {
+      "id": "uaeintel",
+      "type": "feed_program",
+      "program": "uaeintel",
+      "category": "research",
+      "title": {
+        "ar": "معلومات الإمارات",
+        "en": "UAE intel feed"
+      },
+      "localRoute": {
+        "type": "hmk_project_open",
+        "page": "project",
+        "projectId": "uaeintel"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 11,
+      "kpi": null,
+      "detailsSource": "events"
+    },
+    {
+      "id": "youtube",
+      "type": "feed_program",
+      "program": "youtube",
+      "category": "knowledge",
+      "title": {
+        "ar": "يوتيوب ملخصات",
+        "en": "YouTube digests feed"
+      },
+      "localRoute": {
+        "type": "hmk_project_open",
+        "page": "project",
+        "projectId": "youtube"
+      },
+      "publicUrl": null,
+      "publicCandidate": null,
+      "linkStatus": "no_candidate",
+      "hmkPageOrderIndex": 11,
+      "kpi": null,
+      "detailsSource": "events"
+    },
+    {
+      "id": "status",
+      "type": "section",
+      "program": "elcapino",
+      "category": "platform",
+      "title": {
+        "ar": "الحالة",
+        "en": "Status"
+      },
+      "localRoute": {
+        "type": "hmk_external_local",
+        "page": "status.html"
+      },
+      "publicUrl": null,
+      "publicCandidate": "https://elcapino.github.io/fam-app-sync/dash/status.html",
+      "linkStatus": "verify_skipped",
+      "hmkPageOrderIndex": null,
+      "kpi": null,
+      "detailsSource": "events"
+    }
+  ]
+}

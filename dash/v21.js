@@ -442,19 +442,26 @@ function c21Draw(){
   const ed=C21.eventDetail||{rows:{}};
   pg.innerHTML=`<div class="cmd-heading"><div><small>HMK · تفاصيل حدث</small><h2>${esc(C21.title)}</h2></div><button class="cmd-home">الرئيسية</button></div>
   <div class="cmd-source">تفاصيل محلية · بلا تحويل لمشروع عام · ${esc(String(stamp).replace('T',' · ').slice(0,21))}</div>
-  <div class="cmd-body"></div>
+  <div class="cmd-body cmd-event-body"><article class="cmd-copy" style="visibility:hidden;pointer-events:none"></article></div>
+  <div class="cmd-pager"></div>
   <div class="cmd-cmdactions">${ed.canProj?`<button type="button" id="evtOpenProj">فتح مشروع ${esc(c21ProjAr(ed.projectId))}</button>`:''}<button type="button" id="evtBack">رجوع</button></div>`;
   pg.querySelector('.cmd-home').onclick=c21Home;
-  const body=pg.querySelector('.cmd-body');
-  Object.entries(ed.rows||{}).forEach(([k,v])=>{const a=document.createElement('article');a.className='cmd-copy';a.style.flex='none';a.innerHTML=`<b>${esc(k)}</b><div>${esc(v)}</div>`;body.append(a);});
+  const body=pg.querySelector('.cmd-body'),pager=pg.querySelector('.cmd-pager');
+  const items=[];Object.entries(ed.rows||{}).forEach(([k,v])=>items.push({label:k,value:v}));
+  const probe=document.createElement('div');probe.className='cmd-event-measure';body.append(probe);const parts=[];let start=0;
+  const renderItems=xs=>xs.map(x=>`<article class="cmd-copy" style="flex:none"><b>${esc(x.label)}</b><div>${hmkDetailHTML(hmkDetailTokens(x.value))}</div></article>`).join('');
+  while(start<items.length){let lo=1,hi=items.length-start,fit=0;while(lo<=hi){const m=(lo+hi)>>1;probe.innerHTML=renderItems(items.slice(start,start+m));if(probe.scrollHeight<=body.clientHeight){fit=m;lo=m+1}else hi=m-1}fit=fit||1;parts.push(items.slice(start,start+fit));start+=fit}
+  probe.remove();let count=parts.length;C21.page=Math.max(0,Math.min(C21.page,count-1));body.innerHTML=renderItems(parts[C21.page]);pager.innerHTML=`<button ${C21.page===0?'disabled':''}>السابق</button><span>${C21.page+1} / ${count}</span><button ${C21.page>=count-1?'disabled':''}>التالي</button>`;pager.firstChild.onclick=()=>{C21.page--;c21Draw()};pager.lastChild.onclick=()=>{C21.page++;c21Draw()};
+  body.querySelectorAll('.ns-detail-url').forEach(a=>{a.target='_blank';a.rel='noopener noreferrer'});
   pg.querySelector('#evtBack').onclick=c21Back;
   if(pg.querySelector('#evtOpenProj'))pg.querySelector('#evtOpenProj').onclick=()=>c21OpenEvent({projectId:ed.projectId},'project');
 
  }else{
   pg.innerHTML=`<div class="cmd-heading"><div><small>HMK · سجل محلي</small><h2>${esc(C21.title)}</h2></div><button class="cmd-home">الرئيسية</button></div><div class="cmd-source">المصدر: ${esc(String(stamp).replace('T',' · ').slice(0,21))}${String(stamp).includes('+')?' UAE':''} · مقروء محلياً</div><div class="cmd-body"></div><div class="cmd-pager"></div>`;
   pg.querySelector('.cmd-home').onclick=c21Home;
-  const body=pg.querySelector('.cmd-body'),pager=pg.querySelector('.cmd-pager');let count;
-  if(C21.screen==='text'){
+  const body=pg.querySelector('.cmd-body'),pager=pg.querySelector('.cmd-pager');let count=1;
+  if(C21.screen==='text'){C21.safeTokens=hmkDetailTokens(C21.text);const parts=hmkDetailPages(C21.safeTokens,body);count=parts.length;C21.parts=parts.map(x=>hmkDetailHTML(x));C21.page=Math.max(0,Math.min(C21.page,parts.length-1));const art=document.createElement('article');art.className='cmd-copy';art.innerHTML=C21.parts[C21.page];body.replaceChildren(art);
+  }else if(false){
    const chars=Array.from(C21.text||'غير متاح');const probe=document.createElement('article');probe.className='cmd-copy';body.append(probe);const parts=[];let pos=0;
    while(pos<chars.length){let lo=1,hi=chars.length-pos,fit=1;while(lo<=hi){const mid=(lo+hi)>>1;probe.textContent=chars.slice(pos,pos+mid).join('');if(probe.scrollHeight<=body.clientHeight-4){fit=mid;lo=mid+1}else hi=mid-1}parts.push(chars.slice(pos,pos+fit).join(''));pos+=fit}
    C21.parts=parts;count=parts.length;C21.page=Math.max(0,Math.min(C21.page,count-1));probe.textContent=parts[C21.page];

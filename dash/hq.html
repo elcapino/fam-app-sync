@@ -59,7 +59,7 @@ footer{flex:none;background:#08080a;text-align:center;color:white;font-size:10px
 </div>
 <nav id="filters" aria-label="تصفية الحالة"><button class="on" data-f="all">الكل</button><button data-f="working">يعمل الآن</button><button data-f="error">متعطل</button><button data-f="idle">غير مؤكد</button></nav>
 <main class="floor">
-<div class="strip"><b>مقر HMK · مكاتب وأقسام</b><span id="count">قراءة السجل…</span></div>
+<div class="strip"><b>مقر HMK · مكاتب وأقسام</b><span id="count">قراءة السجل…</span></div><div class="strip" style="height:18px;font-size:8px;opacity:.85"><b>حركة بكسل زخرفية فقط</b><span>لا تمثّل حضور موظف أو حالة اتصال</span></div>
 <div id="stage"><canvas id="cv" aria-hidden="true"></canvas><div id="offices"></div><div id="emptyFilter">لا سجلات تطابق هذا المرشح</div></div>
 <div id="marketNav"></div>
 <section id="panel"><h2 id="panelTitle"></h2><div id="panelRows" class="rows"></div><div id="panelNav" class="pager"></div></section>
@@ -76,42 +76,65 @@ footer{flex:none;background:#08080a;text-align:center;color:white;font-size:10px
 (()=>{'use strict';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let feed={rooms:[],agents:[],skills:[]},services=[],company=null,ideasLocal=null,offices=[],visible=[],filter='all',marketPage=0,panelPage=0,detailPage=0,tab='brief',selected=null,language=new URLSearchParams(location.search).get('lang')||'ar',statusGenerated=null,cmdDraft='';
-const privateEntry=a=>/kids|child|study|أطفال|اطفال|دراسة/i.test(String(a.id||'')+' '+String(a.room||''));
-const state=a=>/^(fail|error|down|failed)$/i.test(a.status)?'error':/^(up|ok|working|running)$/i.test(a.status)?'up':'idle';
-const statusName=a=>state(a)==='error'?'متعطل':state(a)==='up'?'يعمل / سليم':(a.status==='idle'?'خامل موثّق':'غير مؤكد');
-const matches=a=>filter==='all'||(filter==='working'?state(a)==='up':filter==='idle'?state(a)==='idle':state(a)==='error');
+const privateEntry=a=>/kids|child|study|أطفال|اطفال|دراسة/i.test(String(a.id||'')+' '+String(a.room||'')+' '+String(a.name||'')+' '+String(a.name_ar||''));
+const isRole=a=>a&&(a.kind==='role'||a.probe==='organization_unverified'||a.record_type==='role');
+const isTool=a=>a&&(a.kind==='tool'||a.record_type==='tool'||(!isRole(a)&&(a.cap!=null||a.unit||/^service:/.test(String(a._officeKey||'')))));
+/* Tools only get up/error from authenticated probes; roles never inherit tool health. */
+const state=a=>{
+ if(!a)return 'idle';
+ if(isRole(a))return 'idle'; /* دور مسجل / organization_unverified — never green from linked service */
+ if(/^(fail|error|down|failed)$/i.test(a.status))return 'error';
+ if(/^(up|ok|working|running)$/i.test(a.status)&&a.probe!=='organization_unverified')return 'up';
+ return 'idle';
+};
+const statusName=a=>{
+ if(isRole(a))return language==='en'?'Registered role · unverified':'دور مسجل · غير مُختبَر';
+ if(state(a)==='error')return 'متعطل';
+ if(state(a)==='up')return 'يعمل / سليم';
+ if(a&&a.status==='idle')return 'خامل موثّق';
+ return 'غير مؤكد';
+};
+const matches=a=>filter==='all'||(filter==='working'?state(a)==='up'&&!isRole(a):filter==='idle'?(state(a)==='idle'||isRole(a)):state(a)==='error');
 const display=a=>language==='en'?(a.name_en||a.name||a.id):(a.name_ar||a.name||a.id);
 const fmt=v=>typeof v==='object'?JSON.stringify(v):String(v);
 function time(v){if(!v)return 'غير مسجل';const d=new Date(v);return isNaN(d)?String(v):d.toLocaleString(language==='en'?'en-GB':'ar-AE',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});}
 function rebuild(){
  const agents=(feed.agents||[]).filter(a=>!privateEntry(a));
- const rooms=(feed.rooms||[]).filter(a=>!privateEntry(a));
- const ids=new Set(rooms.map(r=>r.id));
- agents.forEach(a=>{if(a.room&&!ids.has(a.room)){ids.add(a.room);rooms.push({id:a.room,name:a.room});}});
- offices=rooms.map(r=>({...r,key:'room:'+r.id,records:agents.filter(a=>a.room===r.id).map(a=>({...a,_source:'hq payload'}))}));
- const loose=agents.filter(a=>!a.room);if(loose.length)offices.push({id:'staff',key:'staff',name:'فريق المقر',name_ar:'فريق المقر',records:loose.map(a=>({...a,_source:'hq payload'}))});
- services.filter(a=>!privateEntry(a)).forEach(s=>{
-   const existing=offices.find(r=>r.records.some(a=>a.id===s.id));
-   if(existing){existing.records=existing.records.map(a=>a.id===s.id?{...a,...s,_source:'status.json + hq payload'}:a);}
-   else offices.push({id:s.id,key:'service:'+s.id,name:s.name,name_ar:s.name_ar||s.name,name_en:s.name_en||s.name,records:[{...s,_source:'status.json'}]});
- });
- // Leadership desks always visible as company framing (roles from local company.json / org; health only if linked service has status)
- if(company&&!offices.some(s=>s.key==='lead:ceo')){
-   const leadRecs=(company.leadership||[]).map(p=>{
-     const linked=p.service_id?services.find(s=>s.id===p.service_id):null;
-     return {
-       id:p.id,name:p.name_ar,name_ar:p.name_ar,name_en:p.name_en,
-       role:language==='en'?p.role_en:p.role_ar,
-       status:linked?linked.status:'unknown',
-       evidence:linked?(linked.evidence||'مرتبط بخدمة مسجلة'):'دور تنظيمي مسجّل · لا فحص اتصال مستقل',
-       note:p.note,_source:'local-data/company.json'+(linked?' + status.json':'')
-     };
+ const usedToolIds=new Set();
+ offices=[];
+ const depts=(company&&company.departments)||[];
+ /* 1) company.departments first — roles + covered tools grouped, roles never take tool green */
+ depts.forEach(dep=>{
+  const records=[];
+  (company.leadership||[]).filter(p=>(dep.covers||[]).includes(p.id)).forEach(p=>{
+   records.push({
+     id:p.id,name:p.name_ar,name_ar:p.name_ar,name_en:p.name_en,
+     role:language==='en'?p.role_en:p.role_ar,kind:'role',record_type:'role',
+     probe:'organization_unverified',status:'organization_unverified',
+     evidence:'دور تنظيمي مسجّل · لا يُشتق من حالة أداة مرتبطة',
+     note:p.note,_source:'local-data/company.json'
    });
-   offices.unshift({id:'leadership',key:'lead:ceo',name:'القيادة',name_ar:'القيادة',name_en:'Leadership',records:leadRecs});
- }
+  });
+  (dep.covers||[]).forEach(cid=>{
+   const svc=services.find(s=>s.id===cid);
+   if(svc&&!privateEntry(svc)){usedToolIds.add(svc.id);records.push({...svc,kind:'tool',record_type:'tool',_source:'status.json'});}
+   agents.filter(a=>a.id===cid||a.room===dep.id).forEach(a=>{if(!records.some(r=>r.id===a.id))records.push({...a,_source:'hq payload'});});
+  });
+  offices.push({id:dep.id,key:'dept:'+dep.id,name:dep.name_ar,name_ar:dep.name_ar,name_en:dep.name_en,records});
+ });
+ /* 2) remaining feed rooms not mapped */
+ const mapped=new Set(offices.map(o=>o.id));
+ (feed.rooms||[]).filter(a=>!privateEntry(a)&&!mapped.has(a.id)).forEach(r=>{
+  offices.push({...r,key:'room:'+r.id,records:agents.filter(a=>a.room===r.id).map(a=>({...a,_source:'hq payload'}))});
+ });
+ /* 3) standalone tools last */
+ services.filter(a=>!privateEntry(a)&&!usedToolIds.has(a.id)).forEach(s=>{
+  if(offices.some(o=>o.records.some(a=>a.id===s.id)))return;
+  offices.push({id:s.id,key:'service:'+s.id,name:s.name,name_ar:s.name_ar||s.name,name_en:s.name_en||s.name,records:[{...s,kind:'tool',record_type:'tool',_source:'status.json'}]});
+ });
  render();
 }
-function dot(a){return '<i class="dot '+state(a)+'"></i>';}
+function dot(a){return '<i class="dot '+(isRole(a)?'idle':state(a))+'" title="'+(isRole(a)?'role probe organization_unverified':'')+'"></i>';}
 function row(label,value){return '<div class="row"><strong>'+esc(label)+'</strong><div>'+esc(value)+'</div></div>';}
 function pager(el,page,total,go){el.innerHTML='<button class="nav" '+(page===0?'disabled':'')+'>السابق</button><span dir="ltr">'+(page+1)+' / '+total+'</span><button class="nav" '+(page>=total-1?'disabled':'')+'>التالي</button>';el.firstChild.onclick=()=>go(page-1);el.lastChild.onclick=()=>go(page+1);}
 function paginate(el,html,page,nav,go){
@@ -254,7 +277,7 @@ function layout(batch,dim){
  const r=$('#stage').getBoundingClientRect();W=180;H=Math.max(90,Math.round(r.height/r.width*180));cv.width=W;cv.height=H;
  const cols=Math.min(2,Math.max(1,batch.length)),rows=Math.ceil(Math.max(1,batch.length)/cols),rh=(H-13)/rows;
  boxes=batch.map((s,i)=>({s,i,x:cols===1?5:(i%2?96:5),y:10+Math.floor(i/cols)*rh,w:(cols===1||(batch.length%2&&i===batch.length-1))?170:79,h:rh-13}));
- $('#offices').innerHTML=boxes.map(b=>{const a=b.s.records.find(a=>matches(a))||b.s.records[0]||{};const recs=b.s.records||[];const roleN=recs.filter(r=>r.role&&r.kind!=='tool').length;const toolN=recs.length-roleN;const sub=recs.length===1?(recs[0].role||statusName(a)):((roleN?roleN+' دور':'')+(roleN&&toolN?' · ':'')+(toolN?toolN+' أداة':(recs.length+' سجل')));return '<button class="office '+(dim?'dim':'')+'" style="left:'+b.x/W*100+'%;top:'+b.y/H*100+'%;width:'+b.w/W*100+'%;height:'+b.h/H*100+'%" data-key="'+esc(b.s.key)+'" aria-label="'+esc(display(b.s))+'"><span class="sign">'+dot(a)+(language==='en'?'Office · ':'مكتب · ')+esc(display(b.s))+'</span><span class="subsign">'+esc(sub)+' ↗</span></button>';}).join('');
+ $('#offices').innerHTML=boxes.map(b=>{const recs=b.s.records||[];const roles=recs.filter(isRole);const tools=recs.filter(r=>!isRole(r));const a=tools.find(matches)||tools.find(x=>state(x)==='error')||tools[0]||roles[0]||{};const roleN=roles.length,toolN=tools.length;const sub=recs.length===1?(isRole(recs[0])?statusName(recs[0]):(recs[0].role||statusName(recs[0]))):((roleN?roleN+' دور':'')+(roleN&&toolN?' · ':'')+(toolN?toolN+' أداة':(recs.length+' سجل')));return '<button class="office '+(dim?'dim':'')+'" style="left:'+b.x/W*100+'%;top:'+b.y/H*100+'%;width:'+b.w/W*100+'%;height:'+b.h/H*100+'%" data-key="'+esc(b.s.key)+'" aria-label="'+esc(display(b.s))+'"><span class="sign">'+dot(a)+(language==='en'?'Office · ':'مكتب · ')+esc(display(b.s))+'</span><span class="subsign">'+esc(sub)+' ↗</span></button>';}).join('');
  $('#offices').querySelectorAll('button').forEach((b,i)=>b.onclick=()=>details(boxes[i].s));
 }
 function person(x,y,i,t,carry){
@@ -276,11 +299,10 @@ function frame(t){
   const mx=x+Math.floor(w/2)-6,my=deskY-12;rect(mx,my,12,8,'#1a2030');rect(mx+1,my+1,10,6,'#7ec8ff');rect(mx+5,my+8,2,3,'#3a2a48');
   rect(x+w-10,y+h-16,7,14,'#5B2C83');rect(x+w-9,y+h-15,5,12,'#3b1f6b');rect(x+w-5,y+h-10,1,2,'#d4af37');
   rect(x,y+3,1,h,'#d4af37');rect(x+w-1,y+3,1,h,'#d4af37');rect(x,y+h+2,w,1,'#00843D');
-  if(b.s.records&&b.s.records.length){
-   person(x+12+(Math.sin(t/480+i)*4),deskY-14,i,t,false);
-   const yy=y+h+1,xx=x+6+((t/55+i*19)%Math.max(8,w-18));person(xx,yy,i+4,t,true);
-   if(Math.floor(t/1400+i)%6===0){rect(xx-2,yy-8,14,7,'#fff3d6');rect(xx+3,yy-1,2,2,'#fff3d6');rect(xx+2,yy-5,2,1,'#5B2C83');rect(xx+6,yy-5,2,1,'#5B2C83');}
-  }
+  /* decorative pixel staff — not presence/status */
+  person(x+12+(Math.sin(t/480+i)*4),deskY-14,i,t,false);
+  const yy=y+h+1,xx=x+6+((t/55+i*19)%Math.max(8,w-18));person(xx,yy,i+4,t,true);
+  if(Math.floor(t/1400+i)%6===0){rect(xx-2,yy-8,14,7,'#fff3d6');rect(xx+3,yy-1,2,2,'#fff3d6');rect(xx+2,yy-5,2,1,'#5B2C83');rect(xx+6,yy-5,2,1,'#5B2C83');}
  });
  for(let i=0;i<2;i++)person(88+(i%2?1:-1),10+((t/75+i*H/2)%(Math.max(18,H-28))),i+7,t,i===0);
  rect(0,0,W,2,'#d4af37');for(let i=0;i<15;i++){const x=3+i*13,y=2+Math.round(Math.sin(i*.8+t/900));rect(x,y,3,4,i%3===0?'#C8102E':i%3===1?'#fff':'#00843D');rect(x+1,y+5,1,2,'#d4af37');}

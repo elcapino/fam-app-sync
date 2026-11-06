@@ -114,20 +114,25 @@ function marketRows(m=D.market||{}){
   const type=coins.has(x.sym)||/^(BINANCE|COINBASE|KRAKEN):/.test(x.sym)?'crypto':'stocks';
   return {...x,halal,type};
  });
- const enabled=new Set(rows.filter(x=>x.tv==='SB').map(x=>x.type));
+ const enabled=new Set(rows.map(x=>x.type));
  const rank=x=>x.tv==='SB'?(x.halal?0:1):x.tv==='B'?2:3;
  const score=x=>Number.isFinite(Number(x.tvs))?Number(x.tvs):-Infinity;
  return rows.filter(x=>enabled.has(x.type)&&['SB','B','S','SS'].includes(x.tv))
   .sort((a,b)=>rank(a)-rank(b)||score(b)-score(a)||a.sym.localeCompare(b.sym));
 }
+let MARKET_PAGE=0,MARKET_SYM='';
 function pMarket(i){
- const A=L==='ar',m=D.market||{},rows=marketRows(m);
+ const A=L==='ar',m=D.market||{},pg=document.querySelector('#pages .pg');let rows=marketRows(m);
  const ratings={SB:A?'شراء قوي':'Strong buy',B:A?'شراء':'Buy',S:A?'بيع':'Sell',SS:A?'بيع قوي':'Strong sell'};
- return ph(i,'market')+`<div class="market-list" aria-label="${A?'إشارات السوق':'Market signals'}">${rows.map(x=>`<article class="market-item"><button type="button" class="market-row" data-market-sym="${esc(x.sym)}" aria-expanded="false"><span class="market-name"><strong>${esc(A?x.ar||x.en||x.sym:x.en||x.ar||x.sym)}</strong><bdi class="mu">${esc(x.sym)}</bdi></span><span class="market-type">${x.type==='crypto'?(A?'عملة':'Crypto'):(A?'أسهم':'Stocks')}</span><span class="market-rating ${x.tv==='SB'||x.tv==='B'?'up':'dn'}">${ratings[x.tv]}${x.halal?`<small>${A?'حلال*':'Halal*'}</small>`:''}</span><span class="num">${x.px==null?'—':nf(x.px)}<small class="mu">${esc(x.tvs??'—')}</small></span></button></article>`).join('')||`<p class="mu">${A?'لا توجد فئة بها شراء قوي حالياً':'No category has a strong buy currently.'}</p>`}</div><p class="market-footnote mu">${esc(tx(m.halal)||'')}<br>${esc(tx(m.disc)||'')}</p>`;
+ const avail=Math.max(240,(pg?.clientHeight||650)-180),per=Math.max(1,Math.min(6,Math.floor(avail/68))),count=Math.max(1,Math.ceil(rows.length/per));
+ MARKET_PAGE=Math.min(MARKET_PAGE,count-1);rows=rows.slice(MARKET_PAGE*per,MARKET_PAGE*per+per);
+ return ph(i,'market',A?'مرجعًا محلياً · ليس مباشراً':'Local reference · not live')+`<div class="market-pager"><button type="button" data-market-page="-1" ${MARKET_PAGE===0?'disabled':''}>${A?'السابق':'Previous'}</button><span>${N((MARKET_PAGE+1)+' / '+count)}</span><button type="button" data-market-page="1" ${MARKET_PAGE>=count-1?'disabled':''}>${A?'التالي':'Next'}</button></div><div class="market-list" aria-label="${A?'إشارات السوق':'Market signals'}">${rows.map(x=>`<article class="market-item"><button type="button" class="market-row" data-market-sym="${esc(x.sym)}" aria-expanded="false"><span class="market-name"><strong>${esc(A?x.ar||x.en||x.sym:x.en||x.ar||x.sym)}</strong><bdi class="mu">${esc(x.sym)}</bdi></span><span class="market-type">${x.type==='crypto'?(A?'عملة':'Crypto'):(A?'أسهم':'Stocks')}</span><span class="market-rating ${x.tv==='SB'||x.tv==='B'?'up':'dn'}">${ratings[x.tv]}${x.halal?`<small>${A?'حلال*':'Halal*'}</small>`:''}</span><span class="num">${x.px==null?'—':nf(x.px)}<small class="mu">${esc(x.tvs??'—')}</small></span></button></article>`).join('')||`<p class="mu">${A?'لا سجلات سوق':'No market records.'}</p>`}</div><p class="market-footnote mu">${esc(tx(m.halal)||'')}<br>${esc(tx(m.disc)||'')}</p>`;
 }
+
 function bindMarket(){
+ document.querySelectorAll('[data-market-page]').forEach(b=>b.onclick=()=>{MARKET_PAGE+=Number(b.dataset.marketPage);MARKET_SYM='';document.querySelector('#pages .pg').innerHTML=pMarket(CUR);bindMarket()});
  document.querySelectorAll('[data-market-sym]').forEach(button=>button.onclick=()=>{
-  const wasOpen=button.getAttribute('aria-expanded')==='true';
+  const wasOpen=button.getAttribute('aria-expanded')==='true';MARKET_SYM=wasOpen?'':button.dataset.marketSym;
   document.querySelectorAll('.market-chart').forEach(x=>x.remove());
   document.querySelectorAll('[data-market-sym]').forEach(x=>x.setAttribute('aria-expanded','false'));
   if(wasOpen)return;
@@ -135,9 +140,9 @@ function bindMarket(){
   const chart=document.createElement('div');chart.className='market-chart';
   const frame=document.createElement('iframe');
   frame.title=button.dataset.marketSym+' — Daily TradingView chart';
-  const config=new URLSearchParams({symbol:button.dataset.marketSym,interval:'D',theme:TH==='future'?'dark':'dark',style:'1',locale:L==='ar'?'ar':'en',hide_top_toolbar:'1',hide_side_toolbar:'1',allow_symbol_change:'0',save_image:'0',width:'100%',height:'220'});
+  const config=new URLSearchParams({symbol:button.dataset.marketSym,interval:'D',theme:TH==='future'?'dark':'dark',style:'1',locale:L==='ar'?'ar':'en',hide_top_toolbar:'1',hide_side_toolbar:'1',allow_symbol_change:'0',save_image:'0',width:'100%',height:'100%'});
   frame.src='https://s.tradingview.com/widgetembed/?'+config;
-  frame.height='220';frame.setAttribute('loading','eager');frame.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+  frame.height='190';frame.style.cssText='display:block;width:100%;height:190px;max-height:190px;min-height:190px;border:0';frame.setAttribute('loading','eager');frame.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
   chart.append(frame);button.after(chart);
  });
 }

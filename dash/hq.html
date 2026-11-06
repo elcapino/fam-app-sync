@@ -20,12 +20,12 @@ h1{font-size:16px;margin:0;color:#f4d994}header small{font-size:9px;color:#eadff
 .strip{display:flex;justify-content:space-between;align-items:center;flex:none;height:24px;padding:0 8px;font-size:10px;background:#3c224d;color:#ead69d}.strip b{font-size:11px}
 #stage{position:relative;flex:1;min-height:0;background:#1e0f3a;overflow:hidden}
 canvas{width:100%;height:100%;display:block;image-rendering:pixelated}
-#stalls{position:absolute;inset:0}
-.stall{position:absolute;background:none;border:0;padding:0;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;text-shadow:0 1px #000}
+#offices{position:absolute;inset:0}
+.office{position:absolute;background:none;border:0;padding:0;display:flex;flex-direction:column;align-items:stretch;justify-content:space-between;text-shadow:0 1px #000}
 .sign{background:#2c163eeF;border:1px solid #edcf89;border-radius:2px;color:#fff;font-weight:bold;font-size:11px;padding:3px 2px;line-height:1.15;min-height:22px;display:flex;align-items:center;justify-content:center;gap:4px}
 .subsign{background:#201226ed;border:1px solid #a7834a;font-size:8px;padding:2px 2px;color:#f0ddbc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#c6a264;flex:none;box-shadow:0 0 0 2px #18101e}.dot.up{background:#45e086}.dot.error{background:#ff5264}
-.stall.dim{opacity:.38}.stall:hover .sign{background:#5B2C83}
+.office.dim{opacity:.38}.office:hover .sign{background:#5B2C83}
 #marketNav,.pager{display:flex;align-items:center;justify-content:space-between;gap:6px;flex:none;padding:4px 8px;background:#251430;font-size:10px;min-height:28px}
 button.nav{border:1px solid #9c7a42;background:#4a2a61;border-radius:5px;padding:3px 10px;font-size:10px}button:disabled{opacity:.35;cursor:default}
 #panel{height:168px;flex:none;display:flex;flex-direction:column;padding:6px 8px;gap:4px;overflow:hidden;background:#21132e}
@@ -59,8 +59,8 @@ footer{flex:none;background:#08080a;text-align:center;color:white;font-size:10px
 </div>
 <nav id="filters" aria-label="تصفية الحالة"><button class="on" data-f="all">الكل</button><button data-f="working">يعمل الآن</button><button data-f="error">متعطل</button><button data-f="idle">غير مؤكد</button></nav>
 <main class="floor">
-<div class="strip"><b>مقر HMK · أقسام موثّقة</b><span id="count">قراءة السجل…</span></div>
-<div id="stage"><canvas id="cv" aria-hidden="true"></canvas><div id="stalls"></div><div id="emptyFilter">لا سجلات تطابق هذا المرشح</div></div>
+<div class="strip"><b>مقر HMK · مكاتب وأقسام</b><span id="count">قراءة السجل…</span></div>
+<div id="stage"><canvas id="cv" aria-hidden="true"></canvas><div id="offices"></div><div id="emptyFilter">لا سجلات تطابق هذا المرشح</div></div>
 <div id="marketNav"></div>
 <section id="panel"><h2 id="panelTitle"></h2><div id="panelRows" class="rows"></div><div id="panelNav" class="pager"></div></section>
 <nav id="tabs">
@@ -75,7 +75,7 @@ footer{flex:none;background:#08080a;text-align:center;color:white;font-size:10px
 <script>
 (()=>{'use strict';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let feed={rooms:[],agents:[],skills:[]},services=[],company=null,ideasLocal=null,stalls=[],visible=[],filter='all',marketPage=0,panelPage=0,detailPage=0,tab='brief',selected=null,language=new URLSearchParams(location.search).get('lang')||'ar',statusGenerated=null,cmdDraft='';
+let feed={rooms:[],agents:[],skills:[]},services=[],company=null,ideasLocal=null,offices=[],visible=[],filter='all',marketPage=0,panelPage=0,detailPage=0,tab='brief',selected=null,language=new URLSearchParams(location.search).get('lang')||'ar',statusGenerated=null,cmdDraft='';
 const privateEntry=a=>/kids|child|study|أطفال|اطفال|دراسة/i.test(String(a.id||'')+' '+String(a.room||''));
 const state=a=>/^(fail|error|down|failed)$/i.test(a.status)?'error':/^(up|ok|working|running)$/i.test(a.status)?'up':'idle';
 const statusName=a=>state(a)==='error'?'متعطل':state(a)==='up'?'يعمل / سليم':(a.status==='idle'?'خامل موثّق':'غير مؤكد');
@@ -88,15 +88,15 @@ function rebuild(){
  const rooms=(feed.rooms||[]).filter(a=>!privateEntry(a));
  const ids=new Set(rooms.map(r=>r.id));
  agents.forEach(a=>{if(a.room&&!ids.has(a.room)){ids.add(a.room);rooms.push({id:a.room,name:a.room});}});
- stalls=rooms.map(r=>({...r,key:'room:'+r.id,records:agents.filter(a=>a.room===r.id).map(a=>({...a,_source:'hq payload'}))}));
- const loose=agents.filter(a=>!a.room);if(loose.length)stalls.push({id:'staff',key:'staff',name:'فريق المقر',name_ar:'فريق المقر',records:loose.map(a=>({...a,_source:'hq payload'}))});
+ offices=rooms.map(r=>({...r,key:'room:'+r.id,records:agents.filter(a=>a.room===r.id).map(a=>({...a,_source:'hq payload'}))}));
+ const loose=agents.filter(a=>!a.room);if(loose.length)offices.push({id:'staff',key:'staff',name:'فريق المقر',name_ar:'فريق المقر',records:loose.map(a=>({...a,_source:'hq payload'}))});
  services.filter(a=>!privateEntry(a)).forEach(s=>{
-   const existing=stalls.find(r=>r.records.some(a=>a.id===s.id));
+   const existing=offices.find(r=>r.records.some(a=>a.id===s.id));
    if(existing){existing.records=existing.records.map(a=>a.id===s.id?{...a,...s,_source:'status.json + hq payload'}:a);}
-   else stalls.push({id:s.id,key:'service:'+s.id,name:s.name,name_ar:s.name_ar||s.name,name_en:s.name_en||s.name,records:[{...s,_source:'status.json'}]});
+   else offices.push({id:s.id,key:'service:'+s.id,name:s.name,name_ar:s.name_ar||s.name,name_en:s.name_en||s.name,records:[{...s,_source:'status.json'}]});
  });
  // Leadership desks always visible as company framing (roles from local company.json / org; health only if linked service has status)
- if(company&&!stalls.some(s=>s.key==='lead:ceo')){
+ if(company&&!offices.some(s=>s.key==='lead:ceo')){
    const leadRecs=(company.leadership||[]).map(p=>{
      const linked=p.service_id?services.find(s=>s.id===p.service_id):null;
      return {
@@ -107,7 +107,7 @@ function rebuild(){
        note:p.note,_source:'local-data/company.json'+(linked?' + status.json':'')
      };
    });
-   stalls.unshift({id:'leadership',key:'lead:ceo',name:'القيادة',name_ar:'القيادة',name_en:'Leadership',records:leadRecs});
+   offices.unshift({id:'leadership',key:'lead:ceo',name:'القيادة',name_ar:'القيادة',name_en:'Leadership',records:leadRecs});
  }
  render();
 }
@@ -141,7 +141,7 @@ function channelRows(){
 }
 function panel(){
  let html='',title='';
- const records=stalls.flatMap(s=>s.records).filter(matches);
+ const records=offices.flatMap(s=>s.records).filter(matches);
  if(tab==='brief'){
   title='إيجاز المقر · عبر CEO فقط';
   const b=feed.brief||{};
@@ -218,7 +218,7 @@ function panel(){
 function details(s){selected=s;detailPage=0;$('#detail').classList.add('open');drawDetail();}
 function drawDetail(){
  if(!selected)return;
- const s=stalls.find(x=>x.key===selected.key)||selected;selected=s;
+ const s=offices.find(x=>x.key===selected.key)||selected;selected=s;
  $('#detailTitle').textContent=display(s);$('#detailSub').textContent='قسم · '+s.records.length+' سجل';
  let html='';s.records.forEach(a=>{
  html+='<div class="row">'+dot(a)+' <strong>'+esc(display(a))+'</strong><div>'+esc(statusName(a))+' · '+esc(a.status||'unknown')+'</div></div>';
@@ -231,13 +231,13 @@ function drawDetail(){
 }
 $('#back').onclick=()=>{selected=null;$('#detail').classList.remove('open');};
 function render(){
- const matching=stalls.filter(s=>s.records.some(matches));
- visible=filter==='all'?stalls:matching;
+ const matching=offices.filter(s=>s.records.some(matches));
+ visible=filter==='all'?offices:matching;
  marketPage=Math.max(0,Math.min(marketPage,Math.max(0,Math.ceil(visible.length/8)-1)));
  const batch=visible.slice(marketPage*8,marketPage*8+8);
- $('#count').textContent=visible.length+' قسم · '+stalls.flatMap(s=>s.records).filter(matches).length+' سجل';
+ $('#count').textContent=visible.length+' قسم · '+offices.flatMap(s=>s.records).filter(matches).length+' سجل';
  $('#emptyFilter').style.display=visible.length?'none':'block';
- layout(batch.length?batch:stalls.slice(0,8),!batch.length);
+ layout(batch.length?batch:offices.slice(0,8),!batch.length);
  pager($('#marketNav'),marketPage,Math.max(1,Math.ceil(visible.length/8)),p=>{marketPage=p;render();});panel();if(selected)drawDetail();
 }
 document.querySelectorAll('#filters button').forEach(b=>b.onclick=()=>{filter=b.dataset.f;marketPage=panelPage=0;document.querySelectorAll('#filters button').forEach(x=>x.classList.toggle('on',x===b));render();});
@@ -250,13 +250,12 @@ addEventListener('message',e=>{if(e.source===parent&&e.origin===location.origin&
 function tick(){$('#clock').textContent=new Date().toLocaleTimeString('ar-AE',{hour:'2-digit',minute:'2-digit'});}tick();setInterval(tick,1000);
 const cv=$('#cv'),ctx=cv.getContext('2d');let boxes=[],W=180,H=200;
 function rect(x,y,w,h,c){ctx.fillStyle=c;ctx.fillRect(Math.round(x),Math.round(y),Math.ceil(w),Math.ceil(h));}
-const colors=['#00843D','#5B2C83','#C8102E','#5B2C83','#00843D','#C8102E','#5B2C83','#00843D'];
 function layout(batch,dim){
  const r=$('#stage').getBoundingClientRect();W=180;H=Math.max(90,Math.round(r.height/r.width*180));cv.width=W;cv.height=H;
  const cols=Math.min(2,Math.max(1,batch.length)),rows=Math.ceil(Math.max(1,batch.length)/cols),rh=(H-13)/rows;
  boxes=batch.map((s,i)=>({s,i,x:cols===1?5:(i%2?96:5),y:10+Math.floor(i/cols)*rh,w:(cols===1||(batch.length%2&&i===batch.length-1))?170:79,h:rh-13}));
- $('#stalls').innerHTML=boxes.map(b=>{const a=b.s.records.find(a=>matches(a))||b.s.records[0]||{};return '<button class="stall '+(dim?'dim':'')+'" style="left:'+b.x/W*100+'%;top:'+b.y/H*100+'%;width:'+b.w/W*100+'%;height:'+b.h/H*100+'%" data-key="'+esc(b.s.key)+'" aria-label="'+esc(display(b.s))+'"><span class="sign">'+dot(a)+(language==='en'?'Dept · ':'قسم · ')+esc(display(b.s))+'</span><span class="subsign">'+esc(b.s.records.length===1?(b.s.records[0].role||statusName(a)):b.s.records.length+' موظف / أداة')+' ↗</span></button>';}).join('');
- $('#stalls').querySelectorAll('button').forEach((b,i)=>b.onclick=()=>details(boxes[i].s));
+ $('#offices').innerHTML=boxes.map(b=>{const a=b.s.records.find(a=>matches(a))||b.s.records[0]||{};const recs=b.s.records||[];const roleN=recs.filter(r=>r.role&&r.kind!=='tool').length;const toolN=recs.length-roleN;const sub=recs.length===1?(recs[0].role||statusName(a)):((roleN?roleN+' دور':'')+(roleN&&toolN?' · ':'')+(toolN?toolN+' أداة':(recs.length+' سجل')));return '<button class="office '+(dim?'dim':'')+'" style="left:'+b.x/W*100+'%;top:'+b.y/H*100+'%;width:'+b.w/W*100+'%;height:'+b.h/H*100+'%" data-key="'+esc(b.s.key)+'" aria-label="'+esc(display(b.s))+'"><span class="sign">'+dot(a)+(language==='en'?'Office · ':'مكتب · ')+esc(display(b.s))+'</span><span class="subsign">'+esc(sub)+' ↗</span></button>';}).join('');
+ $('#offices').querySelectorAll('button').forEach((b,i)=>b.onclick=()=>details(boxes[i].s));
 }
 function person(x,y,i,t,carry){
  x=Math.round(x);y=Math.round(y);const step=Math.sin(t/90+i)>0?2:0;
@@ -265,21 +264,26 @@ function person(x,y,i,t,carry){
  if(carry){rect(x+4,y+4,5,6,'#d4af37');rect(x+5,y+5,3,4,'#2a1450');} /* tablet · not market crate */
 }
 function frame(t){
- /* Purple UAE HQ floor — same compact pixel motion; not a souq. Decorative only. */
- rect(0,0,W,H,'#1e0f3a');for(let y=0;y<H;y+=8)for(let x=0;x<W;x+=12){rect(x+(y%16?6:0),y,11,1,'#2f1848');rect(x,y+1,1,7,'#352056');}
- rect(85,0,10,H,'#3b1f6b');for(let y=0;y<H;y+=8){rect(87,y,6,1,'#d4af37');rect(89,y+3,2,2,'#5B2C83');}
- boxes.forEach(b=>{const {x,y,w,h,i}=b;rect(x-2,y+3,w+4,h+4,'#241038');rect(x,y+4,w,h-3,'#3b1f6b');
- rect(x+2,y+13,w-4,Math.max(5,h-21),'#2a1450');
- for(let sy=17;sy<h-13;sy+=14){rect(x+3,y+sy+6,w-6,2,'#5B2C83');for(let k=0;k<Math.floor((w-8)/10);k++){const bx=x+5+k*10;rect(bx,y+sy,7,5,'#4a2a70');rect(bx+2,y+sy-2,3,2,'#7ec8ff');}}
- rect(x,y+h-10,w,7,'#352056');rect(x,y+h-10,w,2,'#d4af37');
- for(let k=0;k<10;k++){rect(x+k*w/10,y,w/10+1,12,k%2?'#4a2a70':colors[i%8]);}
- rect(x-1,y,1,h,'#d4af37');rect(x+w,y,1,h,'#d4af37');
- person(x+15+(Math.sin(t/500+i)*5),y+Math.min(h-22,27),i,t,false);
- const yy=y+h+1,xx=x+8+((t/50+i*17)%(w-20));person(xx,yy,i+4,t,true);
- if(Math.floor(t/1300+i)%5===0){rect(xx-2,yy-8,15,7,'#fff3d6');rect(xx+3,yy-1,2,2,'#fff3d6');rect(xx+1,yy-5,2,1,'#5B2C83');rect(xx+5,yy-5,2,1,'#5B2C83');}
+ /* Purple UAE company HQ — offices with desks/screens/doors. No awning stripes. */
+ rect(0,0,W,H,'#1a0e30');for(let y=0;y<H;y+=10)for(let x=0;x<W;x+=14){rect(x+(y%20?7:0),y,13,1,'#2a1644');}
+ rect(84,0,12,H,'#2f1848');for(let y=4;y<H;y+=10){rect(86,y,8,2,'#d4af37');rect(88,y+4,4,3,'#5B2C83');}
+ boxes.forEach(b=>{const {x,y,w,h,i}=b;
+  rect(x-1,y+2,w+2,h+3,'#1c0f2c');rect(x,y+3,w,h,'#34204e');
+  rect(x,y+3,w,8,'#4a2f68');rect(x,y+10,w,1,'#d4af37');
+  rect(x+2,y+12,w-4,Math.max(6,h-22),'#2a1450');
+  const deskY=y+Math.max(18,h-20);rect(x+4,deskY,w-8,5,'#5a3a2a');rect(x+5,deskY-2,w-10,2,'#7a5238');
+  rect(x+6,deskY-4,4,2,'#e8e8f4');rect(x+11,deskY-3,6,1,'#d4af37');
+  const mx=x+Math.floor(w/2)-6,my=deskY-12;rect(mx,my,12,8,'#1a2030');rect(mx+1,my+1,10,6,'#7ec8ff');rect(mx+5,my+8,2,3,'#3a2a48');
+  rect(x+w-10,y+h-16,7,14,'#5B2C83');rect(x+w-9,y+h-15,5,12,'#3b1f6b');rect(x+w-5,y+h-10,1,2,'#d4af37');
+  rect(x,y+3,1,h,'#d4af37');rect(x+w-1,y+3,1,h,'#d4af37');rect(x,y+h+2,w,1,'#00843D');
+  if(b.s.records&&b.s.records.length){
+   person(x+12+(Math.sin(t/480+i)*4),deskY-14,i,t,false);
+   const yy=y+h+1,xx=x+6+((t/55+i*19)%Math.max(8,w-18));person(xx,yy,i+4,t,true);
+   if(Math.floor(t/1400+i)%6===0){rect(xx-2,yy-8,14,7,'#fff3d6');rect(xx+3,yy-1,2,2,'#fff3d6');rect(xx+2,yy-5,2,1,'#5B2C83');rect(xx+6,yy-5,2,1,'#5B2C83');}
+  }
  });
- for(let i=0;i<3;i++)person(87+(i%2?1:-2),12+((t/70+i*H/3)%(Math.max(20,H-30))),i+7,t,i===0);
- rect(0,0,W,2,'#d4af37');for(let i=0;i<15;i++){const x=3+i*13,y=3+Math.round(Math.sin(i*.8+t/900));rect(x,y,3,4,i%3===0?'#C8102E':i%3===1?'#fff':'#00843D');rect(x+1,y+5,1,2,'#d4af37');}
+ for(let i=0;i<2;i++)person(88+(i%2?1:-1),10+((t/75+i*H/2)%(Math.max(18,H-28))),i+7,t,i===0);
+ rect(0,0,W,2,'#d4af37');for(let i=0;i<15;i++){const x=3+i*13,y=2+Math.round(Math.sin(i*.8+t/900));rect(x,y,3,4,i%3===0?'#C8102E':i%3===1?'#fff':'#00843D');rect(x+1,y+5,1,2,'#d4af37');}
  requestAnimationFrame(frame);
 }
 let resizeTimer;addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(render,80);});

@@ -1,0 +1,31 @@
+/* HMK rows layout — staged 2026-11-07. Layout only: removes card boxes, uses compact rows + thin dividers.
+   The moving HQ (.r-hq iframe / hq.html) is intentionally NOT targeted. */
+:root{--row-div:rgba(212,175,55,.18)}
+.restore-page .c,.restore-page .c.fill,.restore-page .c.kpi,.c,.r-summary,.r-body,.r-draft-status,.ns-topic,.ns-copy,.v19-context,.org-role,.tool,.integration{
+ background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+ border-bottom:1px solid var(--row-div)!important;padding:8px 2px!important;margin:0!important}
+.restore-page .c:last-child,.c:last-child{border-bottom-color:transparent!important}
+.kpi:before{display:none!important}
+.r-summary{line-height:1.8}
+.r-body{padding:6px 2px!important}
+.g4,.restore-page .g4{gap:0!important}
+.restore-page{gap:2px!important}
+.project-doc.row,.project-line{border:0;border-bottom:1px solid var(--row-div);border-radius:0;background:none}
+.r-tabs button,.restore-page .pgr button,.r-action{border-radius:0;background:none;border:0;border-bottom:2px solid transparent}
+.r-tabs button.on{background:none;color:var(--gold2);border-bottom-color:var(--gold)}
+.restore-page .pgr button,.r-action{border-bottom-color:rgba(212,175,55,.35)}
+/* fix 2026-11-07: let list areas use the free page height instead of the old 28vh/200px cap; scroll internally if longer */
+.restore-page .c.fill{flex:1 1 auto!important;min-height:0!important}
+.restore-page .c.fill .docs-scroll{max-height:none!important;flex:1 1 auto;min-height:0}
+/* fill-the-gaps rows (fill.js) */
+body[data-page=proj] .restore-page .c.fill{flex:0 0 auto!important}
+body[data-page=proj] .restore-page .c.fill .docs-scroll{flex:none}
+.fill-wrap{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.fill-sec{padding:2px 0 4px}
+.fill-h{font:700 12px Plex;color:var(--gold2);padding:6px 2px 4px;border-bottom:1px solid rgba(212,175,55,.35)}
+.fill-row{display:grid;grid-template-columns:1fr auto;grid-template-areas:"t d" "m m";gap:1px 8px;padding:6px 2px;border-bottom:1px solid var(--row-div);font:12px/1.5 Plex;color:var(--tx)}
+.fill-row b{grid-area:t;font-weight:600;overflow-wrap:anywhere}
+.fill-meta{grid-area:m;font-size:10.5px;color:var(--mu);overflow-wrap:anywhere}
+.fill-date{grid-area:d;font-size:10px;color:var(--mu);white-space:nowrap}
+.demo-label{flex:none;font:600 10.5px/1.6 Plex;color:#f6f0ff;border-bottom:1px dashed rgba(212,175,55,.45);padding:2px 2px 3px;opacity:.9}

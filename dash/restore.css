@@ -102,3 +102,35 @@ body[data-page=hq] .r-head{padding-bottom:2px}
 .r-tech summary{cursor:pointer;color:var(--gold2)}
 #qa-banner{font-size:11px;padding:6px 10px}
 .c.fill:has(#project-reports:empty),.c.fill:has(.docs-scroll:only-child){min-height:0}
+body[data-page=text] #pages{display:flex!important;flex-direction:column;overflow:hidden}
+body[data-page=text] .restore-page{flex:1 1 auto;height:auto;max-height:100%;min-height:0;overflow:hidden}
+body[data-page=text] .r-body{flex:1 1 auto;min-height:0;max-height:none;overflow:auto}
+.project-line b,.project-doc,.fill-row b,.menu-list b,.r-copy,.restore-page .row b{unicode-bidi:plaintext}
+button.project-line:active,button.project-doc:active,button.fill-row:active,.menu-list button:active,button.c:active{background:rgba(212,175,55,.12)!important}
+footer button{touch-action:manipulation}
+@media(max-width:700px){
+ :root{--hdr:56px;--navh:58px}
+ #qa-banner{font-size:13px;line-height:1.45}
+ body.restore header{height:auto;min-height:var(--hdr);padding-top:env(safe-area-inset-top)}
+ body.restore .logo small{font-size:12px!important}
+ #back{width:44px;height:44px;min-width:44px;font-size:20px}
+ footer#nav,body.restore footer{height:auto;min-height:var(--navh);padding-bottom:env(safe-area-inset-bottom)}
+ footer button{font-size:12px;line-height:1.15;min-height:48px;padding:6px 2px}
+ footer button em{font-size:18px}
+ footer button span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .restore-page .ph h2{font-size:20px}
+ .restore-page .c>p,.r-copy{font-size:15px;line-height:1.75}
+ .restore-page .mu{font-size:12px}
+ .r-policy{font-size:11px}
+ .kpi .l{font-size:12px}
+ .menu-list button{min-height:48px;font-size:15px}
+ .menu-list button small{font-size:12px}
+ .project-line{flex-wrap:wrap;row-gap:3px;min-height:48px;padding:10px 2px}
+ .project-line b{flex:1 1 calc(100% - 32px);font-size:15px}
+ .project-doc{min-height:48px;font-size:14px;align-items:flex-start}
+ .project-doc .chip{font-size:11px!important}
+ .project-doc .num{white-space:normal;max-width:46%;line-height:1.35;text-align:end}
+ .restore-page .pgr button,.r-action{min-height:44px;min-width:44px;font-size:14px;padding:8px 14px}
+ .project-actions button{min-height:44px;font-size:13px}
+ .fill-date{white-space:normal;text-align:end;max-width:42%}
+}

@@ -29,3 +29,5 @@ body[data-page=proj] .restore-page .c.fill .docs-scroll{flex:none}
 .fill-meta{grid-area:m;font-size:10.5px;color:var(--mu);overflow-wrap:anywhere}
 .fill-date{grid-area:d;font-size:10px;color:var(--mu);white-space:nowrap}
 .demo-label{flex:none;font:600 10.5px/1.6 Plex;color:#f6f0ff;border-bottom:1px dashed rgba(212,175,55,.45);padding:2px 2px 3px;opacity:.9}
+button.fill-row{appearance:none;-webkit-appearance:none;width:100%;margin:0;text-align:start;color:var(--tx);background:transparent;border:0;border-bottom:1px solid var(--row-div);border-radius:0;box-shadow:none;cursor:pointer;font:12px/1.5 Plex;min-height:44px;touch-action:manipulation}
+button.fill-row b{font-weight:600}

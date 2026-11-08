@@ -85,6 +85,13 @@ public class MainActivity extends Activity {
             public void onPageFinished(WebView view, String url) {
                 if (url != null && url.startsWith("https://" + HOST + "/assets/public/index.html")) {
                     view.evaluateJavascript(EXPORT_HOOK, null);
+                    view.evaluateJavascript(
+                        "(function(){if(document.getElementById('hmk-polish'))return;"
+                            + "var s=document.createElement('script');s.id='hmk-polish';"
+                            + "s.src='https://" + HOST + "/assets/hmk-polish.js';"
+                            + "document.documentElement.appendChild(s);})();",
+                        null
+                    );
                 }
             }
         });
@@ -161,17 +168,32 @@ public class MainActivity extends Activity {
         private void writeDownloads(String safe, String body) {
             try {
                 var resolver = getContentResolver();
-                resolver.delete(
-                    MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                Uri collection = Build.VERSION.SDK_INT >= 29
+                    ? MediaStore.Downloads.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
+                    : MediaStore.Downloads.EXTERNAL_CONTENT_URI;
+                android.database.Cursor existing = resolver.query(
+                    collection,
+                    new String[]{MediaStore.MediaColumns._ID},
                     MediaStore.MediaColumns.DISPLAY_NAME + "=?",
-                    new String[]{safe}
+                    new String[]{safe},
+                    null
                 );
+                if (existing != null) {
+                    while (existing.moveToNext()) {
+                        resolver.delete(
+                            android.content.ContentUris.withAppendedId(collection, existing.getLong(0)),
+                            null,
+                            null
+                        );
+                    }
+                    existing.close();
+                }
                 ContentValues values = new ContentValues();
                 values.put(MediaStore.MediaColumns.DISPLAY_NAME, safe);
                 values.put(MediaStore.MediaColumns.MIME_TYPE, "application/json");
                 values.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
                 values.put(MediaStore.MediaColumns.IS_PENDING, 1);
-                Uri uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+                Uri uri = resolver.insert(collection, values);
                 if (uri == null) {
                     Log.w(TAG, "Download insert failed");
                     return;

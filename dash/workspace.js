@@ -2,6 +2,7 @@
 (function(){
 'use strict';
 const KEY='hmk_workspace_v1';
+const DRAFT_KEY='hmk_idea_draft_v1';
 const PSTAT={wait:'ينتظر',go:'جارٍ',hold:'متوقف',done:'تم'};
 const TSTAT={open:'مفتوحة',doing:'قيد العمل',done:'تمت'};
 const MAX_P=50,MAX_T=100,MAX_NAME=120,MAX_NEXT=400,MAX_FILE=200000;
@@ -76,18 +77,80 @@ function el(tag,cls,text){
   if(text!=null)n.textContent=text;
   return n;
 }
-function field(label,value,oninput,multiline){
+function field(label,value,oninput,multiline,max){
   const lab=el('label','ws-label',label);
   const input=document.createElement(multiline?'textarea':'input');
   input.className='ws-field';
   input.dir='auto';
-  input.maxLength=multiline?MAX_NEXT:MAX_NAME;
+  input.maxLength=max||(multiline?MAX_NEXT:MAX_NAME);
   input.value=value||'';
   input.autocomplete='off';
   if(multiline)input.rows=2;
   lab.append(input);
   input.addEventListener('input',()=>oninput(input.value));
   return lab;
+}
+function blankDraft(){return {version:1,idea:'',goal:'',steps:['','',''],task:'',ready:false};}
+function templateFrom(idea){
+  const text=clean(idea,MAX_NAME);
+  return {version:1,idea:text,ready:true,
+    goal:clean('هدف مقترح: إنجاز «'+text+'» محلياً بعد مراجعتك.',MAX_NEXT),
+    steps:[
+      clean('حدّد متى تُعد «'+text+'» منتهية.',200),
+      clean('اكتب أول عمل يمكنك فعله بنفسك دون إرسال أو دفع.',200),
+      clean('راجع هذا القالب وعدّله قبل الاعتماد.',200)
+    ],
+    task:clean('أول مهمة: تحديد نتيجة «'+text+'»',MAX_NAME)};
+}
+function loadDraft(){
+  try{
+    const raw=localStorage.getItem(DRAFT_KEY);
+    if(!raw)return blankDraft();
+    const o=JSON.parse(raw);
+    if(!o||o.version!==1||typeof o!=='object')return blankDraft();
+    return {version:1,idea:clean(o.idea||'',MAX_NAME),goal:clean(o.goal||'',MAX_NEXT),
+      steps:[0,1,2].map(i=>clean((o.steps||[])[i]||'',200)),task:clean(o.task||'',MAX_NAME),ready:o.ready===true};
+  }catch(e){return blankDraft();}
+}
+function saveDraft(d){
+  try{localStorage.setItem(DRAFT_KEY,JSON.stringify({version:1,idea:clean(d.idea,MAX_NAME),goal:clean(d.goal,MAX_NEXT),steps:(d.steps||['','','']).slice(0,3).map(s=>clean(s,200)),task:clean(d.task,MAX_NAME),ready:d.ready===true}));}
+  catch(e){storageError='تعذر حفظ المسودة على هذا الجهاز.';}
+}
+function showIdea(pg,data){
+  const draft=loadDraft();
+  pg.append(el('div','ws-label','من فكرة إلى مسودة'));
+  pg.append(el('div','ws-limit','قالب أولي قابل للتعديل. يُركَّب بقواعد ثابتة داخل الصفحة، وليس تحليلاً ذكياً ولا اتصالاً. لا مشروع ولا مهمة قبل تأكيدك، ولا تنفيذ أو إرسال.'));
+  pg.append(field('الفكرة',draft.idea,v=>{draft.idea=v;saveDraft(draft);},true,MAX_NAME));
+  pg.append(actions([['إعداد قالب أولي',()=>{
+    const idea=clean(draft.idea,MAX_NAME);
+    if(!idea){notice='اكتب الفكرة أولاً.';redraw();return;}
+    saveDraft(templateFrom(idea));
+    pending=null; notice='أُعدّ قالب أولي. لم يُنشأ مشروع.'; redraw();
+  },'ws-draft']]));
+  if(!draft.ready)return;
+  if(pending&&pending.type==='adopt'){
+    pg.append(el('div','ws-note','اعتماد هذا القالب ينشئ مشروعاً ومهمة في مساحتك بعد تعديلك. لن يُرسل شيء ولن يُنفَّذ أمر.'));
+    pg.append(actions([['تأكيد الإنشاء',()=>{
+      const d=loadDraft();
+      const name=clean(d.idea,MAX_NAME), goal=clean(d.goal,MAX_NEXT), task=clean(d.task,MAX_NAME);
+      if(!name||!goal||!task){pending=null;notice='أكمل الفكرة والهدف والمهمة قبل التأكيد. لم يُنشأ شيء.';redraw();return;}
+      if(data.projects.length>=MAX_P){pending=null;notice='بلغت حد المشاريع. لم يُنشأ شيء.';redraw();return;}
+      const step=clean((d.steps||[]).filter(Boolean).join(' · '),MAX_NEXT);
+      data.projects.push({id:uid('p_'),name:name,status:'wait',next:goal,tasks:[{id:uid('t_'),title:task,status:'open',next:step}]});
+      pending=null;
+      notice=write(data)?'أُنشئ المشروع بعد تأكيدك. المسودة تبقى على هذا الجهاز. لا تنفيذ تلقائي.':'';
+      redraw();
+    },'ws-adopt-yes'],['إلغاء',()=>{pending=null;notice='أُلغي الاعتماد. المشاريع كما هي، والمسودة ما زالت محفوظة هنا.';redraw();},'ws-adopt-no']]));
+    return;
+  }
+  pg.append(field('الهدف المقترح',draft.goal,v=>{draft.goal=v;draft.ready=true;saveDraft(draft);},true));
+  draft.steps.forEach((s,i)=>pg.append(field('خطوة '+(i+1),s,v=>{draft.steps[i]=v;draft.ready=true;saveDraft(draft);},false,200)));
+  pg.append(field('أول مهمة',draft.task,v=>{draft.task=v;draft.ready=true;saveDraft(draft);}));
+  pg.append(actions([['اعتماد القالب كمشروع',()=>{
+    const d=loadDraft();
+    if(!clean(d.idea,MAX_NAME)||!clean(d.goal,MAX_NEXT)||!clean(d.task,MAX_NAME)){notice='أكمل القالب قبل الاعتماد. لم يُنشأ شيء.';redraw();return;}
+    pending={type:'adopt'}; notice=''; redraw();
+  },'ws-adopt']]));
 }
 function statusRow(map,current,onset){
   const row=el('div','r-tabs');
@@ -127,6 +190,8 @@ function showList(pg,data){
     pg.append(actions([['استبدال',()=>{const next=pending.data;pending=null;if(write(next))notice='استُبدلت المساحة بالملف.';redraw();}],['إلغاء',()=>{pending=null;notice='أُلغي الاستبدال. البيانات المحفوظة كما هي.';redraw();}]]));
     return;
   }
+  showIdea(pg,data);
+  if(pending&&pending.type==='adopt')return;
   if(!data.projects.length)pg.append(el('div','ws-note','المساحة فارغة. أضف مشروعاً عندما تريد. لا توجد مشاريع جاهزة هنا.'));
   if(pending&&pending.type==='add'){
     const draft=pending.draft;

@@ -108,10 +108,15 @@ body[data-page=text] .r-body{flex:1 1 auto;min-height:0;max-height:none;overflow
 .project-line b,.project-doc,.fill-row b,.menu-list b,.r-copy,.restore-page .row b{unicode-bidi:plaintext}
 button.project-line:active,button.project-doc:active,button.fill-row:active,.menu-list button:active,button.c:active{background:rgba(212,175,55,.12)!important}
 footer button{touch-action:manipulation}
+#mode{display:flex;gap:2px;margin-inline-start:auto;flex:none}
+#mode button{background:none;border:0;border-bottom:2px solid transparent;color:var(--mu);font:600 13px Plex,system-ui;min-height:40px;padding:6px 8px;cursor:pointer;touch-action:manipulation}
+#mode button.on{color:var(--gold2);border-bottom-color:var(--gold)}
 @media(max-width:700px){
  :root{--hdr:56px;--navh:58px}
  #qa-banner{font-size:13px;line-height:1.45}
- body.restore header{height:auto;min-height:var(--hdr);padding-top:env(safe-area-inset-top)}
+ body.restore header{height:auto;min-height:var(--hdr);padding-top:env(safe-area-inset-top);flex-wrap:wrap}
+ #mode{width:100%;justify-content:flex-start}
+ #mode button{min-height:44px;font-size:14px}
  body.restore .logo small{font-size:12px!important}
  #back{width:44px;height:44px;min-width:44px;font-size:20px}
  footer#nav,body.restore footer{height:auto;min-height:var(--navh);padding-bottom:env(safe-area-inset-bottom)}
@@ -130,7 +135,7 @@ footer button{touch-action:manipulation}
  .project-doc{min-height:48px;font-size:14px;align-items:flex-start}
  .project-doc .chip{font-size:11px!important}
  .project-doc .num{white-space:normal;max-width:46%;line-height:1.35;text-align:end}
- .restore-page .pgr button,.r-action{min-height:44px;min-width:44px;font-size:14px;padding:8px 14px}
+ .restore-page .pgr button,.r-action,.restore-page .r-tabs button{min-height:44px;min-width:44px;font-size:14px;padding:8px 14px}
  .project-actions button{min-height:44px;font-size:13px}
  .fill-date{white-space:normal;text-align:end;max-width:42%}
 }

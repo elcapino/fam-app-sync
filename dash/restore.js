@@ -132,6 +132,7 @@ function rHqPayload(){
 }
 
 function rNavId(){
+  if(RESTORE.route==='ws'||RESTORE.route==='wsProject')return '';
   if(['sum','hq','proj','ai','spend'].includes(RESTORE.route))return RESTORE.route;
   if(RESTORE.route==='project'||RESTORE.route==='reports')return 'proj';
   if(RESTORE.route==='text'){
@@ -145,8 +146,8 @@ function rNavId(){
 }
 
 function rDraw(){if(!D)return;HMKRegistry.buildRegistry(D.docs||[]);document.body.className='restore';document.body.dataset.page=RESTORE.route;document.documentElement.dir='rtl';if(typeof L!=='undefined')L='ar';
- const upd=$('#upd');if(upd)upd.textContent=D.__qaFixture?'بيانات تجريبية · العين':'العين · الإمارات · سجل محفوظ';
- const back=$('#back');if(back){back.hidden=['hq','sum','proj','ai','spend'].includes(RESTORE.route);back.setAttribute('aria-label','رجوع');back.onclick=rBack;}
+ const upd=$('#upd');if(upd)upd.textContent=(RESTORE.route==='ws'||RESTORE.route==='wsProject')?'مساحة محلية · بلا مزامنة':(D.__qaFixture?'بيانات تجريبية · العين':'العين · الإمارات · سجل محفوظ');
+ const back=$('#back');if(back){back.hidden=['hq','sum','proj','ai','spend','ws'].includes(RESTORE.route);back.setAttribute('aria-label','رجوع');back.onclick=rBack;}
  const mainOn=rNavId();
  const nav=$('#nav');
  nav.innerHTML=R_NAV.map(([id,t,icon])=>`<button type="button" data-r-nav="${id}" class="${mainOn===id?'on':''}" aria-current="${mainOn===id?'page':'false'}"><em aria-hidden="true">${icon}</em><span>${t}</span></button>`).join('');
@@ -164,7 +165,9 @@ function rDraw(){if(!D)return;HMKRegistry.buildRegistry(D.docs||[]);document.bod
  else if(RESTORE.route==='events')rEvents(pg);
  else if(RESTORE.route==='command')rCommand(pg);
  else if(['admin','team','ecosystem','existing'].includes(RESTORE.route))rAdmin(pg);
+ else if(RESTORE.route==='ws'||RESTORE.route==='wsProject'){if(typeof hmkWsDraw==='function')hmkWsDraw(pg);else rOpen('hq');}
  else rOpen('hq');
+ if(typeof hmkWsChrome==='function')hmkWsChrome();
 }
 
 function rHq(pg){

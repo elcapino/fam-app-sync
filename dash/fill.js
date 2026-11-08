@@ -63,7 +63,7 @@
  }
  const PAGED={daily:fillDaily,events:fillEvents,ecosystem:fillEcosystem,existing:fillExisting};
  const MAP={proj:fillProj,sum:fillSum};
- function demoLabel(){const pg=document.querySelector('#pages .restore-page');if(!pg||pg.querySelector('.demo-label'))return;
+ function demoLabel(){if(String(document.body.dataset.page||'').indexOf('ws')===0)return;const pg=document.querySelector('#pages .restore-page');if(!pg||pg.querySelector('.demo-label'))return;
   const l=document.createElement('div');l.className='demo-label';l.textContent='معاينة تجريبية — بيانات غير حقيقية';
   const h=pg.querySelector('.ph,.r-head');h?h.after(l):pg.prepend(l);}
  function apply(){

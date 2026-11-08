@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>HMK · مقر الشركة الذكي · العين</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -147,6 +147,8 @@ html,body{width:100%;overflow:hidden}
 (function(){
 "use strict";
 const $=s=>document.querySelector(s);
+function msgOrigin(){return location.protocol==='file:'?'*':location.origin;}
+function sameOrigin(origin){return origin===location.origin||(location.protocol==='file:'&&(origin==='null'||origin===''));}
 const FALLBACK={generated:null,rooms:[],agents:[],ceo_id:"ceo",brief:{date:"",your_part:[],needs_you:[]},meeting:{week:"",broke:[],wins:[]},skills:[]};
 let D=null,gotMsg=false;
 let NEWS=[],newsIdx=0,newsPaused=false,newsTimer=null,freezeT=0,pausedFrameDrawn=false;
@@ -165,10 +167,10 @@ function setData(d,news){
 }
 function emitHqState(){
   const panel=$('#panel');
-  try{parent.postMessage({hqState:{tab,newsIdx,query,filter:filt,scrollTop:(document.scrollingElement||document.documentElement).scrollTop||0,panelScroll:panel?panel.scrollTop:0,paused:newsPaused}},location.origin);}catch(e){}
+  try{parent.postMessage({hqState:{tab,newsIdx,query,filter:filt,scrollTop:(document.scrollingElement||document.documentElement).scrollTop||0,panelScroll:panel?panel.scrollTop:0,paused:newsPaused}},msgOrigin());}catch(e){}
 }
 window.addEventListener('message',e=>{
-  if(e.origin!==location.origin||e.source!==parent||!e.data)return;
+  if(!sameOrigin(e.origin)||e.source!==parent||!e.data)return;
   if(e.data.hqRestore){
     const r=e.data.hqRestore;
     if(r.tab){tab=r.tab;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x.dataset.t===tab));}
@@ -185,13 +187,13 @@ window.addEventListener('message',e=>{
     applyScroll();
     requestAnimationFrame(()=>{applyScroll(); setTimeout(applyScroll,40);});
     emitHqState();
-    try{parent.postMessage({hqRestoreAck:true,applied:{tab,newsIdx,query,filter:filt,panelScroll:($('#panel')&&$('#panel').scrollTop)||0}},location.origin);}catch(err){}
+    try{parent.postMessage({hqRestoreAck:true,applied:{tab,newsIdx,query,filter:filt,panelScroll:($('#panel')&&$('#panel').scrollTop)||0}},msgOrigin());}catch(err){}
     return;
   }
   if(!e.data.hq)return;
   gotMsg=true;setData(e.data.hq,e.data.news);emitHqState();
 });
-try{parent.postMessage({hqReady:true},location.origin);}catch(e){}
+try{parent.postMessage({hqReady:true},msgOrigin());}catch(e){}
 /* No offline fake HQ roster. Wait for parent feed. */
 
 /* ---------- utils ---------- */
@@ -264,7 +266,7 @@ function newsStep(d){if(!NEWS.length)return;newsIdx=(newsIdx+d+NEWS.length)%NEWS
 function newsTick(){if(newsPaused||NEWS.length<2)return;newsStep(1);}
 function armNews(){clearInterval(newsTimer);newsTimer=setInterval(newsTick,7000);}
 function renderNews(){paintNews();armNews();}
-function openNews(){const n=newsItem();if(!n)return;try{parent.postMessage({hqOpen:n},location.origin);}catch(e){}}
+function openNews(){const n=newsItem();if(!n)return;try{parent.postMessage({hqOpen:n},msgOrigin());}catch(e){}}
 (function bindNews(){
   const body=$('#news-body'),pause=$('#news-pause'),prev=$('#news-prev'),next=$('#news-next');
   if(!body)return;
@@ -368,7 +370,7 @@ function openRoomSheet(rm){
   if(/^(agency|fahem|drop|market|ideas|house|elcapino|ops|dev|trading|research|shopify)$/.test(rm.id))h+='<button type="button" class="li tap" id="room-open" style="width:100%;margin-top:8px">فتح سجل المشروع</button>';
   openSheet(h);bindRows();
   const go=sb.querySelector('#room-open');
-  if(go)go.addEventListener('click',()=>{vib();try{parent.postMessage({hqRoom:rm.id,hqRoomName:rm.name},location.origin);}catch(e){}});
+  if(go)go.addEventListener('click',()=>{vib();try{parent.postMessage({hqRoom:rm.id,hqRoomName:rm.name},msgOrigin());}catch(e){}});
 }
 
 /* ---------- office canvas ---------- */

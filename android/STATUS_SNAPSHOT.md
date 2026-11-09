@@ -1,6 +1,8 @@
 # HMK local status snapshot
 
-The Android command center reads one JSON object. It does not fetch news or any other service. The bundled file `app/src/main/assets/status-snapshot.sample.json` is a labelled sample (`"sample": true`). A file chosen in the system document picker replaces only this snapshot, after confirmation. It never writes `hmk_workspace_v1`.
+The Android command center reads one JSON object. It does not fetch news or any other service. The bundled file `app/src/main/assets/status-snapshot.sample.json` is the local snapshot dated 2026-11-09 07:40 Asia/Dubai (`"sample": false`). A file chosen in the system document picker replaces only this snapshot, after confirmation. It never writes `hmk_workspace_v1`.
+
+On a first launch, with no saved workspace, the shell seeds the projects named in that snapshot into `hmk_workspace_v1`. Those rows are editable and deletable, and each is marked from the CEO snapshot. A later empty workspace is not refilled.
 
 Storage key: `hmk_status_snapshot_v1`.
 

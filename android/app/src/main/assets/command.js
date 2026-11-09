@@ -4,18 +4,53 @@
   var DRAFT_KEY = "hmk_idea_draft_v1";
   var SNAP_KEY = "hmk_status_snapshot_v1";
   var MAX_P = 50, MAX_T = 100, MAX_NAME = 120, MAX_NEXT = 400, MAX_FILE = 200000, MAX_ITEMS = 50;
-  var PSTAT = { wait: "ينتظر", go: "جارٍ", hold: "متوقف", done: "تم" };
+  var PSTAT = { wait: "بالانتظار", go: "قيد العمل", hold: "متعثر", done: "منجز" };
   var TSTAT = { open: "مفتوحة", doing: "قيد العمل", done: "تمت" };
-  var TOOL = { running: "يعمل", idle: "خامل", stopped: "متوقف" };
+  var TOOL = { running: "شغّال", idle: "جاهز", stopped: "موقوف", hold: "مقفل" };
+  var PATHS = {
+    house: "M4 11 12 4l8 7v9H4z M10 20v-5h4v5",
+    store: "M3 9h18l-2-5H5z M4 9v11h16V9 M9 20v-6h6v6",
+    chart: "M4 19h16 M7 16V10 M12 16V6 M17 16v-4",
+    mosque: "M12 2c2 3 3 5 3 7a3 3 0 0 1-6 0c0-2 1-4 3-7z M3 21V12h18v9 M9 21v-4h6v4 M6 8V4",
+    bag: "M7 8h10v12H7z M9 8V6a3 3 0 0 1 6 0v2",
+    news: "M5 4h10v16H5z M8 8h4 M8 12h4 M16 7h3v13h-4",
+    robot: "M9 3h6v3H9z M5 8h14v11H5z M9 13h.01 M15 13h.01 M8 19v2 M16 19v2",
+    phone: "M8 2h8a1 1 0 0 1 1 1v18H7V3a1 1 0 0 1 1-1z M11 18h2",
+    laptop: "M4 5h16v10H4z M2 18h20l-2-3H4z",
+    book: "M4 5c2-1 6-1 8 1 2-2 6-2 8-1v14c-2-1-6-1-8 1-2-2-6-2-8-1z",
+    play: "M8 5v14l12-7z",
+    crown: "M3 8l4 4 5-7 5 7 4-4-2 11H5z",
+    cloud: "M7 18h10a4 4 0 0 0 .4-8 5 5 0 0 0-9.6-1.2A3.5 3.5 0 0 0 7 18z",
+    gem: "M3 9h18l-9 12z M3 9l4-5h10l4 5 M8 9l4 12 4-12",
+    spark: "M12 2l1.8 6.2H20l-5 3.8 1.9 6L12 15.2 7.1 18l1.9-6-5-3.8h6.2z",
+    note: "M6 3h8l4 4v14H6z M14 3v5h5",
+    link: "M10 13a4 4 0 0 0 6 0l2-2a4 4 0 0 0-6-6l-1 1 M14 11a4 4 0 0 0-6 0l-2 2a4 4 0 0 0 6 6l1-1",
+    lock: "M8 11V8a4 4 0 0 1 8 0v3 M6 11h12v9H6z",
+    pause: "M7 5h3v14H7z M14 5h3v14h-3z",
+    flag: "M5 3v18 M5 4h11l-2 4 2 4H5"
+  };
   var tab = "home";
   var detail = null;
   var ideaOpen = false;
+  var addOpen = false;
   var pending = null;
   var pages = document.getElementById("pages");
   var title = document.getElementById("title");
   var back = document.getElementById("back");
   var ask = document.getElementById("ask");
   var snap = null;
+  var SEED = [
+    { id: "p_house01", name: "بيت حمد", status: "go", next: "قرار إنارة KNX/DALI · 4 قرارات معلّقة", progress: 12, icon: "house", from: "snapshot", tasks: [] },
+    { id: "p_hmkdash", name: "HMK", status: "go", next: "إعادة التصميم المدمج وتسليم النسخة التشخيصية", icon: "crown", from: "snapshot", tasks: [] },
+    { id: "p_islamapp", name: "التطبيق الإسلامي", status: "wait", next: "مراجعة النموذج v0.3.2 · لا نشر", icon: "mosque", from: "snapshot", tasks: [] },
+    { id: "p_laithlib", name: "مكتبة ليث", status: "wait", next: "تحقق الحقوق قبل أي توسيع", icon: "book", from: "snapshot", tasks: [] },
+    { id: "p_sanaaclip", name: "السنع", status: "wait", next: "مقطع واحد جاهز · الباقي ينتظر", icon: "play", from: "snapshot", tasks: [] },
+    { id: "p_studykid", name: "دراسة العيال", status: "go", next: "روتين يومي محلي · بلا بيانات خام", icon: "bag", from: "snapshot", tasks: [] },
+    { id: "p_shopifyx", name: "متجر Shopify", status: "wait", next: "بانتظار قرار التسعير ومصدر المنتجات", icon: "store", from: "snapshot", tasks: [] },
+    { id: "p_markets1", name: "الأسواق", status: "wait", next: "التداول الورقي موقوف · لا مراكز مفتوحة", icon: "chart", from: "snapshot", tasks: [] },
+    { id: "p_fahembot", name: "فاهم", status: "done", next: "البوت يعمل محلياً", icon: "robot", from: "snapshot", tasks: [] },
+    { id: "p_newsroom", name: "البحث والأخبار", status: "go", next: "موجزات UAE Intel بانتظار نقل الملكية", icon: "news", from: "snapshot", tasks: [] }
+  ];
 
   function rid(prefix) {
     var s = prefix + "_";
@@ -32,7 +67,15 @@
     return t && typeof t === "object" && /^t_[a-z0-9]{4,24}$/.test(t.id) && typeof t.title === "string" && t.title.length <= MAX_NAME && TSTAT[t.status] && typeof t.next === "string" && t.next.length <= MAX_NEXT;
   }
   function validProject(p) {
-    return p && typeof p === "object" && /^p_[a-z0-9]{4,24}$/.test(p.id) && typeof p.name === "string" && p.name.length <= MAX_NAME && PSTAT[p.status] && typeof p.next === "string" && p.next.length <= MAX_NEXT && Array.isArray(p.tasks) && p.tasks.length <= MAX_T && p.tasks.every(validTask);
+    if (!p || typeof p !== "object") return false;
+    if (!/^p_[a-z0-9]{4,24}$/.test(p.id)) return false;
+    if (typeof p.name !== "string" || p.name.length > MAX_NAME || !PSTAT[p.status]) return false;
+    if (typeof p.next !== "string" || p.next.length > MAX_NEXT) return false;
+    if (!Array.isArray(p.tasks) || p.tasks.length > MAX_T || !p.tasks.every(validTask)) return false;
+    if (p.progress != null && (typeof p.progress !== "number" || p.progress < 0 || p.progress > 100)) return false;
+    if (p.icon != null && (typeof p.icon !== "string" || !PATHS[p.icon])) return false;
+    if (p.from != null && p.from !== "snapshot") return false;
+    return true;
   }
   function readWs() {
     var d = readJson(WS_KEY);
@@ -40,12 +83,25 @@
     return d;
   }
   function writeWs(d) { localStorage.setItem(WS_KEY, JSON.stringify(d)); }
+  function ensureSeed() {
+    var flag = "hmk_seeded_20261109";
+    if (localStorage.getItem(flag)) return;
+    var data = readWs();
+    var names = {};
+    data.projects.forEach(function (p) { names[p.name] = true; });
+    SEED.forEach(function (p) {
+      if (!names[p.name] && data.projects.length < MAX_P) data.projects.push(JSON.parse(JSON.stringify(p)));
+    });
+    writeWs(data);
+    localStorage.setItem(flag, "1");
+  }
   function readDraft() {
     var d = readJson(DRAFT_KEY);
     if (!d || d.version !== 1 || typeof d.idea !== "string") return null;
     return d;
   }
   function strList(v) {
+    if (v == null) return [];
     if (!Array.isArray(v) || v.length > MAX_ITEMS) return null;
     var out = [];
     for (var i = 0; i < v.length; i++) {
@@ -54,37 +110,53 @@
     }
     return out;
   }
+  function optStr(v, n) {
+    if (v == null || v === "") return "";
+    if (typeof v !== "string" || v.length > n) return null;
+    return v;
+  }
   function validSnap(d) {
-    if (!d || typeof d !== "object" || typeof d.generatedAt !== "string" || d.generatedAt.length > 80) return null;
+    if (!d || typeof d !== "object" || typeof d.generatedAt !== "string" || !d.generatedAt || d.generatedAt.length > 80) return null;
     var ceo = strList(d.ceoNow), happened = strList(d.happened), now = strList(d.now), next = strList(d.next), ideas = strList(d.ideas), programs = strList(d.programs);
     if (!ceo || !happened || !now || !next || !ideas || !programs) return null;
     if (!Array.isArray(d.tools) || d.tools.length > MAX_ITEMS) return null;
     if (!Array.isArray(d.computers) || d.computers.length > MAX_ITEMS) return null;
     if (!Array.isArray(d.brief) || d.brief.length > MAX_ITEMS) return null;
-    var tools = [], computers = [], brief = [];
+    var tools = [], computers = [], brief = [], team = [];
     for (var i = 0; i < d.tools.length; i++) {
       var t = d.tools[i];
       if (!t || typeof t.name !== "string" || typeof t.state !== "string" || typeof t.lastRun !== "string") return null;
-      if (t.name.length > MAX_NAME || t.state.length > 40 || t.lastRun.length > 80) return null;
-      tools.push({ name: t.name, state: t.state, lastRun: t.lastRun });
+      if (!t.name || t.name.length > MAX_NAME || t.state.length > 40 || t.lastRun.length > 80) return null;
+      var cost = optStr(t.cost, 40), icon = optStr(t.icon, 16);
+      if (cost == null || icon == null) return null;
+      tools.push({ name: t.name, state: t.state, lastRun: t.lastRun, cost: cost, icon: PATHS[icon] ? icon : "spark" });
     }
     for (var c = 0; c < d.computers.length; c++) {
       var m = d.computers[c];
       if (!m || typeof m.name !== "string" || typeof m.online !== "boolean" || typeof m.lastSeen !== "string") return null;
-      if (m.name.length > MAX_NAME || m.lastSeen.length > 80) return null;
+      if (!m.name || m.name.length > MAX_NAME || m.lastSeen.length > 80) return null;
       computers.push({ name: m.name, online: m.online, lastSeen: m.lastSeen });
     }
     for (var b = 0; b < d.brief.length; b++) {
       var r = d.brief[b];
       if (!r || typeof r.title !== "string" || typeof r.source !== "string" || typeof r.url !== "string" || typeof r.date !== "string") return null;
-      if (r.title.length > MAX_NEXT || r.source.length > MAX_NAME || r.url.length > MAX_NEXT || r.date.length > 40) return null;
+      if (!r.title || r.title.length > MAX_NEXT || r.source.length > MAX_NAME || r.url.length > MAX_NEXT || r.date.length > 40) return null;
       brief.push({ title: r.title, source: r.source, url: r.url, date: r.date });
     }
-    return { sample: d.sample === true, generatedAt: d.generatedAt, ceoNow: ceo, tools: tools, computers: computers, brief: brief, happened: happened, now: now, next: next, ideas: ideas, programs: programs };
+    var rawTeam = d.team == null ? [] : d.team;
+    if (!Array.isArray(rawTeam) || rawTeam.length > MAX_ITEMS) return null;
+    for (var k = 0; k < rawTeam.length; k++) {
+      var member = rawTeam[k];
+      if (!member || typeof member.name !== "string" || typeof member.role !== "string") return null;
+      if (!member.name || member.name.length > MAX_NAME || member.role.length > MAX_NAME) return null;
+      var mic = optStr(member.icon, 16);
+      if (mic == null) return null;
+      team.push({ name: member.name, role: member.role, icon: PATHS[mic] ? mic : "crown" });
+    }
+    return { sample: d.sample === true, generatedAt: d.generatedAt, ceoNow: ceo, tools: tools, computers: computers, brief: brief, happened: happened, now: now, next: next, ideas: ideas, programs: programs, team: team };
   }
-  function readSnap() {
-    var stored = validSnap(readJson(SNAP_KEY));
-    return stored;
+  function blankSnap() {
+    return { sample: true, generatedAt: "", ceoNow: [], tools: [], computers: [], brief: [], happened: [], now: [], next: [], ideas: [], programs: [], team: [] };
   }
   function loadSample(done) {
     var req = new XMLHttpRequest();
@@ -98,14 +170,11 @@
     req.onerror = function () { snap = blankSnap(); done(); };
     req.send();
   }
-  function blankSnap() {
-    return { sample: true, generatedAt: "", ceoNow: [], tools: [], computers: [], brief: [], happened: [], now: [], next: [], ideas: [], programs: [] };
-  }
   function when(iso) {
-    if (!iso) return "بدون وقت";
+    if (!iso) return "";
     var d = new Date(iso);
     if (isNaN(d.getTime())) return iso;
-    try { return new Intl.DateTimeFormat("ar-AE", { timeZone: "Asia/Dubai", year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false }).format(d); }
+    try { return new Intl.DateTimeFormat("ar-AE", { timeZone: "Asia/Dubai", day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit", hour12: false }).format(d); }
     catch (e) { return iso; }
   }
   function h(tag, cls, text) {
@@ -114,12 +183,15 @@
     if (text != null) n.textContent = text;
     return n;
   }
-  function icon() {
+  function icon(kind) {
     var s = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     s.setAttribute("viewBox", "0 0 24 24");
     s.setAttribute("class", "ic");
+    s.setAttribute("fill", "none");
+    s.setAttribute("stroke", "currentColor");
+    s.setAttribute("stroke-width", "1.6");
     var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    p.setAttribute("d", "M12 3l2.2 6.4H21l-5.4 4 2 6.6L12 16.8 6.4 20l2-6.6L3 9.4h6.8z");
+    p.setAttribute("d", PATHS[kind] || PATHS.spark);
     s.appendChild(p);
     return s;
   }
@@ -130,10 +202,8 @@
     box.appendChild(head);
     return box;
   }
-  function emptyLine(box) { box.appendChild(h("p", "empty", "لا عناصر في اللقطة")); }
   function chip(state, label) {
-    var c = h("span", "chip " + state, label || TOOL[state] || state);
-    return c;
+    return h("span", "chip " + state, label || TOOL[state] || state);
   }
   function note(text) {
     var n = h("p", "note", text);
@@ -155,101 +225,134 @@
     else if (tab === "ideas") drawIdeas();
     else drawMore();
   }
+  function projectCard(p, open) {
+    var card = h("button", "card");
+    var top = h("div", "top");
+    top.appendChild(icon(p.icon || "crown"));
+    top.appendChild(chip(p.status, PSTAT[p.status]));
+    card.appendChild(top);
+    card.appendChild(h("b", "", p.name));
+    card.appendChild(h("span", "sub", p.next || ""));
+    if (typeof p.progress === "number") {
+      var bar = h("div", "bar");
+      var fill = document.createElement("i");
+      fill.style.width = p.progress + "%";
+      bar.appendChild(fill);
+      card.appendChild(bar);
+      card.appendChild(h("span", "src", (p.id === "p_house01" ? "القواعد والأساسات " : "التقدم ") + p.progress + "%"));
+    }
+    if (p.from === "snapshot") card.appendChild(h("span", "src", "من لقطة CEO"));
+    if (open) card.addEventListener("click", function () { detail = p.id; tab = "projects"; document.querySelectorAll("footer button").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-tab") === "projects"); }); draw(); });
+    return card;
+  }
+  function toolCard(t) {
+    var card = h("div", "card");
+    var top = h("div", "top");
+    top.appendChild(icon(t.icon || "spark"));
+    top.appendChild(chip(t.state));
+    card.appendChild(top);
+    card.appendChild(h("b", "", t.name));
+    if (t.cost) { var cost = h("span", "sub", t.cost); cost.dir = "ltr"; card.appendChild(cost); }
+    return card;
+  }
   function drawHome() {
-    var stamp = section("مركز المتابعة", snap.sample ? "عينة · " + when(snap.generatedAt) : when(snap.generatedAt));
-    stamp.appendChild(h("p", "fine", snap.sample ? "مرجع محلي من لقطة عينة. ليس بثاً حياً ولا يُنسخ إلى المساحة." : "مرجع محلي من لقطة مستوردة. ليس بثاً حياً."));
+    var stamp = section("مركز المتابعة", when(snap.generatedAt) + " · الإمارات");
+    stamp.appendChild(h("p", "fine", "لقطة محلية 9 نوفمبر 2026 · 07:40. ليست بثاً حياً."));
+    var flow = h("div", "flow");
+    flow.appendChild(h("b", "", "طلب حمد"));
+    flow.appendChild(h("span", "", "←"));
+    flow.appendChild(h("b", "", "تنفيذ مباشر"));
+    flow.appendChild(h("span", "", "←"));
+    flow.appendChild(h("b", "", "نتيجة"));
+    stamp.appendChild(flow);
     pages.appendChild(stamp);
     var ceo = section("المساعد الآن");
-    if (!snap.ceoNow.length) emptyLine(ceo);
-    snap.ceoNow.forEach(function (line) {
-      var row = h("div", "row"); row.appendChild(icon()); row.appendChild(h("div", "t", line)); ceo.appendChild(row);
+    var ceoIcons = ["crown", "note", "phone", "gem"];
+    var cg = h("div", "grid");
+    snap.ceoNow.forEach(function (line, i) {
+      var card = h("div", "card");
+      card.appendChild(icon(ceoIcons[i] || "spark"));
+      card.appendChild(h("b", "", line));
+      cg.appendChild(card);
     });
+    ceo.appendChild(cg);
     pages.appendChild(ceo);
-    var tools = section("الأدوات");
-    if (!snap.tools.length) emptyLine(tools);
-    else {
-      var wrap = h("div", "tools");
-      snap.tools.forEach(function (t) {
-        var pill = h("div", "tool");
-        pill.appendChild(icon());
-        pill.appendChild(document.createTextNode(t.name));
-        pill.appendChild(chip(t.state));
-        wrap.appendChild(pill);
-      });
-      tools.appendChild(wrap);
-    }
+    var team = section("الفريق", "CEO + 6");
+    var tg = h("div", "grid");
+    (snap.team || []).forEach(function (m) {
+      var card = h("div", "card");
+      var top = h("div", "top");
+      top.appendChild(icon(m.icon));
+      top.appendChild(chip("go", "نشط"));
+      card.appendChild(top);
+      card.appendChild(h("b", "", m.name));
+      card.appendChild(h("span", "sub", m.role));
+      tg.appendChild(card);
+    });
+    team.appendChild(tg);
+    pages.appendChild(team);
+    var tools = section("الأدوات الشغّالة");
+    var wrap = h("div", "grid");
+    snap.tools.forEach(function (t) { wrap.appendChild(toolCard(t)); });
+    tools.appendChild(wrap);
     pages.appendChild(tools);
-    var pcs = section("الأجهزة");
-    if (!snap.computers.length) emptyLine(pcs);
-    snap.computers.forEach(function (m) {
-      var row = h("div", "row");
-      row.appendChild(icon());
-      var t = h("div", "t"); t.appendChild(h("b", "", m.name)); t.appendChild(h("span", "", when(m.lastSeen)));
-      row.appendChild(t);
-      row.appendChild(chip(m.online ? "running" : "stopped", m.online ? "متصل" : "غير متصل"));
-      pcs.appendChild(row);
-    });
-    pages.appendChild(pcs);
-    var brief = section("الموجز");
-    if (!snap.brief.length) emptyLine(brief);
+    var brief = section("موجز اليوم");
+    var bg = h("div", "grid");
     snap.brief.forEach(function (b) {
-      var row = h("div", "row");
-      row.appendChild(icon());
-      var t = h("div", "t"); t.appendChild(h("b", "", b.title)); t.appendChild(h("span", "", b.source + " · " + b.date));
-      row.appendChild(t);
-      brief.appendChild(row);
+      var card = h("div", "card");
+      var top = h("div", "top");
+      top.appendChild(icon("news"));
+      top.appendChild(chip("wait", b.date));
+      card.appendChild(top);
+      card.appendChild(h("b", "", b.title));
+      card.appendChild(h("span", "sub", b.source));
+      bg.appendChild(card);
     });
+    brief.appendChild(bg);
     pages.appendChild(brief);
+    var pcs = section("الأجهزة");
+    var pg = h("div", "grid");
+    snap.computers.forEach(function (m) {
+      var card = h("div", "card");
+      var top = h("div", "top");
+      top.appendChild(icon(m.online ? "laptop" : "phone"));
+      top.appendChild(chip(m.online ? "running" : "stopped", m.online ? "متصل" : "لم تُربط بعد"));
+      card.appendChild(top);
+      card.appendChild(h("b", "", m.name));
+      card.appendChild(h("span", "sub", m.online ? "online" : "not connected yet"));
+      pg.appendChild(card);
+    });
+    pcs.appendChild(pg);
+    pages.appendChild(pcs);
     var time = section("الخط الزمني");
     var grid = h("div", "time");
     [["حدث", snap.happened], ["الآن", snap.now], ["قادم", snap.next]].forEach(function (pair) {
-      var col = h("div"); col.appendChild(h("strong", "", pair[0]));
-      if (!pair[1].length) col.appendChild(h("p", "empty", "لا عناصر"));
-      else {
-        var ul = document.createElement("ul");
-        pair[1].forEach(function (item) { ul.appendChild(h("li", "", item)); });
-        col.appendChild(ul);
-      }
+      var col = h("div");
+      col.appendChild(h("strong", "", pair[0]));
+      var ul = document.createElement("ul");
+      pair[1].forEach(function (item) { ul.appendChild(h("li", "", item)); });
+      col.appendChild(ul);
       grid.appendChild(col);
     });
     time.appendChild(grid);
     pages.appendChild(time);
-    var programs = section("البرامج", "مرجع");
-    if (!snap.programs.length) emptyLine(programs);
-    else {
-      var g = h("div", "grid");
-      snap.programs.forEach(function (name) {
-        var card = h("div", "card"); card.appendChild(icon()); card.appendChild(h("b", "", name)); card.appendChild(h("span", "sub", "من اللقطة"));
-        g.appendChild(card);
-      });
-      programs.appendChild(g);
-    }
-    pages.appendChild(programs);
-    var mine = readWs();
-    var own = section("مساحتك", mine.projects.length ? String(mine.projects.length) : "فارغة");
-    own.appendChild(h("p", "fine", "إدخالاتك وحدها. لا تُملأ من المرجع."));
-    var jump = h("button", "jump", mine.projects.length ? "فتح المساحة" : "فتح المساحة لإضافة مشروع");
-    jump.addEventListener("click", function () { setTab("projects"); });
-    own.appendChild(jump);
-    pages.appendChild(own);
+    var mine = section("المشاريع", "من لقطة CEO");
+    var g = h("div", "grid");
+    readWs().projects.forEach(function (p) { g.appendChild(projectCard(p, true)); });
+    mine.appendChild(g);
+    pages.appendChild(mine);
   }
   function drawProjects() {
-    var data = readWs();
-    var head = section("المشاريع", "محلي");
-    head.appendChild(h("p", "fine", "مساحتك الشخصية. تبقى فارغة حتى تضيف."));
+    var head = section("المشاريع", "قابلة للتعديل");
+    var plus = h("button", "plus", "+");
+    plus.setAttribute("aria-label", "إضافة مشروع");
+    plus.addEventListener("click", function () { addOpen = !addOpen; draw(); });
+    head.appendChild(plus);
     pages.appendChild(head);
-    if (!data.projects.length) pages.appendChild(h("p", "empty", "لا مشاريع محفوظة"));
     var g = h("div", "grid");
-    data.projects.forEach(function (p) {
-      var card = h("button", "card");
-      card.appendChild(icon());
-      card.appendChild(h("b", "", p.name));
-      card.appendChild(chip(p.status, PSTAT[p.status]));
-      card.appendChild(h("span", "sub", p.next || "بدون خطوة"));
-      card.addEventListener("click", function () { detail = p.id; draw(); });
-      g.appendChild(card);
-    });
+    readWs().projects.forEach(function (p) { g.appendChild(projectCard(p, true)); });
     pages.appendChild(g);
+    if (!addOpen) return;
     var form = h("div");
     form.appendChild(h("label", "", "مشروع جديد"));
     var name = h("input"); name.maxLength = MAX_NAME; name.placeholder = "الاسم";
@@ -262,6 +365,7 @@
       if (ws.projects.length >= MAX_P) return note("بلغت الحد");
       ws.projects.push({ id: rid("p"), name: n, status: "wait", next: "", tasks: [] });
       writeWs(ws);
+      addOpen = false;
       draw();
     });
     form.appendChild(add);
@@ -274,6 +378,7 @@
     var p = projectById(detail);
     if (!p) { detail = null; drawProjects(); return; }
     var box = h("div");
+    if (p.from === "snapshot") box.appendChild(h("p", "src", "من لقطة CEO · يمكن تعديله أو حذفه"));
     box.appendChild(h("label", "", "الاسم"));
     var name = h("input"); name.value = p.name; name.maxLength = MAX_NAME;
     box.appendChild(name);
@@ -281,29 +386,32 @@
     var states = h("div", "st");
     Object.keys(PSTAT).forEach(function (k) {
       var b = h("button", k === p.status ? "on" : "", PSTAT[k]);
-      b.addEventListener("click", function () { p.status = k; saveProject(p, name.value); });
+      b.addEventListener("click", function () { p.status = k; saveProject(p, name.value, next.value, prog.value); });
       states.appendChild(b);
     });
     box.appendChild(states);
     box.appendChild(h("label", "", "الخطوة التالية"));
     var next = h("textarea"); next.value = p.next; next.maxLength = MAX_NEXT;
     box.appendChild(next);
+    box.appendChild(h("label", "", "نسبة التقدم"));
+    var prog = h("input"); prog.value = p.progress == null ? "" : String(p.progress); prog.inputMode = "numeric";
+    box.appendChild(prog);
     var save = h("button", "primary", "حفظ المشروع");
-    save.addEventListener("click", function () { saveProject(p, name.value, next.value); note("حُفظ محلياً"); });
+    save.addEventListener("click", function () { saveProject(p, name.value, next.value, prog.value); note("حُفظ محلياً"); });
     box.appendChild(save);
     pages.appendChild(box);
     var tasks = section("المهام");
     if (!p.tasks.length) tasks.appendChild(h("p", "empty", "لا مهام"));
     p.tasks.forEach(function (task) {
       var row = h("div", "row");
-      row.appendChild(icon());
-      var t = h("div", "t"); t.appendChild(h("b", "", task.title)); t.appendChild(h("span", "", task.next || ""));
+      row.appendChild(icon("note"));
+      var t = h("div", "t"); t.appendChild(h("b", "", task.title));
       row.appendChild(t);
       var cycle = h("button", "", TSTAT[task.status]);
       cycle.addEventListener("click", function () {
         var order = ["open", "doing", "done"];
         task.status = order[(order.indexOf(task.status) + 1) % order.length];
-        saveProject(p, name.value, next.value);
+        saveProject(p, name.value, next.value, prog.value);
       });
       row.appendChild(cycle);
       tasks.appendChild(row);
@@ -316,7 +424,7 @@
       if (!n) return note("اكتب مهمة");
       if (p.tasks.length >= MAX_T) return note("بلغت الحد");
       p.tasks.push({ id: rid("t"), title: n, status: "open", next: "" });
-      saveProject(p, name.value, next.value);
+      saveProject(p, name.value, next.value, prog.value);
     });
     pages.appendChild(titleIn);
     pages.appendChild(add);
@@ -332,7 +440,7 @@
     });
     pages.appendChild(del);
   }
-  function saveProject(p, name, next) {
+  function saveProject(p, name, next, progress) {
     var ws = readWs();
     var cur = ws.projects.filter(function (item) { return item.id === p.id; })[0];
     if (!cur) return;
@@ -340,6 +448,12 @@
     cur.status = PSTAT[p.status] ? p.status : cur.status;
     if (next != null) cur.next = clip(next, MAX_NEXT);
     cur.tasks = p.tasks;
+    if (p.icon) cur.icon = p.icon;
+    if (p.from) cur.from = p.from;
+    if (progress != null && String(progress).trim() !== "") {
+      var n = Number(progress);
+      if (n >= 0 && n <= 100) cur.progress = n;
+    }
     writeWs(ws);
     draw();
   }
@@ -349,10 +463,16 @@
   }
   function drawIdeas() {
     var ref = section("أفكار المرجع");
-    if (!snap.ideas.length) emptyLine(ref);
-    snap.ideas.forEach(function (line) {
-      var row = h("div", "row"); row.appendChild(icon()); var t = h("div", "t"); t.appendChild(h("b", "", line)); t.appendChild(h("span", "", "من اللقطة")); row.appendChild(t); ref.appendChild(row);
+    var g = h("div", "grid");
+    var ideaIcons = ["gem", "flag"];
+    snap.ideas.forEach(function (line, i) {
+      var card = h("div", "card");
+      card.appendChild(icon(ideaIcons[i] || "spark"));
+      card.appendChild(h("b", "", line));
+      card.appendChild(h("span", "sub", "من اللقطة"));
+      g.appendChild(card);
     });
+    ref.appendChild(g);
     pages.appendChild(ref);
     var mine = section("فكرتك");
     if (!ideaOpen && !readDraft()) {
@@ -391,9 +511,9 @@
       yes.addEventListener("click", function () {
         var ws = readWs();
         if (ws.projects.length >= MAX_P) return note("بلغت الحد");
-        var g = clip(goal.value, MAX_NEXT), tk = clip(task.value, MAX_NAME);
-        if (!g || !tk) return note("أكمل الهدف والمهمة");
-        ws.projects.push({ id: rid("p"), name: clip(draft.idea, MAX_NAME) || "مشروع", status: "wait", next: g, tasks: [{ id: rid("t"), title: tk, status: "open", next: "" }] });
+        var goalText = clip(goal.value, MAX_NEXT), tk = clip(task.value, MAX_NAME);
+        if (!goalText || !tk) return note("أكمل الهدف والمهمة");
+        ws.projects.push({ id: rid("p"), name: clip(draft.idea, MAX_NAME) || "مشروع", status: "wait", next: goalText, icon: "spark", tasks: [{ id: rid("t"), title: tk, status: "open", next: "" }] });
         writeWs(ws);
         localStorage.removeItem(DRAFT_KEY);
         ideaOpen = false;
@@ -407,21 +527,22 @@
   }
   function drawMore() {
     var box = section("الأدوات");
-    box.appendChild(h("p", "fine", "الملف يبقى على هذا الجهاز. لا مزامنة."));
+    var wrap = h("div", "grid");
+    snap.tools.forEach(function (t) { wrap.appendChild(toolCard(t)); });
+    box.appendChild(wrap);
+    pages.appendChild(box);
+    var actsBox = section("الملف المحلي");
+    actsBox.appendChild(h("p", "fine", "يبقى على هذا الجهاز. لا مزامنة."));
     var exp = h("button", "primary", "تصدير المساحة");
     exp.addEventListener("click", exportWs);
     var imp = h("button", "", "استعادة المساحة");
-    var file = h("input"); file.type = "file"; file.accept = "application/json,.json"; file.hidden = true;
+    var file = h("input"); file.type = "file"; file.accept = "application/json,.json";
     file.addEventListener("change", function () { if (file.files && file.files[0]) readFile(file.files[0], "workspace"); file.value = ""; });
     imp.addEventListener("click", function () { file.click(); });
     var snapBtn = h("button", "", "استيراد اللقطة");
-    var snapFile = h("input"); snapFile.type = "file"; snapFile.accept = "application/json,.json"; snapFile.hidden = true;
+    var snapFile = h("input"); snapFile.type = "file"; snapFile.accept = "application/json,.json";
     snapFile.addEventListener("change", function () { if (snapFile.files && snapFile.files[0]) readFile(snapFile.files[0], "snapshot"); snapFile.value = ""; });
     snapBtn.addEventListener("click", function () { snapFile.click(); });
-    var acts = h("div", "actions");
-    acts.appendChild(exp); acts.appendChild(imp); acts.appendChild(snapBtn); acts.appendChild(file); acts.appendChild(snapFile);
-    box.appendChild(acts);
-    pages.appendChild(box);
     var clear = h("button", "", "مسح المساحة");
     clear.addEventListener("click", function () {
       confirmAsk("مسح مشاريعك المحلية؟ المرجع لا يتأثر.", function () {
@@ -431,10 +552,11 @@
         draw();
       });
     });
-    pages.appendChild(clear);
-    var preview = h("button", "jump", "معاينة المقر التجريبي");
-    preview.addEventListener("click", function () { location.href = "public/index.html"; });
-    pages.appendChild(preview);
+    var acts = h("div", "actions");
+    acts.appendChild(exp); acts.appendChild(imp); acts.appendChild(snapBtn); acts.appendChild(clear);
+    acts.appendChild(file); acts.appendChild(snapFile);
+    actsBox.appendChild(acts);
+    pages.appendChild(actsBox);
   }
   function exportWs() {
     var blob = new Blob([JSON.stringify(readWs(), null, 2)], { type: "application/json" });
@@ -456,11 +578,11 @@
         if (!parsed || parsed.version !== 1 || !Array.isArray(parsed.projects) || parsed.projects.length > MAX_P || !parsed.projects.every(validProject)) return note("ملف المساحة غير صالح");
         confirmAsk("استبدال المساحة بمحتوى الملف؟", function () { writeWs(parsed); note("استُعيدت المساحة"); draw(); });
       } else {
-        var next = validSnap(parsed);
-        if (!next) return note("لقطة غير صالحة");
-        confirmAsk("استبدال مرجع اللقطة؟ مساحتك لا تتغير. الوقت: " + when(next.generatedAt), function () {
-          localStorage.setItem(SNAP_KEY, JSON.stringify(next));
-          snap = next;
+        var nextSnap = validSnap(parsed);
+        if (!nextSnap) return note("لقطة غير صالحة");
+        confirmAsk("استبدال مرجع اللقطة؟ مساحتك لا تتغير. الوقت: " + when(nextSnap.generatedAt), function () {
+          localStorage.setItem(SNAP_KEY, JSON.stringify(nextSnap));
+          snap = nextSnap;
           note("استُوردت اللقطة");
           draw();
         });
@@ -482,7 +604,8 @@
   document.querySelectorAll("footer button").forEach(function (b) {
     b.addEventListener("click", function () { setTab(b.getAttribute("data-tab")); });
   });
-  var stored = readSnap();
-  if (stored) { snap = stored; draw(); }
+  ensureSeed();
+  var stored = validSnap(readJson(SNAP_KEY));
+  if (stored && !stored.sample) { snap = stored; draw(); }
   else loadSample(draw);
 })();

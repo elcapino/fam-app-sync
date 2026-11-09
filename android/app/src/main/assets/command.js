@@ -71,6 +71,7 @@
       restored:"استُعيدت المساحة", imported:"استُوردت اللقطة", cleared:"المساحة فارغة", clear_ask:"مسح مشاريعك المحلية؟ المرجع لا يتأثر.",
       created:"أُنشئ المشروع في المساحة", big_file:"الملف أكبر من الحد", need_name:"اكتب اسماً", need_task:"اكتب مهمة", limit:"بلغت الحد",
       del_ask:"حذف هذا المشروع؟", idea_ph:"سطر واحد", need_idea:"اكتب الفكرة", goal:"الهدف", first_task:"أول مهمة", need_both:"أكمل الهدف والمهمة",
+      add:"إضافة",
       c_ok:"سليم", c_nokey:"لا مفتاح", c_badkey:"مفتاح غير صالح", c_fail:"تعذر الفحص", c_wait:"جارٍ الفحص",
       c_line_ok:"الفحص نجح الآن", c_line_nokey:"لا مفتاح محفوظ على هذا الجهاز", c_line_badkey:"الخدمة رفضت المفتاح", c_line_fail:"تعذر الاتصال بالخدمة", c_line_wait:"جارٍ فحص المفتاح" },
     en: { nav_home:"Home", nav_proj:"Projects", nav_ideas:"Ideas", nav_tools:"Tools", enter:"Continue",
@@ -98,6 +99,7 @@
       restored:"Workspace restored", imported:"Snapshot imported", cleared:"Workspace cleared", clear_ask:"Clear your local projects? The reference stays.",
       created:"Project created in the workspace", big_file:"File is over the limit", need_name:"Type a name", need_task:"Type a task", limit:"Limit reached",
       del_ask:"Delete this project?", idea_ph:"One line", need_idea:"Type the idea", goal:"Goal", first_task:"First task", need_both:"Complete the goal and the task",
+      add:"Add",
       c_ok:"Healthy", c_nokey:"No key", c_badkey:"Invalid key", c_fail:"Check failed", c_wait:"Checking",
       c_line_ok:"The check succeeded just now", c_line_nokey:"No key stored on this device", c_line_badkey:"The service rejected the key", c_line_fail:"The service could not be reached", c_line_wait:"Checking the key" }
   };
@@ -335,6 +337,8 @@
     if (cp) cp.textContent = theme === "uae" ? "HMK · UAE" : "HMK made in ALAIN · UAE";
     var enter = document.getElementById("enter");
     if (enter) enter.textContent = t("enter");
+    var addLabel = document.getElementById("addlabel");
+    if (addLabel) addLabel.textContent = t("add");
     var navT = ["nav_home", "nav_proj", "nav_ideas", "nav_tools"];
     document.querySelectorAll("footer button").forEach(function (b, i) {
       var last = b.lastChild;
@@ -430,17 +434,30 @@
     else if (tab === "ideas") drawIdeas();
     else drawMore();
   }
+  function statusClass(code) {
+    if (code === "go" || code === "running" || code === "doing") return "running";
+    if (code === "done") return "done";
+    if (code === "hold" || code === "stopped") return "bad";
+    return "wait";
+  }
+  function line(iconName, name, sub, status, tone) {
+    var row = h("div", "trow");
+    if (iconName) row.appendChild(icon(iconName));
+    row.appendChild(h("div", "nm", name));
+    if (status != null && status !== "") row.appendChild(h("span", "tag " + (tone || ""), status));
+    if (sub) row.appendChild(h("div", "sub", sub));
+    return row;
+  }
   function projectRow(p) {
-    var row = h("button", "prow");
+    var row = h("button", "trow prow");
     row.appendChild(icon(p.icon || "crown"));
-    var name = h("div", "nm", p.name);
-    row.appendChild(name);
-    var st = h("span", "stat stxt " + p.status);
-    st.appendChild(dot(p.status));
-    st.appendChild(document.createTextNode(stLabel(p.status)));
-    row.appendChild(st);
-    if (p.next) row.appendChild(h("div", "nx", p.next));
-    if (typeof p.progress === "number") row.appendChild(track(p.progress));
+    row.appendChild(h("div", "nm", p.name));
+    row.appendChild(h("span", "tag " + statusClass(p.status), stLabel(p.status)));
+    var bits = [];
+    if (p.next) bits.push(p.next);
+    if (typeof p.progress === "number") bits.push(num(p.progress) + "%");
+    if (p.due) bits.push(p.due);
+    row.appendChild(h("div", "sub", bits.join(" · ") || t("no_step")));
     row.addEventListener("click", function () { openProject(p.id); });
     return row;
   }
@@ -539,42 +556,22 @@
       list.forEach(function (p) { rows.appendChild(projectRow(p)); });
     } else if (homeSeg === "brief") {
       snap.brief.forEach(function (b) {
-        var row = h("div", "trow");
-        row.appendChild(icon("news"));
-        row.appendChild(h("div", "nm", b.title));
-        row.appendChild(h("span", "tag", b.date));
+        var row = line("news", b.title, b.source || t("brief"), b.date, "wait");
         rows.appendChild(row);
       });
-      snap.ceo.forEach(function (line) {
-        var row = h("div", "trow");
-        row.appendChild(icon("flag"));
-        row.appendChild(h("div", "nm", line.text));
-        row.appendChild(h("span", "tag " + line.tone, line.time));
-        rows.appendChild(row);
+      (snap.ceo || []).forEach(function (item) {
+        rows.appendChild(line("flag", item.text, t("brief"), item.time, item.tone === "bad" ? "bad" : "wait"));
       });
     } else {
-      var sum = h("div", "sum");
-      [[t("all"), c.all], [t("going"), c.go], [t("done"), c.done], [t("late"), c.late]].forEach(function (pair) {
-        var cell = h("div");
-        var n = h("b", "", num(pair[1]));
-        n.dir = "ltr";
-        cell.appendChild(n);
-        cell.appendChild(h("span", "", pair[0]));
-        sum.appendChild(cell);
-      });
-      rows.appendChild(sum);
-      snap.next.forEach(function (line) {
-        var row = h("div", "trow");
-        row.appendChild(icon("flag"));
-        row.appendChild(h("div", "nm", line));
-        rows.appendChild(row);
+      var late = line("flag", t("late"), t("all") + " " + num(c.all) + " · " + t("going") + " " + num(c.go) + " · " + t("done") + " " + num(c.done), num(c.late) + " " + t("late"), c.late ? "bad" : "running");
+      late.setAttribute("data-late", String(c.late));
+      late.classList.add("sum");
+      rows.appendChild(late);
+      snap.next.forEach(function (item) {
+        rows.appendChild(line("flag", item, t("next"), lang === "en" ? "Open" : "مفتوح", "wait"));
       });
       snap.computers.forEach(function (m) {
-        var row = h("div", "trow");
-        row.appendChild(icon(m.online ? "laptop" : "phone"));
-        row.appendChild(h("div", "nm", m.name));
-        row.appendChild(h("span", "tag " + (m.online ? "running" : "stopped"), m.online ? (lang === "en" ? "Online" : "متصل") : (lang === "en" ? "Offline" : "غير مربوط")));
-        rows.appendChild(row);
+        rows.appendChild(line(m.online ? "laptop" : "phone", m.name, m.online ? (lang === "en" ? "Seen in the snapshot" : "ظاهر في اللقطة") : (lang === "en" ? "Not linked" : "غير مربوط"), m.online ? (lang === "en" ? "Online" : "متصل") : (lang === "en" ? "Offline" : "غير مربوط"), m.online ? "running" : "bad"));
       });
     }
     pages.appendChild(rows);
@@ -586,12 +583,7 @@
     if (!list.length) rows.appendChild(h("p", "empty", t("no_projects")));
     list.forEach(function (p) { rows.appendChild(projectRow(p)); });
     pages.appendChild(rows);
-    if (!addOpen) {
-      var plus = h("button", "linkish", t("add_project"));
-      plus.addEventListener("click", function () { addOpen = true; draw(); });
-      pages.appendChild(plus);
-      return;
-    }
+    if (!addOpen) return;
     var name = h("input"); name.maxLength = MAX_NAME;
     pages.appendChild(name);
     var add = h("button", "linkish", t("save_name"));
@@ -614,46 +606,38 @@
     var p = projectById(detail);
     if (!p) { detail = null; drawProjects(); return; }
     band(t("project"), stLabel(p.status) + (p.from === "snapshot" ? " · " + t("from_ceo") : ""), typeof p.progress === "number" ? num(p.progress) + "%" : null);
-    var view = h("div", "read");
-    view.appendChild(h("div", "ptitle", p.name));
-    view.appendChild(h("p", "lead", stLabel(p.status) + (p.from === "snapshot" ? " · " + t("from_ceo") : "")));
-    var progSec = section(t("progress"));
-    if (typeof p.progress === "number") {
-      progSec.appendChild(track(p.progress));
-      progSec.appendChild(h("p", "fine", (p.id === "p_house01" ? "القواعد والأساسات " : "") + p.progress + "%"));
-    } else progSec.appendChild(h("p", "empty", t("no_progress")));
-    view.appendChild(progSec);
-    var nextSec = section(t("step"));
-    var nextLine = h("p", p.next ? "lead" : "empty", p.next || t("no_step"));
+    var rows = h("div", "rows");
+    var progText = typeof p.progress === "number" ? ((p.id === "p_house01" ? (lang === "en" ? "Foundations " : "القواعد والأساسات ") : "") + num(p.progress) + "%") : t("no_progress");
+    rows.appendChild(line("chart", t("progress"), progText, stLabel(p.status), statusClass(p.status)));
+    var nextLine = line("flag", t("step"), p.next || t("no_step"), p.next ? (lang === "en" ? "Set" : "مكتوب") : (lang === "en" ? "Empty" : "فارغ"), p.next ? "running" : "wait");
     nextLine.setAttribute("data-next", p.next || "");
-    nextSec.appendChild(nextLine);
-    view.appendChild(nextSec);
-    var dueSec = section(t("due"));
-    var dueLine = h("p", p.due ? "lead" : "empty", p.due || t("no_due"));
+    rows.appendChild(nextLine);
+    var dueLine = line("note", t("due"), p.due || t("no_due"), p.due || t("no_due"), p.due ? "wait" : "bad");
     dueLine.setAttribute("data-due", p.due || "");
     if (p.due) dueLine.dir = "ltr";
-    dueSec.appendChild(dueLine);
-    view.appendChild(dueSec);
-    pages.appendChild(view);
-    var tasks = section(t("tasks"));
-    if (!p.tasks.length) tasks.appendChild(h("p", "empty", t("no_tasks")));
+    rows.appendChild(dueLine);
+    if (!p.tasks.length) rows.appendChild(line("note", t("tasks"), t("no_tasks"), lang === "en" ? "None" : "لا شيء", "wait"));
     p.tasks.forEach(function (task) {
-      var row = h("button", "check");
-      var box = h("i", "markbox" + (task.status === "done" ? " on" : ""));
-      row.appendChild(box);
-      row.appendChild(h("span", "", task.title));
+      var row = h("button", "trow");
+      row.appendChild(icon("flag"));
+      row.appendChild(h("div", "nm", task.title));
+      row.appendChild(h("span", "tag " + statusClass(task.status), task.status === "done" ? t("st_done") : task.status === "doing" ? t("st_go") : t("st_wait")));
+      row.appendChild(h("div", "sub", t("tasks")));
       row.addEventListener("click", function () {
         var order = ["open", "doing", "done"];
         task.status = order[(order.indexOf(task.status) + 1) % order.length];
         saveProject(p, p.name, p.next, p.progress, p.due);
       });
-      tasks.appendChild(row);
+      rows.appendChild(row);
     });
-    var add = h("button", "linkish", t("add_task"));
+    var add = h("button", "trow");
+    add.appendChild(icon("spark"));
+    add.appendChild(h("div", "nm", t("add_task")));
+    add.appendChild(h("div", "sub", t("tasks")));
     add.addEventListener("click", function () {
       var titleIn = h("input");
       titleIn.maxLength = MAX_NAME;
-      tasks.replaceChild(titleIn, add);
+      add.replaceWith(titleIn);
       titleIn.focus();
       titleIn.addEventListener("change", function () {
         var n = clip(titleIn.value, MAX_NAME);
@@ -663,11 +647,13 @@
         saveProject(p, p.name, p.next, p.progress, p.due);
       });
     });
-    tasks.appendChild(add);
-    pages.appendChild(tasks);
-    var edit = h("button", "linkish", t("edit"));
+    rows.appendChild(add);
+    var edit = h("button", "trow");
+    edit.appendChild(icon("note"));
+    edit.appendChild(h("div", "nm", t("edit")));
     edit.addEventListener("click", function () { editSheet(p); });
-    pages.appendChild(edit);
+    rows.appendChild(edit);
+    pages.appendChild(rows);
   }
   function editSheet(p) {
     var sheet = document.querySelector("#ask .sheet");
@@ -749,30 +735,33 @@
   }
   function drawIdeas() {
     band(t("ideas"), lang === "en" ? "Snapshot ideas and yours" : "مرجع اللقطة وفكرتك");
-    var ref = section(lang === "en" ? "Reference ideas" : "أفكار المرجع");
-    if (!snap.ideas.length) ref.appendChild(h("p", "empty", t("no_ideas")));
+    var rows = h("div", "rows");
+    if (!snap.ideas.length) rows.appendChild(line("spark", t("ideas"), t("no_ideas"), lang === "en" ? "Empty" : "فارغ", "wait"));
     var ideaIcons = ["gem", "flag"];
-    snap.ideas.forEach(function (line, i) {
-      var row = h("div", "trow");
-      row.appendChild(icon(ideaIcons[i] || "spark"));
-      row.appendChild(h("div", "nm", line));
-      ref.appendChild(row);
+    snap.ideas.forEach(function (text, i) {
+      rows.appendChild(line(ideaIcons[i] || "spark", text, lang === "en" ? "From the snapshot" : "من اللقطة", lang === "en" ? "Reference" : "مرجع", "wait"));
     });
-    pages.appendChild(ref);
-    var mine = section(lang === "en" ? "Your idea" : "فكرتك");
     if (!ideaOpen && !readDraft()) {
-      var open = h("button", "jump", t("idea_new"));
+      var open = h("button", "trow");
+      open.appendChild(icon("spark"));
+      open.appendChild(h("div", "nm", t("idea_new")));
+      open.appendChild(h("span", "tag wait", t("add")));
+      open.appendChild(h("div", "sub", lang === "en" ? "One line, then a template" : "سطر واحد ثم قالب"));
       open.addEventListener("click", function () { ideaOpen = true; draw(); });
-      mine.appendChild(open);
-      pages.appendChild(mine);
+      rows.appendChild(open);
+      pages.appendChild(rows);
       return;
     }
+    pages.appendChild(rows);
     ideaOpen = true;
+    var mine = h("div", "rows");
     var draft = readDraft();
     var idea = h("textarea"); idea.maxLength = MAX_NAME; idea.placeholder = t("idea_ph");
     if (draft) idea.value = draft.idea;
     mine.appendChild(idea);
-    var build = h("button", "", t("build"));
+    var build = h("button", "trow");
+    build.appendChild(icon("spark"));
+    build.appendChild(h("div", "nm", t("build")));
     build.addEventListener("click", function () {
       var text = clip(idea.value, MAX_NAME);
       if (!text) return note(t("need_idea"));
@@ -782,11 +771,11 @@
     mine.appendChild(build);
     draft = readDraft();
     if (draft && draft.ready) {
-      mine.appendChild(h("p", "", draft.goal));
-      var ol = h("ol", "steps");
-      (draft.steps || []).forEach(function (s) { ol.appendChild(h("li", "", s)); });
-      mine.appendChild(ol);
-      mine.appendChild(h("p", "", draft.task));
+      mine.appendChild(line("flag", t("goal"), draft.goal, lang === "en" ? "Draft" : "مسودة", "wait"));
+      (draft.steps || []).forEach(function (s, i) {
+        mine.appendChild(line("flag", s, lang === "en" ? "Step " + (i + 1) : "خطوة " + (i + 1), String(i + 1), "wait"));
+      });
+      mine.appendChild(line("note", t("first_task"), draft.task, lang === "en" ? "Task" : "مهمة", "running"));
       var goal = h("textarea"); goal.value = draft.goal || "";
       var task = h("input"); task.value = draft.task || "";
       mine.appendChild(h("label", "", t("goal"))); mine.appendChild(goal);
@@ -810,10 +799,14 @@
     }
     pages.appendChild(mine);
   }
-  function choice(label, value, on) {
+  function choice(iconName, label, hint, value, on) {
     var b = h("button", "trow");
+    b.appendChild(icon(iconName));
     b.appendChild(h("div", "nm", label));
-    b.appendChild(h("span", "tag go", value));
+    var tag = h("span", "tag go", value);
+    if (String(value).indexOf("1.") === 0) tag.dir = "ltr";
+    b.appendChild(tag);
+    b.appendChild(h("div", "sub", hint));
     b.addEventListener("click", on);
     return b;
   }
@@ -822,15 +815,15 @@
     segBar([["run", t("seg_tools")], ["set", t("seg_set")], ["file", t("seg_file")]], toolSeg, function (id) { toolSeg = id; draw(); });
     var rows = h("div", "rows");
     if (toolSeg === "set") {
-      rows.appendChild(choice(t("language"), lang === "en" ? t("en") : t("ar"), function () { setLang(lang === "ar" ? "en" : "ar"); }));
-      rows.appendChild(choice(t("theme"), theme === "uae" ? t("uae") : t("alain"), function () { setTheme(theme === "alain" ? "uae" : "alain"); }));
+      rows.appendChild(choice("note", t("language"), lang === "en" ? "Arabic or English" : "عربي أو English", lang === "en" ? t("en") : t("ar"), function () { setLang(lang === "ar" ? "en" : "ar"); }));
+      rows.appendChild(choice("crown", t("theme"), lang === "en" ? "Al Ain or UAE" : "العين أو الإمارات", theme === "uae" ? t("uae") : t("alain"), function () { setTheme(theme === "alain" ? "uae" : "alain"); }));
       var sizes = ["s", "m", "l"], sizeName = { s: t("small"), m: t("medium"), l: t("large") };
-      rows.appendChild(choice(t("size"), sizeName[textSize], function () { setPref("hmk_size_v1", sizes[(sizes.indexOf(textSize) + 1) % sizes.length], "size"); }));
-      rows.appendChild(choice(t("digits"), digits === "arab" ? "١٢٣" : "123", function () { setPref("hmk_digits_v1", digits === "arab" ? "latn" : "arab", "digits"); }));
+      rows.appendChild(choice("news", t("size"), lang === "en" ? "Small, medium, or large" : "صغير أو وسط أو كبير", sizeName[textSize], function () { setPref("hmk_size_v1", sizes[(sizes.indexOf(textSize) + 1) % sizes.length], "size"); }));
+      rows.appendChild(choice("spark", t("digits"), lang === "en" ? "Arabic or Latin digits" : "أرقام عربية أو لاتينية", digits === "arab" ? "١٢٣" : "123", function () { setPref("hmk_digits_v1", digits === "arab" ? "latn" : "arab", "digits"); }));
       var starts = ["home", "projects", "ideas", "more"], startName = { home: t("home"), projects: t("projects"), ideas: t("ideas"), more: t("tools") };
-      rows.appendChild(choice(t("start"), startName[startPage], function () { setPref("hmk_start_v1", starts[(starts.indexOf(startPage) + 1) % starts.length], "start"); }));
-      rows.appendChild(choice(t("density"), density === "comfortable" ? t("comfortable") : t("compact"), function () { setPref("hmk_density_v1", density === "compact" ? "comfortable" : "compact", "density"); }));
-      var info = window.HMK_BUILD || { version: "1.9-debug", sha: "dev" };
+      rows.appendChild(choice("flag", t("start"), lang === "en" ? "Page after the opening" : "الصفحة بعد الافتتاح", startName[startPage], function () { setPref("hmk_start_v1", starts[(starts.indexOf(startPage) + 1) % starts.length], "start"); }));
+      rows.appendChild(choice("pause", t("density"), lang === "en" ? "Compact or comfortable" : "مضغوط أو مريح", density === "comfortable" ? t("comfortable") : t("compact"), function () { setPref("hmk_density_v1", density === "compact" ? "comfortable" : "compact", "density"); }));
+      var info = window.HMK_BUILD || { version: "1.10-debug", sha: "dev" };
       try {
         if (window.HmkAndroid && HmkAndroid.buildId) {
           var parts = String(HmkAndroid.buildId()).split(" ");
@@ -838,6 +831,7 @@
         }
       } catch (e) {}
       var about = h("div", "trow");
+      about.appendChild(icon("crown"));
       about.appendChild(h("div", "nm", t("about")));
       var ver = h("span", "tag", info.version);
       ver.dir = "ltr";
@@ -851,20 +845,15 @@
       var taskN = 0;
       ws.projects.forEach(function (p) { taskN += p.tasks.length; });
       var last = localStorage.getItem("hmk_last_export_v1");
-      function infoRow(label, value) {
-        var row = h("div", "trow");
-        row.appendChild(h("div", "nm", label));
-        var v = h("span", "tag", value);
-        row.appendChild(v);
-        return row;
-      }
-      rows.appendChild(infoRow(t("last_export"), last ? when(last) : t("never")));
-      rows.appendChild(infoRow(t("counts"), num(ws.projects.length) + " · " + num(taskN) + " · " + num((snap.ideas || []).length)));
-      rows.appendChild(infoRow(t("storage"), num(storageBytes()) + (lang === "en" ? " chars" : " حرف")));
-      rows.appendChild(h("p", "fine", t("local_only")));
-      function fileRow(label, kind) {
+      rows.appendChild(line("note", t("last_export"), t("local_only"), last ? when(last) : t("never"), last ? "running" : "wait"));
+      rows.appendChild(line("book", t("counts"), lang === "en" ? "Projects · tasks · ideas" : "مشاريع · مهام · أفكار", num(ws.projects.length) + " · " + num(taskN) + " · " + num((snap.ideas || []).length), "wait"));
+      rows.appendChild(line("cloud", t("storage"), lang === "en" ? "Characters stored on this device" : "حروف محفوظة على هذا الجهاز", num(storageBytes()) + (lang === "en" ? " chars" : " حرف"), "wait"));
+      function fileRow(iconName, label, hint, kind) {
         var b = h("button", "trow");
+        b.appendChild(icon(iconName));
         b.appendChild(h("div", "nm", label));
+        b.appendChild(h("span", "tag wait", lang === "en" ? "File" : "ملف"));
+        b.appendChild(h("div", "sub", hint));
         var input = h("input"); input.type = "file"; input.accept = "application/json,.json";
         input.addEventListener("change", function () { if (input.files && input.files[0]) readFile(input.files[0], kind); input.value = ""; });
         b.addEventListener("click", function () { input.click(); });
@@ -872,13 +861,19 @@
         return b;
       }
       var exp = h("button", "trow");
+      exp.appendChild(icon("note"));
       exp.appendChild(h("div", "nm", t("export")));
+      exp.appendChild(h("span", "tag running", lang === "en" ? "Save" : "حفظ"));
+      exp.appendChild(h("div", "sub", t("local_only")));
       exp.addEventListener("click", exportWs);
       rows.appendChild(exp);
-      rows.appendChild(fileRow(t("restore"), "workspace"));
-      rows.appendChild(fileRow(t("import_snap"), "snapshot"));
+      rows.appendChild(fileRow("book", t("restore"), lang === "en" ? "Replace the workspace from a file" : "استبدال المساحة من ملف", "workspace"));
+      rows.appendChild(fileRow("news", t("import_snap"), lang === "en" ? "Replace the reference snapshot" : "استبدال لقطة المرجع", "snapshot"));
       var clear = h("button", "trow");
+      clear.appendChild(icon("pause"));
       clear.appendChild(h("div", "nm", t("clear")));
+      clear.appendChild(h("span", "tag bad", lang === "en" ? "Erase" : "مسح"));
+      clear.appendChild(h("div", "sub", t("clear_ask")));
       clear.addEventListener("click", function () {
         confirmAsk(t("clear_ask"), function () {
           writeWs(emptyWs());

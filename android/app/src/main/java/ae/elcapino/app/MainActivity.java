@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Map;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
@@ -23,6 +26,7 @@ import android.webkit.WebViewClient;
 
 import androidx.webkit.WebViewAssetLoader;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.OutputStream;
@@ -190,6 +194,99 @@ public class MainActivity extends Activity {
 
         private SharedPreferences prefs() {
             return getSharedPreferences("hmk", MODE_PRIVATE);
+        }
+
+        @JavascriptInterface
+        public String checkConnectors() {
+            JSONArray out = new JSONArray();
+            out.put(probe("brightdata", "hmk_key_brightdata", "GET", "https://api.brightdata.com/status", "Authorization", "Bearer ", null));
+            out.put(probe("exa", "hmk_key_exa", "POST", "https://api.exa.ai/search", "x-api-key", "", "{\"query\":\"ping\",\"numResults\":1}"));
+            out.put(probe("apify", "hmk_key_apify", "GET", "https://api.apify.com/v2/users/me", "Authorization", "Bearer ", null));
+            out.put(probe("github", "hmk_key_github", "GET", "https://api.github.com/user", "Authorization", "Bearer ", null));
+            out.put(probeShopify());
+            out.put(probe("x", "hmk_key_x", "GET", "https://api.twitter.com/2/users/me", "Authorization", "Bearer ", null));
+            return out.toString();
+        }
+
+        private JSONObject probe(String id, String pref, String method, String url, String header, String prefix, String body) {
+            JSONObject o = new JSONObject();
+            try {
+                o.put("id", id);
+                String key = prefs().getString(pref, "");
+                if (key == null || key.trim().isEmpty()) {
+                    o.put("result", "nokey");
+                    return o;
+                }
+                key = key.trim();
+                if (key.length() > 400) {
+                    o.put("result", "badkey");
+                    return o;
+                }
+                int code = request(method, url, header, prefix + key, body);
+                o.put("result", judge(code));
+            } catch (Exception ex) {
+                try { o.put("id", id); o.put("result", "fail"); } catch (Exception ignored) {}
+            }
+            return o;
+        }
+
+        private JSONObject probeShopify() {
+            JSONObject o = new JSONObject();
+            try {
+                o.put("id", "shopify");
+                String raw = prefs().getString("hmk_key_shopify", "");
+                if (raw == null || raw.trim().isEmpty()) {
+                    o.put("result", "nokey");
+                    return o;
+                }
+                String[] parts = raw.trim().split("\\|", 2);
+                if (parts.length != 2 || !shopHost(parts[1]) || parts[0].length() > 400) {
+                    o.put("result", "badkey");
+                    return o;
+                }
+                String url = "https://" + parts[1].toLowerCase() + "/admin/api/2024-10/shop.json";
+                int code = request("GET", url, "X-Shopify-Access-Token", parts[0], null);
+                o.put("result", judge(code));
+            } catch (Exception ex) {
+                try { o.put("result", "fail"); } catch (Exception ignored) {}
+            }
+            return o;
+        }
+
+        private boolean shopHost(String host) {
+            if (host == null) return false;
+            String h = host.trim().toLowerCase();
+            return h.matches("[a-z0-9][a-z0-9-]*\\.myshopify\\.com");
+        }
+
+        private String judge(int code) {
+            if (code == 401 || code == 403) return "badkey";
+            if (code >= 200 && code < 300) return "ok";
+            return "fail";
+        }
+
+        private int request(String method, String url, String header, String value, String body) throws Exception {
+            HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
+            conn.setConnectTimeout(8000);
+            conn.setReadTimeout(8000);
+            conn.setInstanceFollowRedirects(false);
+            conn.setRequestMethod(method);
+            conn.setRequestProperty("Accept", "application/json");
+            conn.setRequestProperty("User-Agent", "HMK-debug");
+            if (header != null && !header.isEmpty()) conn.setRequestProperty(header, value);
+            if (body != null) {
+                byte[] bytes = body.getBytes("UTF-8");
+                conn.setDoOutput(true);
+                conn.setRequestProperty("Content-Type", "application/json");
+                OutputStream stream = conn.getOutputStream();
+                stream.write(bytes);
+                stream.close();
+            }
+            try {
+                return conn.getResponseCode();
+            } finally {
+                conn.disconnect();
+            }
         }
 
         @JavascriptInterface

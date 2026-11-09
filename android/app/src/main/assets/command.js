@@ -31,6 +31,20 @@
   var startPage = localStorage.getItem("hmk_start_v1") || "home";
   var homeSeg = "now";
   var toolSeg = "run";
+  var connectorState = {};
+  var connectorChecked = false;
+  var CONNECTORS = [
+    { id: "brightdata", name: "Bright Data", icon: "link", roleAr: "جمع صفحات المواقع", roleEn: "Site collection" },
+    { id: "exa", name: "Exa", icon: "spark", roleAr: "بحث الويب", roleEn: "Web search" },
+    { id: "apify", name: "Apify", icon: "cloud", roleAr: "تشغيل أدوات الجمع", roleEn: "Collection actors" },
+    { id: "github", name: "GitHub", icon: "laptop", roleAr: "المستودعات", roleEn: "Repositories" },
+    { id: "shopify", name: "Shopify", icon: "store", roleAr: "المتجر", roleEn: "Store" },
+    { id: "x", name: "X", icon: "news", roleAr: "الحساب", roleEn: "Account" }
+  ];
+  function connectorResult(id) {
+    if (connectorState[id]) return connectorState[id];
+    return (window.HmkAndroid && HmkAndroid.checkConnectors) ? "wait" : "nokey";
+  }
   var I18N = {
     ar: { nav_home:"الرئيسية", nav_proj:"المشاريع", nav_ideas:"الأفكار", nav_tools:"الأدوات", enter:"متابعة",
       home:"الرئيسية", projects:"المشاريع", ideas:"الأفكار", tools:"الأدوات", project:"مشروع", edit:"تعديل",
@@ -56,7 +70,9 @@
       bad_file:"ملف غير صالح", bad_ws:"ملف المساحة غير صالح", bad_snap:"لقطة غير صالحة",
       restored:"استُعيدت المساحة", imported:"استُوردت اللقطة", cleared:"المساحة فارغة", clear_ask:"مسح مشاريعك المحلية؟ المرجع لا يتأثر.",
       created:"أُنشئ المشروع في المساحة", big_file:"الملف أكبر من الحد", need_name:"اكتب اسماً", need_task:"اكتب مهمة", limit:"بلغت الحد",
-      del_ask:"حذف هذا المشروع؟", idea_ph:"سطر واحد", need_idea:"اكتب الفكرة", goal:"الهدف", first_task:"أول مهمة", need_both:"أكمل الهدف والمهمة" },
+      del_ask:"حذف هذا المشروع؟", idea_ph:"سطر واحد", need_idea:"اكتب الفكرة", goal:"الهدف", first_task:"أول مهمة", need_both:"أكمل الهدف والمهمة",
+      c_ok:"سليم", c_nokey:"لا مفتاح", c_badkey:"مفتاح غير صالح", c_fail:"تعذر الفحص", c_wait:"جارٍ الفحص",
+      c_line_ok:"الفحص نجح الآن", c_line_nokey:"لا مفتاح محفوظ على هذا الجهاز", c_line_badkey:"الخدمة رفضت المفتاح", c_line_fail:"تعذر الاتصال بالخدمة", c_line_wait:"جارٍ فحص المفتاح" },
     en: { nav_home:"Home", nav_proj:"Projects", nav_ideas:"Ideas", nav_tools:"Tools", enter:"Continue",
       home:"Home", projects:"Projects", ideas:"Ideas", tools:"Tools", project:"Project", edit:"Edit",
       seg_now:"Now", seg_proj:"Projects", seg_brief:"Brief", seg_tools:"Tools", seg_set:"Settings", seg_file:"File",
@@ -81,7 +97,9 @@
       bad_file:"Invalid file", bad_ws:"Invalid workspace file", bad_snap:"Invalid snapshot",
       restored:"Workspace restored", imported:"Snapshot imported", cleared:"Workspace cleared", clear_ask:"Clear your local projects? The reference stays.",
       created:"Project created in the workspace", big_file:"File is over the limit", need_name:"Type a name", need_task:"Type a task", limit:"Limit reached",
-      del_ask:"Delete this project?", idea_ph:"One line", need_idea:"Type the idea", goal:"Goal", first_task:"First task", need_both:"Complete the goal and the task" }
+      del_ask:"Delete this project?", idea_ph:"One line", need_idea:"Type the idea", goal:"Goal", first_task:"First task", need_both:"Complete the goal and the task",
+      c_ok:"Healthy", c_nokey:"No key", c_badkey:"Invalid key", c_fail:"Check failed", c_wait:"Checking",
+      c_line_ok:"The check succeeded just now", c_line_nokey:"No key stored on this device", c_line_badkey:"The service rejected the key", c_line_fail:"The service could not be reached", c_line_wait:"Checking the key" }
   };
   function t(key) { return (I18N[lang] && I18N[lang][key]) || (I18N.ar[key]) || key; }
   function stLabel(code) { return t("st_" + code); }
@@ -467,6 +485,35 @@
     row.appendChild(h("div", "sub", role + " · " + when(tool.lastRun) + " · " + healthLabel(tool.state)));
     return row;
   }
+  function connectorRow(c) {
+    var result = connectorResult(c.id);
+    if (result !== "ok" && result !== "nokey" && result !== "badkey" && result !== "fail" && result !== "wait") result = "fail";
+    var row = h("div", "trow");
+    row.setAttribute("data-connector", c.id);
+    row.appendChild(icon(c.icon));
+    row.appendChild(h("div", "nm", c.name));
+    var tag = h("span", "tag " + (result === "ok" ? "running" : "bad"), t("c_" + result));
+    row.appendChild(tag);
+    var role = lang === "en" ? c.roleEn : c.roleAr;
+    row.appendChild(h("div", "sub", role + " · " + t("c_line_" + result)));
+    return row;
+  }
+  function refreshConnectors() {
+    if (connectorChecked || !window.HmkAndroid || !HmkAndroid.checkConnectors) return;
+    connectorChecked = true;
+    setTimeout(function () {
+      var raw = "";
+      try { raw = HmkAndroid.checkConnectors(); } catch (e) { raw = ""; }
+      var list = [];
+      try { list = JSON.parse(raw || "[]"); } catch (e2) { list = []; }
+      if (!Array.isArray(list)) list = [];
+      list.forEach(function (item) {
+        if (item && item.id && (item.result === "ok" || item.result === "nokey" || item.result === "badkey" || item.result === "fail")) connectorState[item.id] = item.result;
+      });
+      CONNECTORS.forEach(function (c) { if (!connectorState[c.id]) connectorState[c.id] = "fail"; });
+      if (tab === "more" && toolSeg === "run") draw();
+    }, 30);
+  }
   function counts() {
     var list = readWs().projects;
     var n = { go: 0, wait: 0, hold: 0, done: 0 };
@@ -783,7 +830,7 @@
       var starts = ["home", "projects", "ideas", "more"], startName = { home: t("home"), projects: t("projects"), ideas: t("ideas"), more: t("tools") };
       rows.appendChild(choice(t("start"), startName[startPage], function () { setPref("hmk_start_v1", starts[(starts.indexOf(startPage) + 1) % starts.length], "start"); }));
       rows.appendChild(choice(t("density"), density === "comfortable" ? t("comfortable") : t("compact"), function () { setPref("hmk_density_v1", density === "compact" ? "comfortable" : "compact", "density"); }));
-      var info = window.HMK_BUILD || { version: "1.8-debug", sha: "dev" };
+      var info = window.HMK_BUILD || { version: "1.9-debug", sha: "dev" };
       try {
         if (window.HmkAndroid && HmkAndroid.buildId) {
           var parts = String(HmkAndroid.buildId()).split(" ");
@@ -842,7 +889,12 @@
       });
       rows.appendChild(clear);
     } else {
-      snap.tools.forEach(function (tool) { rows.appendChild(toolRow(tool)); });
+      CONNECTORS.forEach(function (c) { rows.appendChild(connectorRow(c)); });
+      snap.tools.forEach(function (tool) {
+        if (tool.name === "Exa · Bright Data · Apify" || tool.name === "GitHub · Shopify · X") return;
+        rows.appendChild(toolRow(tool));
+      });
+      refreshConnectors();
     }
     pages.appendChild(rows);
   }

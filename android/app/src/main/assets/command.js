@@ -71,7 +71,7 @@
       restored:"استُعيدت المساحة", imported:"استُوردت اللقطة", cleared:"المساحة فارغة", clear_ask:"مسح مشاريعك المحلية؟ المرجع لا يتأثر.",
       created:"أُنشئ المشروع في المساحة", big_file:"الملف أكبر من الحد", need_name:"اكتب اسماً", need_task:"اكتب مهمة", limit:"بلغت الحد",
       del_ask:"حذف هذا المشروع؟", idea_ph:"سطر واحد", need_idea:"اكتب الفكرة", goal:"الهدف", first_task:"أول مهمة", need_both:"أكمل الهدف والمهمة",
-      tab_sum:"الملخص", tab_hq:"المقر", tab_proj:"المشاريع", tab_agency:"الوكالة", tab_house:"البيت", tab_market:"السوق", tab_spend:"الإنفاق", tab_ideas:"الأفكار", tab_reports:"التقارير",
+      tab_sum:"ملخص", tab_hq:"مقر", tab_proj:"مشاريع", tab_agency:"وكالة", tab_house:"بيت", tab_market:"سوق", tab_spend:"إنفاق", tab_ideas:"أفكار", tab_reports:"تقارير",
       add:"إضافة",
       c_ok:"سليم", c_nokey:"لا مفتاح", c_badkey:"مفتاح غير صالح", c_fail:"تعذر الفحص", c_wait:"جارٍ الفحص",
       c_line_ok:"الفحص نجح الآن", c_line_nokey:"لا مفتاح محفوظ على هذا الجهاز", c_line_badkey:"الخدمة رفضت المفتاح", c_line_fail:"تعذر الاتصال بالخدمة", c_line_wait:"جارٍ فحص المفتاح" },
@@ -100,7 +100,7 @@
       restored:"Workspace restored", imported:"Snapshot imported", cleared:"Workspace cleared", clear_ask:"Clear your local projects? The reference stays.",
       created:"Project created in the workspace", big_file:"File is over the limit", need_name:"Type a name", need_task:"Type a task", limit:"Limit reached",
       del_ask:"Delete this project?", idea_ph:"One line", need_idea:"Type the idea", goal:"Goal", first_task:"First task", need_both:"Complete the goal and the task",
-      tab_sum:"Summary", tab_hq:"HQ", tab_proj:"Projects", tab_agency:"Agency", tab_house:"House", tab_market:"Market", tab_spend:"Spend", tab_ideas:"Ideas", tab_reports:"Reports",
+      tab_sum:"Sum", tab_hq:"HQ", tab_proj:"Work", tab_agency:"Agency", tab_house:"House", tab_market:"Mkt", tab_spend:"Spend", tab_ideas:"Ideas", tab_reports:"Docs",
       add:"Add",
       c_ok:"Healthy", c_nokey:"No key", c_badkey:"Invalid key", c_fail:"Check failed", c_wait:"Checking",
       c_line_ok:"The check succeeded just now", c_line_nokey:"No key stored on this device", c_line_badkey:"The service rejected the key", c_line_fail:"The service could not be reached", c_line_wait:"Checking the key" }
@@ -448,6 +448,24 @@
   function projectById(id) {
     return readWs().projects.filter(function (p) { return p.id === id; })[0] || null;
   }
+  function fillRows(rows) {
+    var seen = {};
+    Array.prototype.forEach.call(rows.children, function (el) {
+      var nm = el.querySelector(".nm");
+      if (nm) seen[nm.textContent] = true;
+    });
+    var extra = [];
+    (snap.happened || []).forEach(function (text) { extra.push(line("flag", text, lang === "en" ? "Done in the snapshot" : "تم في اللقطة", lang === "en" ? "Done" : "تم", "done")); });
+    (snap.brief || []).forEach(function (b) { extra.push(line("news", b.title, b.source || t("brief"), b.date, "wait")); });
+    (snap.next || []).forEach(function (text) { extra.push(line("flag", text, t("next"), lang === "en" ? "Open" : "مفتوح", "wait")); });
+    extra.forEach(function (row) {
+      if (rows.children.length >= 12) return;
+      var nm = row.querySelector(".nm").textContent;
+      if (seen[nm]) return;
+      seen[nm] = true;
+      rows.appendChild(row);
+    });
+  }
   function paintProject(p, extra) {
     if (!p) { pages.appendChild(h("p", "empty", t("no_projects"))); return; }
     band(p.name, (extra || stLabel(p.status)) + (typeof p.progress === "number" ? " · " + num(p.progress) + "%" : ""));
@@ -461,12 +479,17 @@
     rows.appendChild(dueLine);
     var prog = line("chart", t("progress"), typeof p.progress === "number" ? num(p.progress) + "%" : t("no_progress"), stLabel(p.status), statusClass(p.status));
     rows.appendChild(prog);
+    rows.appendChild(line("note", lang === "en" ? "Updated" : "آخر تحديث", when(snap.generatedAt), num((p.tasks || []).length) + (lang === "en" ? " tasks" : " مهام"), "wait"));
+    (p.tasks || []).forEach(function (task) {
+      rows.appendChild(line("flag", task.title, t("tasks"), task.status === "done" ? t("st_done") : t("st_wait"), statusClass(task.status)));
+    });
     var edit = h("button", "trow prow");
     edit.appendChild(icon("note"));
     edit.appendChild(h("div", "nm", t("edit")));
     edit.appendChild(h("div", "sub", lang === "en" ? "Name, step, progress, date" : "الاسم والخطوة والتقدم والموعد"));
     edit.addEventListener("click", function () { editSheet(p); });
     rows.appendChild(edit);
+    fillRows(rows);
     pages.appendChild(rows);
   }
   function drawSum() {
@@ -481,7 +504,11 @@
     late.setAttribute("data-late", String(c.late));
     rows.appendChild(late);
     (snap.next || []).forEach(function (item) { rows.appendChild(line("flag", item, t("next"), lang === "en" ? "Open" : "مفتوح", "wait")); });
-    (snap.brief || []).slice(0, 3).forEach(function (b) { rows.appendChild(line("news", b.title, b.source || t("brief"), b.date, "wait")); });
+    (snap.brief || []).forEach(function (b) { rows.appendChild(line("news", b.title, b.source || t("brief"), b.date, "wait")); });
+    (snap.computers || []).forEach(function (m) {
+      rows.appendChild(line(m.online ? "laptop" : "phone", m.name, m.online ? (lang === "en" ? "Online in the snapshot" : "متصل في اللقطة") : (lang === "en" ? "Not linked" : "غير مربوط"), m.online ? (lang === "en" ? "Online" : "متصل") : (lang === "en" ? "Offline" : "غير مربوط"), m.online ? "running" : "bad"));
+    });
+    fillRows(rows);
     pages.appendChild(rows);
   }
   function drawHq() {
@@ -491,6 +518,7 @@
     (snap.computers || []).forEach(function (m) {
       rows.appendChild(line(m.online ? "laptop" : "phone", m.name, m.online ? (lang === "en" ? "Online in the snapshot" : "متصل في اللقطة") : (lang === "en" ? "Not linked" : "غير مربوط"), m.online ? (lang === "en" ? "Online" : "متصل") : (lang === "en" ? "Offline" : "غير مربوط"), m.online ? "running" : "bad"));
     });
+    (snap.ceoNow || []).forEach(function (text) { rows.appendChild(line("crown", text, lang === "en" ? "CEO now" : "الآن عند المدير", lang === "en" ? "Now" : "الآن", "wait")); });
     pages.appendChild(rows);
   }
   function drawProjPage() {
@@ -538,6 +566,7 @@
     });
     if (!rows.children.length) rows.appendChild(line("spark", t("tab_agency"), lang === "en" ? "No agency record in this snapshot" : "لا سجل وكالة في هذه اللقطة", lang === "en" ? "Empty" : "فارغ", "bad"));
     (snap.programs || []).forEach(function (name) { rows.appendChild(line("store", name, lang === "en" ? "Program in the snapshot" : "برنامج في اللقطة", lang === "en" ? "Listed" : "مدرج", "running")); });
+    fillRows(rows);
     pages.appendChild(rows);
   }
   function moneyOf(cost) {
@@ -908,6 +937,7 @@
     snap.ideas.forEach(function (text, i) {
       rows.appendChild(line(ideaIcons[i] || "spark", text, lang === "en" ? "From the snapshot" : "من اللقطة", lang === "en" ? "Reference" : "مرجع", "wait"));
     });
+    (snap.ceoNow || []).forEach(function (text) { rows.appendChild(line("crown", text, lang === "en" ? "CEO note" : "ملاحظة المدير", lang === "en" ? "Open" : "مفتوح", "wait")); });
     if (!ideaOpen && !readDraft()) {
       var open = h("button", "trow");
       open.appendChild(icon("spark"));
@@ -916,6 +946,7 @@
       open.appendChild(h("div", "sub", lang === "en" ? "One line, then a template" : "سطر واحد ثم قالب"));
       open.addEventListener("click", function () { ideaOpen = true; draw(); });
       rows.appendChild(open);
+      fillRows(rows);
       pages.appendChild(rows);
       return;
     }
@@ -986,7 +1017,7 @@
       var starts = ["home", "projects", "ideas", "more"], startName = { home: t("home"), projects: t("projects"), ideas: t("ideas"), more: t("tools") };
       rows.appendChild(choice("flag", t("start"), lang === "en" ? "Page after the opening" : "الصفحة بعد الافتتاح", startName[startPage], function () { setPref("hmk_start_v1", starts[(starts.indexOf(startPage) + 1) % starts.length], "start"); }));
       rows.appendChild(choice("pause", t("density"), lang === "en" ? "Compact or comfortable" : "مضغوط أو مريح", density === "comfortable" ? t("comfortable") : t("compact"), function () { setPref("hmk_density_v1", density === "compact" ? "comfortable" : "compact", "density"); }));
-      var info = window.HMK_BUILD || { version: "1.11-debug", sha: "dev" };
+      var info = window.HMK_BUILD || { version: "1.12-debug", sha: "dev" };
       try {
         if (window.HmkAndroid && HmkAndroid.buildId) {
           var parts = String(HmkAndroid.buildId()).split(" ");

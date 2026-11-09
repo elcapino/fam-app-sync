@@ -6,6 +6,16 @@
 <title>HMK · العين</title>
 <link rel="stylesheet" href="command.css">
 <script src="build-info.js"></script>
+<script>
+try {
+  if (window.HmkAndroid && HmkAndroid.loadState) {
+    var saved = JSON.parse(HmkAndroid.loadState() || "{}");
+    Object.keys(saved).forEach(function (key) {
+      if (key.indexOf("hmk_") === 0 && typeof saved[key] === "string") localStorage.setItem(key, saved[key]);
+    });
+  }
+} catch (e) {}
+</script>
 </head>
 <body>
 <div id="open">

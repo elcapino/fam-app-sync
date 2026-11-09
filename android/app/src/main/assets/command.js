@@ -1,5 +1,19 @@
 (function () {
   "use strict";
+  var nativeSet = localStorage.setItem.bind(localStorage);
+  var nativeRemove = localStorage.removeItem.bind(localStorage);
+  localStorage.setItem = function (key, value) {
+    nativeSet(key, value);
+    try {
+      if (window.HmkAndroid && HmkAndroid.savePref && String(key).indexOf("hmk_") === 0) HmkAndroid.savePref(String(key), String(value));
+    } catch (e) {}
+  };
+  localStorage.removeItem = function (key) {
+    nativeRemove(key);
+    try {
+      if (window.HmkAndroid && HmkAndroid.removePref && String(key).indexOf("hmk_") === 0) HmkAndroid.removePref(String(key));
+    } catch (e) {}
+  };
   var WS_KEY = "hmk_workspace_v1";
   var DRAFT_KEY = "hmk_idea_draft_v1";
   var SNAP_KEY = "hmk_status_snapshot_v1";

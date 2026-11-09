@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import java.util.Map;
 import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -161,6 +163,33 @@ public class MainActivity extends Activity {
         @JavascriptInterface
         public String buildId() {
             return BuildConfig.VERSION_NAME + " " + BuildConfig.GIT_SHA;
+        }
+
+        @JavascriptInterface
+        public void savePref(String key, String value) {
+            if (key == null || !key.startsWith("hmk_") || value == null || value.length() > 200000) return;
+            prefs().edit().putString(key, value).commit();
+        }
+
+        @JavascriptInterface
+        public void removePref(String key) {
+            if (key == null || !key.startsWith("hmk_")) return;
+            prefs().edit().remove(key).commit();
+        }
+
+        @JavascriptInterface
+        public String loadState() {
+            JSONObject out = new JSONObject();
+            for (Map.Entry<String, ?> entry : prefs().getAll().entrySet()) {
+                if (entry.getValue() instanceof String) {
+                    try { out.put(entry.getKey(), entry.getValue()); } catch (Exception ignored) {}
+                }
+            }
+            return out.toString();
+        }
+
+        private SharedPreferences prefs() {
+            return getSharedPreferences("hmk", MODE_PRIVATE);
         }
 
         @JavascriptInterface

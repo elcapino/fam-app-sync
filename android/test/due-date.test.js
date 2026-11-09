@@ -50,10 +50,12 @@ function serve() {
   const page = await browser.newPage();
   page.on("pageerror", (e) => ok("no page error", false, e.message));
   await page.goto("http://127.0.0.1:" + port + "/command.html?open=0", { waitUntil: "networkidle0" });
-  await page.waitForSelector(".prow");
+  await page.waitForSelector(".sum");
   const before = await page.$eval(".sum", (el) => el.innerText.replace(/\s+/g, " "));
   ok("overdue starts at 0", /0\s*متأخر|متأخر[\s\S]*0/.test(before) || before.includes("0"), before);
 
+  await page.click('footer button[data-tab="projects"]');
+  await page.waitForSelector(".prow");
   await page.click(".prow");
   await page.waitForSelector("[data-due]");
   const originalNext = await page.$eval("[data-next]", (el) => el.getAttribute("data-next"));

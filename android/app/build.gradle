@@ -2,16 +2,25 @@ plugins {
     id "com.android.application"
 }
 
+def gitSha = "dev"
+try {
+    def proc = ["git", "-C", rootDir.parentFile.absolutePath, "rev-parse", "--short=12", "HEAD"].execute()
+    proc.waitFor()
+    if (proc.exitValue() == 0) gitSha = proc.text.trim()
+} catch (Exception ignored) {}
+
 android {
     namespace "ae.elcapino.app"
     compileSdk 34
+    buildFeatures { buildConfig true }
 
     defaultConfig {
         applicationId "ae.elcapino.app"
         minSdk 24
         targetSdk 34
-        versionCode 9
-        versionName "1.7-debug"
+        versionCode 10
+        versionName "1.8-debug"
+        buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
     }
 
     buildTypes {

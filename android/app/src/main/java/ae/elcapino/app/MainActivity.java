@@ -146,6 +146,11 @@ public class MainActivity extends Activity {
 
     private final class ExportBridge {
         @JavascriptInterface
+        public String buildId() {
+            return BuildConfig.VERSION_NAME + " " + BuildConfig.GIT_SHA;
+        }
+
+        @JavascriptInterface
         public void saveExport(String name, String text) {
             String safe = safeName(name);
             if (text == null) return;

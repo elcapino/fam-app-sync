@@ -40,7 +40,7 @@ function serve() {
   const server = await serve();
   const browser = await puppeteer.launch({ executablePath: "/usr/local/bin/google-chrome", headless: "new", args: ["--no-sandbox"] });
   const views = [[360, 800], [390, 844], [412, 915], [720, 1600], [1080, 2400]];
-  const tabs = [["home", null], ["projects", "projects"], ["ideas", "ideas"], ["tools", "more"]];
+    const tabs = [["sum", null], ["proj", "proj"], ["ideas", "ideas"], ["spend", "spend"]];
   for (const [w, h] of views) {
     const page = await browser.newPage();
     await page.setViewport({ width: w, height: h, deviceScaleFactor: 1 });
@@ -58,6 +58,7 @@ function serve() {
       });
       ok(w + "x" + h + " " + name + " fits", fit.main <= 2 && fit.doc <= 2 && fit.boxed === 0, JSON.stringify(fit));
     }
+    await page.evaluate(() => [...document.querySelectorAll(".seg button")].find((b) => b.textContent.indexOf("الأدوات") >= 0).click());
     const bright = await page.$eval('[data-connector="brightdata"]', (el) => el.innerText.replace(/\s+/g, " "));
     ok("Bright Data is not marked healthy", bright.includes("لا مفتاح") && !bright.includes("سليم"), bright);
     const headers = await page.evaluate(() => {
@@ -72,7 +73,8 @@ function serve() {
   const uae = await browser.newPage();
   await uae.setViewport({ width: 390, height: 844, deviceScaleFactor: 1 });
   await uae.goto("http://127.0.0.1:" + server.address().port + "/command.html?open=0&theme=uae&lang=en", { waitUntil: "networkidle0" });
-  await uae.click('footer button[data-tab="more"]');
+  await uae.click('footer button[data-tab="spend"]');
+  await uae.evaluate(() => [...document.querySelectorAll(".seg button")].find((b) => /Tools|الأدوات/.test(b.textContent)).click());
   const uaeHead = await uae.evaluate(() => {
     const s = getComputedStyle(document.querySelector(".seg button"));
     const on = getComputedStyle(document.querySelector(".seg button.on"));

@@ -54,14 +54,12 @@ function serve() {
   const before = await page.$eval("[data-late]", (el) => el.innerText.replace(/\s+/g, " "));
   ok("overdue starts at 0", /0\s*متأخر|متأخر[\s\S]*0/.test(before) || before.includes("0"), before);
 
-  await page.click('footer button[data-tab="projects"]');
-  await page.waitForSelector(".prow");
-  await page.click(".prow");
+  await page.click('footer button[data-tab="proj"]');
   await page.waitForSelector("[data-due]");
   const originalNext = await page.$eval("[data-next]", (el) => el.getAttribute("data-next"));
   ok("house next step is not a date", originalNext.indexOf("2026-11-01") === -1, originalNext);
 
-  await page.evaluate(() => [...document.querySelectorAll("button")].find((b) => b.textContent.trim() === "تعديل").click());
+  await page.evaluate(() => [...document.querySelectorAll("button")].find((b) => b.textContent.indexOf("تعديل") >= 0).click());
   await page.waitForSelector("#hmk-due");
   const types = await page.evaluate(() => ({
     next: document.getElementById("hmk-next").tagName,
@@ -86,9 +84,9 @@ function serve() {
   ok("detail shows the date", saved.shown.indexOf("2026-11-01") >= 0, saved.shown);
   ok("next step unchanged", saved.next === originalNext, saved.next);
 
-  await page.evaluate(() => [...document.querySelectorAll("footer button")].find((b) => b.textContent.indexOf("الرئيسية") >= 0).click());
-  await page.waitForSelector(".sum");
-  const after = await page.$eval(".sum", (el) => el.innerText.replace(/\s+/g, " "));
+  await page.click('footer button[data-tab="sum"]');
+  await page.waitForSelector("[data-late]");
+  const after = await page.$eval("[data-late]", (el) => el.innerText.replace(/\s+/g, " "));
   ok("past date counts as overdue", /1\s*متأخر/.test(after) || after.indexOf("متأخر") > 0 && after.indexOf("1") >= 0, after);
 
   await browser.close();

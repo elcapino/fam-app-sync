@@ -71,6 +71,7 @@
       restored:"استُعيدت المساحة", imported:"استُوردت اللقطة", cleared:"المساحة فارغة", clear_ask:"مسح مشاريعك المحلية؟ المرجع لا يتأثر.",
       created:"أُنشئ المشروع في المساحة", big_file:"الملف أكبر من الحد", need_name:"اكتب اسماً", need_task:"اكتب مهمة", limit:"بلغت الحد",
       del_ask:"حذف هذا المشروع؟", idea_ph:"سطر واحد", need_idea:"اكتب الفكرة", goal:"الهدف", first_task:"أول مهمة", need_both:"أكمل الهدف والمهمة",
+      tab_sum:"الملخص", tab_hq:"المقر", tab_proj:"المشاريع", tab_agency:"الوكالة", tab_house:"البيت", tab_market:"السوق", tab_spend:"الإنفاق", tab_ideas:"الأفكار", tab_reports:"التقارير",
       add:"إضافة",
       c_ok:"سليم", c_nokey:"لا مفتاح", c_badkey:"مفتاح غير صالح", c_fail:"تعذر الفحص", c_wait:"جارٍ الفحص",
       c_line_ok:"الفحص نجح الآن", c_line_nokey:"لا مفتاح محفوظ على هذا الجهاز", c_line_badkey:"الخدمة رفضت المفتاح", c_line_fail:"تعذر الاتصال بالخدمة", c_line_wait:"جارٍ فحص المفتاح" },
@@ -99,6 +100,7 @@
       restored:"Workspace restored", imported:"Snapshot imported", cleared:"Workspace cleared", clear_ask:"Clear your local projects? The reference stays.",
       created:"Project created in the workspace", big_file:"File is over the limit", need_name:"Type a name", need_task:"Type a task", limit:"Limit reached",
       del_ask:"Delete this project?", idea_ph:"One line", need_idea:"Type the idea", goal:"Goal", first_task:"First task", need_both:"Complete the goal and the task",
+      tab_sum:"Summary", tab_hq:"HQ", tab_proj:"Projects", tab_agency:"Agency", tab_house:"House", tab_market:"Market", tab_spend:"Spend", tab_ideas:"Ideas", tab_reports:"Reports",
       add:"Add",
       c_ok:"Healthy", c_nokey:"No key", c_badkey:"Invalid key", c_fail:"Check failed", c_wait:"Checking",
       c_line_ok:"The check succeeded just now", c_line_nokey:"No key stored on this device", c_line_badkey:"The service rejected the key", c_line_fail:"The service could not be reached", c_line_wait:"Checking the key" }
@@ -134,7 +136,11 @@
     pause: "M7 5h3v14H7z M14 5h3v14h-3z",
     flag: "M5 3v18 M5 4h11l-2 4 2 4H5"
   };
-  var tab = "home";
+  var tab = "sum";
+  var projIndex = 0;
+  var spendSeg = "money";
+  var sumSeg = "now";
+  var reportSeg = "list";
   var detail = null;
   var ideaOpen = false;
   var addOpen = false;
@@ -339,10 +345,11 @@
     if (enter) enter.textContent = t("enter");
     var addLabel = document.getElementById("addlabel");
     if (addLabel) addLabel.textContent = t("add");
-    var navT = ["nav_home", "nav_proj", "nav_ideas", "nav_tools"];
-    document.querySelectorAll("footer button").forEach(function (b, i) {
+    var navT = { sum: "tab_sum", hq: "tab_hq", proj: "tab_proj", agency: "tab_agency", house: "tab_house", market: "tab_market", spend: "tab_spend", ideas: "tab_ideas", reports: "tab_reports" };
+    document.querySelectorAll("footer button").forEach(function (b) {
       var last = b.lastChild;
-      if (last && last.nodeType === 3) last.textContent = t(navT[i]);
+      var key = navT[b.getAttribute("data-tab")];
+      if (last && last.nodeType === 3 && key) last.textContent = t(key);
     });
   }
   function setLang(next) {
@@ -424,15 +431,177 @@
     document.querySelectorAll("footer button").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-tab") === next); });
     draw();
   }
+  var LINKS = {
+    "Claude": "https://claude.ai",
+    "Gemini": "https://gemini.google.com",
+    "DeepSeek": "https://chat.deepseek.com",
+    "NotebookLM": "https://notebooklm.google.com",
+    "Exa": "https://exa.ai",
+    "Bright Data": "https://brightdata.com",
+    "Apify": "https://apify.com",
+    "GitHub": "https://github.com",
+    "Shopify": "https://shopify.com",
+    "X": "https://x.com",
+    "ChatGPT / Codex": "https://chatgpt.com"
+  };
+  function hostOf(url) { return String(url || "").replace(/^https:\/\//, "").replace(/\/.*$/, ""); }
+  function projectById(id) {
+    return readWs().projects.filter(function (p) { return p.id === id; })[0] || null;
+  }
+  function paintProject(p, extra) {
+    if (!p) { pages.appendChild(h("p", "empty", t("no_projects"))); return; }
+    band(p.name, (extra || stLabel(p.status)) + (typeof p.progress === "number" ? " · " + num(p.progress) + "%" : ""));
+    var rows = h("div", "rows");
+    rows.appendChild(line(p.icon || "crown", p.name, p.from === "snapshot" ? t("from_ceo") : t("file"), stLabel(p.status), statusClass(p.status)));
+    var nextLine = line("flag", t("step"), p.next || t("no_step"), p.next ? (lang === "en" ? "Set" : "مكتوب") : (lang === "en" ? "Empty" : "فارغ"), p.next ? "running" : "wait");
+    nextLine.setAttribute("data-next", p.next || "");
+    rows.appendChild(nextLine);
+    var dueLine = line("note", t("due"), p.due || t("no_due"), p.due || t("no_due"), p.due ? "wait" : "bad");
+    dueLine.setAttribute("data-due", p.due || "");
+    rows.appendChild(dueLine);
+    var prog = line("chart", t("progress"), typeof p.progress === "number" ? num(p.progress) + "%" : t("no_progress"), stLabel(p.status), statusClass(p.status));
+    rows.appendChild(prog);
+    var edit = h("button", "trow prow");
+    edit.appendChild(icon("note"));
+    edit.appendChild(h("div", "nm", t("edit")));
+    edit.appendChild(h("div", "sub", lang === "en" ? "Name, step, progress, date" : "الاسم والخطوة والتقدم والموعد"));
+    edit.addEventListener("click", function () { editSheet(p); });
+    rows.appendChild(edit);
+    pages.appendChild(rows);
+  }
+  function drawSum() {
+    var list = readWs().projects;
+    var c = counts();
+    band(t("tab_sum"), (theme === "uae" ? t("uae") : t("alain")) + " · " + num("09") + " · " + num("2026"), num(list.length));
+    segBar([["now", lang === "en" ? "Now" : "الآن"], ["set", lang === "en" ? "Settings" : "ضبط"]], sumSeg, function (id) { sumSeg = id; draw(); });
+    var rows = h("div", "rows");
+    if (sumSeg === "set") { drawSettings(rows); pages.appendChild(rows); return; }
+    var late = line("flag", t("late"), t("all") + " " + num(c.all) + " · " + t("going") + " " + num(c.go) + " · " + t("done") + " " + num(c.done), num(c.late) + " " + t("late"), c.late ? "bad" : "running");
+    late.classList.add("sum");
+    late.setAttribute("data-late", String(c.late));
+    rows.appendChild(late);
+    (snap.next || []).forEach(function (item) { rows.appendChild(line("flag", item, t("next"), lang === "en" ? "Open" : "مفتوح", "wait")); });
+    (snap.brief || []).slice(0, 3).forEach(function (b) { rows.appendChild(line("news", b.title, b.source || t("brief"), b.date, "wait")); });
+    pages.appendChild(rows);
+  }
+  function drawHq() {
+    band(t("tab_hq"), lang === "en" ? "Team and devices from the 9 Nov snapshot" : "الفريق والأجهزة من لقطة 9 نوفمبر");
+    var rows = h("div", "rows");
+    (snap.team || []).forEach(function (m) { rows.appendChild(line(m.icon || "crown", m.name, m.role, lang === "en" ? "Recorded" : "مسجّل", "wait")); });
+    (snap.computers || []).forEach(function (m) {
+      rows.appendChild(line(m.online ? "laptop" : "phone", m.name, m.online ? (lang === "en" ? "Online in the snapshot" : "متصل في اللقطة") : (lang === "en" ? "Not linked" : "غير مربوط"), m.online ? (lang === "en" ? "Online" : "متصل") : (lang === "en" ? "Offline" : "غير مربوط"), m.online ? "running" : "bad"));
+    });
+    pages.appendChild(rows);
+  }
+  function drawProjPage() {
+    var list = readWs().projects;
+    if (!list.length) { band(t("tab_proj"), t("no_projects")); return; }
+    if (projIndex >= list.length) projIndex = 0;
+    if (addOpen) {
+      band(t("tab_proj"), t("add"));
+      var name = h("input"); name.maxLength = MAX_NAME; name.placeholder = t("name");
+      pages.appendChild(name);
+      var add = h("button", "linkish", t("save_name"));
+      add.addEventListener("click", function () {
+        var n = clip(name.value, MAX_NAME);
+        if (!n) return note(t("need_name"));
+        var ws = readWs();
+        if (ws.projects.length >= MAX_P) return note(t("limit"));
+        ws.projects.push({ id: rid("p"), name: n, status: "wait", next: "", tasks: [] });
+        writeWs(ws);
+        addOpen = false;
+        projIndex = ws.projects.length - 1;
+        draw();
+      });
+      pages.appendChild(add);
+      return;
+    }
+    var p = list[projIndex];
+    paintProject(p, (lang === "en" ? "Swipe" : "اسحب") + " · " + num(projIndex + 1) + " / " + num(list.length));
+    var bar = h("div", "seg");
+    var prev = h("button", "", lang === "en" ? "Previous" : "السابق");
+    var mid = h("button", "on", num(projIndex + 1) + " / " + num(list.length));
+    var next = h("button", "", lang === "en" ? "Next" : "التالي");
+    prev.addEventListener("click", function () { projIndex = (projIndex - 1 + list.length) % list.length; draw(); });
+    next.addEventListener("click", function () { projIndex = (projIndex + 1) % list.length; draw(); });
+    bar.appendChild(prev); bar.appendChild(mid); bar.appendChild(next);
+    pages.appendChild(bar);
+  }
+  function drawFixedProject(id) {
+    paintProject(projectById(id), t("from_ceo"));
+  }
+  function drawAgency() {
+    band(t("tab_agency"), lang === "en" ? "WhatsApp report in the 9 Nov snapshot" : "تقرير واتساب في لقطة 9 نوفمبر");
+    var rows = h("div", "rows");
+    (snap.ceoNow || []).concat(snap.happened || []).filter(function (x) { return /واتساب|وكالة/.test(x); }).forEach(function (x) {
+      rows.appendChild(line("spark", x, lang === "en" ? "From the CEO snapshot" : "من لقطة المدير", lang === "en" ? "Recorded" : "مسجّل", "wait"));
+    });
+    if (!rows.children.length) rows.appendChild(line("spark", t("tab_agency"), lang === "en" ? "No agency record in this snapshot" : "لا سجل وكالة في هذه اللقطة", lang === "en" ? "Empty" : "فارغ", "bad"));
+    (snap.programs || []).forEach(function (name) { rows.appendChild(line("store", name, lang === "en" ? "Program in the snapshot" : "برنامج في اللقطة", lang === "en" ? "Listed" : "مدرج", "running")); });
+    pages.appendChild(rows);
+  }
+  function moneyOf(cost) {
+    var m = /\$([0-9.]+)\s*\/\s*\$([0-9.]+)/.exec(cost || "");
+    if (!m) return null;
+    return { used: m[1], cap: m[2], pct: Math.round(100 * Number(m[1]) / Number(m[2])) };
+  }
+  function drawSpend() {
+    band(lang === "en" ? "Spend and caps" : "الإنفاق والسقوف", when(snap.generatedAt));
+    segBar([
+      ["money", lang === "en" ? "Spend" : "الإنفاق"],
+      ["use", lang === "en" ? "Usage" : "الاستهلاك"],
+      ["tools", lang === "en" ? "Tools" : "الأدوات"],
+      ["sugg", lang === "en" ? "Ideas" : "اقتراحات"]
+    ], spendSeg, function (id) { spendSeg = id; draw(); });
+    var rows = h("div", "rows");
+    if (spendSeg === "use") {
+      (snap.tools || []).forEach(function (tool) {
+        if (tool.name === "Exa · Bright Data · Apify" || tool.name === "GitHub · Shopify · X") return;
+        var meta = ROLE[tool.name] || ["", ""];
+        rows.appendChild(line(tool.icon || "spark", tool.name, (lang === "en" ? meta[1] : meta[0]) + " · " + when(tool.lastRun), healthLabel(tool.state), statusClass(tool.state)));
+      });
+    } else if (spendSeg === "tools") {
+      CONNECTORS.forEach(function (c) { rows.appendChild(connectorRow(c)); });
+      refreshConnectors();
+    } else if (spendSeg === "sugg") {
+      (snap.ideas || []).forEach(function (text) { rows.appendChild(line("spark", text, lang === "en" ? "Idea in the snapshot" : "فكرة في اللقطة", lang === "en" ? "Review" : "مراجعة", "wait")); });
+      (snap.next || []).forEach(function (text) { rows.appendChild(line("flag", text, t("next"), lang === "en" ? "Open" : "مفتوح", "wait")); });
+    } else {
+      (snap.tools || []).forEach(function (tool) {
+        if (tool.name === "Exa · Bright Data · Apify" || tool.name === "GitHub · Shopify · X") return;
+        var money = moneyOf(tool.cost);
+        var meta = ROLE[tool.name] || ["", ""];
+        var role = lang === "en" ? meta[1] : meta[0];
+        var link = LINKS[tool.name];
+        rows.appendChild(line(tool.icon || "spark", tool.name, role + (link ? " · " + hostOf(link) : ""), money ? "$" + money.used + " / $" + money.cap : (tool.cost || ""), money && money.pct >= 80 ? "bad" : "running"));
+      });
+    }
+    pages.appendChild(rows);
+  }
+  function drawReports() {
+    band(t("tab_reports"), lang === "en" ? "9 Nov brief and local file" : "موجز 9 نوفمبر والملف المحلي");
+    segBar([["list", lang === "en" ? "Brief" : "الموجز"], ["file", t("seg_file")]], reportSeg, function (id) { reportSeg = id; draw(); });
+    var rows = h("div", "rows");
+    if (reportSeg === "file") { drawFile(rows); pages.appendChild(rows); return; }
+    (snap.brief || []).forEach(function (b) { rows.appendChild(line("news", b.title, (b.source || "") + (b.url ? " · " + hostOf(b.url) : ""), b.date, "wait")); });
+    (snap.happened || []).forEach(function (text) { rows.appendChild(line("flag", text, lang === "en" ? "Done in the snapshot" : "تم في اللقطة", lang === "en" ? "Done" : "تم", "done")); });
+    pages.appendChild(rows);
+  }
   function draw() {
     pages.textContent = "";
-    back.hidden = !detail;
-    var names = { home: t("home"), projects: t("projects"), ideas: t("ideas"), more: t("tools") };
-    title.textContent = detail ? t("project") : names[tab];
-    if (tab === "home") drawHome();
-    else if (tab === "projects") detail ? drawDetail() : drawProjects();
+    back.hidden = true;
+    var names = { sum: t("tab_sum"), hq: t("tab_hq"), proj: t("tab_proj"), agency: t("tab_agency"), house: t("tab_house"), market: t("tab_market"), spend: t("tab_spend"), ideas: t("tab_ideas"), reports: t("tab_reports") };
+    title.textContent = names[tab] || t("tab_sum");
+    if (tab === "hq") drawHq();
+    else if (tab === "proj") drawProjPage();
+    else if (tab === "agency") drawAgency();
+    else if (tab === "house") drawFixedProject("p_house01");
+    else if (tab === "market") drawFixedProject("p_markets1");
+    else if (tab === "spend") drawSpend();
     else if (tab === "ideas") drawIdeas();
-    else drawMore();
+    else if (tab === "reports") drawReports();
+    else drawSum();
+    document.querySelectorAll("footer button").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-tab") === tab); });
   }
   function statusClass(code) {
     if (code === "go" || code === "running" || code === "doing") return "running";
@@ -512,7 +681,8 @@
     var tag = h("span", "tag " + (result === "ok" ? "running" : "bad"), t("c_" + result));
     row.appendChild(tag);
     var role = lang === "en" ? c.roleEn : c.roleAr;
-    row.appendChild(h("div", "sub", role + " · " + t("c_line_" + result)));
+    var link = LINKS[c.name] || "";
+    row.appendChild(h("div", "sub", role + " · " + hostOf(link) + " · " + t("c_line_" + result)));
     return row;
   }
   function refreshConnectors() {
@@ -528,7 +698,7 @@
         if (item && item.id && (item.result === "ok" || item.result === "nokey" || item.result === "badkey" || item.result === "fail")) connectorState[item.id] = item.result;
       });
       CONNECTORS.forEach(function (c) { if (!connectorState[c.id]) connectorState[c.id] = "fail"; });
-      if (tab === "more" && toolSeg === "run") draw();
+      if (tab === "spend" && spendSeg === "tools") draw();
     }, 30);
   }
   function counts() {
@@ -598,9 +768,6 @@
       draw();
     });
     pages.appendChild(add);
-  }
-  function projectById(id) {
-    return readWs().projects.filter(function (p) { return p.id === id; })[0] || null;
   }
   function drawDetail() {
     var p = projectById(detail);
@@ -810,11 +977,7 @@
     b.addEventListener("click", on);
     return b;
   }
-  function drawMore() {
-    band(t("tools"), theme === "uae" ? t("uae") : t("alain"));
-    segBar([["run", t("seg_tools")], ["set", t("seg_set")], ["file", t("seg_file")]], toolSeg, function (id) { toolSeg = id; draw(); });
-    var rows = h("div", "rows");
-    if (toolSeg === "set") {
+  function drawSettings(rows) {
       rows.appendChild(choice("note", t("language"), lang === "en" ? "Arabic or English" : "عربي أو English", lang === "en" ? t("en") : t("ar"), function () { setLang(lang === "ar" ? "en" : "ar"); }));
       rows.appendChild(choice("crown", t("theme"), lang === "en" ? "Al Ain or UAE" : "العين أو الإمارات", theme === "uae" ? t("uae") : t("alain"), function () { setTheme(theme === "alain" ? "uae" : "alain"); }));
       var sizes = ["s", "m", "l"], sizeName = { s: t("small"), m: t("medium"), l: t("large") };
@@ -823,7 +986,7 @@
       var starts = ["home", "projects", "ideas", "more"], startName = { home: t("home"), projects: t("projects"), ideas: t("ideas"), more: t("tools") };
       rows.appendChild(choice("flag", t("start"), lang === "en" ? "Page after the opening" : "الصفحة بعد الافتتاح", startName[startPage], function () { setPref("hmk_start_v1", starts[(starts.indexOf(startPage) + 1) % starts.length], "start"); }));
       rows.appendChild(choice("pause", t("density"), lang === "en" ? "Compact or comfortable" : "مضغوط أو مريح", density === "comfortable" ? t("comfortable") : t("compact"), function () { setPref("hmk_density_v1", density === "compact" ? "comfortable" : "compact", "density"); }));
-      var info = window.HMK_BUILD || { version: "1.10-debug", sha: "dev" };
+      var info = window.HMK_BUILD || { version: "1.11-debug", sha: "dev" };
       try {
         if (window.HmkAndroid && HmkAndroid.buildId) {
           var parts = String(HmkAndroid.buildId()).split(" ");
@@ -840,7 +1003,8 @@
       sha.dir = "ltr";
       about.appendChild(sha);
       rows.appendChild(about);
-    } else if (toolSeg === "file") {
+  }
+  function drawFile(rows) {
       var ws = readWs();
       var taskN = 0;
       ws.projects.forEach(function (p) { taskN += p.tasks.length; });
@@ -883,15 +1047,6 @@
         });
       });
       rows.appendChild(clear);
-    } else {
-      CONNECTORS.forEach(function (c) { rows.appendChild(connectorRow(c)); });
-      snap.tools.forEach(function (tool) {
-        if (tool.name === "Exa · Bright Data · Apify" || tool.name === "GitHub · Shopify · X") return;
-        rows.appendChild(toolRow(tool));
-      });
-      refreshConnectors();
-    }
-    pages.appendChild(rows);
   }
   function exportWs() {
     var blob = new Blob([JSON.stringify(readWs(), null, 2)], { type: "application/json" });
@@ -902,7 +1057,7 @@
     a.click();
     a.remove();
     localStorage.setItem("hmk_last_export_v1", new Date().toISOString());
-    if (tab === "more" && toolSeg === "file") draw();
+    if (tab === "reports" && reportSeg === "file") draw();
   }
   function readFile(file, kind) {
     if (file.size > MAX_FILE) return note(t("big_file"));
@@ -949,7 +1104,9 @@
   document.getElementById("ask-no").addEventListener("click", function () { pending = null; ask.hidden = true; });
   document.getElementById("enter").addEventListener("click", function () {
     document.getElementById("open").hidden = true;
-    if (startPage && startPage !== "home") setTab(startPage);
+    var startAlias = { home: "sum", projects: "proj", ideas: "ideas", more: "spend" };
+    var start = startAlias[startPage] || startPage;
+    if (start && start !== "sum") setTab(start);
   });
   document.querySelectorAll("#langs button").forEach(function (b) {
     b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); });
@@ -961,13 +1118,24 @@
     document.getElementById("open").hidden = true;
     if (tab === "ideas") { ideaOpen = true; draw(); return; }
     addOpen = true;
-    setTab("projects");
+    setTab("proj");
   });
   if (/[?&]open=0/.test(location.search)) document.getElementById("open").hidden = true;
   applyTheme();
   back.addEventListener("click", function () { detail = null; draw(); });
   document.querySelectorAll("footer button").forEach(function (b) {
     b.addEventListener("click", function () { setTab(b.getAttribute("data-tab")); });
+  });
+  var swipeX = null;
+  pages.addEventListener("touchstart", function (e) { if (e.touches && e.touches[0]) swipeX = e.touches[0].clientX; });
+  pages.addEventListener("touchend", function (e) {
+    if (swipeX == null || tab !== "proj" || !e.changedTouches || !e.changedTouches[0]) return;
+    var dx = e.changedTouches[0].clientX - swipeX;
+    swipeX = null;
+    var list = readWs().projects;
+    if (!list.length || Math.abs(dx) < 40) return;
+    projIndex = dx < 0 ? (projIndex + 1) % list.length : (projIndex - 1 + list.length) % list.length;
+    draw();
   });
   ensureSeed();
   var stored = validSnap(readJson(SNAP_KEY));

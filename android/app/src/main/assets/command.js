@@ -1017,7 +1017,7 @@
       var starts = ["home", "projects", "ideas", "more"], startName = { home: t("home"), projects: t("projects"), ideas: t("ideas"), more: t("tools") };
       rows.appendChild(choice("flag", t("start"), lang === "en" ? "Page after the opening" : "الصفحة بعد الافتتاح", startName[startPage], function () { setPref("hmk_start_v1", starts[(starts.indexOf(startPage) + 1) % starts.length], "start"); }));
       rows.appendChild(choice("pause", t("density"), lang === "en" ? "Compact or comfortable" : "مضغوط أو مريح", density === "comfortable" ? t("comfortable") : t("compact"), function () { setPref("hmk_density_v1", density === "compact" ? "comfortable" : "compact", "density"); }));
-      var info = window.HMK_BUILD || { version: "1.12-debug", sha: "dev" };
+      var info = window.HMK_BUILD || { version: "1.13-debug", sha: "dev" };
       try {
         if (window.HmkAndroid && HmkAndroid.buildId) {
           var parts = String(HmkAndroid.buildId()).split(" ");

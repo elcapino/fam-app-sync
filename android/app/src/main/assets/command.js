@@ -217,9 +217,18 @@
     if (cp) cp.textContent = theme === "uae" ? "HMK · الإمارات" : "HMK made in ALAIN · UAE";
   }
   function setTheme(next) {
-    theme = next;
-    localStorage.setItem("hmk_theme_v1", next);
-    applyTheme();
+    if (next === theme) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var apply = function () {
+      theme = next;
+      localStorage.setItem("hmk_theme_v1", next);
+      applyTheme();
+      document.body.classList.remove("switching");
+      if (document.getElementById("pages").querySelector("[data-theme-row]")) draw();
+    };
+    if (reduce) { apply(); return; }
+    document.body.classList.add("switching");
+    setTimeout(apply, 250);
   }
   function band(title, sub, num) {
     var b = h("div", "band");
@@ -299,8 +308,12 @@
     row.appendChild(icon(t.icon || "spark"));
     var name = h("div", "nm", t.name);
     row.appendChild(name);
-    var cost = h("span", "stxt " + t.state, t.cost || TOOL[t.state] || t.state);
-    cost.dir = "ltr";
+    var cost = h("span", "stat stxt " + t.state);
+    cost.appendChild(dot(t.state));
+    var label = document.createElement("span");
+    label.textContent = t.cost || TOOL[t.state] || t.state;
+    if (t.cost) label.dir = "ltr";
+    cost.appendChild(label);
     row.appendChild(cost);
     return row;
   }
@@ -314,7 +327,19 @@
     drawHomeC();
   }
   function drawHomeC() {
-    band("الرئيسية", (theme === "uae" ? "ثيم الإمارات" : "ثيم العين") + " · 9 نوفمبر 2026 · 07:40", readWs().projects.length);
+    var list = readWs().projects;
+    var c = counts();
+    band("الرئيسية", (theme === "uae" ? "ثيم الإمارات" : "ثيم العين") + " · 9 نوفمبر 2026 · 07:40", list.length);
+    var sum = h("div", "sum");
+    [["الكل", c.all], ["قيد العمل", c.go], ["منجز", c.done], ["متأخر", c.hold]].forEach(function (pair) {
+      var cell = h("div");
+      var num = h("b", "", String(pair[1]));
+      num.dir = "ltr";
+      cell.appendChild(num);
+      cell.appendChild(h("span", "", pair[0]));
+      sum.appendChild(cell);
+    });
+    pages.appendChild(sum);
     var mine = section("المشاريع");
     readWs().projects.forEach(function (p) { mine.appendChild(projectRow(p)); });
     pages.appendChild(mine);
@@ -425,17 +450,27 @@
   function editSheet(p) {
     var sheet = document.querySelector("#ask .sheet");
     sheet.textContent = "";
-    sheet.appendChild(h("p", "", "تعديل"));
+    var head = h("div", "band");
+    head.appendChild(h("div", "display", "تعديل"));
+    head.appendChild(h("div", "sub", p.name));
+    sheet.appendChild(head);
+    if (typeof p.progress === "number") sheet.appendChild(track(p.progress));
     var name = h("input"); name.value = p.name; name.maxLength = MAX_NAME;
     var next = h("textarea"); next.value = p.next; next.maxLength = MAX_NEXT;
-    var prog = h("input"); prog.value = p.progress == null ? "" : String(p.progress);
+    var prog = h("input"); prog.value = p.progress == null ? "" : String(p.progress); prog.dir = "ltr";
     sheet.appendChild(h("label", "", "الاسم")); sheet.appendChild(name);
     sheet.appendChild(h("label", "", "الخطوة التالية")); sheet.appendChild(next);
     sheet.appendChild(h("label", "", "التقدم")); sheet.appendChild(prog);
-    var states = h("div", "actions");
+    var states = h("div", "states");
     Object.keys(PSTAT).forEach(function (k) {
-      var b = h("button", k === p.status ? "primary" : "", PSTAT[k]);
-      b.addEventListener("click", function () { p.status = k; states.querySelectorAll("button").forEach(function (x) { x.className = ""; }); b.className = "primary"; });
+      var b = h("button", "stpick" + (k === p.status ? " on" : ""));
+      b.appendChild(dot(k));
+      b.appendChild(document.createTextNode(PSTAT[k]));
+      b.addEventListener("click", function () {
+        p.status = k;
+        states.querySelectorAll("button").forEach(function (x) { x.classList.remove("on"); });
+        b.classList.add("on");
+      });
       states.appendChild(b);
     });
     sheet.appendChild(states);
@@ -547,8 +582,12 @@
     band("الأدوات", theme === "uae" ? "ثيم الإمارات" : "ثيم العين");
     var themeRow = section("الثيم");
     [["alain", "ثيم العين"], ["uae", "ثيم الإمارات"]].forEach(function (pair) {
-      var b = h("button", "linkish" + (theme === pair[0] ? " on" : ""), pair[1]);
-      b.addEventListener("click", function () { setTheme(pair[0]); draw(); });
+      var b = h("button", "trow");
+      b.setAttribute("data-theme-row", pair[0]);
+      b.appendChild(icon(pair[0] === "uae" ? "flag" : "crown"));
+      b.appendChild(h("div", "nm", pair[1]));
+      b.appendChild(dot(theme === pair[0] ? "go" : "wait"));
+      b.addEventListener("click", function () { setTheme(pair[0]); });
       themeRow.appendChild(b);
     });
     pages.appendChild(themeRow);
@@ -557,17 +596,29 @@
     pages.appendChild(box);
     var actsBox = section("الملف المحلي");
     actsBox.appendChild(h("p", "fine", "يبقى على هذا الجهاز. لا مزامنة."));
-    var exp = h("button", "primary", "تصدير المساحة");
+    function fileRow(label, kind, iconName) {
+      var b = h("button", "trow");
+      b.appendChild(icon(iconName));
+      b.appendChild(h("div", "nm", label));
+      b.appendChild(dot("go"));
+      var input = h("input"); input.type = "file"; input.accept = "application/json,.json";
+      input.addEventListener("change", function () { if (input.files && input.files[0]) readFile(input.files[0], kind); input.value = ""; });
+      b.addEventListener("click", function () { input.click(); });
+      b.appendChild(input);
+      return b;
+    }
+    var exp = h("button", "trow");
+    exp.appendChild(icon("note"));
+    exp.appendChild(h("div", "nm", "تصدير المساحة"));
+    exp.appendChild(dot("running"));
     exp.addEventListener("click", exportWs);
-    var imp = h("button", "", "استعادة المساحة");
-    var file = h("input"); file.type = "file"; file.accept = "application/json,.json";
-    file.addEventListener("change", function () { if (file.files && file.files[0]) readFile(file.files[0], "workspace"); file.value = ""; });
-    imp.addEventListener("click", function () { file.click(); });
-    var snapBtn = h("button", "", "استيراد اللقطة");
-    var snapFile = h("input"); snapFile.type = "file"; snapFile.accept = "application/json,.json";
-    snapFile.addEventListener("change", function () { if (snapFile.files && snapFile.files[0]) readFile(snapFile.files[0], "snapshot"); snapFile.value = ""; });
-    snapBtn.addEventListener("click", function () { snapFile.click(); });
-    var clear = h("button", "", "مسح المساحة");
+    actsBox.appendChild(exp);
+    actsBox.appendChild(fileRow("استعادة المساحة", "workspace", "book"));
+    actsBox.appendChild(fileRow("استيراد اللقطة", "snapshot", "news"));
+    var clear = h("button", "trow");
+    clear.appendChild(icon("pause"));
+    clear.appendChild(h("div", "nm", "مسح المساحة"));
+    clear.appendChild(dot("stopped"));
     clear.addEventListener("click", function () {
       confirmAsk("مسح مشاريعك المحلية؟ المرجع لا يتأثر.", function () {
         writeWs(emptyWs());
@@ -576,10 +627,7 @@
         draw();
       });
     });
-    var acts = h("div", "actions");
-    acts.appendChild(exp); acts.appendChild(imp); acts.appendChild(snapBtn); acts.appendChild(clear);
-    acts.appendChild(file); acts.appendChild(snapFile);
-    actsBox.appendChild(acts);
+    actsBox.appendChild(clear);
     pages.appendChild(actsBox);
   }
   function exportWs() {

@@ -58,7 +58,31 @@ body[data-theme="uae"] .sec h2,body[data-theme="uae"] .band .bignum{background:l
 body[data-theme="uae"] .ic{stroke:#fff}
 body[data-theme="uae"] .track i{background:linear-gradient(90deg,#007a3d,#fff,#c8102e);box-shadow:0 0 8px rgba(255,255,255,.45)}
 body[data-theme="uae"] #ask .sheet{background:linear-gradient(180deg,#161616,#050505)}
-#app{position:relative;z-index:1;height:100%;display:flex;flex-direction:column}
+#app{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;transition:opacity .25s ease}
+body.switching #app{opacity:0}
+body,input,textarea,.prow,.trow,.lead,.fine,.sec h2{text-align:right}
+.prow .nm,.trow .nm,.prow .nx,.band .display,.band .sub{min-width:0;overflow-wrap:anywhere}
+header h1{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sum{display:flex;margin:4px 0 2px}
+.sum div{flex:1;min-width:0;padding:12px 4px;border-inline-start:1px solid rgba(212,175,55,.4);text-align:center}
+.sum div:first-child{border-inline-start:0}
+.sum b{display:block;font-size:26px;line-height:1;font-weight:700}
+.sum span{display:block;margin-top:4px;font-size:11px;color:var(--mu)}
+.states{display:flex;flex-wrap:wrap;gap:8px 14px;padding:12px 0;border-bottom:1px solid rgba(212,175,55,.25)}
+.stpick{display:flex;align-items:center;gap:6px;color:var(--mu);font-size:13px}
+.stpick.on{color:var(--gold2);border-bottom:1px solid var(--gold2)}
+#ask .sheet .track{width:100%;margin:8px 0 4px}
+@media (max-width:380px){
+  header{padding:0 8px;gap:6px}
+  .mark{letter-spacing:1px;font-size:16px}
+  #themes{gap:6px}
+  #themes button{font-size:11px}
+  .band .display{font-size:26px}
+  .band .bignum{font-size:34px}
+  .sum b{font-size:22px}
+  .stat{font-size:11px;gap:4px}
+  main{padding:4px 12px 24px}
+}
 header{flex:none;height:54px;display:flex;align-items:center;gap:8px;padding:0 12px;background:linear-gradient(90deg,#6a35aa,#241448 55%, #121a36);box-shadow:0 8px 24px rgba(0,0,0,.25)}
 .mark{font:700 18px/1 Plex;letter-spacing:3px;color:var(--gold2)}
 .mark small{display:block;margin-top:3px;font:400 10px/1.2 Plex;letter-spacing:.2px;color:#f6f1e7cc}
@@ -143,5 +167,6 @@ textarea{min-height:48px;resize:vertical}
 .fine{font-size:12px;color:var(--mu);margin:8px 0}
 @keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (prefers-reduced-motion:reduce){
- *{animation:none!important}
+  *{animation:none!important}
+  #app{transition:none}
 }

@@ -7,8 +7,8 @@
   var PSTAT = { wait: "بالانتظار", go: "قيد العمل", hold: "متعثر", done: "منجز" };
   var TSTAT = { open: "مفتوحة", doing: "قيد العمل", done: "تمت" };
   var TOOL = { running: "شغّال", idle: "جاهز", stopped: "موقوف", hold: "مقفل" };
-  var qv = /[?&]view=([abc])/.exec(location.search);
-  var mode = (qv && qv[1]) || localStorage.getItem("hmk_display_v1") || "a";
+  var tq = /[?&]theme=(alain|uae)/.exec(location.search);
+  var theme = (tq && tq[1]) || localStorage.getItem("hmk_theme_v1") || "alain";
   var PATHS = {
     house: "M4 11 12 4l8 7v9H4z M10 20v-5h4v5",
     store: "M3 9h18l-2-5H5z M4 9v11h16V9 M9 20v-6h6v6",
@@ -204,19 +204,29 @@
     box.appendChild(head);
     return box;
   }
-  function setMode(next) {
-    mode = next;
-    localStorage.setItem("hmk_display_v1", next);
-    draw();
-  }
-  function modes() {
-    var bar = h("div", "modes");
-    [["a", "تحليلية"], ["b", "المسار"], ["c", "الصفوف"]].forEach(function (pair) {
-      var b = h("button", pair[0] === mode ? "on" : "", pair[1]);
-      b.addEventListener("click", function () { setMode(pair[0]); });
-      bar.appendChild(b);
+  function applyTheme() {
+    document.body.dataset.theme = theme;
+    document.querySelectorAll("#themes button").forEach(function (b) {
+      b.classList.toggle("on", b.getAttribute("data-theme") === theme);
     });
-    pages.appendChild(bar);
+    var place = theme === "uae" ? "الإمارات" : "العين · الإمارات";
+    document.getElementById("place").textContent = place;
+    var op = document.querySelector("#open .place");
+    if (op) op.textContent = place;
+    var cp = document.querySelector("#open .cp");
+    if (cp) cp.textContent = theme === "uae" ? "HMK · الإمارات" : "HMK made in ALAIN · UAE";
+  }
+  function setTheme(next) {
+    theme = next;
+    localStorage.setItem("hmk_theme_v1", next);
+    applyTheme();
+  }
+  function band(title, sub, num) {
+    var b = h("div", "band");
+    if (num != null) { var n = h("div", "bignum", String(num)); n.dir = "ltr"; b.appendChild(n); }
+    b.appendChild(h("div", "display", title));
+    if (sub) b.appendChild(h("div", "sub", sub));
+    pages.appendChild(b);
   }
   function dot(state) { return h("i", "dot " + state); }
   function track(pct) {
@@ -262,7 +272,6 @@
   }
   function draw() {
     pages.textContent = "";
-    document.body.dataset.mode = mode;
     back.hidden = !detail;
     var names = { home: "الرئيسية", projects: "المشاريع", ideas: "الأفكار", more: "الأدوات" };
     title.textContent = detail ? "مشروع" : names[tab];
@@ -278,7 +287,7 @@
     row.appendChild(name);
     var st = h("span", "stat stxt " + p.status);
     st.appendChild(dot(p.status));
-    if (mode !== "a") st.appendChild(document.createTextNode(PSTAT[p.status]));
+    st.appendChild(document.createTextNode(PSTAT[p.status]));
     row.appendChild(st);
     if (p.next) row.appendChild(h("div", "nx", p.next));
     if (typeof p.progress === "number") row.appendChild(track(p.progress));
@@ -301,55 +310,11 @@
     list.forEach(function (p) { if (n[p.status] != null) n[p.status] += 1; });
     return { all: list.length, go: n.go, wait: n.wait, hold: n.hold, done: n.done };
   }
-  function kpi(num, label) {
-    var box = h("div", "kpi");
-    var b = h("b", "", String(num));
-    b.dir = "ltr";
-    box.appendChild(b);
-    box.appendChild(h("span", "", label));
-    return box;
-  }
   function drawHome() {
-    modes();
-    if (mode === "b") return drawHomeB();
-    if (mode === "c") return drawHomeC();
-    var c = counts();
-    var k = h("div", "kpis");
-    k.appendChild(kpi(c.all, "المشاريع"));
-    k.appendChild(kpi(c.go, "قيد العمل"));
-    k.appendChild(kpi(c.wait, "بالانتظار"));
-    k.appendChild(kpi(c.done, "منجز"));
-    k.appendChild(kpi("8.31", "Claude / 20"));
-    k.appendChild(kpi("3.78", "Gemini / 75"));
-    pages.appendChild(k);
-    pages.appendChild(h("p", "fine", "9 نوفمبر 2026 · 07:40 · العين · لقطة محلية"));
-    var mine = section("المشاريع");
-    readWs().projects.forEach(function (p) { mine.appendChild(projectRow(p)); });
-    pages.appendChild(mine);
-    var tools = section("الأدوات");
-    snap.tools.forEach(function (t) { tools.appendChild(toolRow(t)); });
-    pages.appendChild(tools);
-    var next = section("الخطوة التالية");
-    var tl = h("div", "tl");
-    snap.next.forEach(function (line) { tl.appendChild(h("div", "ev", line)); });
-    next.appendChild(tl);
-    pages.appendChild(next);
-  }
-  function drawHomeB() {
-    pages.appendChild(h("p", "fine", "المسار · 9 نوفمبر · العين"));
-    readWs().projects.forEach(function (p) {
-      var row = h("button", "step");
-      row.appendChild(ring(typeof p.progress === "number" ? p.progress : null));
-      var t = h("div");
-      t.appendChild(h("div", "pname", p.name));
-      t.appendChild(h("span", "nx", p.next || PSTAT[p.status]));
-      row.appendChild(t);
-      row.addEventListener("click", function () { openProject(p.id); });
-      pages.appendChild(row);
-    });
+    drawHomeC();
   }
   function drawHomeC() {
-    pages.appendChild(h("p", "fine", "العين · الإمارات · 9 نوفمبر 2026 · 07:40"));
+    band("الرئيسية", (theme === "uae" ? "ثيم الإمارات" : "ثيم العين") + " · 9 نوفمبر 2026 · 07:40", readWs().projects.length);
     var mine = section("المشاريع");
     readWs().projects.forEach(function (p) { mine.appendChild(projectRow(p)); });
     pages.appendChild(mine);
@@ -374,16 +339,19 @@
       pcs.appendChild(row);
     });
     pages.appendChild(pcs);
+    var next = section("التالي");
+    snap.next.forEach(function (line) {
+      var row = h("div", "trow");
+      row.appendChild(icon("flag"));
+      row.appendChild(h("div", "nm", line));
+      next.appendChild(row);
+    });
+    pages.appendChild(next);
   }
   function drawProjects() {
-    modes();
-    var head = section("المشاريع");
-    pages.appendChild(head);
-    if (mode === "b") {
-      drawHomeB();
-    } else {
-      readWs().projects.forEach(function (p) { pages.appendChild(projectRow(p)); });
-    }
+    var list = readWs().projects;
+    band("المشاريع", "صفوف · من لقطة CEO", list.length);
+    list.forEach(function (p) { pages.appendChild(projectRow(p)); });
     if (!addOpen) {
       var plus = h("button", "linkish", "+ مشروع");
       plus.addEventListener("click", function () { addOpen = true; draw(); });
@@ -411,8 +379,8 @@
   function drawDetail() {
     var p = projectById(detail);
     if (!p) { detail = null; drawProjects(); return; }
+    band("مشروع", PSTAT[p.status] + (p.from === "snapshot" ? " · من لقطة CEO" : ""), typeof p.progress === "number" ? p.progress + "%" : null);
     var view = h("div", "read");
-    if (mode === "b") view.appendChild(ring(typeof p.progress === "number" ? p.progress : null));
     view.appendChild(h("div", "ptitle", p.name));
     view.appendChild(h("p", "lead", PSTAT[p.status] + (p.from === "snapshot" ? " · من لقطة CEO" : "")));
     if (typeof p.progress === "number") {
@@ -514,6 +482,7 @@
     return { version: 1, idea: text, goal: clip("إنجاز «" + text + "» محلياً بعد مراجعتك", MAX_NEXT), steps: ["تحديد النتيجة", "تنفيذ الخطوة الأولى", "مراجعة ما حُفظ"], task: clip("أول مهمة: تحديد نتيجة «" + text + "»", MAX_NAME), ready: true };
   }
   function drawIdeas() {
+    band("الأفكار", "مرجع اللقطة وفكرتك");
     var ref = section("أفكار المرجع");
     var ideaIcons = ["gem", "flag"];
     snap.ideas.forEach(function (line, i) {
@@ -575,7 +544,14 @@
     pages.appendChild(mine);
   }
   function drawMore() {
-    modes();
+    band("الأدوات", theme === "uae" ? "ثيم الإمارات" : "ثيم العين");
+    var themeRow = section("الثيم");
+    [["alain", "ثيم العين"], ["uae", "ثيم الإمارات"]].forEach(function (pair) {
+      var b = h("button", "linkish" + (theme === pair[0] ? " on" : ""), pair[1]);
+      b.addEventListener("click", function () { setTheme(pair[0]); draw(); });
+      themeRow.appendChild(b);
+    });
+    pages.appendChild(themeRow);
     var box = section("الأدوات");
     snap.tools.forEach(function (t) { box.appendChild(toolRow(t)); });
     pages.appendChild(box);
@@ -659,7 +635,11 @@
   });
   document.getElementById("ask-no").addEventListener("click", function () { pending = null; ask.hidden = true; });
   document.getElementById("enter").addEventListener("click", function () { document.getElementById("open").hidden = true; });
+  document.querySelectorAll("#themes button").forEach(function (b) {
+    b.addEventListener("click", function () { setTheme(b.getAttribute("data-theme")); });
+  });
   if (/[?&]open=0/.test(location.search)) document.getElementById("open").hidden = true;
+  applyTheme();
   back.addEventListener("click", function () { detail = null; draw(); });
   document.querySelectorAll("footer button").forEach(function (b) {
     b.addEventListener("click", function () { setTab(b.getAttribute("data-tab")); });

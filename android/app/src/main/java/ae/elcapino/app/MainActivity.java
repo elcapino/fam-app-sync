@@ -35,7 +35,7 @@ import java.nio.charset.StandardCharsets;
 public class MainActivity extends Activity {
     private static final String TAG = "HMK";
     private static final String HOST = "appassets.androidplatform.net";
-    private static final String START = "https://appassets.androidplatform.net/assets/public/index.html";
+    private static final String START = "https://appassets.androidplatform.net/assets/command.html";
     private static final int REQ_OPEN = 41;
     private static final int MAX_JSON = 200000;
 
@@ -83,8 +83,10 @@ public class MainActivity extends Activity {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                if (url != null && url.startsWith("https://" + HOST + "/assets/public/index.html")) {
+                if (url != null && url.startsWith("https://" + HOST + "/assets/")) {
                     view.evaluateJavascript(EXPORT_HOOK, null);
+                }
+                if (url != null && url.startsWith("https://" + HOST + "/assets/public/index.html")) {
                     view.evaluateJavascript(
                         "(function(){if(document.getElementById('hmk-polish'))return;"
                             + "var s=document.createElement('script');s.id='hmk-polish';"

@@ -160,6 +160,7 @@ footer svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6
 .src{font-size:11px;color:var(--gold2)}
 label{display:block;margin:12px 0 2px;color:var(--mu);font-size:12px}
 input,textarea{width:100%;padding:8px 2px;border:0;border-bottom:1px solid rgba(212,175,55,.45);border-radius:0;background:transparent}
+input[type=date]{color-scheme:dark;min-height:48px;margin-top:4px;font-size:18px;direction:ltr;text-align:left}
 textarea{min-height:48px;resize:vertical}
 .actions{display:flex;gap:18px;margin:14px 0}
 .primary{color:var(--gold2);background:none;padding:8px 0;font-weight:700;border-bottom:1px solid var(--gold)}

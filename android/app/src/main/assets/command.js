@@ -423,10 +423,15 @@
     } else progSec.appendChild(h("p", "empty", "لا نسبة بعد. حدّدها من تعديل."));
     view.appendChild(progSec);
     var nextSec = section("الخطوة التالية");
-    nextSec.appendChild(h("p", p.next ? "lead" : "empty", p.next || "لا خطوة تالية. اكتبها من تعديل."));
+    var nextLine = h("p", p.next ? "lead" : "empty", p.next || "لا خطوة تالية. اكتبها من تعديل.");
+    nextLine.setAttribute("data-next", p.next || "");
+    nextSec.appendChild(nextLine);
     view.appendChild(nextSec);
     var dueSec = section("الموعد");
-    dueSec.appendChild(h("p", p.due ? "lead" : "empty", p.due || "لا موعد. أضفه من تعديل."));
+    var dueLine = h("p", p.due ? "lead" : "empty", p.due || "لا موعد. أضفه من تعديل.");
+    dueLine.setAttribute("data-due", p.due || "");
+    if (p.due) dueLine.dir = "ltr";
+    dueSec.appendChild(dueLine);
     view.appendChild(dueSec);
     pages.appendChild(view);
     var tasks = section("المهام");
@@ -471,10 +476,10 @@
     head.appendChild(h("div", "sub", p.name));
     sheet.appendChild(head);
     if (typeof p.progress === "number") sheet.appendChild(track(p.progress));
-    var name = h("input"); name.value = p.name; name.maxLength = MAX_NAME;
-    var next = h("textarea"); next.value = p.next; next.maxLength = MAX_NEXT;
-    var prog = h("input"); prog.value = p.progress == null ? "" : String(p.progress); prog.dir = "ltr";
-    var due = h("input"); due.value = p.due || ""; due.dir = "ltr"; due.placeholder = "2026-11-20";
+    var name = h("input"); name.id = "hmk-name"; name.value = p.name; name.maxLength = MAX_NAME;
+    var next = h("textarea"); next.id = "hmk-next"; next.value = p.next; next.maxLength = MAX_NEXT;
+    var prog = h("input"); prog.id = "hmk-progress"; prog.value = p.progress == null ? "" : String(p.progress); prog.dir = "ltr"; prog.inputMode = "numeric";
+    var due = h("input"); due.id = "hmk-due"; due.type = "date"; due.value = p.due || ""; due.setAttribute("data-field", "due");
     sheet.appendChild(h("label", "", "الاسم")); sheet.appendChild(name);
     sheet.appendChild(h("label", "", "الخطوة التالية")); sheet.appendChild(next);
     sheet.appendChild(h("label", "", "التقدم")); sheet.appendChild(prog);
@@ -495,7 +500,12 @@
     var yes = h("button", "primary", "حفظ");
     var no = h("button", "", "إلغاء");
     var del = h("button", "", "حذف");
-    yes.addEventListener("click", function () { ask.hidden = true; saveProject(p, name.value, next.value, prog.value, due.value); });
+    yes.addEventListener("click", function () {
+      var dueEl = document.getElementById("hmk-due");
+      var nextEl = document.getElementById("hmk-next");
+      ask.hidden = true;
+      saveProject(p, name.value, nextEl ? nextEl.value : "", prog.value, dueEl ? dueEl.value : "");
+    });
     no.addEventListener("click", function () { ask.hidden = true; pending = null; });
     del.addEventListener("click", function () {
       ask.hidden = true;

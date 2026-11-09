@@ -85,7 +85,11 @@ public class MainActivity extends Activity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 Uri uri = request.getUrl();
-                return !(uri != null && "https".equals(uri.getScheme()) && HOST.equals(uri.getHost()));
+                if (uri != null && "https".equals(uri.getScheme()) && HOST.equals(uri.getHost())) return false;
+                if (uri != null && "https".equals(uri.getScheme())) {
+                    try { startActivity(new Intent(Intent.ACTION_VIEW, uri)); } catch (Exception ignored) {}
+                }
+                return true;
             }
 
             @Override
@@ -287,6 +291,65 @@ public class MainActivity extends Activity {
             } finally {
                 conn.disconnect();
             }
+        }
+
+        private static final String[] PUBLIC_FEEDS = new String[] {
+            "https://news.google.com/rss/search?q=site:wam.ae&hl=ar&gl=AE&ceid=AE:ar",
+            "https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml",
+            "https://gulfnews.com/stories.rss",
+            "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+            "https://www.cnbc.com/id/100003114/device/rss/rss.html"
+        };
+
+        @JavascriptInterface
+        public String fetchPublic(String url) {
+            if (!allowedFeed(url)) return "";
+            HttpURLConnection conn = null;
+            try {
+                conn = (HttpURLConnection) new URL(url).openConnection();
+                conn.setConnectTimeout(8000);
+                conn.setReadTimeout(8000);
+                conn.setInstanceFollowRedirects(true);
+                conn.setRequestMethod("GET");
+                conn.setRequestProperty("Accept", "application/rss+xml, application/xml, text/xml, */*");
+                conn.setRequestProperty("User-Agent", "HMK-debug");
+                int code = conn.getResponseCode();
+                if (code < 200 || code >= 300) return "";
+                java.io.InputStream in = conn.getInputStream();
+                java.io.ByteArrayOutputStream bos = new java.io.ByteArrayOutputStream();
+                byte[] tmp = new byte[4096];
+                int n;
+                int total = 0;
+                while ((n = in.read(tmp)) > 0 && total < 100000) {
+                    int take = Math.min(n, 100000 - total);
+                    bos.write(tmp, 0, take);
+                    total += take;
+                }
+                in.close();
+                return new String(bos.toByteArray(), StandardCharsets.UTF_8);
+            } catch (Exception ex) {
+                return "";
+            } finally {
+                if (conn != null) conn.disconnect();
+            }
+        }
+
+        private boolean allowedFeed(String url) {
+            if (url == null) return false;
+            for (String feed : PUBLIC_FEEDS) if (feed.equals(url)) return true;
+            return false;
+        }
+
+        @JavascriptInterface
+        public void openLink(String url) {
+            if (url == null || !url.startsWith("https://") || url.length() > 2000) return;
+            String lower = url.toLowerCase();
+            if (lower.contains("hmk_") || lower.contains("token=") || lower.contains("key=") || lower.contains("password=")) return;
+            Uri uri = Uri.parse(url);
+            if (uri.getHost() == null) return;
+            runOnUiThread(() -> {
+                try { startActivity(new Intent(Intent.ACTION_VIEW, uri)); } catch (Exception ignored) {}
+            });
         }
 
         @JavascriptInterface

@@ -134,12 +134,13 @@
     link: "M10 13a4 4 0 0 0 6 0l2-2a4 4 0 0 0-6-6l-1 1 M14 11a4 4 0 0 0-6 0l-2 2a4 4 0 0 0 6 6l1-1",
     lock: "M8 11V8a4 4 0 0 1 8 0v3 M6 11h12v9H6z",
     pause: "M7 5h3v14H7z M14 5h3v14h-3z",
-    flag: "M5 3v18 M5 4h11l-2 4 2 4H5"
+    flag: "M5 3v18 M5 4h11l-2 4 2 4H5",
+    clock: "M12 7v6l4 2 M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"
   };
   var tab = "sum";
   var projIndex = 0;
   var spendSeg = "money";
-  var sumSeg = "now";
+  var sumSeg = "day";
   var reportSeg = "list";
   var detail = null;
   var ideaOpen = false;
@@ -432,19 +433,112 @@
     draw();
   }
   var LINKS = {
-    "Claude": "https://claude.ai",
+    "Claude": "https://www.anthropic.com",
     "Gemini": "https://gemini.google.com",
-    "DeepSeek": "https://chat.deepseek.com",
+    "DeepSeek": "https://www.deepseek.com",
     "NotebookLM": "https://notebooklm.google.com",
     "Exa": "https://exa.ai",
     "Bright Data": "https://brightdata.com",
     "Apify": "https://apify.com",
     "GitHub": "https://github.com",
-    "Shopify": "https://shopify.com",
+    "Shopify": "https://www.shopify.com",
     "X": "https://x.com",
     "ChatGPT / Codex": "https://chatgpt.com"
   };
+  var FEEDS = [
+    { source: "WAM", url: "https://news.google.com/rss/search?q=site:wam.ae&hl=ar&gl=AE&ceid=AE:ar" },
+    { source: "The National", url: "https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml" },
+    { source: "Gulf News", url: "https://gulfnews.com/stories.rss" },
+    { source: "The Verge", url: "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" },
+    { source: "CNBC", url: "https://www.cnbc.com/id/100003114/device/rss/rss.html" }
+  ];
+  var NEWS_KEY = "hmk_news_v1";
+  var news = { at: "", items: [], feeds: [] };
+  var refreshing = false;
+  var ideaSeg = "solve";
   function hostOf(url) { return String(url || "").replace(/^https:\/\//, "").replace(/\/.*$/, ""); }
+  function openUrl(url) {
+    if (!/^https:\/\/\S+$/.test(url) || url.length > 2000) return;
+    if (window.HmkAndroid && HmkAndroid.openLink) { try { HmkAndroid.openLink(url); return; } catch (e) {} }
+    window.open(url, "_blank", "noopener");
+  }
+  function decodeXml(s) {
+    return String(s || "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, "\"").replace(/&#39;|&apos;/g, "'").replace(/\s+/g, " ").trim();
+  }
+  function parseFeed(xml, source) {
+    var out = [];
+    String(xml || "").split(/<item\b|<entry\b/i).slice(1, 4).forEach(function (chunk) {
+      var title = decodeXml((chunk.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1]).slice(0, 180);
+      var href = chunk.match(/<link[^>]*href=["'](https:[^"']+)["']/i);
+      var text = chunk.match(/<link[^>]*>(https:[^<]+)<\/link>/i);
+      var link = decodeXml((href && href[1]) || (text && text[1]) || "").trim();
+      var date = decodeXml((chunk.match(/<(?:pubDate|updated|published)[^>]*>([\s\S]*?)<\/(?:pubDate|updated|published)>/i) || [])[1]);
+      if (title && /^https:\/\/\S+$/.test(link) && link.length < 2000) out.push({ title: title, link: link, source: source, date: date });
+    });
+    return out;
+  }
+  function loadNews() {
+    try {
+      var saved = JSON.parse(localStorage.getItem(NEWS_KEY) || "");
+      if (saved && Array.isArray(saved.items)) news = { at: saved.at || "", items: saved.items.slice(0, 24), feeds: saved.feeds || [] };
+    } catch (e) {}
+  }
+  function saveNews() {
+    try { localStorage.setItem(NEWS_KEY, JSON.stringify(news)); } catch (e) {}
+  }
+  function pullFeed(url) {
+    if (window.HmkAndroid && HmkAndroid.fetchPublic) {
+      try { return Promise.resolve(HmkAndroid.fetchPublic(url) || ""); } catch (e) { return Promise.resolve(""); }
+    }
+    return fetch(url).then(function (res) { return res.ok ? res.text() : ""; }).catch(function () { return ""; });
+  }
+  function reloadSnap() {
+    return new Promise(function (resolve) {
+      var req = new XMLHttpRequest();
+      req.open("GET", "status-snapshot.sample.json", true);
+      req.onload = function () {
+        var parsed = null;
+        try { parsed = JSON.parse(req.responseText); } catch (e) { parsed = null; }
+        var next = validSnap(parsed);
+        if (next) snap = next;
+        resolve(!!next);
+      };
+      req.onerror = function () { resolve(false); };
+      req.send();
+    });
+  }
+  function refreshAll() {
+    if (refreshing) return;
+    refreshing = true;
+    var btn = document.getElementById("refresh");
+    if (btn) btn.textContent = "…";
+    reloadSnap().then(function () {
+      return Promise.all(FEEDS.map(function (f) {
+        return pullFeed(f.url).then(function (body) {
+          var parsed = body && body.indexOf("<") !== -1 ? parseFeed(body, f.source) : [];
+          return { source: f.source, url: f.url, ok: parsed.length > 0, count: parsed.length, items: parsed };
+        });
+      }));
+    }).then(function (results) {
+      var items = [];
+      results.forEach(function (r) { r.items.forEach(function (item) { if (items.length < 24) items.push(item); }); });
+      if (items.length) news = { at: new Date().toISOString(), items: items, feeds: results.map(function (r) { return { source: r.source, url: r.url, ok: r.ok, count: r.count }; }) };
+      else news.feeds = results.map(function (r) { return { source: r.source, url: r.url, ok: false, count: 0 }; });
+      saveNews();
+      if (window.HmkAndroid && HmkAndroid.checkConnectors) {
+        connectorChecked = false;
+        try { refreshConnectors(); } catch (e) {}
+      }
+    }).then(function () {
+      refreshing = false;
+      if (btn) btn.textContent = "↻";
+      draw();
+    }, function () {
+      refreshing = false;
+      if (btn) btn.textContent = "↻";
+      draw();
+    });
+  }
   function projectById(id) {
     return readWs().projects.filter(function (p) { return p.id === id; })[0] || null;
   }
@@ -492,23 +586,58 @@
     fillRows(rows);
     pages.appendChild(rows);
   }
+  function newsLine(item) {
+    return line("news", item.title, item.source + " · " + (when(item.date) || when(news.at)), item.source, "wait", item.link);
+  }
   function drawSum() {
     var list = readWs().projects;
     var c = counts();
-    band(t("tab_sum"), (theme === "uae" ? t("uae") : t("alain")) + " · " + num("09") + " · " + num("2026"), num(list.length));
-    segBar([["now", lang === "en" ? "Now" : "الآن"], ["set", lang === "en" ? "Settings" : "ضبط"]], sumSeg, function (id) { sumSeg = id; draw(); });
+    var stamp = news.at ? when(news.at) : when(snap.generatedAt);
+    band(t("tab_sum"), (lang === "en" ? "Dubai " : "دبي ") + stamp, num(list.length));
+    segBar([
+      ["day", lang === "en" ? "Day" : "اليوم"],
+      ["events", lang === "en" ? "Events" : "أحداث"],
+      ["news", lang === "en" ? "News" : "أخبار"],
+      ["set", lang === "en" ? "Settings" : "ضبط"]
+    ], sumSeg === "now" ? "day" : sumSeg, function (id) { sumSeg = id; draw(); });
     var rows = h("div", "rows");
     if (sumSeg === "set") { drawSettings(rows); pages.appendChild(rows); return; }
+    if (sumSeg === "news") {
+      rows.appendChild(line("clock", lang === "en" ? "Last refresh" : "آخر تحديث", news.at ? (lang === "en" ? "Asia/Dubai, on this device" : "توقيت دبي، على هذا الجهاز") : (lang === "en" ? "Press refresh" : "اضغط تحديث"), news.at ? when(news.at) : "—", news.at ? "running" : "wait"));
+      if (news.items.length) news.items.slice(0, 11).forEach(function (item) { rows.appendChild(newsLine(item)); });
+      else FEEDS.forEach(function (f) { rows.appendChild(line("news", f.source, lang === "en" ? "Public feed" : "موجز عام", lang === "en" ? "Ready" : "جاهز", "wait", f.url)); });
+      pages.appendChild(rows);
+      return;
+    }
+    if (sumSeg === "events") {
+      rows.appendChild(line("flag", lang === "en" ? "This week" : "هذا الأسبوع", lang === "en" ? "Snapshot dates and open decisions" : "مواعيد اللقطة والقرارات المفتوحة", when(snap.generatedAt), "wait"));
+      (snap.brief || []).forEach(function (b) { rows.appendChild(line("news", b.title, (b.source || t("brief")) + " · " + (lang === "en" ? "Dated" : "بتاريخ"), b.date, "wait")); });
+      (snap.next || []).forEach(function (item) { rows.appendChild(line("flag", item, lang === "en" ? "Open this week" : "مفتوح هذا الأسبوع", lang === "en" ? "Open" : "مفتوح", "wait")); });
+      (snap.happened || []).forEach(function (text) { rows.appendChild(line("flag", text, lang === "en" ? "Done" : "تم", lang === "en" ? "Done" : "تم", "done")); });
+      pages.appendChild(rows);
+      return;
+    }
     var late = line("flag", t("late"), t("all") + " " + num(c.all) + " · " + t("going") + " " + num(c.go) + " · " + t("done") + " " + num(c.done), num(c.late) + " " + t("late"), c.late ? "bad" : "running");
     late.classList.add("sum");
     late.setAttribute("data-late", String(c.late));
     rows.appendChild(late);
+    var house = projectById("p_house01");
+    var market = projectById("p_markets1");
+    if (house) rows.appendChild(line("house", house.name, house.next || t("no_step"), stLabel(house.status), statusClass(house.status)));
+    if (market) rows.appendChild(line("chart", market.name, market.next || t("no_step"), stLabel(market.status), statusClass(market.status)));
+    (snap.tools || []).forEach(function (tool) {
+      if (!moneyOf(tool.cost) || rows.querySelector("[data-spend]")) return;
+      var row = line(tool.icon || "spark", tool.name, (lang === "en" ? "Spend" : "إنفاق") + " · " + hostOf(LINKS[tool.name] || ""), tool.cost, "running", LINKS[tool.name]);
+      row.setAttribute("data-spend", "1");
+      rows.appendChild(row);
+    });
     (snap.next || []).forEach(function (item) { rows.appendChild(line("flag", item, t("next"), lang === "en" ? "Open" : "مفتوح", "wait")); });
-    (snap.brief || []).forEach(function (b) { rows.appendChild(line("news", b.title, b.source || t("brief"), b.date, "wait")); });
     (snap.computers || []).forEach(function (m) {
       rows.appendChild(line(m.online ? "laptop" : "phone", m.name, m.online ? (lang === "en" ? "Online in the snapshot" : "متصل في اللقطة") : (lang === "en" ? "Not linked" : "غير مربوط"), m.online ? (lang === "en" ? "Online" : "متصل") : (lang === "en" ? "Offline" : "غير مربوط"), m.online ? "running" : "bad"));
     });
-    fillRows(rows);
+    (snap.brief || []).forEach(function (b) { rows.appendChild(line("news", b.title, (b.source || t("brief")) + " · " + b.date, b.date, "wait")); });
+    if (news.items.length) news.items.slice(0, 2).forEach(function (item) { rows.appendChild(newsLine(item)); });
+    else rows.appendChild(line("news", lang === "en" ? "News" : "الأخبار", lang === "en" ? "WAM, The National, Gulf News, tech, markets" : "وام والناشيونال وخليج نيوز والتقنية والأسواق", lang === "en" ? "Refresh" : "تحديث", "wait"));
     pages.appendChild(rows);
   }
   function drawHq() {
@@ -585,9 +714,8 @@
     var rows = h("div", "rows");
     if (spendSeg === "use") {
       (snap.tools || []).forEach(function (tool) {
-        if (tool.name === "Exa · Bright Data · Apify" || tool.name === "GitHub · Shopify · X") return;
         var meta = ROLE[tool.name] || ["", ""];
-        rows.appendChild(line(tool.icon || "spark", tool.name, (lang === "en" ? meta[1] : meta[0]) + " · " + when(tool.lastRun), healthLabel(tool.state), statusClass(tool.state)));
+        rows.appendChild(line(tool.icon || "spark", tool.name, (lang === "en" ? meta[1] : meta[0]) + " · " + when(tool.lastRun), healthLabel(tool.state), statusClass(tool.state), LINKS[tool.name]));
       });
     } else if (spendSeg === "tools") {
       CONNECTORS.forEach(function (c) { rows.appendChild(connectorRow(c)); });
@@ -597,23 +725,35 @@
       (snap.next || []).forEach(function (text) { rows.appendChild(line("flag", text, t("next"), lang === "en" ? "Open" : "مفتوح", "wait")); });
     } else {
       (snap.tools || []).forEach(function (tool) {
-        if (tool.name === "Exa · Bright Data · Apify" || tool.name === "GitHub · Shopify · X") return;
         var money = moneyOf(tool.cost);
         var meta = ROLE[tool.name] || ["", ""];
         var role = lang === "en" ? meta[1] : meta[0];
         var link = LINKS[tool.name];
-        rows.appendChild(line(tool.icon || "spark", tool.name, role + (link ? " · " + hostOf(link) : ""), money ? "$" + money.used + " / $" + money.cap : (tool.cost || ""), money && money.pct >= 80 ? "bad" : "running"));
+        rows.appendChild(line(tool.icon || "spark", tool.name, role + (link ? " · " + hostOf(link) : ""), money ? "$" + money.used + " / $" + money.cap : (tool.cost || ""), money && money.pct >= 80 ? "bad" : "running", link));
       });
     }
     pages.appendChild(rows);
   }
   function drawReports() {
     band(t("tab_reports"), lang === "en" ? "9 Nov brief and local file" : "موجز 9 نوفمبر والملف المحلي");
-    segBar([["list", lang === "en" ? "Brief" : "الموجز"], ["file", t("seg_file")]], reportSeg, function (id) { reportSeg = id; draw(); });
+    segBar([
+      ["list", lang === "en" ? "Brief" : "الموجز"],
+      ["week", lang === "en" ? "Week" : "أسبوع"],
+      ["file", t("seg_file")]
+    ], reportSeg, function (id) { reportSeg = id; draw(); });
     var rows = h("div", "rows");
     if (reportSeg === "file") { drawFile(rows); pages.appendChild(rows); return; }
-    (snap.brief || []).forEach(function (b) { rows.appendChild(line("news", b.title, (b.source || "") + (b.url ? " · " + hostOf(b.url) : ""), b.date, "wait")); });
+    if (reportSeg === "week") {
+      rows.appendChild(line("flag", lang === "en" ? "Week of 9 Nov" : "أسبوع 9 نوفمبر", lang === "en" ? "Dates kept in the snapshot" : "المواعيد المحفوظة في اللقطة", when(snap.generatedAt), "wait"));
+      (snap.brief || []).forEach(function (b) { rows.appendChild(line("news", b.title, b.source || t("brief"), b.date, "wait")); });
+      (snap.next || []).forEach(function (text) { rows.appendChild(line("flag", text, lang === "en" ? "Still open" : "ما زال مفتوحاً", lang === "en" ? "Open" : "مفتوح", "wait")); });
+      (snap.ceoNow || []).forEach(function (text) { rows.appendChild(line("crown", text, lang === "en" ? "This week" : "هذا الأسبوع", lang === "en" ? "Now" : "الآن", "wait")); });
+      pages.appendChild(rows);
+      return;
+    }
+    (snap.brief || []).forEach(function (b) { rows.appendChild(line("news", b.title, (b.source || "") + (b.url ? " · " + hostOf(b.url) : ""), b.date, "wait", /^https:\/\//.test(b.url || "") ? b.url : "")); });
     (snap.happened || []).forEach(function (text) { rows.appendChild(line("flag", text, lang === "en" ? "Done in the snapshot" : "تم في اللقطة", lang === "en" ? "Done" : "تم", "done")); });
+    (news.items || []).slice(0, 4).forEach(function (item) { rows.appendChild(newsLine(item)); });
     pages.appendChild(rows);
   }
   function draw() {
@@ -638,12 +778,16 @@
     if (code === "hold" || code === "stopped") return "bad";
     return "wait";
   }
-  function line(iconName, name, sub, status, tone) {
-    var row = h("div", "trow");
+  function line(iconName, name, sub, status, tone, url) {
+    var row = h(url ? "button" : "div", "trow");
     if (iconName) row.appendChild(icon(iconName));
     row.appendChild(h("div", "nm", name));
     if (status != null && status !== "") row.appendChild(h("span", "tag " + (tone || ""), status));
     if (sub) row.appendChild(h("div", "sub", sub));
+    if (url) {
+      row.setAttribute("data-url", url);
+      row.addEventListener("click", function () { openUrl(url); });
+    }
     return row;
   }
   function projectRow(p) {
@@ -703,14 +847,18 @@
   function connectorRow(c) {
     var result = connectorResult(c.id);
     if (result !== "ok" && result !== "nokey" && result !== "badkey" && result !== "fail" && result !== "wait") result = "fail";
-    var row = h("div", "trow");
+    var link = LINKS[c.name] || "";
+    var row = h(link ? "button" : "div", "trow");
     row.setAttribute("data-connector", c.id);
+    if (link) {
+      row.setAttribute("data-url", link);
+      row.addEventListener("click", function () { openUrl(link); });
+    }
     row.appendChild(icon(c.icon));
     row.appendChild(h("div", "nm", c.name));
     var tag = h("span", "tag " + (result === "ok" ? "running" : "bad"), t("c_" + result));
     row.appendChild(tag);
     var role = lang === "en" ? c.roleEn : c.roleAr;
-    var link = LINKS[c.name] || "";
     row.appendChild(h("div", "sub", role + " · " + hostOf(link) + " · " + t("c_line_" + result)));
     return row;
   }
@@ -929,8 +1077,56 @@
     if (lang === "en") return { version: 1, idea: text, goal: clip("Finish “" + text + "” locally after your review", MAX_NEXT), steps: ["Define the result", "Do the first step", "Review what was saved"], task: clip("First task: define the result of “" + text + "”", MAX_NAME), ready: true };
     return { version: 1, idea: text, goal: clip("إنجاز «" + text + "» محلياً بعد مراجعتك", MAX_NEXT), steps: ["تحديد النتيجة", "تنفيذ الخطوة الأولى", "مراجعة ما حُفظ"], task: clip("أول مهمة: تحديد نتيجة «" + text + "»", MAX_NAME), ready: true };
   }
+  function solutionFor(problem) {
+    if (/إنارة|KNX|DALI/.test(problem)) return lang === "en" ? "Compare KNX and DALI on the house file, then pick one" : "قارن KNX و DALI على ملف البيت ثم اختر واحداً";
+    if (/تسعير|متجر/.test(problem)) return lang === "en" ? "Price the store from the current cap before a new offer" : "سعّر المتجر من السقف الحالي قبل أي عرض";
+    if (/APK|فحص/.test(problem)) return lang === "en" ? "Run the debug check and keep the date in its own field" : "شغّل فحص النسخة التجريبية واترك الموعد في حقله";
+    if (/لوحة/.test(problem)) return lang === "en" ? "Renew from the local snapshot and the public feeds" : "جدّد من اللقطة المحلية والموجزات العامة";
+    if (/تداول|نشر/.test(problem)) return lang === "en" ? "Leave live trading locked until you lift it" : "اترك التداول الحقيقي مقفلاً حتى ترفع القفل";
+    return lang === "en" ? "Write one next step for this open item" : "اكتب خطوة تالية واحدة لهذا البند";
+  }
+  function drawSolutions() {
+    var rows = h("div", "rows");
+    var problems = (snap.next || []).slice();
+    (snap.tools || []).forEach(function (tool) { if (tool.state === "stopped" || tool.state === "hold") problems.push(tool.name); });
+    problems.forEach(function (problem) {
+      var link = /تسعير|متجر/.test(problem) ? "https://www.shopify.com" : "";
+      rows.appendChild(line("spark", solutionFor(problem), (lang === "en" ? "Solves: " : "يحل: ") + problem, lang === "en" ? "Idea" : "فكرة", "wait", link));
+    });
+    (snap.ideas || []).forEach(function (text, i) {
+      rows.appendChild(line(i ? "flag" : "gem", text, lang === "en" ? "Reference in the snapshot" : "مرجع في اللقطة", lang === "en" ? "Reference" : "مرجع", "wait"));
+    });
+    (snap.brief || []).forEach(function (b) {
+      rows.appendChild(line("news", b.title, (lang === "en" ? "Open need · " : "احتياج قائم · ") + (b.source || ""), b.date, "wait"));
+    });
+    pages.appendChild(rows);
+  }
+  function drawSources() {
+    var rows = h("div", "rows");
+    var sources = [
+      ["Claude", "https://www.anthropic.com", lang === "en" ? "Writing and research" : "كتابة وبحث"],
+      ["Gemini", "https://gemini.google.com", lang === "en" ? "Files and images" : "ملفات وصور"],
+      ["NotebookLM", "https://notebooklm.google.com", lang === "en" ? "Source summaries" : "تلخيص مصادر"],
+      ["Exa", "https://exa.ai", lang === "en" ? "Web research" : "بحث"],
+      ["WAM", "https://www.wam.ae/en", lang === "en" ? "UAE news site" : "موقع أخبار الإمارات"],
+      ["The National", "https://www.thenationalnews.com", lang === "en" ? "UAE news" : "أخبار الإمارات"],
+      ["Gulf News", "https://gulfnews.com", lang === "en" ? "Gulf news" : "أخبار الخليج"],
+      ["The Verge", "https://www.theverge.com/ai-artificial-intelligence", lang === "en" ? "Tech and AI" : "تقنية وذكاء"],
+      ["CNBC", "https://www.cnbc.com", lang === "en" ? "Markets" : "أسواق"]
+    ];
+    sources.forEach(function (s) { rows.appendChild(line("link", s[0], s[2], hostOf(s[1]), "running", s[1])); });
+    rows.appendChild(line("note", lang === "en" ? "Telegram, YouTube, TikTok" : "تيليجرام ويوتيوب وتيك توك", lang === "en" ? "No channel is stored in this snapshot" : "لا قناة محفوظة في هذه اللقطة", lang === "en" ? "None" : "لا يوجد", "wait"));
+    pages.appendChild(rows);
+  }
   function drawIdeas() {
-    band(t("ideas"), lang === "en" ? "Snapshot ideas and yours" : "مرجع اللقطة وفكرتك");
+    band(t("ideas"), lang === "en" ? "Fixes, sources, and your line" : "حلول ومصادر وسطرك");
+    segBar([
+      ["solve", lang === "en" ? "Fixes" : "حلول"],
+      ["sources", lang === "en" ? "Sources" : "مصادر"],
+      ["mine", lang === "en" ? "Mine" : "فكرتي"]
+    ], ideaSeg, function (id) { ideaSeg = id; if (id !== "mine") ideaOpen = false; draw(); });
+    if (ideaSeg === "sources") { drawSources(); return; }
+    if (ideaSeg !== "mine") { drawSolutions(); return; }
     var rows = h("div", "rows");
     if (!snap.ideas.length) rows.appendChild(line("spark", t("ideas"), t("no_ideas"), lang === "en" ? "Empty" : "فارغ", "wait"));
     var ideaIcons = ["gem", "flag"];
@@ -1017,7 +1213,7 @@
       var starts = ["home", "projects", "ideas", "more"], startName = { home: t("home"), projects: t("projects"), ideas: t("ideas"), more: t("tools") };
       rows.appendChild(choice("flag", t("start"), lang === "en" ? "Page after the opening" : "الصفحة بعد الافتتاح", startName[startPage], function () { setPref("hmk_start_v1", starts[(starts.indexOf(startPage) + 1) % starts.length], "start"); }));
       rows.appendChild(choice("pause", t("density"), lang === "en" ? "Compact or comfortable" : "مضغوط أو مريح", density === "comfortable" ? t("comfortable") : t("compact"), function () { setPref("hmk_density_v1", density === "compact" ? "comfortable" : "compact", "density"); }));
-      var info = window.HMK_BUILD || { version: "1.13-debug", sha: "dev" };
+      var info = window.HMK_BUILD || { version: "1.14-debug", sha: "dev" };
       try {
         if (window.HmkAndroid && HmkAndroid.buildId) {
           var parts = String(HmkAndroid.buildId()).split(" ");
@@ -1145,9 +1341,10 @@
   document.querySelectorAll("#themes button").forEach(function (b) {
     b.addEventListener("click", function () { setTheme(b.getAttribute("data-theme")); });
   });
+  document.getElementById("refresh").addEventListener("click", function () { refreshAll(); });
   document.getElementById("quick").addEventListener("click", function () {
     document.getElementById("open").hidden = true;
-    if (tab === "ideas") { ideaOpen = true; draw(); return; }
+    if (tab === "ideas") { ideaSeg = "mine"; ideaOpen = true; draw(); return; }
     addOpen = true;
     setTab("proj");
   });
@@ -1169,6 +1366,7 @@
     draw();
   });
   ensureSeed();
+  loadNews();
   var stored = validSnap(readJson(SNAP_KEY));
   if (stored && !stored.sample) { snap = stored; draw(); }
   else loadSample(draw);

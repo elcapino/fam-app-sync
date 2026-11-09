@@ -58,6 +58,7 @@ body[data-theme="uae"] .sec h2,body[data-theme="uae"] .band .bignum{background:l
 body[data-theme="uae"] .ic{stroke:#fff}
 body[data-theme="uae"] .track i{background:linear-gradient(90deg,#007a3d,#fff,#c8102e);box-shadow:0 0 8px rgba(255,255,255,.45)}
 body[data-theme="uae"] #ask .sheet{background:linear-gradient(180deg,#161616,#050505)}
+body[data-theme="uae"] #quick{border-color:#fff;color:#fff;box-shadow:0 0 16px rgba(0,122,61,.5)}
 #app{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;transition:opacity .25s ease}
 body.switching #app{opacity:0}
 body,input,textarea,.prow,.trow,.lead,.fine,.sec h2{text-align:right}
@@ -90,8 +91,8 @@ header{flex:none;height:54px;display:flex;align-items:center;gap:8px;padding:0 1
 #back[hidden]{display:none}
 h1{margin:0;font-size:16px;font-weight:600}
 .flagbar{height:3px;flex:none;background:linear-gradient(90deg,#00843d 0 25%,#fff 25% 50%,#111 50% 75%,#c8102e 75%)}
-main{flex:1;overflow:auto;padding:4px 16px 28px}
-main>*{animation:rise .45s ease forwards}
+main{flex:1;overflow:auto;padding:4px 16px 84px}
+main>*{animation:rise .5s ease forwards}
 main>*:nth-child(2){animation-delay:.04s}
 main>*:nth-child(3){animation-delay:.08s}
 main>*:nth-child(4){animation-delay:.12s}
@@ -116,7 +117,10 @@ footer svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.6
 .kpis{display:flex;flex-wrap:wrap;gap:14px 22px;padding:18px 2px 6px}
 .kpi b{display:block;font-size:30px;line-height:1;font-weight:700;letter-spacing:-.4px}
 .kpi span{display:block;margin-top:4px;font-size:11px;color:var(--mu)}
-.band{padding:22px 2px 14px;margin-bottom:6px;border-bottom:1px solid rgba(212,175,55,.4);background:linear-gradient(90deg, transparent, rgba(212,175,55,.1), transparent)}
+.band{padding:22px 2px 8px;margin-bottom:6px;background:linear-gradient(90deg, transparent, rgba(212,175,55,.1), transparent)}
+.band:after{content:"";display:block;height:1px;margin-top:12px;background:linear-gradient(90deg, transparent, var(--gold2), transparent);transform-origin:100% 50%;animation:draw .9s ease}
+#quick{position:fixed;z-index:30;bottom:calc(var(--nav) + 16px);inset-inline-end:14px;width:46px;height:46px;border-radius:50%;border:1px solid var(--gold2);color:var(--gold2);background:transparent;font-size:28px;line-height:1;box-shadow:0 0 16px rgba(212,175,55,.35)}
+.empty{margin:8px 2px;color:var(--mu);font-size:13px}
 .band .bignum{font-size:42px;font-weight:700;line-height:.9;letter-spacing:-1px;background:linear-gradient(180deg,#fff,#f1d37a);-webkit-background-clip:text;background-clip:text;color:transparent}
 .band .display{margin-top:6px;font-size:30px;font-weight:700;line-height:1.05;letter-spacing:-.3px}
 .band .sub{margin-top:6px;color:#eadcf8;font-size:12px}

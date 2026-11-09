@@ -77,6 +77,7 @@
     if (p.progress != null && (typeof p.progress !== "number" || p.progress < 0 || p.progress > 100)) return false;
     if (p.icon != null && (typeof p.icon !== "string" || !PATHS[p.icon])) return false;
     if (p.from != null && p.from !== "snapshot") return false;
+    if (p.due != null && (typeof p.due !== "string" || (p.due && !/^\d{4}-\d{2}-\d{2}$/.test(p.due)))) return false;
     return true;
   }
   function readWs() {
@@ -320,8 +321,14 @@
   function counts() {
     var list = readWs().projects;
     var n = { go: 0, wait: 0, hold: 0, done: 0 };
-    list.forEach(function (p) { if (n[p.status] != null) n[p.status] += 1; });
-    return { all: list.length, go: n.go, wait: n.wait, hold: n.hold, done: n.done };
+    var late = 0;
+    var today = "";
+    try { today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Dubai", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()); } catch (e) { today = ""; }
+    list.forEach(function (p) {
+      if (n[p.status] != null) n[p.status] += 1;
+      if (today && p.due && p.status !== "done" && p.due < today) late += 1;
+    });
+    return { all: list.length, go: n.go, wait: n.wait, hold: n.hold, done: n.done, late: late };
   }
   function drawHome() {
     drawHomeC();
@@ -331,7 +338,7 @@
     var c = counts();
     band("الرئيسية", (theme === "uae" ? "ثيم الإمارات" : "ثيم العين") + " · 9 نوفمبر 2026 · 07:40", list.length);
     var sum = h("div", "sum");
-    [["الكل", c.all], ["قيد العمل", c.go], ["منجز", c.done], ["متأخر", c.hold]].forEach(function (pair) {
+    [["الكل", c.all], ["قيد العمل", c.go], ["منجز", c.done], ["متأخر", c.late]].forEach(function (pair) {
       var cell = h("div");
       var num = h("b", "", String(pair[1]));
       num.dir = "ltr";
@@ -376,6 +383,7 @@
   function drawProjects() {
     var list = readWs().projects;
     band("المشاريع", "صفوف · من لقطة CEO", list.length);
+    if (!list.length) pages.appendChild(h("p", "empty", "لا مشاريع بعد. اضغط + لإضافة الأول."));
     list.forEach(function (p) { pages.appendChild(projectRow(p)); });
     if (!addOpen) {
       var plus = h("button", "linkish", "+ مشروع");
@@ -408,13 +416,21 @@
     var view = h("div", "read");
     view.appendChild(h("div", "ptitle", p.name));
     view.appendChild(h("p", "lead", PSTAT[p.status] + (p.from === "snapshot" ? " · من لقطة CEO" : "")));
+    var progSec = section("التقدم");
     if (typeof p.progress === "number") {
-      view.appendChild(track(p.progress));
-      view.appendChild(h("p", "fine", (p.id === "p_house01" ? "القواعد والأساسات " : "") + p.progress + "%"));
-    }
-    if (p.next) view.appendChild(h("p", "lead", p.next));
+      progSec.appendChild(track(p.progress));
+      progSec.appendChild(h("p", "fine", (p.id === "p_house01" ? "القواعد والأساسات " : "") + p.progress + "%"));
+    } else progSec.appendChild(h("p", "empty", "لا نسبة بعد. حدّدها من تعديل."));
+    view.appendChild(progSec);
+    var nextSec = section("الخطوة التالية");
+    nextSec.appendChild(h("p", p.next ? "lead" : "empty", p.next || "لا خطوة تالية. اكتبها من تعديل."));
+    view.appendChild(nextSec);
+    var dueSec = section("الموعد");
+    dueSec.appendChild(h("p", p.due ? "lead" : "empty", p.due || "لا موعد. أضفه من تعديل."));
+    view.appendChild(dueSec);
     pages.appendChild(view);
     var tasks = section("المهام");
+    if (!p.tasks.length) tasks.appendChild(h("p", "empty", "لا مهام. أضف الأولى من السطر التالي."));
     p.tasks.forEach(function (task) {
       var row = h("button", "check");
       var box = h("i", "markbox" + (task.status === "done" ? " on" : ""));
@@ -423,7 +439,7 @@
       row.addEventListener("click", function () {
         var order = ["open", "doing", "done"];
         task.status = order[(order.indexOf(task.status) + 1) % order.length];
-        saveProject(p, p.name, p.next, p.progress);
+        saveProject(p, p.name, p.next, p.progress, p.due);
       });
       tasks.appendChild(row);
     });
@@ -438,7 +454,7 @@
         if (!n) { draw(); return; }
         if (p.tasks.length >= MAX_T) return note("بلغت الحد");
         p.tasks.push({ id: rid("t"), title: n, status: "open", next: "" });
-        saveProject(p, p.name, p.next, p.progress);
+        saveProject(p, p.name, p.next, p.progress, p.due);
       });
     });
     tasks.appendChild(add);
@@ -458,9 +474,11 @@
     var name = h("input"); name.value = p.name; name.maxLength = MAX_NAME;
     var next = h("textarea"); next.value = p.next; next.maxLength = MAX_NEXT;
     var prog = h("input"); prog.value = p.progress == null ? "" : String(p.progress); prog.dir = "ltr";
+    var due = h("input"); due.value = p.due || ""; due.dir = "ltr"; due.placeholder = "2026-11-20";
     sheet.appendChild(h("label", "", "الاسم")); sheet.appendChild(name);
     sheet.appendChild(h("label", "", "الخطوة التالية")); sheet.appendChild(next);
     sheet.appendChild(h("label", "", "التقدم")); sheet.appendChild(prog);
+    sheet.appendChild(h("label", "", "الموعد")); sheet.appendChild(due);
     var states = h("div", "states");
     Object.keys(PSTAT).forEach(function (k) {
       var b = h("button", "stpick" + (k === p.status ? " on" : ""));
@@ -477,7 +495,7 @@
     var yes = h("button", "primary", "حفظ");
     var no = h("button", "", "إلغاء");
     var del = h("button", "", "حذف");
-    yes.addEventListener("click", function () { ask.hidden = true; saveProject(p, name.value, next.value, prog.value); });
+    yes.addEventListener("click", function () { ask.hidden = true; saveProject(p, name.value, next.value, prog.value, due.value); });
     no.addEventListener("click", function () { ask.hidden = true; pending = null; });
     del.addEventListener("click", function () {
       ask.hidden = true;
@@ -495,7 +513,7 @@
     ask.hidden = false;
     pending = null;
   }
-  function saveProject(p, name, next, progress) {
+  function saveProject(p, name, next, progress, due) {
     var ws = readWs();
     var cur = ws.projects.filter(function (item) { return item.id === p.id; })[0];
     if (!cur) return;
@@ -508,7 +526,8 @@
     if (progress != null && String(progress).trim() !== "") {
       var n = Number(progress);
       if (n >= 0 && n <= 100) cur.progress = n;
-    }
+    } else if (progress != null) delete cur.progress;
+    if (due != null) cur.due = /^\d{4}-\d{2}-\d{2}$/.test(String(due).trim()) ? String(due).trim() : "";
     writeWs(ws);
     draw();
   }
@@ -519,6 +538,7 @@
   function drawIdeas() {
     band("الأفكار", "مرجع اللقطة وفكرتك");
     var ref = section("أفكار المرجع");
+    if (!snap.ideas.length) ref.appendChild(h("p", "empty", "لا أفكار في اللقطة."));
     var ideaIcons = ["gem", "flag"];
     snap.ideas.forEach(function (line, i) {
       var row = h("div", "trow");
@@ -685,6 +705,12 @@
   document.getElementById("enter").addEventListener("click", function () { document.getElementById("open").hidden = true; });
   document.querySelectorAll("#themes button").forEach(function (b) {
     b.addEventListener("click", function () { setTheme(b.getAttribute("data-theme")); });
+  });
+  document.getElementById("quick").addEventListener("click", function () {
+    document.getElementById("open").hidden = true;
+    if (tab === "ideas") { ideaOpen = true; draw(); return; }
+    addOpen = true;
+    setTab("projects");
   });
   if (/[?&]open=0/.test(location.search)) document.getElementById("open").hidden = true;
   applyTheme();

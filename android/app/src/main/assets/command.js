@@ -55,7 +55,8 @@
       name:"الاسم", replace_ws:"استبدال المساحة بمحتوى الملف؟", replace_snap:"استبدال مرجع اللقطة؟ مساحتك لا تتغير.",
       bad_file:"ملف غير صالح", bad_ws:"ملف المساحة غير صالح", bad_snap:"لقطة غير صالحة",
       restored:"استُعيدت المساحة", imported:"استُوردت اللقطة", cleared:"المساحة فارغة", clear_ask:"مسح مشاريعك المحلية؟ المرجع لا يتأثر.",
-      created:"أُنشئ المشروع في المساحة", big_file:"الملف أكبر من الحد", need_name:"اكتب اسماً", need_task:"اكتب مهمة", limit:"بلغت الحد" },
+      created:"أُنشئ المشروع في المساحة", big_file:"الملف أكبر من الحد", need_name:"اكتب اسماً", need_task:"اكتب مهمة", limit:"بلغت الحد",
+      del_ask:"حذف هذا المشروع؟", idea_ph:"سطر واحد", need_idea:"اكتب الفكرة", goal:"الهدف", first_task:"أول مهمة", need_both:"أكمل الهدف والمهمة" },
     en: { nav_home:"Home", nav_proj:"Projects", nav_ideas:"Ideas", nav_tools:"Tools", enter:"Continue",
       home:"Home", projects:"Projects", ideas:"Ideas", tools:"Tools", project:"Project", edit:"Edit",
       seg_now:"Now", seg_proj:"Projects", seg_brief:"Brief", seg_tools:"Tools", seg_set:"Settings", seg_file:"File",
@@ -79,7 +80,8 @@
       name:"Name", replace_ws:"Replace the workspace with this file?", replace_snap:"Replace the snapshot? Your workspace stays.",
       bad_file:"Invalid file", bad_ws:"Invalid workspace file", bad_snap:"Invalid snapshot",
       restored:"Workspace restored", imported:"Snapshot imported", cleared:"Workspace cleared", clear_ask:"Clear your local projects? The reference stays.",
-      created:"Project created in the workspace", big_file:"File is over the limit", need_name:"Type a name", need_task:"Type a task", limit:"Limit reached" }
+      created:"Project created in the workspace", big_file:"File is over the limit", need_name:"Type a name", need_task:"Type a task", limit:"Limit reached",
+      del_ask:"Delete this project?", idea_ph:"One line", need_idea:"Type the idea", goal:"Goal", first_task:"First task", need_both:"Complete the goal and the task" }
   };
   function t(key) { return (I18N[lang] && I18N[lang][key]) || (I18N.ar[key]) || key; }
   function stLabel(code) { return t("st_" + code); }
@@ -548,9 +550,9 @@
     var add = h("button", "linkish", t("save_name"));
     add.addEventListener("click", function () {
       var n = clip(name.value, MAX_NAME);
-      if (!n) return note("اكتب اسماً");
+      if (!n) return note(t("need_name"));
       var ws = readWs();
-      if (ws.projects.length >= MAX_P) return note("بلغت الحد");
+      if (ws.projects.length >= MAX_P) return note(t("limit"));
       ws.projects.push({ id: rid("p"), name: n, status: "wait", next: "", tasks: [] });
       writeWs(ws);
       addOpen = false;
@@ -609,7 +611,7 @@
       titleIn.addEventListener("change", function () {
         var n = clip(titleIn.value, MAX_NAME);
         if (!n) { draw(); return; }
-        if (p.tasks.length >= MAX_T) return note("بلغت الحد");
+        if (p.tasks.length >= MAX_T) return note(t("limit"));
         p.tasks.push({ id: rid("t"), title: n, status: "open", next: "" });
         saveProject(p, p.name, p.next, p.progress, p.due);
       });
@@ -661,7 +663,7 @@
     no.addEventListener("click", function () { ask.hidden = true; pending = null; });
     del.addEventListener("click", function () {
       ask.hidden = true;
-      confirmAsk("حذف هذا المشروع؟", function () {
+      confirmAsk(t("del_ask"), function () {
         var ws = readWs();
         ws.projects = ws.projects.filter(function (item) { return item.id !== p.id; });
         writeWs(ws);
@@ -695,6 +697,7 @@
   }
   function templateFrom(idea) {
     var text = clip(idea, MAX_NAME);
+    if (lang === "en") return { version: 1, idea: text, goal: clip("Finish “" + text + "” locally after your review", MAX_NEXT), steps: ["Define the result", "Do the first step", "Review what was saved"], task: clip("First task: define the result of “" + text + "”", MAX_NAME), ready: true };
     return { version: 1, idea: text, goal: clip("إنجاز «" + text + "» محلياً بعد مراجعتك", MAX_NEXT), steps: ["تحديد النتيجة", "تنفيذ الخطوة الأولى", "مراجعة ما حُفظ"], task: clip("أول مهمة: تحديد نتيجة «" + text + "»", MAX_NAME), ready: true };
   }
   function drawIdeas() {
@@ -719,13 +722,13 @@
     }
     ideaOpen = true;
     var draft = readDraft();
-    var idea = h("textarea"); idea.maxLength = MAX_NAME; idea.placeholder = "سطر واحد";
+    var idea = h("textarea"); idea.maxLength = MAX_NAME; idea.placeholder = t("idea_ph");
     if (draft) idea.value = draft.idea;
     mine.appendChild(idea);
     var build = h("button", "", t("build"));
     build.addEventListener("click", function () {
       var text = clip(idea.value, MAX_NAME);
-      if (!text) return note("اكتب الفكرة");
+      if (!text) return note(t("need_idea"));
       localStorage.setItem(DRAFT_KEY, JSON.stringify(templateFrom(text)));
       draw();
     });
@@ -739,20 +742,20 @@
       mine.appendChild(h("p", "", draft.task));
       var goal = h("textarea"); goal.value = draft.goal || "";
       var task = h("input"); task.value = draft.task || "";
-      mine.appendChild(h("label", "", "الهدف")); mine.appendChild(goal);
-      mine.appendChild(h("label", "", "أول مهمة")); mine.appendChild(task);
+      mine.appendChild(h("label", "", t("goal"))); mine.appendChild(goal);
+      mine.appendChild(h("label", "", t("first_task"))); mine.appendChild(task);
       var yes = h("button", "primary", t("confirm_create"));
       var no = h("button", "", t("cancel"));
       yes.addEventListener("click", function () {
         var ws = readWs();
-        if (ws.projects.length >= MAX_P) return note("بلغت الحد");
+        if (ws.projects.length >= MAX_P) return note(t("limit"));
         var goalText = clip(goal.value, MAX_NEXT), tk = clip(task.value, MAX_NAME);
-        if (!goalText || !tk) return note("أكمل الهدف والمهمة");
+        if (!goalText || !tk) return note(t("need_both"));
         ws.projects.push({ id: rid("p"), name: clip(draft.idea, MAX_NAME) || "مشروع", status: "wait", next: goalText, icon: "spark", tasks: [{ id: rid("t"), title: tk, status: "open", next: "" }] });
         writeWs(ws);
         localStorage.removeItem(DRAFT_KEY);
         ideaOpen = false;
-        note("أُنشئ المشروع في المساحة");
+        note(t("created"));
         draw();
       });
       no.addEventListener("click", function () { localStorage.removeItem(DRAFT_KEY); ideaOpen = false; draw(); });
@@ -855,22 +858,22 @@
     if (tab === "more" && toolSeg === "file") draw();
   }
   function readFile(file, kind) {
-    if (file.size > MAX_FILE) return note("الملف أكبر من الحد");
+    if (file.size > MAX_FILE) return note(t("big_file"));
     var reader = new FileReader();
     reader.onload = function () {
       var text = String(reader.result || "");
       var parsed = null;
-      try { parsed = JSON.parse(text); } catch (e) { return note("ملف غير صالح"); }
+      try { parsed = JSON.parse(text); } catch (e) { return note(t("bad_file")); }
       if (kind === "workspace") {
-        if (!parsed || parsed.version !== 1 || !Array.isArray(parsed.projects) || parsed.projects.length > MAX_P || !parsed.projects.every(validProject)) return note("ملف المساحة غير صالح");
-        confirmAsk("استبدال المساحة بمحتوى الملف؟", function () { writeWs(parsed); note("استُعيدت المساحة"); draw(); });
+        if (!parsed || parsed.version !== 1 || !Array.isArray(parsed.projects) || parsed.projects.length > MAX_P || !parsed.projects.every(validProject)) return note(t("bad_ws"));
+        confirmAsk(t("replace_ws"), function () { writeWs(parsed); note(t("restored")); draw(); });
       } else {
         var nextSnap = validSnap(parsed);
-        if (!nextSnap) return note("لقطة غير صالحة");
-        confirmAsk("استبدال مرجع اللقطة؟ مساحتك لا تتغير. الوقت: " + when(nextSnap.generatedAt), function () {
+        if (!nextSnap) return note(t("bad_snap"));
+        confirmAsk(t("replace_snap") + " " + when(nextSnap.generatedAt), function () {
           localStorage.setItem(SNAP_KEY, JSON.stringify(nextSnap));
           snap = nextSnap;
-          note("استُوردت اللقطة");
+          note(t("imported"));
           draw();
         });
       }

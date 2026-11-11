@@ -104,12 +104,12 @@ main{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;padd
 .seg button.on{color:#f1d37a;-webkit-text-fill-color:#f1d37a;border-bottom-color:#f1d37a}
 body[data-theme="uae"] .seg button,body[data-theme="uae"] .seg button.on{color:#fff;-webkit-text-fill-color:#fff}
 body[data-theme="uae"] .seg button.on{border-bottom-color:#c8102e}
-.rows{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;justify-content:stretch}
-.rows>.trow,.rows>.prow,.rows>.sum{flex:1 1 0;min-height:0;overflow:hidden;align-content:center}
+.rows{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;justify-content:flex-start;gap:4px}
+.rows>.trow,.rows>.prow,.rows>.sum{flex:1 1 36px;min-height:0;max-height:56px;overflow:hidden;align-content:center}
 main>*{animation:none;opacity:1}
 @keyframes rise{from{opacity:1;transform:none}to{opacity:1;transform:none}}
 footer{flex:none;height:52px;display:grid;grid-template-columns:repeat(9,minmax(0,1fr));overflow:hidden;border:0;background:#12081ee6}
-footer button{min-width:0;width:100%;border:0;border-radius:0;background:transparent;color:#fff;font-size:8px;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:3px 0;white-space:nowrap}
+footer button{min-width:0;width:100%;border:0;border-radius:0;background:transparent;color:#fff;font-size:8px;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:3px 0;white-space:nowrap;overflow:hidden}
 footer button.on{color:var(--gold2)}
 footer svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.6}
 .sec{margin:22px 0 0}
@@ -120,7 +120,7 @@ footer svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.6
 .row .t{flex:1;min-width:0}
 .row .t b{display:block;font-weight:600;font-size:13.5px}
 .row .t span,.sub{color:#f7f4ef;font-size:12px}
-.ic{width:22px;height:22px;flex:none;stroke:#ffe08a;fill:none;stroke-width:1.8}
+.ic{width:18px;height:18px;flex:none;stroke:#ffe08a;fill:none;stroke-width:1.8}
 .modes{display:flex;gap:18px;padding:12px 2px 4px}
 .modes button{color:var(--mu);font-size:13px;padding-bottom:6px;border-bottom:1px solid transparent}
 .modes button.on{color:var(--gold2);border-bottom-color:var(--gold)}
@@ -136,7 +136,9 @@ footer svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.6
 .band .sub{margin-top:1px;color:#fff;-webkit-text-fill-color:#fff;font-size:11px;opacity:1}
 .prow,.trow{width:100%;display:grid;grid-template-columns:18px 1fr auto;gap:0 8px;align-items:center;padding:0 2px;background:none;border:0;border-radius:0;text-align:right;color:#fff;opacity:1;filter:none}
 .rows .sum,.rows .sum ~ .trow,.rows .sum ~ .prow{opacity:1;filter:none;color:#fff}
-.trow .nm,.prow .nm{grid-column:2;color:#fff;-webkit-text-fill-color:#fff;font-weight:600;opacity:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trow .nm,.prow .nm{grid-column:2;min-width:0;color:#fff;-webkit-text-fill-color:#fff;font-weight:600;opacity:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trow.clip2{max-height:72px}
+.trow.clip2 .nm{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .trow .tag,.trow .stxt,.prow .stxt{grid-column:3;justify-self:end;font-size:12px;font-weight:700;color:#7dffc4;-webkit-text-fill-color:#7dffc4;background:none;border:0;opacity:1}
 .trow .sub,.prow .sub{grid-column:2 / 4;font-size:12px;color:#f7f4ef;-webkit-text-fill-color:#f7f4ef;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:1}
 .tag.stopped,.tag.hold,.tag.bad,.stxt.hold,.stxt.stopped{color:#ffb4b4;-webkit-text-fill-color:#ffb4b4}

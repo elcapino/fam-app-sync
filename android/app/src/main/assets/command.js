@@ -100,7 +100,7 @@
       restored:"Workspace restored", imported:"Snapshot imported", cleared:"Workspace cleared", clear_ask:"Clear your local projects? The reference stays.",
       created:"Project created in the workspace", big_file:"File is over the limit", need_name:"Type a name", need_task:"Type a task", limit:"Limit reached",
       del_ask:"Delete this project?", idea_ph:"One line", need_idea:"Type the idea", goal:"Goal", first_task:"First task", need_both:"Complete the goal and the task",
-      tab_sum:"Sum", tab_hq:"HQ", tab_proj:"Work", tab_agency:"Agency", tab_house:"House", tab_market:"Mkt", tab_spend:"Spend", tab_ideas:"Ideas", tab_reports:"Docs",
+      tab_sum:"Home", tab_hq:"HQ", tab_proj:"Work", tab_agency:"Agency", tab_house:"House", tab_market:"Market", tab_spend:"Spend", tab_ideas:"Ideas", tab_reports:"Files",
       add:"Add",
       c_ok:"Healthy", c_nokey:"No key", c_badkey:"Invalid key", c_fail:"Check failed", c_wait:"Checking",
       c_line_ok:"The check succeeded just now", c_line_nokey:"No key stored on this device", c_line_badkey:"The service rejected the key", c_line_fail:"The service could not be reached", c_line_wait:"Checking the key" }
@@ -346,6 +346,8 @@
     if (enter) enter.textContent = t("enter");
     var addLabel = document.getElementById("addlabel");
     if (addLabel) addLabel.textContent = t("add");
+    var refreshLabel = document.getElementById("refreshlabel");
+    if (refreshLabel && !refreshing) refreshLabel.textContent = lang === "en" ? "Sync" : "تحديث";
     var navT = { sum: "tab_sum", hq: "tab_hq", proj: "tab_proj", agency: "tab_agency", house: "tab_house", market: "tab_market", spend: "tab_spend", ideas: "tab_ideas", reports: "tab_reports" };
     document.querySelectorAll("footer button").forEach(function (b) {
       var last = b.lastChild;
@@ -510,7 +512,7 @@
   function refreshAll() {
     if (refreshing) return;
     refreshing = true;
-    var btn = document.getElementById("refresh");
+    var btn = document.getElementById("refreshlabel");
     if (btn) btn.textContent = "…";
     reloadSnap().then(function () {
       return Promise.all(FEEDS.map(function (f) {
@@ -531,11 +533,11 @@
       }
     }).then(function () {
       refreshing = false;
-      if (btn) btn.textContent = "↻";
+      if (btn) btn.textContent = lang === "en" ? "Sync" : "تحديث";
       draw();
     }, function () {
       refreshing = false;
-      if (btn) btn.textContent = "↻";
+      if (btn) btn.textContent = lang === "en" ? "Sync" : "تحديث";
       draw();
     });
   }
@@ -553,7 +555,7 @@
     (snap.brief || []).forEach(function (b) { extra.push(line("news", b.title, b.source || t("brief"), b.date, "wait")); });
     (snap.next || []).forEach(function (text) { extra.push(line("flag", text, t("next"), lang === "en" ? "Open" : "مفتوح", "wait")); });
     extra.forEach(function (row) {
-      if (rows.children.length >= 12) return;
+      if (rows.children.length >= 14) return;
       var nm = row.querySelector(".nm").textContent;
       if (seen[nm]) return;
       seen[nm] = true;
@@ -564,11 +566,13 @@
     if (!p) { pages.appendChild(h("p", "empty", t("no_projects"))); return; }
     band(p.name, (extra || stLabel(p.status)) + (typeof p.progress === "number" ? " · " + num(p.progress) + "%" : ""));
     var rows = h("div", "rows");
-    rows.appendChild(line(p.icon || "crown", p.name, p.from === "snapshot" ? t("from_ceo") : t("file"), stLabel(p.status), statusClass(p.status)));
+    var paper = p.id === "p_markets1";
+    rows.appendChild(line(p.icon || "crown", p.name, paper ? (lang === "en" ? "Paper only · no live order" : "ورقي فقط · لا أمر حقيقي") : (p.from === "snapshot" ? t("from_ceo") : t("file")), paper ? (lang === "en" ? "Paper" : "ورقي") : stLabel(p.status), paper ? "wait" : statusClass(p.status)));
     var nextLine = line("flag", t("step"), p.next || t("no_step"), p.next ? (lang === "en" ? "Set" : "مكتوب") : (lang === "en" ? "Empty" : "فارغ"), p.next ? "running" : "wait");
     nextLine.setAttribute("data-next", p.next || "");
     rows.appendChild(nextLine);
-    var dueLine = line("note", t("due"), p.due || t("no_due"), p.due || t("no_due"), p.due ? "wait" : "bad");
+    var dueShown = p.due ? ((lang === "en" ? "Dubai · " : "دبي · ") + p.due) : t("no_due");
+    var dueLine = line("note", t("due"), dueShown, p.due ? dueShown : t("no_due"), p.due ? "wait" : "bad");
     dueLine.setAttribute("data-due", p.due || "");
     rows.appendChild(dueLine);
     var prog = line("chart", t("progress"), typeof p.progress === "number" ? num(p.progress) + "%" : t("no_progress"), stLabel(p.status), statusClass(p.status));
@@ -604,8 +608,13 @@
     if (sumSeg === "set") { drawSettings(rows); pages.appendChild(rows); return; }
     if (sumSeg === "news") {
       rows.appendChild(line("clock", lang === "en" ? "Last refresh" : "آخر تحديث", news.at ? (lang === "en" ? "Asia/Dubai, on this device" : "توقيت دبي، على هذا الجهاز") : (lang === "en" ? "Press refresh" : "اضغط تحديث"), news.at ? when(news.at) : "—", news.at ? "running" : "wait"));
-      if (news.items.length) news.items.slice(0, 11).forEach(function (item) { rows.appendChild(newsLine(item)); });
-      else FEEDS.forEach(function (f) { rows.appendChild(line("news", f.source, lang === "en" ? "Public feed" : "موجز عام", lang === "en" ? "Ready" : "جاهز", "wait", f.url)); });
+      var failed = (news.feeds || []).filter(function (f) { return !f.ok; });
+      if (news.items.length) news.items.slice(0, 6).forEach(function (item) { rows.appendChild(newsLine(item)); });
+      else if (!news.at) FEEDS.forEach(function (f) { rows.appendChild(line("news", f.source, lang === "en" ? "Public feed · press Sync" : "موجز عام · اضغط تحديث", lang === "en" ? "Ready" : "جاهز", "wait", f.source === "WAM" ? "https://www.wam.ae/en" : f.url)); });
+      failed.forEach(function (f) {
+        var home = f.source === "WAM" ? "https://www.wam.ae/en" : (f.source === "The National" ? "https://www.thenationalnews.com" : f.url);
+        rows.appendChild(line("news", f.source, lang === "en" ? "This refresh returned no items" : "هذا التحديث لم يُرجع عناصر", lang === "en" ? "Failed" : "تعذر", "bad", home));
+      });
       pages.appendChild(rows);
       return;
     }
@@ -624,7 +633,7 @@
     var house = projectById("p_house01");
     var market = projectById("p_markets1");
     if (house) rows.appendChild(line("house", house.name, house.next || t("no_step"), stLabel(house.status), statusClass(house.status)));
-    if (market) rows.appendChild(line("chart", market.name, market.next || t("no_step"), stLabel(market.status), statusClass(market.status)));
+    if (market) rows.appendChild(line("chart", market.name, (lang === "en" ? "Paper only · " : "ورقي فقط · ") + (market.next || t("no_step")), lang === "en" ? "Paper" : "ورقي", "wait"));
     (snap.tools || []).forEach(function (tool) {
       if (!moneyOf(tool.cost) || rows.querySelector("[data-spend]")) return;
       var row = line(tool.icon || "spark", tool.name, (lang === "en" ? "Spend" : "إنفاق") + " · " + hostOf(LINKS[tool.name] || ""), tool.cost, "running", LINKS[tool.name]);
@@ -714,22 +723,32 @@
     var rows = h("div", "rows");
     if (spendSeg === "use") {
       (snap.tools || []).forEach(function (tool) {
+        if (tool.name === "Exa · Bright Data · Apify" || tool.name === "GitHub · Shopify · X") return;
         var meta = ROLE[tool.name] || ["", ""];
         rows.appendChild(line(tool.icon || "spark", tool.name, (lang === "en" ? meta[1] : meta[0]) + " · " + when(tool.lastRun), healthLabel(tool.state), statusClass(tool.state), LINKS[tool.name]));
       });
     } else if (spendSeg === "tools") {
+      rows.appendChild(groupRow(["brightdata", "exa", "apify"], lang === "en" ? "Collection" : "الجمع", "Exa · Bright Data · Apify", "link"));
+      rows.appendChild(groupRow(["github", "shopify", "x"], lang === "en" ? "Accounts" : "الحسابات", "GitHub · Shopify · X", "store"));
       CONNECTORS.forEach(function (c) { rows.appendChild(connectorRow(c)); });
+      ["Claude", "Gemini", "DeepSeek", "NotebookLM"].forEach(function (name) {
+        var tool = (snap.tools || []).filter(function (item) { return item.name === name; })[0];
+        if (!tool) return;
+        rows.appendChild(line(tool.icon || "spark", tool.name, (lang === "en" ? "Writing tool · " : "أداة كتابة · ") + hostOf(LINKS[name] || ""), tool.cost || healthLabel(tool.state), statusClass(tool.state), LINKS[name]));
+      });
       refreshConnectors();
     } else if (spendSeg === "sugg") {
       (snap.ideas || []).forEach(function (text) { rows.appendChild(line("spark", text, lang === "en" ? "Idea in the snapshot" : "فكرة في اللقطة", lang === "en" ? "Review" : "مراجعة", "wait")); });
       (snap.next || []).forEach(function (text) { rows.appendChild(line("flag", text, t("next"), lang === "en" ? "Open" : "مفتوح", "wait")); });
     } else {
       (snap.tools || []).forEach(function (tool) {
+        if (tool.name === "Exa · Bright Data · Apify" || tool.name === "GitHub · Shopify · X") return;
         var money = moneyOf(tool.cost);
         var meta = ROLE[tool.name] || ["", ""];
         var role = lang === "en" ? meta[1] : meta[0];
+        if (tool.state === "hold") role = lang === "en" ? "Paper only · no live order" : "ورقي فقط · لا أمر حقيقي";
         var link = LINKS[tool.name];
-        rows.appendChild(line(tool.icon || "spark", tool.name, role + (link ? " · " + hostOf(link) : ""), money ? "$" + money.used + " / $" + money.cap : (tool.cost || ""), money && money.pct >= 80 ? "bad" : "running", link));
+        rows.appendChild(line(tool.icon || "spark", tool.name, role + (link ? " · " + hostOf(link) : ""), money ? "$" + money.used + " / $" + money.cap : (tool.cost || ""), tool.state === "hold" ? "bad" : (money && money.pct >= 80 ? "bad" : "running"), link));
       });
     }
     pages.appendChild(rows);
@@ -788,6 +807,7 @@
       row.setAttribute("data-url", url);
       row.addEventListener("click", function () { openUrl(url); });
     }
+    if (iconName === "news") row.classList.add("clip2");
     return row;
   }
   function projectRow(p) {
@@ -843,6 +863,16 @@
     var role = lang === "en" ? meta[1] : meta[0];
     row.appendChild(h("div", "sub", role + " · " + when(tool.lastRun) + " · " + healthLabel(tool.state)));
     return row;
+  }
+  function groupRow(ids, name, sub, iconName) {
+    var rank = { ok: 0, wait: 1, nokey: 2, fail: 3, badkey: 4 };
+    var result = "ok";
+    ids.forEach(function (id) {
+      var cur = connectorResult(id);
+      if ((rank[cur] || 0) > (rank[result] || 0)) result = cur;
+    });
+    var tone = result === "ok" ? "running" : "bad";
+    return line(iconName, name, sub, t("c_" + result), tone);
   }
   function connectorRow(c) {
     var result = connectorResult(c.id);
@@ -956,7 +986,8 @@
     var nextLine = line("flag", t("step"), p.next || t("no_step"), p.next ? (lang === "en" ? "Set" : "مكتوب") : (lang === "en" ? "Empty" : "فارغ"), p.next ? "running" : "wait");
     nextLine.setAttribute("data-next", p.next || "");
     rows.appendChild(nextLine);
-    var dueLine = line("note", t("due"), p.due || t("no_due"), p.due || t("no_due"), p.due ? "wait" : "bad");
+    var dueShown = p.due ? ((lang === "en" ? "Dubai · " : "دبي · ") + p.due) : t("no_due");
+    var dueLine = line("note", t("due"), dueShown, p.due ? dueShown : t("no_due"), p.due ? "wait" : "bad");
     dueLine.setAttribute("data-due", p.due || "");
     if (p.due) dueLine.dir = "ltr";
     rows.appendChild(dueLine);
@@ -1213,7 +1244,7 @@
       var starts = ["home", "projects", "ideas", "more"], startName = { home: t("home"), projects: t("projects"), ideas: t("ideas"), more: t("tools") };
       rows.appendChild(choice("flag", t("start"), lang === "en" ? "Page after the opening" : "الصفحة بعد الافتتاح", startName[startPage], function () { setPref("hmk_start_v1", starts[(starts.indexOf(startPage) + 1) % starts.length], "start"); }));
       rows.appendChild(choice("pause", t("density"), lang === "en" ? "Compact or comfortable" : "مضغوط أو مريح", density === "comfortable" ? t("comfortable") : t("compact"), function () { setPref("hmk_density_v1", density === "compact" ? "comfortable" : "compact", "density"); }));
-      var info = window.HMK_BUILD || { version: "1.14-debug", sha: "dev" };
+      var info = window.HMK_BUILD || { version: "1.15-debug", sha: "dev" };
       try {
         if (window.HmkAndroid && HmkAndroid.buildId) {
           var parts = String(HmkAndroid.buildId()).split(" ");

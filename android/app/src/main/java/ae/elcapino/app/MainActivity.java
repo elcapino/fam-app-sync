@@ -41,7 +41,7 @@ import java.nio.charset.StandardCharsets;
 public class MainActivity extends Activity {
     private static final String TAG = "HMK";
     private static final String HOST = "appassets.androidplatform.net";
-    private static final String START = "https://appassets.androidplatform.net/assets/command.html";
+    private static final String START = "https://appassets.androidplatform.net/assets/hmk/index.html";
     private static final int REQ_OPEN = 41;
     private static final int MAX_JSON = 200000;
 

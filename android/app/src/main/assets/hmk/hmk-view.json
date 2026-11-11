@@ -1,0 +1,105 @@
+{
+  "updated": "2026-11-09 07:40",
+  "built": "2026-11-09 07:40",
+  "brief": ["إعادة تصميم HMK", "قرار إنارة البيت: KNX/DALI", "التداول ورقي فقط · لا مراكز مفتوحة"],
+  "waiting": ["قرار إنارة البيت: KNX/DALI", "قرار تسعير المتجر", "اعتماد فحص APK"],
+  "wins": [{"d": "09", "n": 1}, {"d": "09", "n": 1}, {"d": "09", "n": 1}, {"d": "09", "n": 1}],
+  "kpi": {
+    "projects": [
+      {"id": "agency", "ar": "وكالة واتساب AI", "en": "AI WhatsApp agency", "s": "go", "pct": 0, "ar_n": "تسليم تقرير واتساب الذكي ما زال في اللقطة", "en_n": "The WhatsApp report is still in the 9 Nov snapshot"},
+      {"id": "fahem", "ar": "فاهم", "en": "FAHEM", "s": "go", "pct": 0, "ar_n": "البوت يعمل محلياً", "en_n": "The bot runs locally"},
+      {"id": "drop", "ar": "متجر Shopify", "en": "Shopify store", "s": "wait", "pct": 0, "ar_n": "بانتظار قرار التسعير ومصدر المنتجات", "en_n": "Waiting on pricing and the product source"},
+      {"id": "house", "ar": "البيت", "en": "House", "s": "go", "pct": 12, "ar_n": "قرار إنارة KNX/DALI · 4 قرارات معلّقة", "en_n": "Lighting decision KNX/DALI · 4 decisions open"},
+      {"id": "market", "ar": "إشارات السوق", "en": "Market signals", "s": "watch", "pct": 0, "ar_n": "ورقي فقط · لا تداول حقيقي · لا مراكز مفتوحة", "en_n": "Paper only · no live trading · no open positions"},
+      {"id": "ideas", "ar": "أفكار الإمارات", "en": "UAE ideas", "s": "wait", "pct": 0, "ar_n": "ملف الأفكار الربحية جاهز للمراجعة", "en_n": "The profit-ideas file is ready to review"},
+      {"id": "elcapino", "ar": "HMK", "en": "HMK", "s": "go", "pct": 0, "ar_n": "لوحة تنفيذية · النسخة التشخيصية", "en_n": "Command board · debug build"}
+    ],
+    "ideas": [
+      ["ملف الأفكار الربحية جاهز للمراجعة", "Profit ideas file is ready to review", "UAE", "", "", null],
+      ["تحدي عجمان للابتكار · 20 نوفمبر", "Ajman innovation challenge · 20 Nov", "UAE", "", "", null],
+      ["قرار إنارة البيت: KNX/DALI", "House lighting decision: KNX/DALI", "AA", "", "", null],
+      ["قرار تسعير المتجر", "Store pricing decision", "AD", "", "", null]
+    ],
+    "house_risks": {"high": 0, "med": 1, "ar": ["لا نسبة مخاطر محفوظة غير قرار الإنارة"], "en": ["No stored risk count beyond the lighting decision"]},
+    "offer": {"ar": "لا عرض محفوظ في اللقطة. التقرير ما زال بانتظار التسليم.", "en": "No offer is stored in the snapshot. The report is still waiting."},
+    "niche": {"ar": "لا قطاع أول محفوظ", "en": "No first niche is stored"},
+    "budget": {"split": [], "total": 1}
+  },
+  "house": {"pct": 12, "note": {"ar": "قرار إنارة KNX/DALI · 4 قرارات معلّقة", "en": "Lighting decision KNX/DALI · 4 decisions open"}, "stages": [{"ar": "السجل", "en": "Log", "s": "done"}, {"ar": "الإنارة", "en": "Lighting", "s": "wait"}]},
+  "spend": [
+    {"name": "Claude", "v": 8.31, "cap": 20},
+    {"name": "Gemini", "v": 3.78, "cap": 75},
+    {"name": "DeepSeek", "v": 0, "cap": 5}
+  ],
+  "spend_reset": "2026-11-09",
+  "devices": [{"on": true}, {"on": false}],
+  "usage": {"updated": "2026-11-09 07:40 Asia/Dubai", "free_calls_month": 0, "saved_usd_month": 0, "tools": [
+    {"name": "Claude", "used": 8.31, "cap": 20, "unit": "$", "pct": 42},
+    {"name": "Gemini", "used": 3.78, "cap": 75, "unit": "$", "pct": 5}
+  ]},
+  "routing": [],
+  "apps": [],
+  "tools": {"checked": "2026-11-09", "groups": [
+    {"k": {"ar": "الذكاء الاصطناعي", "en": "AI"}, "items": [
+      ["Claude", {"ar": "كتابة وتقارير", "en": "Writing"}, "on", {"ar": "$8.31 / $20", "en": "$8.31 / $20"}],
+      ["Gemini", {"ar": "ملفات وصور", "en": "Files"}, "on", {"ar": "$3.78 / $75", "en": "$3.78 / $75"}],
+      ["DeepSeek", {"ar": "سقف منخفض", "en": "Low cap"}, "pause", {"ar": "سقف $5", "en": "cap $5"}],
+      ["NotebookLM", {"ar": "تلخيص", "en": "Summaries"}, "on", ""],
+      ["ChatGPT / Codex", {"ar": "عند الحاجة", "en": "On demand"}, "pause", ""],
+      ["تداول حقيقي", {"ar": "ورقي فقط · مقفل", "en": "Paper only · locked"}, "off", ""]
+    ]},
+    {"k": {"ar": "الموصلات", "en": "Connectors"}, "items": [
+      ["Bright Data", {"ar": "لا مفتاح", "en": "No key"}, "pause"],
+      ["Exa", {"ar": "لا مفتاح", "en": "No key"}, "pause"],
+      ["Apify", {"ar": "لا مفتاح", "en": "No key"}, "pause"],
+      ["GitHub", {"ar": "لا مفتاح", "en": "No key"}, "pause"],
+      ["Shopify", {"ar": "لا مفتاح", "en": "No key"}, "pause"],
+      ["X", {"ar": "لا مفتاح", "en": "No key"}, "pause"],
+      ["Semrush", {"ar": "غير موجود في اللقطة", "en": "Not in the snapshot"}, "off"],
+      ["Hugging Face", {"ar": "غير موجود في اللقطة", "en": "Not in the snapshot"}, "off"],
+      ["Context7", {"ar": "غير موجود في اللقطة", "en": "Not in the snapshot"}, "off"]
+    ]}
+  ], "sugg": [
+    ["مقارنة KNX و DALI", {"ar": "يحل قرار إنارة البيت", "en": "Addresses the house lighting decision"}, {"ar": "بانتظارك", "en": "Needs you"}],
+    ["تسعير المتجر", {"ar": "يحل قرار التسعير · لا نشر", "en": "Addresses pricing · no publish"}, {"ar": "بانتظارك", "en": "Needs you"}]
+  ]},
+  "market": {
+    "ts": "2026-11-09 07:40",
+    "verdict": {"ar": "ورقي فقط · لا فحص حي محفوظ", "en": "Paper only · no live scan is stored"},
+    "btc": {"on": false, "ar": "لا تداول · لا عملات", "en": "No trading · no coins"},
+    "deals": [],
+    "watch": [],
+    "stocks": [],
+    "coins": [],
+    "index": [],
+    "gold": [{"sym": "OANDA:XAUUSD", "px": null, "chg": null, "tv": "N", "ma50": null, "a50": null, "ma200": null, "a200": null, "rsi": null, "sl": null, "tg": null, "miss": ["price"], "miss_t": {"ar": "لا سعر محفوظ في اللقطة · ورقي فقط · بلا تداول", "en": "No price is stored in the snapshot · paper only · no trading"}}],
+    "halal": {"ar": "حلال فقط إن وُجد لاحقاً سهم موافق · هذه الشاشة تعليمية", "en": "Halal only if a compliant stock is stored later · this screen is educational"},
+    "disc": {"ar": "تعليمي فقط · ليست نصيحة مالية · لا تداول", "en": "Educational only · not financial advice · no trading"},
+    "src": "local snapshot 2026-11-09"
+  },
+  "docs": [
+    {"t": "تسليم تقرير واتساب الذكي", "m": "2026-11-09 07:40", "f": "snapshot", "b": "مذكور في لقطة 9 نوفمبر. لم يُعلَّم منجزاً كملف مستقل.", "p": "agency"},
+    {"t": "ملف الأفكار الربحية", "m": "2026-11-09 07:40", "f": "snapshot", "b": "جاهز للمراجعة. لا درجات بحث محفوظة.", "p": "ideas"},
+    {"t": "التداول الورقي موقوف", "m": "2026-11-09 07:40", "f": "snapshot", "b": "لا مراكز مفتوحة. لا تداول حقيقي.", "p": "market"},
+    {"t": "قرار إنارة KNX/DALI", "m": "2026-11-09 07:40", "f": "snapshot", "b": "4 قرارات معلّقة. لا موعد محفوظ.", "p": "house"},
+    {"t": "تحدي عجمان للابتكار", "m": "2026-11-20 00:00", "f": "snapshot", "b": "موعد 20 نوفمبر من اللقطة.", "p": "ideas"},
+    {"t": "أبوظبي وOpenAI: 4 اتفاقات", "m": "2026-11-02 00:00", "f": "brief", "b": "مذكور كتقرير اليوم · أدنوك. لا رابط محفوظ.", "p": "reports"}
+  ],
+  "sugg": [{"ar": "مقارنة KNX و DALI ثم اختيار واحد", "en": "Compare KNX and DALI, then pick one", "b": {"ar": "يحل قرار إنارة البيت", "en": "Solves the house lighting decision"}}],
+  "hq": {
+    "ceo_id": "ceo",
+    "generated": "2026-11-09T07:40:00+04:00",
+    "rooms": [],
+    "agents": [
+      {"id": "ceo", "name": "المدير", "room": "meet", "active": true, "status": "up", "level": 8, "kind": "role"},
+      {"id": "shop1", "name": "متجر", "room": "shop", "active": false, "status": "idle", "level": 3, "kind": "role"},
+      {"id": "trade1", "name": "ورق", "room": "trade", "active": false, "status": "idle", "level": 2, "kind": "role"},
+      {"id": "res1", "name": "بحث", "room": "research", "active": true, "status": "up", "level": 4, "kind": "role"},
+      {"id": "house1", "name": "بيت", "room": "house", "active": true, "status": "up", "level": 3, "kind": "role"},
+      {"id": "fahem1", "name": "فاهم", "room": "fahem", "active": true, "status": "up", "level": 5, "kind": "role"}
+    ],
+    "skills": ["KNX", "Shopify", "موجزات"],
+    "brief": {"date": "2026-11-09 07:40", "your_part": ["راجع قرار إنارة البيت", "لا تفتح تداولاً حقيقياً", "راجع تسعير المتجر"], "needs_you": ["4 قرارات إنارة معلّقة", "اعتماد فحص APK"]},
+    "meeting": {"week": "9 نوفمبر 2026", "broke": [], "wins": ["إنشاء ملف الأفكار الربحية"]}
+  }
+}

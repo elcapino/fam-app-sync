@@ -113,7 +113,7 @@ function pReports(i){const ds=D.docs||[],A=L=='ar';const cnt={all:ds.length};ds.
  <div style="display:flex;gap:5px;margin-bottom:6px"><input id="rq" type="search" value="${esc(RQ)}" placeholder="${A?'🔍 بحث في التقارير':'🔍 Search reports'}" style="flex:1;min-width:0;padding:7px 10px;border-radius:10px;border:1px solid #ffffff2a;background:#ffffff10;color:inherit;font:13px Plex,sans-serif">
  <select id="rd" style="border-radius:10px;background:#ffffff10;color:inherit;border:1px solid #ffffff2a;font:12px Plex">${[[0,A?'كل التواريخ':'All dates'],[1,A?'اليوم':'Today'],[7,A?'7 أيام':'7 days'],[30,A?'30 يوم':'30 days']].map(([v,l])=>`<option value="${v}" ${v==RD?'selected':''} style="color:#000">${l}</option>`).join('')}</select>
  <button id="rs" class="chip watch" style="border:0">${RS?(A?'الأحدث ↓':'Newest ↓'):(A?'الأقدم ↑':'Oldest ↑')}</button></div>
- <div id="rlw" style="display:flex;flex-direction:column;flex:1;min-height:0">${rlist()}</div><div class="cp">${L=='ar'?'© حمد الكعبي — جميع الحقوق محفوظة':'© Hamad Al Kaabi. All rights reserved.'}</div>`}
+ <div id="rlw" style="display:flex;flex-direction:column;flex:1;min-height:0">${rlist()}</div><div class="cp">${L=='ar'?'© HMK — جميع الحقوق محفوظة':'© HMK. All rights reserved.'}</div>`}
 function rr(){const w=$('#rlw');if(!w)return;w.innerHTML=rlist();bind()}
 function rrAll(){const k=PAGES.indexOf('reports'),pg=$('#pages').children[k];pg.innerHTML=pReports(k);bind()}
 function pHq(i){return `<iframe id="hqf" src="hq.html" title="HQ" style="flex:1;min-height:0;width:100%;border:1px solid var(--line);border-radius:14px;background:#1e0f3a"></iframe>`}

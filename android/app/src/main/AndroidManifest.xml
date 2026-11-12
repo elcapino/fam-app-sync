@@ -4,7 +4,7 @@
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
-        android:label="HMK"
+        android:label="HMK 1.15"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault.NoActionBar"
         android:usesCleartextTraffic="false">

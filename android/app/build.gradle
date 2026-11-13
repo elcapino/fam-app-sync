@@ -1,0 +1,101 @@
+plugins {
+    id "com.android.application"
+}
+
+def gitSha = "dev"
+try {
+    def proc = ["git", "-C", rootDir.parentFile.absolutePath, "rev-parse", "--short=12", "HEAD"].execute()
+    proc.waitFor()
+    if (proc.exitValue() == 0) gitSha = proc.text.trim()
+} catch (Exception ignored) {}
+
+android {
+    namespace "ae.elcapino.app"
+    compileSdk 34
+    buildFeatures { buildConfig true }
+
+    defaultConfig {
+        applicationId "ae.elcapino.app.v2"
+        minSdk 24
+        targetSdk 34
+        versionCode 19
+        versionName "1.15-debug"
+        buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+        debug {
+            debuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    sourceSets {
+        main {
+            assets.srcDir layout.buildDirectory.dir("generated/web")
+        }
+    }
+}
+
+dependencies {
+    implementation "androidx.webkit:webkit:1.12.1"
+}
+
+def dashDir = file("${rootDir}/../dash")
+def webFiles = [
+    "index.html",
+    "hq.html",
+    "install.html",
+    "status.html",
+    "workspace.js",
+    "restore.css",
+    "restore.js",
+    "rows.css",
+    "fill.js",
+    "fixture-adapter.js",
+    "fixture.json",
+    "report-registry.js",
+    "manifest.webmanifest",
+    "icon-180.png",
+    "icon-192.png",
+    "icon-512.png",
+    "fonts/Cairo.ttf",
+    "fonts/IBMPlexSansArabic-Regular.ttf",
+    "fonts/IBMPlexSansArabic-SemiBold.ttf",
+    "fonts/IBMPlexSansArabic-Bold.ttf"
+]
+
+def webOut = layout.buildDirectory.dir("generated/web/public")
+
+tasks.register("syncHmkWeb") {
+    inputs.files(webFiles.collect { new File(dashDir, it) })
+    outputs.dir(webOut)
+    doLast {
+        def dest = webOut.get().asFile
+        dest.deleteDir()
+        dest.mkdirs()
+        webFiles.each { rel ->
+            def src = new File(dashDir, rel)
+            if (!src.isFile()) {
+                throw new GradleException("Missing delivered dash asset: " + rel)
+            }
+            def out = new File(dest, rel)
+            out.parentFile.mkdirs()
+            java.nio.file.Files.copy(src.toPath(), out.toPath())
+        }
+        def json = new File(dashDir, "fixture.json").getText("UTF-8")
+            .replace("\u2028", "\\u2028")
+            .replace("\u2029", "\\u2029")
+            .trim()
+        new File(dest, "fixture.js").setText("window.HMK_FIXTURE=" + json + ";\n", "UTF-8")
+    }
+}
+
+tasks.named("preBuild").configure { dependsOn("syncHmkWeb") }

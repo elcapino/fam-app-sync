@@ -16,16 +16,16 @@ header{flex:none;height:54px;display:flex;align-items:center;gap:8px;padding:0 1
 .ib svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
 #pages{flex:1;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;min-height:0}
 #pages::-webkit-scrollbar{display:none}
-.pg{flex:none;width:100%;height:100%;scroll-snap-align:start;padding:12px 14px 8px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
-.ph{display:flex;align-items:baseline;gap:8px}.ph h2{margin:0;font:700 19px Plex}.ph .n{font:600 11px Plex;color:var(--gold);letter-spacing:1px}.ph .mu{margin-inline-start:auto}
+.pg{flex:none;width:100%;height:100%;scroll-snap-align:start;padding:4px 8px 2px;display:flex;flex-direction:column;gap:4px;overflow:hidden}
+.ph{display:flex;align-items:baseline;gap:6px;min-height:0}.ph h2{margin:0;font:700 16px Plex}.ph .n{font:600 11px Plex;color:var(--gold);letter-spacing:1px}.ph .mu{margin-inline-start:auto}
 .mu{color:var(--mu);font-size:11px}
-.c{background:linear-gradient(165deg,#33205ee6,#26154ae6);border:1px solid var(--line);border-radius:14px;padding:10px 12px;position:relative;min-height:0}
-.c.tap{cursor:pointer;transition:transform .15s,border-color .2s}.c.tap:active{transform:scale(.98);border-color:var(--gold)}
-.c h3{margin:0 0 6px;font:600 12px Plex;color:var(--gold2);display:flex;align-items:center;gap:6px}.c h3 .mu{margin-inline-start:auto;font-weight:400}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.g4{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.kpi .v{font:700 26px/1.1 Plex;color:var(--tx)}.kpi .v small{font-size:13px;color:var(--mu);font-weight:400}.kpi .l{font-size:11px;color:var(--mu)}
-.kpi:before{content:"";position:absolute;inset-inline-start:0;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--gold)}
-.row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid #33205a;font-size:13px}.row:last-child{border:0}
+.c{background:linear-gradient(165deg,#33205ee6,#26154ae6);border:1px solid #ffffff14;border-radius:8px;padding:6px 8px;position:relative;min-height:0}
+.c.tap{cursor:pointer}.c.tap:active{border-color:var(--gold)}
+.c h3{margin:0 0 2px;font:600 12px Plex;color:var(--gold2);display:flex;align-items:center;gap:6px}.c h3 .mu{margin-inline-start:auto;font-weight:400}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:4px}.g4{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.kpi{padding:5px 8px}.kpi .v{font:700 22px/1 Plex;color:var(--tx)}.kpi .v small{font-size:12px;color:var(--mu);font-weight:400}.kpi .l{font-size:10px;color:var(--mu);margin-top:2px}
+.kpi:before{content:"";position:absolute;inset-inline-start:0;top:6px;bottom:6px;width:2px;border-radius:2px;background:var(--gold)}
+.row{display:flex;align-items:center;gap:6px;padding:2px 0;border-bottom:1px solid #ffffff10;font-size:12px}.row:last-child{border:0}
 .chip{font:600 10px Plex;padding:2px 8px;border-radius:99px;white-space:nowrap;border:1px solid}
 .chip.go{color:var(--ok);border-color:#1f5c43;background:#0f2a22}.chip.hold{color:var(--warn);border-color:#5c4419;background:#2a2010}
 .chip.wait{color:var(--gold2);border-color:#5a4a22;background:#231d0e}.chip.watch{color:var(--blue);border-color:#22396a;background:#0f1a33}.chip.bad{color:var(--bad);border-color:#5e2424;background:#2a1010}
@@ -75,7 +75,7 @@ footer button.on{background:#d4af371f}footer button.on:after{content:"";position
 #fut .rot{transform-origin:330px 170px;animation:rot 90s linear infinite}@keyframes rot{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){#fut .rot{animation:none}}
 .ib.th svg{fill:none}
-.seg{display:flex;gap:4px;padding:3px;margin:0 0 8px;border-radius:12px;background:#ffffff10;border:1px solid #ffffff1a}.seg button{flex:1;border:0;background:none;color:inherit;font:600 12.5px Plex,sans-serif;padding:7px 0;border-radius:9px;cursor:pointer}.seg button.on{background:var(--gold);color:#160b27}[data-theme=future] .seg button.on{background:linear-gradient(90deg,#00e0c6,#2f7bff);color:#fff}.tbl.mk{font-size:11.5px}.tbl.mk td,.tbl.mk th{padding:5px 3px}.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:10.5px}</style></head><body>
+.seg{display:flex;gap:2px;padding:2px;margin:0;border-radius:8px;background:#ffffff10;border:1px solid #ffffff14}.seg button{flex:1;border:0;background:none;color:inherit;font:600 11px Plex,sans-serif;padding:4px 0;border-radius:6px;cursor:pointer}.seg button.on{background:var(--gold);color:#160b27}[data-theme=future] .seg button.on{background:linear-gradient(90deg,#00e0c6,#2f7bff);color:#fff}.tbl.mk{font-size:11.5px}.tbl.mk td,.tbl.mk th{padding:5px 3px}.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:10.5px}</style></head><body>
 <div id="lk"><div class="bx"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#c9a24a" stroke-width="1.5"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/></svg><div class="logo" style="font-size:24px;margin-top:6px">HMK</div>
 <p class="mu" id="lkt">كلمة السر · Passphrase</p><input id="pw" type="password" autocomplete="off"><button id="go">دخول · Unlock</button><p id="er" style="color:var(--bad);min-height:1.2em;font-size:13px"></p><p class="cp">© HMK — جميع الحقوق محفوظة<br>© HMK. All rights reserved.</p></div></div>
 <svg id="fut" viewBox="0 0 412 915" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="fg" x1="0" x2="1"><stop offset="0" stop-color="#4fc3ff"/><stop offset="1" stop-color="#d8b45a"/></linearGradient></defs>

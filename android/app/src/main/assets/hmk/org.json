@@ -91,7 +91,10 @@
       "id": "meet",
       "ar": "غرفة الاجتماعات",
       "en": "Meeting room",
-      "bots": []
+      "bots": [
+        {"id": "meet1", "ar": "اجتماع", "en": "Meeting", "status": "up"},
+        {"id": "meet2", "ar": "قرار", "en": "Decision", "status": "up"}
+      ]
     }
   ],
   "archive": {

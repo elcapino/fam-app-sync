@@ -14,8 +14,9 @@ header h1{font-size:13px;color:#f1d37a}
 #bar{flex:none;display:flex;gap:2px;padding:2px 4px;background:#2a1450}
 #bar button{flex:1;border:1px solid #5b2d91;border-radius:10px;background:#3b1f6b;color:#cbb8ee;padding:2px 1px;font:10px system-ui;cursor:pointer}
 #bar button.on{background:#d4af37;color:#1e0f3a;border-color:#d4af37}
-#stage{flex:1;min-height:0;overflow:hidden;background:#1e0f3a}
-#map{position:relative;height:100%;display:flex;flex-direction:column}
+#stage{flex:none;overflow:hidden;background:#1e0f3a}
+#fill{flex:1;min-height:0}
+#map{position:relative;display:flex;flex-direction:column}
 .sky{flex:none;height:28px;position:relative;background:linear-gradient(#1a0c32,#3b1f6b 55%,#5b2d91);overflow:hidden}
 .star{position:absolute;width:2px;height:2px;background:#fff;animation:tw 1.8s steps(2) infinite}
 .moon{position:absolute;right:14px;top:3px;width:10px;height:10px;background:#f1d37a;box-shadow:-1px 0 0 #d4af37}
@@ -27,8 +28,9 @@ header h1{font-size:13px;color:#f1d37a}
 .palm:before{left:-8px;box-shadow:0 -4px 0 #1f7a42}
 .palm:after{right:-8px;box-shadow:0 -4px 0 #1f7a42}
 .banner{flex:none;margin:2px 4px;padding:1px 6px;text-align:center;font-size:11px;color:#1e0f3a;background:#f1d37a;border:2px solid #d4af37}
-.grid{flex:1;min-height:0;display:grid;grid-template-columns:1fr 76px 1fr;gap:2px;padding:0 3px 2px}
-.room{border:2px solid #d4af37;background:repeating-linear-gradient(45deg,#4a2680 0 3px,#52298a 3px 6px);min-height:0;padding:0 1px 1px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.grid{display:grid;grid-template-columns:1fr 70px 1fr;gap:1px;padding:0 1px 1px}
+.room{border:1px solid #d4af37;background:repeating-linear-gradient(45deg,#4a2680 0 3px,#52298a 3px 6px);min-height:0;padding:0;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.room.archive{grid-column:1 / -1}
 .room h3{flex:none;font-size:9px;color:#fff;text-align:center;background:#3b1f6b;border-bottom:1px solid #d4af37;padding:1px 2px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .room.archive{filter:grayscale(.9);opacity:.75;border-color:#8a8498}
 .room .crew{flex:1;min-height:0;display:flex;flex-wrap:nowrap;gap:1px;justify-content:center;align-items:center;overflow:hidden}
@@ -117,6 +119,7 @@ h2{font-size:12px;color:#d4af37;margin:2px 0}
     <div id="tip"></div>
   </div>
   <div id="panel"></div>
+  <div id="fill"></div>
   <nav id="tabs">
     <button data-t="brief" class="on">إيجاز الصباح</button>
     <button data-t="meeting">اجتماع الأحد</button>
@@ -179,11 +182,12 @@ function drawMap(){
     html+=(right?room(right):'<div></div>');
   }
   const ar=ORG.archive;
-  html+=`<article class="room archive" data-id="archive"><h3>${esc(ar.ar)}</h3><div class="crew"><small class="arch">${esc(tx(ar.note))}</small></div></article><div class="spine"></div><div></div>`;
+  html+=`<article class="room archive" data-id="archive"><h3>${esc(ar.ar)}</h3><div class="crew"><small class="arch">${esc(tx(ar.note))}</small></div></article>`;
   $('#grid').innerHTML=html;
-  $('#grid').style.gridTemplateRows='repeat('+(pairRows+1)+',minmax(0,1fr))';
+  $('#grid').style.gridTemplateRows='';
   $('#grid').querySelectorAll('.guy').forEach(g=>g.onclick=ev=>{ev.stopPropagation();tip(g.dataset.id);});
   applyFilter();
+  requestAnimationFrame(fit);
 }
 function room(dep){
   const prop=PROP[dep.id]||'';
@@ -225,28 +229,66 @@ function tip(id){
   el.style.display='block';
   clearTimeout(tip.t);tip.t=setTimeout(()=>{el.style.display='none';},3500);
 }
-function startWalk(){
-  if(reduce||walker||treeOn)return;
-  const pool=[...document.querySelectorAll('.room .guy')].filter(g=>g.dataset.st==='up'&&!g.classList.contains('hide'));
-  const hall=document.querySelector('.room[data-id="meet"]')||document.querySelector('#ceo');
-  const map=$('#map');
-  if(!pool.length||!hall||!map)return;
+const movers=[];
+let mapScale=1;
+function fit(){
+  const map=$('#map'),stage=$('#stage'),app=$('#app');
+  if(!map||!stage||treeOn)return;
+  map.style.transform='none';stage.style.height='auto';
+  const need=map.offsetHeight;
+  const used=[...app.children].filter(el=>el!==stage&&el.id!=='fill').reduce((s,el)=>s+el.offsetHeight,0);
+  const avail=Math.max(80,app.clientHeight-used);
+  mapScale=Math.min(1,avail/Math.max(1,need));
+  map.style.transformOrigin='top center';
+  map.style.transform='scale('+mapScale+')';
+  stage.style.height=Math.floor(need*mapScale)+'px';
+}
+function localOf(el){
+  const mr=$('#map').getBoundingClientRect(),r=el.getBoundingClientRect();
+  return {x:(r.left-mr.left)/mapScale,y:(r.top-mr.top)/mapScale,w:r.width/mapScale,h:r.height/mapScale};
+}
+function park(m){
+  const g=m.g;
+  g.style.transition='';g.style.position='';g.style.left='';g.style.top='';g.style.zIndex='';
+  g.classList.remove('walk');
+  if(m.home)m.home.appendChild(g);
+}
+function spawn(){
+  if(reduce||treeOn||movers.length>=4)return;
+  const map=$('#map');if(!map)return;
+  const pool=[...document.querySelectorAll('.room .guy')].filter(g=>g.dataset.st==='up'&&!g.classList.contains('hide')&&!g.classList.contains('walk')&&!g.classList.contains('boss'));
+  if(!pool.length)return;
   const g=pool[Math.floor(Math.random()*pool.length)];
   const home=g.parentElement;
-  const mr=map.getBoundingClientRect(),fr=g.getBoundingClientRect(),mid=hall.getBoundingClientRect();
-  const left=fr.left-mr.left,top=fr.top-mr.top;
-  const destL=mid.left+mid.width/2-mr.left-fr.width/2;
-  const destT=mid.top+mid.height*0.35-mr.top;
-  walker={g,home};
+  const box=localOf(g);
+  const spine=document.querySelector('#ceo')||document.querySelector('.spine');
+  const sx=localOf(spine).x+localOf(spine).w/2;
+  const bag=[document.querySelector('.room[data-id="meet"]'),document.querySelector('#ceo'),document.querySelector('.room[data-id="house"]'),document.querySelector('.room[data-id="news"]')].filter(Boolean);
+  const dest=bag[Math.floor(Math.random()*bag.length)];
+  const d=localOf(dest), me={x:box.x+box.w/2,y:box.y+box.h/2}, to={x:d.x+d.w/2,y:d.y+d.h/2};
+  const going=[{x:me.x,y:me.y},{x:sx,y:me.y},{x:sx,y:to.y},{x:to.x,y:to.y}];
   g.classList.add('walk');
   map.appendChild(g);
-  g.style.position='absolute';g.style.zIndex='6';g.style.margin='0';
-  g.style.left=left+'px';g.style.top=top+'px';
-  requestAnimationFrame(()=>{g.style.transition='left 2.2s linear,top 2.2s linear';g.style.left=destL+'px';g.style.top=destT+'px';});
-  walker.back=setTimeout(()=>{
-    g.style.left=left+'px';g.style.top=top+'px';
-    setTimeout(()=>{g.style.transition='';g.style.position='';g.style.left='';g.style.top='';g.style.zIndex='';g.classList.remove('walk');home.appendChild(g);walker=null;},2300);
-  },2400);
+  g.style.position='absolute';g.style.zIndex='6';g.style.margin='0';g.style.transition='none';
+  g.style.left=box.x+'px';g.style.top=box.y+'px';
+  movers.push({g,home,going,ret:going.slice().reverse(),leg:'going',i:0,t0:performance.now(),dur:680+Math.random()*280,w:box.w,h:box.h});
+}
+function stepMovers(now){
+  for(let n=movers.length-1;n>=0;n--){
+    const m=movers[n];
+    if(!m.g.isConnected){movers.splice(n,1);continue;}
+    const route=m.leg==='going'?m.going:m.ret;
+    const a=route[m.i],b=route[m.i+1];
+    if(!b){
+      if(m.leg==='going'){m.leg='ret';m.i=0;m.t0=now;continue;}
+      park(m);movers.splice(n,1);continue;
+    }
+    const k=Math.min(1,(now-m.t0)/m.dur);
+    m.g.style.left=(a.x+(b.x-a.x)*k-m.w/2)+'px';
+    m.g.style.top=(a.y+(b.y-a.y)*k-m.h/2)+'px';
+    if(k>=1){m.i++;m.t0=now;}
+  }
+  if(!reduce&&!treeOn)while(movers.length<4){const before=movers.length;spawn();if(movers.length===before)break;}
 }
 
 let Dpanel=D,tabName='brief';
@@ -288,9 +330,24 @@ function boot(){
   if(parent!==window)parent.postMessage({hqReady:true},location.origin);
   fetch('org.json',{cache:'no-store'}).then(r=>r.json()).then(o=>{ORG=o;drawMap();renderPanel();}).catch(()=>{});
 }
-let acc=0,talkAcc=0,last=performance.now();
-function frame(t){const dt=Math.min(50,t-last);last=t;if(!reduce&&!treeOn){acc+=dt;talkAcc+=dt;if(acc>nextWalk){acc=0;nextWalk=3200+Math.random()*1400;startWalk();}if(talkAcc>2200){talkAcc=0;const pool=[...document.querySelectorAll('#map .guy:not(.walk)')];document.querySelectorAll('.guy.talk').forEach(g=>g.classList.remove('talk'));if(pool.length)pool[Math.floor(Math.random()*pool.length)].classList.add('talk');}}requestAnimationFrame(frame);}
-boot();requestAnimationFrame(frame);
+let talkAt=0,last=performance.now(),raf=0;
+function frame(now){
+  raf=requestAnimationFrame(frame);
+  last=now;
+  if(!reduce&&!treeOn){
+    stepMovers(now);
+    if(now-talkAt>1600){talkAt=now;document.querySelectorAll('.guy.talk').forEach(g=>g.classList.remove('talk'));const pool=[...document.querySelectorAll('#map .guy:not(.walk)')];if(pool.length)pool[Math.floor(Math.random()*pool.length)].classList.add('talk');}
+  }
+}
+document.addEventListener('visibilitychange',()=>{
+  const now=performance.now();
+  last=now;
+  movers.forEach(m=>{m.t0=now;});
+  if(!document.hidden){cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);if(!reduce)while(movers.length<4){const n=movers.length;spawn();if(movers.length===n)break;}}
+});
+addEventListener('resize',()=>fit());
+boot();
+raf=requestAnimationFrame(frame);
 })();
 </script>
 </body>

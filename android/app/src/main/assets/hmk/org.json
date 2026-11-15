@@ -1,0 +1,105 @@
+{
+  "owner": {"ar": "حمد", "en": "Hamad"},
+  "ceo": {"id": "ceo", "ar": "المدير", "en": "CEO", "role": "CEO"},
+  "departments": [
+    {
+      "id": "house",
+      "ar": "بيت حمد",
+      "en": "Hamad House",
+      "note": {"ar": "مشروع 5", "en": "Project 5"},
+      "bots": [
+        {"id": "house_design", "ar": "بيت حمد", "en": "House design", "status": "up", "note": {"ar": "تصميم وديكور", "en": "Design and interiors"}},
+        {"id": "house_eng", "ar": "الهندسة والتراخيص والعقود", "en": "Engineering, permits and contracts", "status": "up"},
+        {"id": "house_qa", "ar": "مراجع الجودة", "en": "Quality reviewer", "status": "up"}
+      ]
+    },
+    {
+      "id": "shop",
+      "ar": "متجر Shopify",
+      "en": "Shopify store",
+      "bots": [
+        {"id": "shop_store", "ar": "متجر Shopify", "en": "Shopify store", "status": "hold", "note": {"ar": "موقوف", "en": "On hold"}},
+        {"id": "shop_sales", "ar": "المبيعات والنمو", "en": "Sales and growth", "status": "up"}
+      ]
+    },
+    {
+      "id": "trade",
+      "ar": "الأسواق والتداول",
+      "en": "Markets and trading",
+      "bots": [
+        {"id": "trade_hmk", "ar": "الأسواق - HMK", "en": "Markets - HMK", "status": "paper", "note": {"ar": "ورقي فقط", "en": "Paper trading only"}}
+      ]
+    },
+    {
+      "id": "apps",
+      "ar": "التطبيقات",
+      "en": "Apps",
+      "bots": [
+        {"id": "app_islam", "ar": "التطبيق الإسلامي", "en": "Islamic app", "status": "up"},
+        {"id": "app_sources", "ar": "المحتوى والمصادر", "en": "Content and sources", "status": "up"},
+        {"id": "app_release", "ar": "مدير الإصدارات والنشر", "en": "Release manager", "status": "up"},
+        {"id": "app_replica", "ar": "Apps Replica", "en": "Apps Replica", "status": "up"}
+      ]
+    },
+    {
+      "id": "news",
+      "ar": "البحث والأخبار",
+      "en": "Search and news",
+      "bots": [
+        {"id": "news_main", "ar": "البحث والأخبار", "en": "Search and news", "status": "up"},
+        {"id": "news_rg", "ar": "Red Green UAE Intel", "en": "Red Green UAE Intel", "status": "up"},
+        {"id": "news_family", "ar": "عام الأسرة في الإمارات", "en": "Family affairs in the UAE", "status": "up"}
+      ]
+    },
+    {
+      "id": "video",
+      "ar": "المحتوى والفيديو",
+      "en": "Content and video",
+      "bots": [
+        {"id": "video_main", "ar": "المحتوى والفيديو", "en": "Content and video", "status": "up", "note": {"ar": "قناة Hazawi", "en": "Hazawi channel"}}
+      ]
+    },
+    {
+      "id": "fahem",
+      "ar": "فاهم",
+      "en": "FAHEM",
+      "note": {"ar": "واتساب وتيليجرام", "en": "WhatsApp and Telegram"},
+      "bots": [
+        {"id": "fahem_bot", "ar": "فاهم", "en": "FAHEM", "status": "up", "note": {"ar": "مساعد واتساب وتيليجرام", "en": "WhatsApp and Telegram assistant"}},
+        {"id": "fahem_mon", "ar": "مراقب فاهم", "en": "FAHEM monitor", "status": "up"}
+      ]
+    },
+    {
+      "id": "experts",
+      "ar": "الخبراء",
+      "en": "Experts",
+      "bots": [
+        {"id": "exp_prompt", "ar": "خبير البرومبت", "en": "Prompt expert", "status": "up"},
+        {"id": "exp_flip", "ar": "Flipper والأجهزة", "en": "Flipper and devices", "status": "up"}
+      ]
+    },
+    {
+      "id": "family",
+      "ar": "العائلة",
+      "en": "Family",
+      "private": true,
+      "bots": [
+        {"id": "family_one", "ar": "العائلة", "en": "Family", "status": "up", "note": {"ar": "خاص", "en": "Private"}}
+      ]
+    },
+    {
+      "id": "meet",
+      "ar": "غرفة الاجتماعات",
+      "en": "Meeting room",
+      "bots": []
+    }
+  ],
+  "archive": {
+    "id": "archive",
+    "ar": "الأرشيف (موقوفة 13)",
+    "en": "Archive (13 stopped)",
+    "count": 13,
+    "stopped": "2026-11-12",
+    "note": {"ar": "توقفت في 12 نوفمبر. ليست فريقاً عاملاً.", "en": "Stopped on 12 Nov. Not active staff."}
+  }
+}

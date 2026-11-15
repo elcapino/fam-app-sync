@@ -16,7 +16,7 @@ header h1{font-size:13px;color:#f1d37a}
 #bar button.on{background:#d4af37;color:#1e0f3a;border-color:#d4af37}
 #stage{flex:none;overflow:hidden;background:#1e0f3a}
 #fill{flex:1;min-height:0}
-#map{position:relative;display:flex;flex-direction:column}
+#map{position:relative;display:flex;flex-direction:column;margin:0 auto}
 .sky{flex:none;height:28px;position:relative;background:linear-gradient(#1a0c32,#3b1f6b 55%,#5b2d91);overflow:hidden}
 .star{position:absolute;width:2px;height:2px;background:#fff;animation:tw 1.8s steps(2) infinite}
 .moon{position:absolute;right:14px;top:3px;width:10px;height:10px;background:#f1d37a;box-shadow:-1px 0 0 #d4af37}
@@ -30,17 +30,19 @@ header h1{font-size:13px;color:#f1d37a}
 .banner{flex:none;margin:2px 4px;padding:1px 6px;text-align:center;font-size:11px;color:#1e0f3a;background:#f1d37a;border:2px solid #d4af37}
 .grid{display:grid;grid-template-columns:1fr 70px 1fr;gap:1px;padding:0 1px 1px}
 .room{border:1px solid #d4af37;background:repeating-linear-gradient(45deg,#4a2680 0 3px,#52298a 3px 6px);min-height:0;padding:0;position:relative;overflow:hidden;display:flex;flex-direction:column}
-.room.archive{grid-column:1 / -1}
+.room.archive{grid-column:1 / -1;flex:none}
 .room h3{flex:none;font-size:9px;color:#fff;text-align:center;background:#3b1f6b;border-bottom:1px solid #d4af37;padding:1px 2px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .room.archive{filter:grayscale(.9);opacity:.75;border-color:#8a8498}
-.room .crew{flex:1;min-height:0;display:flex;flex-wrap:nowrap;gap:1px;justify-content:center;align-items:center;overflow:hidden}
+.room.archive .crew{flex:none;min-height:0;padding:0 4px}
+.room.archive .arch{display:block;width:100%;font-size:9px;line-height:1.15;padding:1px 0;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.room .crew{flex:1;min-height:0;display:flex;flex-wrap:nowrap;gap:0;justify-content:center;align-items:flex-end;overflow:hidden}
 .spine{background:repeating-linear-gradient(#d4af37 0 5px,transparent 5px 10px) center/2px 100% no-repeat;min-height:0}
 .ceo{border:2px solid #d4af37;background:#6a35a8;min-height:0;display:flex;align-items:center;justify-content:center;gap:2px;overflow:hidden}
 .ceo-lab{font-size:8px;color:#f1d37a;writing-mode:horizontal-tb}
-.guy{position:relative;border:0;background:none;color:#fff;flex:0 0 34px;width:34px;max-width:34px;padding:0;cursor:pointer;text-align:center}
+.guy{position:relative;border:0;background:none;color:#fff;flex:0 1 34px;width:34px;min-width:0;max-width:34px;padding:0;cursor:pointer;text-align:center}
 .dot{position:absolute;top:0;left:50%;width:5px;height:5px;margin-left:-3px;border:1px solid #1e0f3a;z-index:2}
 .dot.up{background:#3ccf8e}.dot.idle{background:#9a94a8}.dot.error{background:#ef5b5b}.dot.hold,.dot.paper{background:#e8a93a}
-.fig{position:relative;display:block;width:26px;height:28px;margin:0 auto -4px;image-rendering:pixelated;animation:bob 1.4s ease-in-out infinite}
+.fig{position:relative;display:block;width:var(--fig,22px);height:calc(var(--fig,22px) * 1.08);margin:0 auto -3px;image-rendering:pixelated;animation:bob 1.4s ease-in-out infinite}
 .ant{position:absolute;left:12px;top:0;width:2px;height:5px;background:#d4c8ee}
 .ant:after{content:"";position:absolute;top:-3px;left:-2px;width:6px;height:3px;background:#f1d37a}
 .head{position:absolute;left:3px;top:5px;width:20px;height:15px;background:#f7f4ee}
@@ -51,7 +53,7 @@ header h1{font-size:13px;color:#f1d37a}
 .shirt{position:absolute;left:4px;bottom:0;width:18px;height:7px;background:#6b3fa8}
 .legs{display:none;height:5px}
 .legs i{display:inline-block;width:5px;height:5px;background:#efeaf8;margin:0 1px}
-.wood{position:relative;display:block;width:30px;margin:0 auto;overflow:visible}
+.wood{position:relative;display:block;width:min(100%, calc(var(--fig,22px) * 1.2));margin:0 auto;overflow:visible}
 .wood .edge{display:block;height:4px;background:#e6c27a}
 .wood .face{display:block;height:13px;background:#5c3418;border:1px solid #3a2010}
 .wood small{display:block;font:700 8px/13px Tahoma,sans-serif;color:#f1d37a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 1px}
@@ -234,14 +236,26 @@ let mapScale=1;
 function fit(){
   const map=$('#map'),stage=$('#stage'),app=$('#app');
   if(!map||!stage||treeOn)return;
-  map.style.transform='none';stage.style.height='auto';
-  const need=map.offsetHeight;
-  const used=[...app.children].filter(el=>el!==stage&&el.id!=='fill').reduce((s,el)=>s+el.offsetHeight,0);
-  const avail=Math.max(80,app.clientHeight-used);
-  mapScale=Math.min(1,avail/Math.max(1,need));
+  map.style.transform='none';
+  map.style.width='100%';
+  stage.style.height='auto';
+  const chrome=()=>[...app.children].filter(el=>el!==stage&&el.id!=='fill').reduce((s,el)=>s+el.offsetHeight,0);
+  let need=map.offsetHeight;
+  let avail=Math.max(120,app.clientHeight-chrome());
+  let scale=avail/Math.max(1,need);
+  const wide=stage.clientWidth||map.offsetWidth;
+  if(scale>1){
+    for(let i=0;i<3;i++){
+      map.style.width=Math.max(160,Math.floor(wide/scale))+'px';
+      need=map.offsetHeight;
+      avail=Math.max(120,app.clientHeight-chrome());
+      scale=avail/Math.max(1,need);
+    }
+  }
+  mapScale=scale;
   map.style.transformOrigin='top center';
   map.style.transform='scale('+mapScale+')';
-  stage.style.height=Math.floor(need*mapScale)+'px';
+  stage.style.height=Math.round(avail)+'px';
 }
 function localOf(el){
   const mr=$('#map').getBoundingClientRect(),r=el.getBoundingClientRect();
@@ -319,6 +333,7 @@ function renderPanel(){
   }
   p.innerHTML=h;
   p.querySelectorAll('.chk').forEach(el=>el.onclick=()=>{const s=store();s[el.dataset.k]=!s[el.dataset.k];try{localStorage.setItem('hq_checks',JSON.stringify(s));}catch(e){}renderPanel();});
+  fit();
 }
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{tabName=b.dataset.t;document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));renderPanel();});
 function tick(){$('#clock').textContent=new Date().toLocaleTimeString('ar-EG',{hour:'2-digit',minute:'2-digit'});}

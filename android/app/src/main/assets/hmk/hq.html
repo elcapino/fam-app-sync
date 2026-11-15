@@ -83,7 +83,8 @@ header h1{font-size:13px;color:#f1d37a}
 #app.treemode #stage{flex:1;height:auto!important;min-height:0}
 #app.fullpanel #panel{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column}
 #panel .growlist{flex:1;min-height:0;display:flex;flex-direction:column}
-#panel .growlist .lv{flex:1;min-height:0}
+#panel .growlist .lv{flex:0 0 auto}
+#panel .slot{flex:1;min-height:72px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:18px;color:#f1d37a;padding:8px}
 #map.off{display:none}
 .node{border-right:2px solid #d4af37;margin:2px 8px;padding:2px 8px;font-size:12px}
 .node b{color:#f1d37a}
@@ -373,16 +374,18 @@ function renderPanel(){
         h+='<div class="chk'+(d?' done':'')+'" data-k="'+esc(k)+'"><span class="bx"></span><span>'+esc(t)+'</span></div>';});};
     list('دورك اليوم',brief.your_part,'p');list('يحتاجك',brief.needs_you,'n');
   }else if(tabName==='meeting'){
-    const m=Dpanel.meeting||{};h+='<h2>اجتماع الأحد</h2>';
+    const m=Dpanel.meeting||{};h+='<h2>اجتماع الأحد</h2>'+(m.week?'<div class="mu">'+esc(m.week)+'</div>':'');
     if(!(m.wins||[]).length)h+='<div class="empty">لا إنجازات محفوظة</div>';
     (m.wins||[]).forEach(w=>{if(!privateBlock(w))h+='<div class="card">'+esc(w)+'</div>';});
   }else if(tabName==='levels'){
     const rows=[];
     if(ORG){rows.push({ar:ORG.ceo.ar,dep:'',st:'up'});ORG.departments.forEach(d=>(d.bots||[]).forEach(b=>{if(d.private||privateBlock(b.ar))return;rows.push({ar:b.ar,dep:d.ar,st:b.status||'up'});}));}
-    h+='<div class="growlist">'+rows.map(r=>{const on=shown(r.st),w=r.st==='up'?100:r.st==='paper'?42:r.st==='hold'?28:r.st==='error'?10:16;return `<div class="lv${on?'':' dim'}"><b class="clamp" style="flex:1.4">${esc(r.ar)}</b><span class="mu clamp" style="flex:1">${esc(r.dep)}</span><span class="chip ${r.st==='up'?'go':r.st==='error'?'bad':'watch'}">${esc(bubble(r.st))}</span><span class="bar" style="flex:none;width:48px"><i style="width:${on?w:8}%"></i></span></div>`;}).join('')+'</div>';
+    const tally={};rows.forEach(r=>{tally[r.st]=(tally[r.st]||0)+1});
+    const bits=Object.keys(tally).map(st=>`<div style="flex:1"><b class="num">${tally[st]}</b><div class="mu">${esc(bubble(st))}</div><div class="bar"><i style="width:${Math.round(100*tally[st]/rows.length)}%"></i></div></div>`).join('');
+    h+='<div class="growlist">'+rows.map(r=>{const on=shown(r.st),w=r.st==='up'?100:r.st==='paper'?42:r.st==='hold'?28:r.st==='error'?10:16;return `<div class="lv${on?'':' dim'}"><b class="clamp" style="flex:1.4">${esc(r.ar)}</b><span class="mu clamp" style="flex:1">${esc(r.dep)}</span><span class="chip ${r.st==='up'?'go':r.st==='error'?'bad':'watch'}">${esc(bubble(r.st))}</span><span class="bar" style="flex:none;width:48px"><i style="width:${on?w:8}%"></i></span></div>`;}).join('')+`<div class="slot" style="display:flex;gap:8px;align-items:flex-end">${bits}</div></div>`;
   }else{
     const skills=(Dpanel.skills||[]).filter(s=>!privateBlock(s));
-    h+='<div class="growlist">'+(skills.length?skills.map(s=>`<div class="lv"><b style="flex:1">${esc(s)}</b></div>`).join(''):'<div class="empty">لا توجد مهارات</div>')+'</div>';
+    h+='<div class="growlist">'+(skills.length?skills.map(s=>`<div class="lv"><b style="flex:1">${esc(s)}</b></div>`).join('')+'<div class="slot">'+skills.map(s=>esc(s)).join(' · ')+'</div>':'<div class="empty">لا توجد مهارات</div>')+'</div>';
   }
   p.innerHTML=h;
   p.querySelectorAll('.chk').forEach(el=>el.onclick=()=>{const s=store();s[el.dataset.k]=!s[el.dataset.k];try{localStorage.setItem('hq_checks',JSON.stringify(s));}catch(e){}renderPanel();});

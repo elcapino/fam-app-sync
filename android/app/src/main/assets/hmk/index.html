@@ -85,7 +85,11 @@ footer button.on:after{content:"";position:absolute;top:0;width:24px;height:3px;
 .g4.mini{grid-template-columns:repeat(4,1fr)}.g4.mini .kpi{padding:4px}.g4.mini .v{font-size:13px}.g4.mini .l{font-size:8px}[data-theme=future] .seg button.on{background:linear-gradient(90deg,#00e0c6,#2f7bff);color:#fff}.tbl.mk{font-size:11.5px}.tbl.mk td,.tbl.mk th{padding:5px 3px}.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:10.5px}
 .pg{gap:3px;padding:3px 6px 2px}
 .pack{gap:0;justify-content:stretch}
-.pack>.row,.pack>.prow,.pack>.qrow,.pack>.rcard{flex:1;min-height:0}
+.pack>.row,.pack>.prow,.pack>.qrow,.pack>.rcard{flex:0 0 auto}
+.slot{flex:1;min-height:88px;position:relative}
+.slot svg.fit{position:absolute;left:0;right:0;bottom:0;top:0;width:100%;height:100%}
+.rng{position:relative;height:10px;border-radius:8px;background:linear-gradient(90deg,#ef5b5b,#e8a93a,#3ccf8e);margin:4px 0}
+.rng b{position:absolute;top:-4px;width:3px;height:18px;margin-left:-1px;background:#fff;border-radius:2px}
 .prow{display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid #ffffff14;padding:2px 0}
 .qrow{display:flex;align-items:center;gap:6px;border-bottom:1px solid #ffffff12;padding:1px 0;min-height:0}
 .rcard{display:flex;flex-direction:column;justify-content:center;text-align:start;width:100%;border:0;border-bottom:1px solid #ffffff14;background:none;color:inherit;padding:2px 0;cursor:pointer;font:inherit}

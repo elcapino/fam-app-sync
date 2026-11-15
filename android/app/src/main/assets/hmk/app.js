@@ -138,7 +138,7 @@ function pReports(i){const ds=D.docs||[],A=L=='ar';const cnt={all:ds.length};ds.
  <div id="rlw" style="display:flex;flex-direction:column;flex:1;min-height:0">${rlist()}</div><div class="cp">${L=='ar'?'© HMK — جميع الحقوق محفوظة':'© HMK. All rights reserved.'}</div>`}
 function rr(){const w=$('#rlw');if(!w)return;w.innerHTML=rlist();bind()}
 function rrAll(){const k=PAGES.indexOf('reports'),pg=$('#pages').children[k];pg.innerHTML=pReports(k);bind()}
-function pHq(i){return `<iframe id="hqf" src="hq.html" title="HQ" style="flex:1;min-height:0;width:100%;border:1px solid var(--line);border-radius:14px;background:#1e0f3a"></iframe>`}
+function pHq(i){return `<iframe id="hqf" src="hq.html" title="HQ" style="flex:1;min-height:0;height:100%;width:100%;border:1px solid var(--line);border-radius:14px;background:#1e0f3a"></iframe>`}
 function hqSend(){const f=$('#hqf');if(f&&f.contentWindow&&D&&D.hq)f.contentWindow.postMessage({hq:D.hq},'*')}
 addEventListener('message',e=>{if(e.data&&e.data.hqReady)hqSend()});
 const RND={hq:pHq,sum:pSum,proj:pProj,agency:pAgency,house:pHouse,market:pMarket,spend:pSpend,ideas:pIdeas,reports:pReports};

@@ -32,7 +32,7 @@ header{flex:none;height:54px;display:flex;align-items:center;gap:8px;padding:0 1
 .bar{height:6px;background:#33205a;border-radius:6px;overflow:hidden;flex:1}.bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#8a6d2b,var(--gold2));width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
 .bar i.hot{background:linear-gradient(90deg,var(--warn),var(--bad))}
 .dot{width:8px;height:8px;border-radius:50%;flex:none}
-.fill{flex:1;min-height:0;display:flex;flex-direction:column}
+.fill{flex:1;min-height:0;display:flex;flex-direction:column;overflow:auto}
 .clamp{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1}
 footer{flex:none;position:relative;z-index:5;height:calc(var(--navh) + env(safe-area-inset-bottom));display:flex;align-items:stretch;border-top:1px solid var(--line);background:#120822;padding:0 4px env(safe-area-inset-bottom);box-shadow:0 -8px 20px #0008}
 footer button{flex:1;min-width:0;background:none;border:0;color:var(--mu);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font:600 10px/1.1 Plex;cursor:pointer;padding:6px 0 8px;position:relative;border-radius:12px}footer button span{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -91,7 +91,12 @@ footer button.on:after{content:"";position:absolute;top:0;width:24px;height:3px;
 .rng{position:relative;height:10px;border-radius:8px;background:linear-gradient(90deg,#ef5b5b,#e8a93a,#3ccf8e);margin:4px 0}
 .rng b{position:absolute;top:-4px;width:3px;height:18px;margin-left:-1px;background:#fff;border-radius:2px}
 .prow{display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid #ffffff14;padding:2px 0}
-.qrow{display:flex;align-items:center;gap:6px;border-bottom:1px solid #ffffff12;padding:1px 0;min-height:0}
+.qrow{display:flex;align-items:center;gap:6px;border-bottom:1px solid #ffffff12;padding:1px 0;min-height:0;flex:0 0 auto}
+.coin{display:grid;grid-template-columns:1fr 108px;height:72px;flex:0 0 72px;border-bottom:1px solid #ffffff14;align-items:center;gap:4px;padding:2px 0}
+.coin b{font-size:12px}.coin .mu{font-size:9px}
+.coin svg{grid-row:1;grid-column:2}
+.phase{display:flex;align-items:center;gap:6px;height:28px;flex:0 0 28px;border-bottom:1px solid #ffffff10;font-size:11px}
+.rcard{height:64px;flex:0 0 64px;overflow:hidden}
 .rcard{display:flex;flex-direction:column;justify-content:center;text-align:start;width:100%;border:0;border-bottom:1px solid #ffffff14;background:none;color:inherit;padding:2px 0;cursor:pointer;font:inherit}
 .spk{flex:none}
 .gantt{display:flex;gap:3px;align-items:stretch;min-height:36px}

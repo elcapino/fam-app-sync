@@ -33,39 +33,41 @@ header h1{font-size:13px;color:#f1d37a}
 .room.archive{filter:grayscale(.9);opacity:.75;border-color:#8a8498}
 .room .crew{flex:1;min-height:0;display:flex;flex-wrap:nowrap;gap:1px;justify-content:center;align-items:center;overflow:hidden}
 .spine{background:repeating-linear-gradient(#d4af37 0 5px,transparent 5px 10px) center/2px 100% no-repeat;min-height:0}
-.ceo{border:2px solid #d4af37;background:#3b1f6b;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ceo{border:2px solid #d4af37;background:#6a35a8;min-height:0;display:flex;align-items:center;justify-content:center;gap:2px;overflow:hidden}
+.ceo-lab{font-size:8px;color:#f1d37a;writing-mode:horizontal-tb}
 .guy{position:relative;border:0;background:none;color:#fff;flex:1 1 0;min-width:0;max-width:64px;padding:0;cursor:pointer;text-align:center}
 .dot{position:absolute;top:0;left:50%;width:5px;height:5px;margin-left:-3px;border:1px solid #1e0f3a;z-index:2}
 .dot.up{background:#3ccf8e}.dot.idle{background:#9a94a8}.dot.error{background:#ef5b5b}.dot.hold,.dot.paper{background:#e8a93a}
-.mascot{position:relative;display:block;width:22px;height:20px;margin:5px auto 0;image-rendering:pixelated;animation:bob 1.5s ease-in-out infinite}
-.bod{position:absolute;left:5px;top:3px;width:12px;height:11px;background:var(--tint,#D97757)}
-.eye{position:absolute;top:3px;left:2px;width:3px;height:3px;background:#2a1814}
-.eye.r{left:7px}
-.arm{position:absolute;top:8px;width:4px;height:3px;background:var(--tint,#D97757)}
-.arm.l{left:0}.arm.r{right:0}
-.leg{position:absolute;bottom:0;width:4px;height:4px;background:#b85a3e}
-.leg.l{left:6px}.leg.r{right:6px}
-.crown{position:absolute;top:0;left:4px;width:14px;height:3px;background:#d4af37;box-shadow:-3px 1px 0 #d4af37,3px -2px 0 #f1d37a,8px 1px 0 #d4af37}
-.prop{position:absolute;right:-2px;bottom:2px;width:6px;height:6px;background:#d4af37}
-.prop.hammer{background:#8a5a2b;box-shadow:0 -3px 0 #d4af37}
-.prop.cart{box-shadow:-2px 3px 0 #1e0f3a,3px 3px 0 #1e0f3a}
-.prop.chart{background:linear-gradient(90deg,#3ccf8e 40%,#d4af37 40% 70%,#7a45b8 70%)}
-.prop.phone{width:4px;height:7px;background:#1e0f3a;border:1px solid #d4af37}
-.prop.news{background:#fff;box-shadow:inset 0 2px 0 #1e0f3a}
-.prop.cam{background:#1e0f3a;border-radius:1px}
-.prop.chat{background:#fff;border-radius:2px}
-.prop.wrench{background:transparent;box-shadow:0 0 0 1px #d4af37}
-.t-house{--tint:#e08a62}.t-shop{--tint:#d97757}.t-trade{--tint:#c96a4a}.t-apps{--tint:#e0946e}.t-news{--tint:#cc6e48}.t-video{--tint:#e39b6a}.t-fahem{--tint:#d97757}.t-experts{--tint:#c46a45}.t-family{--tint:#e0a07a}
-.guy small{display:block;max-width:100%;font-size:8px;line-height:1.1;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.guy.hide{display:none}
-.guy.walk{z-index:6}.guy.walk small{visibility:hidden}
-.guy.walk .leg{animation:step .18s steps(2) infinite}
+.fig{position:relative;display:block;width:18px;height:20px;margin:0 auto -2px;image-rendering:pixelated;animation:bob 1.4s ease-in-out infinite}
+.ant{position:absolute;left:8px;top:0;width:2px;height:4px;background:#d4c8ee}
+.ant:after{content:"";position:absolute;top:-2px;left:-1px;width:4px;height:2px;background:#f1d37a}
+.head{position:absolute;left:2px;top:4px;width:14px;height:11px;background:#f7f4ee}
+.guy.blue .head{background:#9aa4e8}
+.eye{position:absolute;top:2px;left:2px;width:3px;height:3px;background:#2a1848}
+.eye.r{left:9px}
+.mouth{position:absolute;left:3px;bottom:1px;width:8px;height:2px;background:#2a1848}
+.shirt{position:absolute;left:3px;bottom:0;width:12px;height:5px;background:#6b3fa8}
+.legs{display:none;height:4px}
+.legs i{display:inline-block;width:4px;height:4px;background:#efeaf8;margin:0 1px}
+.wood{position:relative;display:block;height:11px;margin-top:1px;background:#a56b32;border-top:3px solid #e6c27a;overflow:hidden}
+.wood small{display:block;font-size:8px;line-height:10px;color:#fff;text-shadow:0 1px 0 #000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lamp{position:absolute;top:-8px;right:1px;width:4px;height:6px;background:#d4af37;box-shadow:0 -2px 0 #fff6c2}
+.crown{position:absolute;top:-2px;left:1px;width:16px;height:4px;background:#d4af37;box-shadow:-3px 1px 0 #f1d37a,5px -3px 0 #f1d37a,10px 1px 0 #d4af37}
+.guy.boss .shirt{background:#d4af37}
+.guy.boss .wood{height:16px;width:54px;background:#8a5a2b;border-top:4px solid #e6c27a}
+.ceo{flex-direction:column}
+.say{display:none;position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#fff;color:#1e0f3a;font-size:7px;line-height:1;padding:1px 2px;border:1px solid #d4af37;z-index:3}
+.guy.talk .say{display:block}
+.guy.walk .wood{display:none}
+.guy.walk .legs{display:block}
+.guy.walk .legs i{animation:step .16s steps(2) infinite}
+.guy small{display:none}
 @keyframes bob{50%{transform:translateY(-1px)}}
-@keyframes step{50%{transform:translateY(-2px)}}
+@keyframes step{50%{transform:translateX(1px)}}
 @keyframes tw{50%{opacity:.25}}
 @keyframes glow{50%{box-shadow:inset 0 0 0 1px #d4af37}}
 @keyframes step{50%{transform:translateY(-2px)}}
-@media (prefers-reduced-motion:reduce){.star,.mascot,.guy.walk .leg{animation:none}}
+@media (prefers-reduced-motion:reduce){.star,.fig,.guy.walk .legs i{animation:none}}
 #tree{padding:8px 12px 12px;display:none}
 #tree.on{display:block;height:100%;overflow:auto}
 #map.off{display:none}
@@ -170,7 +172,7 @@ function drawMap(){
   for(let r=0;r<pairRows;r++){
     const left=cells[ci++]||null,right=cells[ci++]||null;
     html+=(left?room(left):'<div></div>');
-    html+=r===ceoRow?`<div class="ceo" id="ceo">${person(ORG.ceo,true,null)}</div>`:'<div class="spine"></div>';
+    html+=r===ceoRow?`<div class="ceo" id="ceo">${person(ORG.ceo,true,null)}<b class="ceo-lab">المدير</b></div>`:'<div class="spine"></div>';
     html+=(right?room(right):'<div></div>');
   }
   const ar=ORG.archive;
@@ -185,12 +187,12 @@ function room(dep){
   const crew=(dep.bots||[]).map(b=>person(b,false,dep,prop)).join('');
   return `<article class="room" data-id="${dep.id}"><h3>${esc(dep.ar)}</h3><div class="crew">${crew||'<small class="arch">—</small>'}</div></article>`;
 }
-function person(b,ceo,dep,prop){
+function person(b,ceo,dep){
   const st=b.status||'up';
-  const tint=dep?' t-'+dep.id:'';
-  const p=prop?`<i class="prop ${prop}"></i>`:'';
+  const tone=(ceo||(b.id||'').length%2===0)?'':' blue';
+  const lamp=(ceo||(b.id||'').charCodeAt(0)%3===0)?'<i class="lamp"></i>':'';
   const crown=ceo?'<i class="crown"></i>':'';
-  return `<button type="button" class="guy" data-id="${esc(b.id)}" data-st="${st}" title="${esc(b.ar)}"><i class="dot ${st}" title="${bubble(st)}"></i><span class="mascot${tint}">${crown}<i class="arm l"></i><i class="bod"><i class="eye"></i><i class="eye r"></i></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i>${p}</span><small>${esc(shortName(b.ar))}</small></button>`;
+  return `<button type="button" class="guy${tone}${ceo?' boss':''}" data-id="${esc(b.id)}" data-st="${st}" title="${esc(b.ar)}"><i class="dot ${st}"></i><span class="say">…</span><span class="fig">${crown}<i class="ant"></i><i class="head"><i class="eye"></i><i class="eye r"></i><i class="mouth"></i></i><i class="shirt"></i></span><i class="legs"><i></i><i></i></i><span class="wood${ceo?' big':''}">${lamp}<small>${esc(ceo?'':shortName(b.ar))}</small></span></button>`;
 }
 function applyFilter(){
   document.querySelectorAll('#map .guy').forEach(g=>{
@@ -283,8 +285,8 @@ function boot(){
   if(parent!==window)parent.postMessage({hqReady:true},location.origin);
   fetch('org.json',{cache:'no-store'}).then(r=>r.json()).then(o=>{ORG=o;drawMap();renderPanel();}).catch(()=>{});
 }
-let acc=0,last=performance.now();
-function frame(t){const dt=Math.min(50,t-last);last=t;if(!reduce){acc+=dt;if(acc>nextWalk){acc=0;nextWalk=2800+Math.random()*1600;startWalk();}}requestAnimationFrame(frame);}
+let acc=0,talkAcc=0,last=performance.now();
+function frame(t){const dt=Math.min(50,t-last);last=t;if(!reduce&&!treeOn){acc+=dt;talkAcc+=dt;if(acc>nextWalk){acc=0;nextWalk=3200+Math.random()*1400;startWalk();}if(talkAcc>2200){talkAcc=0;const pool=[...document.querySelectorAll('#map .guy:not(.walk)')];document.querySelectorAll('.guy.talk').forEach(g=>g.classList.remove('talk'));if(pool.length)pool[Math.floor(Math.random()*pool.length)].classList.add('talk');}}requestAnimationFrame(frame);}
 boot();requestAnimationFrame(frame);
 })();
 </script>

@@ -15,32 +15,53 @@ header h1{font-size:15px;color:#f1d37a}
 #bar button{flex:1;border:1px solid #5b2d91;border-radius:12px;background:#3b1f6b;color:#cbb8ee;padding:3px 2px;font:11px system-ui;cursor:pointer}
 #bar button.on{background:#d4af37;color:#1e0f3a;border-color:#d4af37}
 #stage{flex:1;min-height:0;overflow:auto;background:#1e0f3a}
-.sky{height:46px;position:relative;background:linear-gradient(#2a1450,#4a2680 70%,#3b1f6b);overflow:hidden}
-.sky i{position:absolute;background:#fff;width:2px;height:2px}
-.moon{position:absolute;right:16px;top:8px;width:10px;height:10px;background:#d4af37;box-shadow:0 0 0 1px #f1d37a}
-.hill{position:absolute;left:0;right:0;bottom:0;height:14px;background:#5b2d91;clip-path:polygon(0 100%,0 60%,12% 20%,22% 70%,38% 10%,52% 65%,68% 18%,82% 60%,100% 25%,100% 100%)}
-.palm{position:absolute;bottom:2px;width:2px;height:16px;background:#8a5a2b}
-.palm:before{content:"";position:absolute;top:-2px;left:-6px;width:14px;height:3px;background:#2f9e5a;box-shadow:0 -3px 0 #1f7a42}
-.hall{margin:4px;border:2px solid #d4af37;background:#3b1f6b;min-height:54px;display:flex;align-items:center;justify-content:center;gap:8px;position:relative}
-.hall .own{position:absolute;top:2px;right:6px;font-size:10px;color:#f1d37a}
-.grid{display:grid;grid-template-columns:1fr 28px 1fr;gap:3px;padding:0 4px 6px}
-.room{border:2px solid #d4af37;background:
- repeating-linear-gradient(45deg,#4a2680 0 4px,#52298a 4px 8px);
- min-height:78px;padding:2px 3px 4px;position:relative}
-.room h3{font-size:10px;color:#fff;text-align:center;background:#3b1f6b;border-bottom:1px solid #d4af37;padding:2px 2px 3px;line-height:1.25}
-.room.archive{filter:grayscale(.85);opacity:.8;border-color:#8a8498}
-.room .crew{display:flex;flex-wrap:wrap;gap:4px 6px;justify-content:center;padding-top:4px}
-.spine{background:repeating-linear-gradient(#5b2d91 0 4px,transparent 4px 8px)}
-.guy{border:0;background:none;color:#fff;width:auto;max-width:100%;flex:1 1 46%;padding:0;cursor:pointer;text-align:center}
-.px{display:block;width:16px;margin:0 auto 1px;image-rendering:pixelated}
-.px b{display:block;width:8px;height:7px;margin:0 auto;background:#fff;box-shadow:0 0 0 1px #1e0f3a;position:relative}
-.px b:before{content:"";position:absolute;left:1px;top:2px;width:2px;height:2px;background:#1e0f3a;box-shadow:4px 0 #1e0f3a}
-.px em{display:block;width:12px;height:7px;margin:1px auto 0;background:#efeaf8;box-shadow:0 2px 0 #d4af37}
-.px.crown:before{content:"";display:block;height:3px;width:12px;margin:0 auto 1px;background:#d4af37;box-shadow:0 -2px 0 #f1d37a}
-.guy small{display:block;font-size:8px;line-height:1.2;color:#fff;text-shadow:0 1px 0 #000;white-space:normal}
-.bub{display:block;font-size:8px;color:#1e0f3a;background:#fff;border:1px solid #d4af37;border-radius:2px;margin-bottom:1px;padding:0 2px}
+#map{position:relative}
+.sky{height:72px;position:relative;background:linear-gradient(#1a0c32,#3b1f6b 55%,#5b2d91);overflow:hidden}
+.star{position:absolute;width:2px;height:2px;background:#fff;animation:tw 1.8s steps(2) infinite}
+.moon{position:absolute;right:22px;top:10px;width:16px;height:16px;background:#f1d37a;box-shadow:-2px 0 0 #d4af37,2px 2px 0 #1a0c32}
+.hill{position:absolute;left:0;right:0;bottom:0;height:22px;background:#4a2680}
+.hill:before{content:"";position:absolute;inset:0;background:#5b2d91;clip-path:polygon(0 100%,0 55%,8% 30%,16% 62%,28% 12%,40% 58%,52% 8%,64% 50%,76% 18%,88% 55%,100% 22%,100% 100%)}
+.hill:after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:#3b1f6b}
+.palm{position:absolute;bottom:4px;width:3px;height:22px;background:#8a5a2b}
+.palm:before,.palm:after{content:"";position:absolute;top:-1px;width:8px;height:3px;background:#2f9e5a}
+.palm:before{left:-8px;box-shadow:0 -4px 0 #1f7a42}
+.palm:after{right:-8px;box-shadow:0 -4px 0 #1f7a42}
+.banner{margin:4px 6px 2px;padding:3px 8px;text-align:center;font-size:12px;color:#1e0f3a;background:#f1d37a;border:2px solid #d4af37}
+.grid{display:grid;grid-template-columns:1fr 78px 1fr;gap:4px;padding:0 4px 8px}
+.room{border:2px solid #d4af37;background:repeating-linear-gradient(45deg,#4a2680 0 4px,#52298a 4px 8px);min-height:96px;padding:0 2px 4px;position:relative;overflow:hidden}
+.room h3{font-size:10px;color:#fff;text-align:center;background:#3b1f6b;border-bottom:1px solid #d4af37;padding:3px 2px;line-height:1.2}
+.room.archive{filter:grayscale(.9);opacity:.75;border-color:#8a8498}
+.room .crew{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;align-content:flex-start;padding-top:3px}
+.spine{background:repeating-linear-gradient(#d4af37 0 6px,transparent 6px 12px) center/2px 100% no-repeat;min-height:96px}
+.ceo{border:2px solid #d4af37;background:#3b1f6b;min-height:110px;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.ceo .desk{width:46px}
+.guy{position:relative;border:0;background:none;color:#fff;width:54px;max-width:100%;flex:0 0 auto;padding:0 1px;cursor:pointer;text-align:center;overflow:hidden}
+.dot{position:absolute;top:0;left:50%;width:7px;height:7px;margin-left:-4px;border:1px solid #1e0f3a;z-index:2}
+.dot.up{background:#3ccf8e}.dot.idle{background:#9a94a8}.dot.error{background:#ef5b5b}.dot.hold,.dot.paper{background:#e8a93a}
+.px{display:block;width:22px;margin:8px auto 0;image-rendering:pixelated}
+.px b{display:block;width:12px;height:10px;margin:0 auto;background:#fff;position:relative;box-shadow:0 0 0 1px #1e0f3a}
+.px b:before{content:"";position:absolute;left:2px;top:3px;width:2px;height:2px;background:#1e0f3a;box-shadow:6px 0 #1e0f3a}
+.px em{display:block;width:16px;height:9px;margin:1px auto 0;background:#efeaf8}
+.px.crown:before{content:"";display:block;width:14px;height:4px;margin:0 auto 1px;background:#d4af37;box-shadow:0 -3px 0 #f1d37a,4px -3px 0 #d4af37,-4px -3px 0 #d4af37}
+.desk{display:flex;align-items:flex-end;justify-content:center;gap:2px;height:12px;margin:1px auto 0}
+.mon{width:12px;height:8px;background:#10243a;border:1px solid #d4af37;box-shadow:inset 0 0 0 1px #7fd0ff;animation:glow 1.6s steps(2) infinite}
+.prop{width:8px;height:8px;background:#d4af37}
+.prop.hammer{background:#8a5a2b;box-shadow:0 -3px 0 #d4af37,3px -3px 0 #d4af37}
+.prop.cart{background:#c9a24a;box-shadow:-2px 3px 0 #1e0f3a,4px 3px 0 #1e0f3a}
+.prop.chart{background:linear-gradient(90deg,#3ccf8e 30%,transparent 30% 45%,#d4af37 45% 70%,transparent 70% 80%,#7fd0ff 80%)}
+.prop.phone{width:6px;height:9px;background:#1e0f3a;border:1px solid #d4af37}
+.prop.news{background:#fff;box-shadow:inset 0 2px 0 #1e0f3a,inset 0 4px 0 #fff,inset 0 5px 0 #1e0f3a}
+.prop.cam{background:#1e0f3a;box-shadow:3px 2px 0 #d4af37}
+.prop.chat{background:#fff;border-radius:2px;box-shadow:2px 3px 0 #d4af37}
+.prop.wrench{background:transparent;box-shadow:0 0 0 2px #d4af37;transform:rotate(40deg)}
+.guy small{display:block;max-width:100%;font-size:8px;line-height:1.15;color:#fff;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .guy.hide{display:none}
-.guy.walk .px em{animation:step .25s steps(2) infinite}
+.guy.walk{z-index:4}
+.guy.walk .px em{animation:step .22s steps(2) infinite}
+@keyframes tw{50%{opacity:.25}}
+@keyframes glow{50%{box-shadow:inset 0 0 0 1px #d4af37}}
+@keyframes step{50%{transform:translateY(-2px)}}
+@media (prefers-reduced-motion:reduce){.star,.mon,.guy.walk .px em{animation:none}}
 #tree{padding:8px 12px 12px;display:none}
 #tree.on{display:block}
 #map.off{display:none}
@@ -63,8 +84,6 @@ h2{font-size:12px;color:#d4af37;margin:2px 0}
 .lv .bar{flex:1;height:8px;background:#1e0f3a;border:1px solid #5b2d91}
 .lv .bar i{display:block;height:100%;background:#d4af37}
 .empty{color:#cbb8ee;padding:4px}
-@keyframes step{50%{transform:translateY(-1px)}}
-@media (prefers-reduced-motion:reduce){.guy.walk .px em{animation:none}}
 </style>
 </head>
 <body>
@@ -79,12 +98,10 @@ h2{font-size:12px;color:#d4af37;margin:2px 0}
   </nav>
   <div id="stage">
     <div id="map">
-      <div class="sky" aria-hidden="true">
-        <i style="left:12px;top:8px"></i><i style="left:40px;top:14px"></i><i style="left:70px;top:6px"></i><i style="left:110px;top:16px"></i><i style="left:150px;top:9px"></i><i style="left:190px;top:18px"></i><i style="left:230px;top:7px"></i><i style="left:280px;top:15px"></i><i style="left:320px;top:10px"></i>
-        <div class="moon"></div><div class="hill"></div>
-        <div class="palm" style="left:18px"></div><div class="palm" style="right:28px"></div>
+      <div class="sky" id="sky" aria-hidden="true"><div class="moon"></div><div class="hill"></div>
+        <div class="palm" style="left:8px"></div><div class="palm" style="left:36%"></div><div class="palm" style="right:34%"></div><div class="palm" style="right:10px"></div>
       </div>
-      <div class="hall" id="hall"></div>
+      <div class="banner" id="owner"></div>
       <div class="grid" id="grid"></div>
     </div>
     <div id="tree"></div>
@@ -105,7 +122,7 @@ h2{font-size:12px;color:#d4af37;margin:2px 0}
 const $=s=>document.querySelector(s);
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let D={brief:{your_part:[],needs_you:[]},meeting:{broke:[],wins:[]},agents:[],skills:[]};
-let ORG=null,filter='all',tab='brief',treeOn=false,walker=null,nextWalk=800;
+let ORG=null,filter='all',tab='brief',treeOn=false,walker=null,nextWalk=250;
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
 function tx(o){return !o?'':typeof o=='string'?o:(o.ar||o.en||'');}
 function bubble(st){return st==='hold'?'موقوف':st==='paper'?'ورقي':st==='error'?'متعطل':st==='idle'?'خامل':'يعمل';}
@@ -126,14 +143,29 @@ $('#orgbtn').onclick=()=>{
   if(treeOn){drawTree();$('#stage').scrollTop=0;}
 };
 
+const PROP={house:'hammer',shop:'cart',trade:'chart',apps:'phone',news:'news',video:'cam',fahem:'chat',experts:'wrench'};
+function stars(){
+  const s=$('#sky');if(!s||s.dataset.ready)return;s.dataset.ready=1;
+  for(let i=0;i<18;i++){const e=document.createElement('i');e.className='star';e.style.left=(6+i*19)%360+'px';e.style.top=(4+(i*13)%28)+'px';e.style.animationDelay=(i%5)*0.3+'s';s.appendChild(e);}
+}
 function drawMap(){
   if(!ORG)return;
-  const A=true;
-  $('#hall').innerHTML='<span class="own">'+esc(ORG.owner.ar)+'</span>'+person(ORG.ceo,true);
-  const deps=ORG.departments.slice();
-  let html='';
-  for(let i=0;i<deps.length;i+=2){
-    html+=room(deps[i])+'<div class="spine"></div>'+(deps[i+1]?room(deps[i+1]):'<div></div>');
+  stars();
+  $('#owner').textContent='المالك: '+ORG.owner.ar;
+  const deps=ORG.departments.filter(d=>d.id!=='meet');
+  const meet=ORG.departments.find(d=>d.id==='meet');
+  let html='',n=0;
+  const cells=[];
+  deps.forEach(d=>cells.push(d));
+  if(meet)cells.push(meet);
+  const rows=Math.ceil((cells.length+1)/2);
+  const ceoRow=Math.min(1,rows-1);
+  let ci=0;
+  for(let r=0;r<rows;r++){
+    const left=cells[ci++]||null,right=cells[ci++]||null;
+    html+=(left?room(left):'<div></div>');
+    html+=r===ceoRow?`<div class="ceo" id="ceo">${person(ORG.ceo,true,null)}</div>`:'<div class="spine"></div>';
+    html+=(right?room(right):'<div></div>');
   }
   const ar=ORG.archive;
   html+=`<article class="room archive" data-id="archive"><h3>${esc(ar.ar)}</h3><div class="crew"><small class="arch">${esc(tx(ar.note))}</small></div></article><div class="spine"></div><div></div>`;
@@ -142,13 +174,14 @@ function drawMap(){
   applyFilter();
 }
 function room(dep){
-  const crew=(dep.bots||[]).map(b=>person(b,false,dep)).join('');
+  const prop=PROP[dep.id]||'';
+  const crew=(dep.bots||[]).map(b=>person(b,false,dep,prop)).join('');
   return `<article class="room" data-id="${dep.id}"><h3>${esc(dep.ar)}</h3><div class="crew">${crew||'<small class="arch">—</small>'}</div></article>`;
 }
-function person(b,ceo,dep){
+function person(b,ceo,dep,prop){
   const st=b.status||'up';
-  const note=tx(b.note);
-  return `<button type="button" class="guy" data-id="${esc(b.id)}" data-st="${st}" data-dep="${dep?esc(dep.ar):''}"><span class="bub">${bubble(st)}</span><span class="px${ceo?' crown':''}"><b></b><em></em></span><small>${esc(b.ar)}</small></button>`;
+  const p=prop?`<i class="prop ${prop}"></i>`:'';
+  return `<button type="button" class="guy" data-id="${esc(b.id)}" data-st="${st}"><i class="dot ${st}" title="${bubble(st)}"></i><span class="px${ceo?' crown':''}"><b></b><em></em></span><span class="desk"><i class="mon"></i>${p}</span><small>${esc(b.ar)}</small></button>`;
 }
 function applyFilter(){
   document.querySelectorAll('#map .guy').forEach(g=>{
@@ -180,17 +213,26 @@ function tip(id){
 }
 function startWalk(){
   if(reduce||walker||treeOn)return;
-  const pool=[...document.querySelectorAll('#grid .guy')].filter(g=>g.dataset.st==='up'&&!g.classList.contains('hide'));
-  if(!pool.length)return;
+  const pool=[...document.querySelectorAll('.room .guy')].filter(g=>g.dataset.st==='up'&&!g.classList.contains('hide'));
+  const hall=document.querySelector('#ceo');
+  const map=$('#map');
+  if(!pool.length||!hall||!map)return;
   const g=pool[Math.floor(Math.random()*pool.length)];
-  const meet=document.querySelector('.room[data-id="meet"]');
-  if(!meet)return;
-  walker=g;g.classList.add('walk');
-  const from=g.getBoundingClientRect(),to=meet.getBoundingClientRect();
-  const dx=to.left-from.left,dy=to.top-from.top;
-  g.style.transition='transform 1.6s linear';
-  g.style.transform=`translate(${dx}px,${dy*0.4}px)`;
-  walker.back=setTimeout(()=>{g.style.transform='';setTimeout(()=>{g.classList.remove('walk');walker=null;},1700);},1800);
+  const home=g.parentElement;
+  const mr=map.getBoundingClientRect(),fr=g.getBoundingClientRect(),mid=hall.getBoundingClientRect();
+  const left=fr.left-mr.left,top=fr.top-mr.top;
+  const destL=mid.left+mid.width/2-mr.left-fr.width/2;
+  const destT=mid.top+mid.height*0.35-mr.top;
+  walker={g,home};
+  g.classList.add('walk');
+  map.appendChild(g);
+  g.style.position='absolute';g.style.zIndex='6';g.style.margin='0';
+  g.style.left=left+'px';g.style.top=top+'px';
+  requestAnimationFrame(()=>{g.style.transition='left 2.2s linear,top 2.2s linear';g.style.left=destL+'px';g.style.top=destT+'px';});
+  walker.back=setTimeout(()=>{
+    g.style.left=left+'px';g.style.top=top+'px';
+    setTimeout(()=>{g.style.transition='';g.style.position='';g.style.left='';g.style.top='';g.style.zIndex='';g.classList.remove('walk');home.appendChild(g);walker=null;},2300);
+  },2400);
 }
 
 let Dpanel=D,tabName='brief';

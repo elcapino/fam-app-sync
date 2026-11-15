@@ -10,7 +10,7 @@
     {"id": "ideas", "ar": "أفكار وبحوث", "en": "Ideas and research", "pct": 4, "paused": true, "room": "research"},
     {"id": "islam", "ar": "التطبيق الإسلامي", "en": "Islamic app", "pct": 3},
     {"id": "family_general", "ar": "عام الأسرة", "en": "Family general", "pct": 2},
-    {"id": "house", "ar": "بيت حمد", "en": "Hamad House", "pct": 2, "room": "house"},
+    {"id": "house", "ar": "البيت (مشروع 5)", "en": "House (Project 5)", "pct": 2, "room": "house"},
     {"id": "replica", "ar": "Apps Replica", "en": "Apps Replica", "pct": 2},
     {"id": "coo", "ar": "COO", "en": "COO", "pct": 1, "paused": true},
     {"id": "news", "ar": "البحث والأخبار", "en": "Search and news", "pct": 1, "room": "research"},

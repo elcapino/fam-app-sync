@@ -167,7 +167,7 @@ function stars(){
 function drawMap(){
   if(!ORG)return;
   stars();
-  $('#owner').textContent='المالك: '+ORG.owner.ar;
+  $('#owner').textContent=ORG.owner.ar;
   const deps=ORG.departments.filter(d=>d.id!=='meet');
   const meet=ORG.departments.find(d=>d.id==='meet');
   let html='',n=0;

@@ -1,14 +1,14 @@
 {
-  "owner": {"ar": "حمد", "en": "Hamad"},
+  "owner": {"ar": "المالك", "en": "Owner"},
   "ceo": {"id": "ceo", "ar": "المدير", "en": "CEO", "role": "CEO"},
   "departments": [
     {
       "id": "house",
-      "ar": "بيت حمد",
-      "en": "Hamad House",
+      "ar": "البيت (مشروع 5)",
+      "en": "House (Project 5)",
       "note": {"ar": "مشروع 5", "en": "Project 5"},
       "bots": [
-        {"id": "house_design", "ar": "بيت حمد", "en": "House design", "status": "up", "note": {"ar": "تصميم وديكور", "en": "Design and interiors"}},
+        {"id": "house_design", "ar": "تصميم البيت", "en": "House design", "status": "up", "note": {"ar": "تصميم وديكور", "en": "Design and interiors"}},
         {"id": "house_eng", "ar": "الهندسة والتراخيص والعقود", "en": "Engineering, permits and contracts", "status": "up"},
         {"id": "house_qa", "ar": "مراجع الجودة", "en": "Quality reviewer", "status": "up"}
       ]

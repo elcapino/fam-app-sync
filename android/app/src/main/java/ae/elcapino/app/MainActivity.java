@@ -174,6 +174,32 @@ public class MainActivity extends Activity {
         }
 
         @JavascriptInterface
+        public void shareText(String text) {
+            if (text == null || text.isEmpty() || text.length() > 2000) return;
+            final String body = text;
+            runOnUiThread(() -> {
+                Intent send = new Intent(Intent.ACTION_SEND);
+                send.setType("text/plain");
+                send.putExtra(Intent.EXTRA_TEXT, body);
+                try {
+                    startActivity(Intent.createChooser(send, "أضف المهارة"));
+                } catch (ActivityNotFoundException ignored) {}
+            });
+        }
+
+        @JavascriptInterface
+        public void openUrl(String url) {
+            if (url == null || url.length() > 2000 || !url.startsWith("https://")) return;
+            final Uri uri = Uri.parse(url);
+            if (!"https".equals(uri.getScheme()) || uri.getHost() == null) return;
+            runOnUiThread(() -> {
+                try {
+                    startActivity(new Intent(Intent.ACTION_VIEW, uri));
+                } catch (ActivityNotFoundException ignored) {}
+            });
+        }
+
+        @JavascriptInterface
         public void savePref(String key, String value) {
             if (key == null || !key.startsWith("hmk_") || value == null || value.length() > 200000) return;
             prefs().edit().putString(key, value).commit();

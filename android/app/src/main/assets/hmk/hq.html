@@ -129,9 +129,21 @@ header h1{font-size:13px;color:#f1d37a}
 .skcard span{font-size:9px;line-height:1.15;color:#cbb8ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sksug{flex:none;min-height:0}
 .sksug h2{margin:0 0 1px}
-.sksug a{display:flex;flex-direction:row;gap:6px;align-items:center;color:#fff;text-decoration:none;border-bottom:1px solid #ffffff14;padding:1px 0;font-size:10px;line-height:1.25;overflow:hidden}
-.sksug a b{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
-.sksug a span{flex:0 0 auto;max-width:52%;color:#f1d37a;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+.sksug button.sksugrow{appearance:none;width:100%;display:flex;flex-direction:row;gap:4px;align-items:center;background:none;border:0;border-bottom:1px solid #ffffff14;color:#fff;font:10px/1.2 system-ui;padding:1px 0;cursor:pointer;text-align:start}
+.sksug button.sksugrow b{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
+.sksug .host{flex:0 1 auto;max-width:32%;color:#f1d37a;direction:ltr;unicode-bidi:isolate;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sksug .addchip{flex:none;border:1px solid #d4af37;background:#f1d37a;color:#1e0f3a;border-radius:99px;font:700 9px/1 system-ui;padding:2px 5px;white-space:nowrap}
+.sksug .addchip.sent{background:transparent;color:#3ccf8e;border-color:#1f5c43}
+#skaddsheet{position:fixed;inset:0;z-index:40;background:#0008;display:none;align-items:flex-end}
+#skaddsheet.on{display:flex}
+#skaddsheet .in{width:100%;background:#1e0f3a;border-top:1px solid #d4af37;border-radius:16px 16px 0 0;padding:8px 12px 12px}
+#skaddsheet .gr{width:36px;height:4px;border-radius:4px;background:#3d2768;margin:2px auto 8px}
+#skaddsheet h2{margin:0 0 4px;font:700 14px system-ui;color:#f1d37a}
+#skaddsheet .mu{font-size:11px;color:#cbb8ee;line-height:1.35}
+#skaddsheet .url{font-size:10px;color:#fff;direction:ltr;text-align:left;word-break:break-all;margin:4px 0 8px}
+#skaddsheet .go,#skaddsheet .alt{width:100%;margin-top:4px;padding:8px;border-radius:10px;font:700 13px system-ui;cursor:pointer}
+#skaddsheet .go{border:0;background:linear-gradient(135deg,#f1d37a,#d4af37);color:#1e0f3a}
+#skaddsheet .alt{border:1px solid #d4af37;background:#2a1450;color:#f1d37a}
 #map.off{display:none}
 .node{border-right:2px solid #d4af37;margin:2px 8px;padding:2px 8px;font-size:12px}
 .node b{color:#f1d37a}
@@ -187,6 +199,17 @@ h2{font-size:12px;color:#d4af37;margin:2px 0}
     <button data-t="skills">مكتبة المهارات</button>
   </nav>
   <footer>HMK made in ALAIN</footer>
+</div>
+<div id="skaddsheet">
+  <div class="in">
+    <div class="gr"></div>
+    <h2 id="sksn"></h2>
+    <div class="mu" id="skst"></div>
+    <div class="mu" id="skss"></div>
+    <div class="url" id="sksu"></div>
+    <button type="button" class="go" id="skshare">أضف المهارة</button>
+    <button type="button" class="alt" id="sksite">افتح الموقع</button>
+  </div>
 </div>
 <script>
 (function(){
@@ -432,13 +455,18 @@ function stepMovers(now){
 let Dpanel=D,tabName='brief',SKILLS=null,openSkill=null,openId=null,skillQuery='',skillView='home',skillGroup='',skillSource='',skillFrom='home';
 const FEATURED=['gulf-arabic-writing','islamic-source-verification','arabic-rtl-app-qa','arabic-seo-aso','free-ai-models-first','flutter-expert','kotlin-specialist','stock-analysis'];
 const SUGGEST=[
- {t:'UAE government and legal procedures',u:'https://u.ae/en/information-and-services/justice-safety-and-the-law',h:'u.ae'},
- {t:'Emirati dialect voice',u:'https://huggingface.co/vadimbelsky/qwen3.5-TTS-Emirati',h:'huggingface.co'},
- {t:'Shariah finance screening',u:'https://aaoifi.com/?lang=en',h:'aaoifi.com'},
- {t:'Flutter release',u:'https://github.com/flutter/skills',h:'flutter/skills'},
- {t:'Android release',u:'https://github.com/android/skills',h:'android/skills'},
- {t:'Google Play policy',u:'https://support.google.com/googleplay/android-developer/answer/9859455',h:'support.google.com'}
+ {t:'UAE government and legal procedures',k:'Documents',u:'https://u.ae/en/information-and-services/justice-safety-and-the-law',h:'u.ae'},
+ {t:'Emirati dialect voice',k:'Arabic and Islamic',u:'https://huggingface.co/vadimbelsky/qwen3.5-TTS-Emirati',h:'huggingface.co'},
+ {t:'Shariah finance screening',k:'Research and data',u:'https://aaoifi.com/?lang=en',h:'aaoifi.com'},
+ {t:'Flutter release',k:'Apps and code',u:'https://github.com/flutter/skills',h:'flutter/skills'},
+ {t:'Android release',k:'Apps and code',u:'https://github.com/android/skills',h:'android/skills'},
+ {t:'Google Play policy',k:'Apps and code',u:'https://support.google.com/googleplay/android-developer/answer/9859455',h:'support.google.com'}
 ];
+const sentSuggest={};
+let suggestOn=-1;
+function bridge(){try{if(window.HmkAndroid&&window.HmkAndroid.shareText)return window.HmkAndroid;}catch(e){}try{if(parent&&parent!==window&&parent.HmkAndroid&&parent.HmkAndroid.shareText)return parent.HmkAndroid;}catch(e){}return null;}
+function openSuggest(i){const s=SUGGEST[i];if(!s)return;suggestOn=i;$('#sksn').textContent=s.t;$('#skst').textContent=s.k;$('#skss').textContent=s.h;$('#sksu').textContent=s.u;$('#skaddsheet').classList.add('on');}
+function closeSuggest(){$('#skaddsheet').classList.remove('on');suggestOn=-1;}
 function skillText(s){const d=String(s&&s.description||'').trim();return d==='>-'||d.length<4?'':d;}
 function skillAuthor(s){const a=String(s&&s.author||'').trim();if(!a)return '';const m=/github\.com\/([^/?#]+)/i.exec(a);return m?m[1]:a;}
 function skillLicense(s){const l=String(s&&s.license||'').trim();if(!l)return '';if(/complete terms in license\.txt/i.test(l))return 'terms in LICENSE.txt';if(/^mit(\s+license)?$/i.test(l))return 'MIT';if(/^apache-2\.0$/i.test(l))return 'Apache-2.0';if(/matplotlib\/matplotlib/i.test(l))return 'matplotlib LICENSE';return l;}
@@ -517,7 +545,7 @@ function renderPanel(keepSkillFocus){
       h+='</div><div class="skcards">';
       FEATURED.forEach(id=>{const s=byId[id];if(!s)return;const b=skillBucket(s);h+=`<button type="button" class="skcard" data-sk="${esc(s.id)}"><b>${esc(s.name||s.id)}</b><span>${esc(s.groupEn)}</span><span>${esc(b.label)}</span></button>`;});
       h+='</div><div class="sksug"><h2>Suggested new skills</h2>';
-      SUGGEST.forEach(s=>{h+=`<a href="${esc(s.u)}" target="_blank" rel="noopener"><b>${esc(s.t)}</b><span>${esc(s.h)}</span></a>`;});
+      SUGGEST.forEach((s,i)=>{const sent=sentSuggest[s.u];h+=`<button type="button" class="sksugrow" data-sugg="${i}"><b>${esc(s.t)}</b><span class="host">${esc(s.h)}</span><span class="addchip${sent?' sent':''}">${sent?'طلب مُرسل':'+ أضف'}</span></button>`;});
       h+='</div></div>';
     }else{
       (Dpanel.skills||[]).forEach(s=>{h+=`<div class="lv"><b style="flex:1">${esc(s)}</b></div>`;});
@@ -531,6 +559,7 @@ function renderPanel(keepSkillFocus){
   p.querySelectorAll('[data-skgroup]').forEach(el=>el.onclick=()=>{skillView='list';skillGroup=el.dataset.skgroup;skillSource='';skillQuery='';openSkill=null;renderPanel(true);});
   p.querySelectorAll('[data-sksrc]').forEach(el=>el.onclick=()=>{skillView='list';skillSource=el.dataset.sksrc;skillGroup='';skillQuery='';openSkill=null;renderPanel(true);});
   const sks=p.querySelector('#sksearch');if(sks)sks.onclick=()=>{skillView='list';skillGroup='';skillSource='';skillQuery='';openSkill=null;renderPanel(true);};
+  p.querySelectorAll('[data-sugg]').forEach(el=>el.onclick=ev=>{ev.stopPropagation();openSuggest(+el.dataset.sugg);});
   const find=p.querySelector('#skfind');
   if(find){
     find.oninput=()=>{skillQuery=find.value;openSkill=null;renderPanel(true);};
@@ -572,6 +601,9 @@ document.addEventListener('visibilitychange',()=>{
   movers.forEach(m=>{m.t0=now;});
   if(!document.hidden){cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);if(!reduce)while(movers.length<4){const n=movers.length;spawn();if(movers.length===n)break;}}
 });
+$('#skaddsheet').onclick=e=>{if(e.target.id==='skaddsheet')closeSuggest();};
+$('#skshare').onclick=()=>{const s=SUGGEST[suggestOn];if(!s)return;const text='أضف مهارة لمكتبة HMK: '+s.t+' — '+s.u;const b=bridge();if(b){try{b.shareText(text);}catch(e){}}sentSuggest[s.u]=1;closeSuggest();if(tabName==='skills')renderPanel();};
+$('#sksite').onclick=()=>{const s=SUGGEST[suggestOn];if(!s)return;const b=bridge();if(b&&b.openUrl){try{b.openUrl(s.u);return;}catch(e){}}try{window.open(s.u,'_blank','noopener');}catch(e){}};
 addEventListener('resize',()=>fit());
 boot();
 raf=requestAnimationFrame(frame);

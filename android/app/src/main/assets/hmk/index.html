@@ -16,7 +16,7 @@ header{flex:none;height:54px;display:flex;align-items:center;gap:8px;padding:0 1
 .ib svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
 #pages{flex:1;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;min-height:0}
 #pages::-webkit-scrollbar{display:none}
-.pg{flex:none;width:100%;height:100%;scroll-snap-align:start;padding:4px 8px 2px;display:flex;flex-direction:column;gap:4px;overflow-x:hidden;overflow-y:auto}
+.pg{flex:none;width:100%;height:100%;scroll-snap-align:start;padding:4px 8px 2px;display:flex;flex-direction:column;gap:4px;overflow:hidden}
 .ph{display:flex;align-items:baseline;gap:6px;min-height:0}.ph h2{margin:0;font:700 16px Plex}.ph .n{font:600 11px Plex;color:var(--gold);letter-spacing:1px}.ph .mu{margin-inline-start:auto}
 .mu{color:var(--mu);font-size:11px}
 .c{background:linear-gradient(165deg,#33205ee6,#26154ae6);border:1px solid #d4af3766;border-radius:8px;padding:6px 8px;position:relative;min-height:0}
@@ -36,7 +36,8 @@ button.prow{display:flex;flex-direction:column}
 .bar{height:6px;background:#33205a;border-radius:6px;overflow:hidden;flex:1}.bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,#8a6d2b,var(--gold2));width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
 .bar i.hot{background:linear-gradient(90deg,var(--warn),var(--bad))}
 .dot{width:8px;height:8px;border-radius:50%;flex:none}
-.fill{flex:none;min-height:0;display:flex;flex-direction:column;overflow:visible}
+.fill{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:auto}
+.fill>.row,.fill>button.row,.fill>button.prow,.fill>button.qrow,.fill>button.coin,.fill>button.rcard,.fill>.phase{flex:1 1 auto;min-height:40px}
 .clamp{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1}
 footer{flex:none;position:relative;z-index:5;height:calc(var(--navh) + env(safe-area-inset-bottom));display:flex;align-items:stretch;border-top:1px solid var(--line);background:#120822;padding:0 4px env(safe-area-inset-bottom);box-shadow:0 -8px 20px #0008}
 footer button{flex:1;min-width:0;background:none;border:0;color:var(--mu);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font:600 10px/1.1 Plex;cursor:pointer;padding:6px 0 8px;position:relative;border-radius:12px}footer button span{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

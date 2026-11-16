@@ -152,7 +152,7 @@ function pReports(i){const ds=D.docs||[],A=L=='ar';const cnt={all:ds.length};ds.
 function rr(){const w=$('#rlw');if(!w)return;w.innerHTML=rlist();bind()}
 function rrAll(){const k=PAGES.indexOf('reports'),pg=$('#pages').children[k];pg.innerHTML=pReports(k);bind()}
 function pHq(i){return `<iframe id="hqf" src="hq.html" title="HQ" style="flex:1;min-height:0;height:100%;width:100%;border:1px solid var(--line);border-radius:14px;background:#1e0f3a"></iframe>`}
-function hqSend(){const f=$('#hqf');if(f&&f.contentWindow&&D&&D.hq)f.contentWindow.postMessage({hq:D.hq},'*')}
+function hqSend(){const f=$('#hqf');if(!f||!f.contentWindow||!D||!D.hq)return;const reports=(D.docs||[]).map(d=>({t:d.t,m:d.m,p:d.p}));f.contentWindow.postMessage({hq:Object.assign({},D.hq,{reports:reports})},'*')}
 addEventListener('message',e=>{if(e.data&&e.data.hqReady)hqSend()});
 const RND={hq:pHq,sum:pSum,proj:pProj,agency:pAgency,house:pHouse,market:pMarket,spend:pSpend,ideas:pIdeas,reports:pReports};
 function animate(root){const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;requestAnimationFrame(()=>{root.querySelectorAll('.bar i[data-w],.hbar i[data-w]').forEach(e=>e.style.width=e.dataset.w+'%');root.querySelectorAll('.rg').forEach(e=>{if(!reduce)e.style.transition='stroke-dasharray 1.2s cubic-bezier(.2,.8,.2,1)';e.setAttribute('stroke-dasharray',e.dataset.d)});root.querySelectorAll('[data-n]').forEach(el=>{const to=+el.dataset.n,dec=+(el.dataset.dec||0);if(reduce){el.textContent=to.toFixed(dec);return}const t0=performance.now();const step=now=>{const k=Math.min(1,(now-t0)/650);el.textContent=(to*(1-Math.pow(1-k,3))).toFixed(dec);if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)})})}

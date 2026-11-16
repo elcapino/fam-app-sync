@@ -110,7 +110,10 @@ header h1{font-size:13px;color:#f1d37a}
 .node .sub{margin-right:10px;font-size:11px;color:#fff}
 .arch{color:#b3a3d1}
 #tip{position:sticky;bottom:0;display:none;background:#1e0f3a;color:#fff;border-top:2px solid #d4af37;padding:6px 8px;font-size:11px;line-height:1.4}
-#panel{flex:1;min-height:0;overflow:auto;padding:4px 8px;background:#2a1450;font-size:12px}
+#panel{flex:1;min-height:0;overflow:hidden;padding:4px 8px;background:#2a1450;font-size:12px;display:flex;flex-direction:column}
+#panel .body{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column}
+#panel .body>.chk,#panel .body>.lv,#panel .body>.card,#panel .body>button.lv{flex:1 1 auto;min-height:34px}
+#skfind{position:sticky;top:0;z-index:2}
 #tabs{flex:none;display:flex;background:#3b1f6b;border-top:2px solid #d4af37}
 #tabs button{flex:1;background:none;border:0;color:#cbb8ee;font:11px system-ui;padding:6px 2px;cursor:pointer}
 #tabs button.on{background:#5b2d91;color:#d4af37;font-weight:700}
@@ -411,7 +414,7 @@ function botRows(){
   return rows;
 }
 function renderPanel(keepSkillFocus){
-  const p=$('#panel');const keepTop=keepSkillFocus?p.scrollTop:0;let h='';
+  const p=$('#panel');const prev=p.querySelector('.body');const keepTop=keepSkillFocus&&prev?prev.scrollTop:0;let h='';
   const brief=Dpanel.brief||{your_part:[],needs_you:[]};
   if(openId){
     const row=botRows().find(r=>r.id===openId);
@@ -425,9 +428,15 @@ function renderPanel(keepSkillFocus){
       vis.forEach((t,i)=>{const k=key+pre+i,d=st[k];
         h+='<div class="chk'+(d?' done':'')+'" data-k="'+esc(k)+'"><span class="bx"></span><span>'+esc(t)+'</span></div>';});};
     list('دورك اليوم',brief.your_part,'p');list('يحتاجك',brief.needs_you,'n');
+    const ups=botRows().filter(r=>r.st==='up');
+    if(ups.length){h+='<h2>يعمل الآن · '+ups.length+'</h2>';ups.forEach(r=>{h+=`<button type="button" class="lv" data-botid="${esc(r.id)}"><b style="flex:1">${esc(r.ar)}</b><span class="mu">${esc(r.dep)}</span><span>${esc(bubble(r.st))}</span></button>`;});}
+    const reps=Dpanel.reports||[];
+    if(reps.length){h+='<h2>آخر التقارير</h2>';reps.forEach(d=>{h+=`<div class="card"><b>${esc(d.t)}</b><div class="mu">${esc(d.m||'')}</div></div>`;});}
   }else if(tabName==='meeting'){
     const m=Dpanel.meeting||{};h+='<h2>اجتماع الأحد</h2>'+(m.week?'<div class="mu">'+esc(m.week)+'</div>':'');
     (m.wins||[]).forEach(w=>{if(!privateBlock(w))h+='<div class="card">'+esc(w)+'</div>';});
+    (m.broke||[]).forEach(x=>{if(!privateBlock(x.what||x))h+='<div class="card">'+esc(x.what||x)+(x.fix?' · '+esc(x.fix):'')+'</div>';});
+    (Dpanel.reports||[]).forEach(d=>{h+=`<div class="card"><b>${esc(d.t)}</b><div class="mu">${esc(d.m||'')}</div></div>`;});
   }else if(tabName==='levels'){
     const rows=botRows().filter(r=>shown(r.st));
     h+='<h2>'+(treeOn?'الهيكل':'الروبوتات')+' · '+rows.length+'</h2>';
@@ -467,8 +476,8 @@ function renderPanel(keepSkillFocus){
       (Dpanel.skills||[]).forEach(s=>{h+=`<div class="lv"><b style="flex:1">${esc(s)}</b></div>`;});
     }
   }
-  p.innerHTML=h;
-  if(keepSkillFocus)p.scrollTop=keepTop;
+  p.innerHTML='<div class="body">'+h+'</div>';
+  const body=p.querySelector('.body');if(keepSkillFocus&&body)body.scrollTop=keepTop;
   p.querySelectorAll('.chk').forEach(el=>el.onclick=()=>{const s=store();s[el.dataset.k]=!s[el.dataset.k];try{localStorage.setItem('hq_checks',JSON.stringify(s));}catch(e){}renderPanel();});
   p.querySelectorAll('[data-botid]').forEach(el=>el.onclick=()=>{openId=el.dataset.botid;tip(openId);renderPanel();});
   p.querySelectorAll('[data-sk]').forEach(el=>el.onclick=()=>{openSkill=el.dataset.sk;renderPanel();});

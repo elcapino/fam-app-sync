@@ -18,8 +18,8 @@ android {
         applicationId "ae.elcapino.app.v2"
         minSdk 24
         targetSdk 34
-        versionCode 35
-        versionName "1.16d-debug"
+        versionCode 36
+        versionName "1.16e-debug"
         buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
     }
 
@@ -35,6 +35,12 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
+    }
+
+    packaging {
+        dex {
+            useLegacyPackaging = true
+        }
     }
 
     sourceSets {
@@ -98,4 +104,12 @@ tasks.register("syncHmkWeb") {
     }
 }
 
-tasks.named("preBuild").configure { dependsOn("syncHmkWeb") }
+tasks.register("refreshAdx", Exec) {
+    workingDir rootDir
+    commandLine "python3", "refresh_adx.py"
+}
+
+tasks.named("preBuild").configure {
+    dependsOn("syncHmkWeb")
+    dependsOn("refreshAdx")
+}

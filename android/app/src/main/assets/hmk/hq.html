@@ -104,6 +104,34 @@ header h1{font-size:13px;color:#f1d37a}
 #skfind{display:block;width:100%;margin:2px 0 4px;padding:8px;border:1px solid #d4af37;border-radius:8px;background:#1e0f3a;color:#fff;font:14px system-ui}
 .skillline{display:block;font:400 11px/1.35 system-ui;color:#cbb8ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .skillbody{white-space:pre-wrap;font:13px/1.5 system-ui;color:#fff}
+#app.skillpage #bar,#app.skillpage #stage{display:none}
+#app.skillpage #panel{flex:1;min-height:0}
+#app.skillpage #panel .body{overflow:hidden;padding:2px 6px 0}
+#app.skillpage #panel .body.skroll{overflow:auto}
+#panel .body.skroll>.lv,#panel .body.skroll>button.lv{flex:0 0 auto;min-height:0}
+#app.skillpage #panel .body>.skhome{flex:1;min-height:0}
+.skhome{height:100%;min-height:0;display:flex;flex-direction:column;gap:3px}
+.sktop{flex:none;display:flex;gap:3px;align-items:stretch}
+.sksearch{flex:none;width:28px;border:1px solid #d4af37;background:#1e0f3a;color:#f1d37a;border-radius:8px;cursor:pointer;display:grid;place-items:center;padding:0}
+.sksearch svg{display:block}
+.sktotal{flex:none;width:58px;background:#3b1f6b;border:1px solid #d4af37;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sktotal b{font-size:22px;line-height:1;color:#f1d37a}
+.sktotal span{font-size:8px;color:#cbb8ee}
+.sktypes{flex:1;min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px}
+.sktype{min-width:0;border:1px solid #5b2d91;background:#3b1f6b;color:#fff;padding:2px 3px;text-align:start;cursor:pointer;display:flex;flex-direction:column;justify-content:center}
+.sktype b{font-size:13px;line-height:1;color:#f1d37a}
+.sktype span{font-size:8px;line-height:1.15;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sksrc{flex:none;display:flex;flex-wrap:wrap;gap:2px;align-content:flex-start}
+.sksrc button{border:1px solid #5b2d91;background:#1e0f3a;color:#f1d37a;font:9px/1.2 system-ui;padding:1px 5px;border-radius:8px;cursor:pointer}
+.skcards{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,minmax(0,1fr));gap:3px}
+.skcard{min-height:0;overflow:hidden;border:1px solid #d4af3766;background:#3b1f6b;color:#fff;padding:2px 5px;text-align:start;cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:1px}
+.skcard b{font-size:12px;line-height:1.15;color:#f1d37a;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.skcard span{font-size:9px;line-height:1.15;color:#cbb8ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sksug{flex:none;min-height:0}
+.sksug h2{margin:0 0 1px}
+.sksug a{display:flex;flex-direction:row;gap:6px;align-items:center;color:#fff;text-decoration:none;border-bottom:1px solid #ffffff14;padding:1px 0;font-size:10px;line-height:1.25;overflow:hidden}
+.sksug a b{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
+.sksug a span{flex:0 0 auto;max-width:52%;color:#f1d37a;direction:ltr;unicode-bidi:isolate;white-space:nowrap}
 #map.off{display:none}
 .node{border-right:2px solid #d4af37;margin:2px 8px;padding:2px 8px;font-size:12px}
 .node b{color:#f1d37a}
@@ -315,15 +343,17 @@ let mapScale=1;
 function layoutMode(){
   const app=$('#app');if(!app)return;
   app.classList.toggle('treemode',!!treeOn);
-  app.classList.toggle('fullpanel',!treeOn&&(tabName==='levels'||tabName==='skills'));
+  app.classList.toggle('skillpage',!treeOn&&tabName==='skills');
+  app.classList.toggle('fullpanel',!treeOn&&tabName==='levels');
 }
 function fit(){
   const map=$('#map'),stage=$('#stage'),app=$('#app');
   layoutMode();
+  if(tabName==='skills'&&!treeOn){if(stage)stage.style.height='';return;}
   if(!map||!stage||treeOn){if(stage&&treeOn)stage.style.height='';if(treeOn)fitTree();return;}
   map.style.transform='none';
   map.style.width='100%';
-  const avail=Math.max(120,Math.round(app.clientHeight*(tabName==='skills'?0.22:0.42)));
+  const avail=Math.max(120,Math.round(app.clientHeight*(tabName==='levels'?0.22:0.42)));
   stage.style.height=avail+'px';
   let need=map.offsetHeight;
   let scale=avail/Math.max(1,need);
@@ -399,8 +429,22 @@ function stepMovers(now){
   if(!reduce&&!treeOn&&tabName!=='levels'&&tabName!=='skills')while(movers.length<4){const before=movers.length;spawn();if(movers.length===before)break;}
 }
 
-let Dpanel=D,tabName='brief',SKILLS=null,openSkill=null,openId=null,skillQuery='';
+let Dpanel=D,tabName='brief',SKILLS=null,openSkill=null,openId=null,skillQuery='',skillView='home',skillGroup='',skillSource='',skillFrom='home';
+const FEATURED=['gulf-arabic-writing','islamic-source-verification','arabic-rtl-app-qa','arabic-seo-aso','free-ai-models-first','flutter-expert','kotlin-specialist','stock-analysis'];
+const SUGGEST=[
+ {t:'UAE government and legal procedures',u:'https://u.ae/en/information-and-services/justice-safety-and-the-law',h:'u.ae'},
+ {t:'Emirati dialect voice',u:'https://huggingface.co/vadimbelsky/qwen3.5-TTS-Emirati',h:'huggingface.co'},
+ {t:'Shariah finance screening',u:'https://aaoifi.com/?lang=en',h:'aaoifi.com'},
+ {t:'Flutter release',u:'https://github.com/flutter/skills',h:'flutter/skills'},
+ {t:'Android release',u:'https://github.com/android/skills',h:'android/skills'},
+ {t:'Google Play policy',u:'https://support.google.com/googleplay/android-developer/answer/9859455',h:'support.google.com'}
+];
 function skillText(s){const d=String(s&&s.description||'').trim();return d==='>-'||d.length<4?'':d;}
+function skillAuthor(s){const a=String(s&&s.author||'').trim();if(!a)return '';const m=/github\.com\/([^/?#]+)/i.exec(a);return m?m[1]:a;}
+function skillLicense(s){const l=String(s&&s.license||'').trim();if(!l)return '';if(/complete terms in license\.txt/i.test(l))return 'terms in LICENSE.txt';if(/^mit(\s+license)?$/i.test(l))return 'MIT';if(/^apache-2\.0$/i.test(l))return 'Apache-2.0';if(/matplotlib\/matplotlib/i.test(l))return 'matplotlib LICENSE';return l;}
+function skillBucket(s){const a=skillAuthor(s);if(a)return {kind:'author',key:a,label:a};const l=skillLicense(s);if(l)return {kind:'license',key:l,label:l};return {kind:'custom',key:'custom',label:"Hamad's own / custom"};}
+function skillKey(b){return b.kind+':'+b.key;}
+function allSkills(){const out=[];(SKILLS&&SKILLS.groups||[]).forEach(g=>(g.items||[]).forEach(s=>out.push(Object.assign({groupId:g.id,groupEn:g.en,groupAr:g.ar},s))));return out;}
 function skillHits(items){const q=skillQuery.trim().toLowerCase();if(!q)return items;return items.filter(s=>((s.name||'')+' '+(s.id||'')+' '+skillText(s)).toLowerCase().includes(q));}
 function store(){try{return JSON.parse(localStorage.getItem('hq_checks')||'{}');}catch(e){return {};}}
 function botRows(){
@@ -447,51 +491,57 @@ function renderPanel(keepSkillFocus){
       h+=`<button type="button" class="lv" data-botid="${esc(r.id)}"><b style="flex:1.2">${esc(r.ar)}</b><span class="mu" style="flex:1">${esc(r.dep)}</span><span>${esc(bubble(r.st))}</span></button>`;
     });
   }else{
-    const groups=SKILLS&&SKILLS.groups||[];
-    const total=groups.reduce((n,g)=>n+(g.items||[]).length,0);
-    const visible=groups.reduce((n,g)=>n+skillHits(g.items||[]).length,0);
-    h+='<h2>مكتبة المهارات'+(total?(skillQuery.trim()?' · '+visible+' / '+total:' · '+total):'')+'</h2>';
-    h+='<input id="skfind" type="search" placeholder="بحث" value="'+esc(skillQuery)+'" autocomplete="off">';
-    if(openSkill&&groups.length){
-      let item=null,group=null;
-      groups.forEach(g=>(g.items||[]).forEach(it=>{if(it.id===openSkill){item=it;group=g;}}));
-      if(item){
-        const body=skillText(item);
-        h+=`<button type="button" class="lv" id="skback">رجوع</button><h2>${esc(item.name||item.id)}</h2><div class="mu">${esc(group?(group.ar+' · '+group.en):'')} · ${esc(item.id)}</div>`+(body?`<div class="card skillbody">${esc(body)}</div>`:'');
-      }
-    }else if(groups.length){
-      let shownN=0;
-      groups.forEach(g=>{
-        const items=skillHits(g.items||[]);
-        if(!items.length)return;
-        shownN+=items.length;
-        h+='<h2>'+esc(g.ar)+' · '+esc(g.en)+' · '+items.length+'</h2>';
-        items.forEach(s=>{
-          const line=skillText(s);
-          h+=`<button type="button" class="lv" data-sk="${esc(s.id)}"><span style="flex:1;min-width:0"><b>${esc(s.name||s.id)}</b>${line?`<span class="skillline">${esc(line)}</span>`:''}</span></button>`;
-        });
-      });
-      if(!shownN)h+='<div class="empty">لا نتائج</div>';
+    const items=allSkills();
+    const byId={};items.forEach(s=>{byId[s.id]=s;});
+    if(skillView==='detail'&&openSkill&&byId[openSkill]){
+      const item=byId[openSkill],bucket=skillBucket(item),body=skillText(item);
+      h+=`<button type="button" class="lv" id="skback">رجوع</button><h2>${esc(item.name||item.id)}</h2><div class="mu">${esc(item.groupEn)} · ${esc(bucket.label)}</div>`+(body?`<div class="card skillbody">${esc(body)}</div>`:'');
+    }else if(skillView==='list'){
+      let rows=items;
+      if(skillGroup)rows=rows.filter(s=>s.groupId===skillGroup);
+      if(skillSource)rows=rows.filter(s=>skillKey(skillBucket(s))===skillSource);
+      const hits=skillHits(rows);
+      const title=skillGroup?(rows[0]?rows[0].groupEn:''):skillSource?(items.map(skillBucket).find(b=>skillKey(b)===skillSource)||{}).label||'':'مكتبة المهارات';
+      h+=`<button type="button" class="lv" id="skback">رجوع</button><h2>${esc(title)} · ${hits.length}</h2>`;
+      h+='<input id="skfind" type="search" placeholder="بحث" value="'+esc(skillQuery)+'" autocomplete="off">';
+      if(!hits.length)h+='<div class="empty">لا نتائج</div>';
+      hits.forEach(s=>{const line=skillText(s);h+=`<button type="button" class="lv" data-sk="${esc(s.id)}"><span style="flex:1;min-width:0"><b>${esc(s.name||s.id)}</b><span class="skillline">${esc(s.groupEn)} · ${esc(skillBucket(s).label)}${line?' · '+esc(line):''}</span></span></button>`;});
+    }else if(items.length){
+      const counts={};items.forEach(s=>{const b=skillBucket(s);const k=skillKey(b);counts[k]=counts[k]||{b:b,n:0};counts[k].n++;});
+      const rank={author:0,license:1,custom:2};const chips=Object.values(counts).sort((a,b)=>rank[a.b.kind]-rank[b.b.kind]||b.n-a.n||a.b.label.localeCompare(b.b.label));
+      const groups=SKILLS.groups||[];
+      h+='<div class="skhome"><div class="sktop"><button type="button" class="sksearch" id="sksearch" aria-label="بحث"><svg viewBox="0 0 24 24" width="15" height="15"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 15l5 5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><div class="sktotal"><b>'+items.length+'</b><span>skills</span></div><div class="sktypes">';
+      groups.forEach(g=>{h+=`<button type="button" class="sktype" data-skgroup="${esc(g.id)}"><b>${(g.items||[]).length}</b><span>${esc(g.en)}</span></button>`;});
+      h+='</div></div><div class="sksrc">';
+      chips.forEach(c=>{h+=`<button type="button" data-sksrc="${esc(skillKey(c.b))}">${esc(c.b.label)} ${c.n}</button>`;});
+      h+='</div><div class="skcards">';
+      FEATURED.forEach(id=>{const s=byId[id];if(!s)return;const b=skillBucket(s);h+=`<button type="button" class="skcard" data-sk="${esc(s.id)}"><b>${esc(s.name||s.id)}</b><span>${esc(s.groupEn)}</span><span>${esc(b.label)}</span></button>`;});
+      h+='</div><div class="sksug"><h2>Suggested new skills</h2>';
+      SUGGEST.forEach(s=>{h+=`<a href="${esc(s.u)}" target="_blank" rel="noopener"><b>${esc(s.t)}</b><span>${esc(s.h)}</span></a>`;});
+      h+='</div></div>';
     }else{
       (Dpanel.skills||[]).forEach(s=>{h+=`<div class="lv"><b style="flex:1">${esc(s)}</b></div>`;});
     }
   }
-  p.innerHTML='<div class="body">'+h+'</div>';
+  p.innerHTML='<div class="body'+(tabName==='skills'&&skillView!=='home'?' skroll':'')+'">'+h+'</div>';
   const body=p.querySelector('.body');if(keepSkillFocus&&body)body.scrollTop=keepTop;
   p.querySelectorAll('.chk').forEach(el=>el.onclick=()=>{const s=store();s[el.dataset.k]=!s[el.dataset.k];try{localStorage.setItem('hq_checks',JSON.stringify(s));}catch(e){}renderPanel();});
   p.querySelectorAll('[data-botid]').forEach(el=>el.onclick=()=>{openId=el.dataset.botid;tip(openId);renderPanel();});
-  p.querySelectorAll('[data-sk]').forEach(el=>el.onclick=()=>{openSkill=el.dataset.sk;renderPanel();});
+  p.querySelectorAll('[data-sk]').forEach(el=>el.onclick=()=>{skillFrom=skillView==='detail'?skillFrom:skillView;skillView='detail';openSkill=el.dataset.sk;renderPanel();});
+  p.querySelectorAll('[data-skgroup]').forEach(el=>el.onclick=()=>{skillView='list';skillGroup=el.dataset.skgroup;skillSource='';skillQuery='';openSkill=null;renderPanel(true);});
+  p.querySelectorAll('[data-sksrc]').forEach(el=>el.onclick=()=>{skillView='list';skillSource=el.dataset.sksrc;skillGroup='';skillQuery='';openSkill=null;renderPanel(true);});
+  const sks=p.querySelector('#sksearch');if(sks)sks.onclick=()=>{skillView='list';skillGroup='';skillSource='';skillQuery='';openSkill=null;renderPanel(true);};
   const find=p.querySelector('#skfind');
   if(find){
     find.oninput=()=>{skillQuery=find.value;openSkill=null;renderPanel(true);};
     if(keepSkillFocus){find.focus();const n=find.value.length;try{find.setSelectionRange(n,n);}catch(e){}}
   }
-  const back=p.querySelector('#skback');if(back)back.onclick=()=>{openSkill=null;renderPanel();};
+  const back=p.querySelector('#skback');if(back)back.onclick=()=>{if(skillView==='detail'&&skillFrom==='list'){skillView='list';openSkill=null;}else{skillView='home';openSkill=null;skillGroup='';skillSource='';skillQuery='';}renderPanel();};
   const bback=p.querySelector('#botback');if(bback)bback.onclick=()=>{openId=null;renderPanel();};
   fit();
 }
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{
-  tabName=b.dataset.t;treeOn=false;openSkill=null;openId=null;
+  tabName=b.dataset.t;treeOn=false;openSkill=null;openId=null;skillView='home';skillGroup='';skillSource='';skillQuery='';
   $('#orgbtn').classList.remove('on');
   $('#map').classList.remove('off');$('#tree').classList.remove('on');
   document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b));

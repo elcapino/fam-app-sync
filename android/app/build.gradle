@@ -18,8 +18,8 @@ android {
         applicationId "ae.elcapino.app.v2"
         minSdk 24
         targetSdk 34
-        versionCode 33
-        versionName "1.16b-debug"
+        versionCode 34
+        versionName "1.16c-debug"
         buildConfigField "String", "GIT_SHA", "\"${gitSha}\""
     }
 

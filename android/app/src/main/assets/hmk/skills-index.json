@@ -1,54 +1,626 @@
 {
-  "source": "hmk-view.json skills · 2026-11-09 snapshot. The box folder /home/box/agent-data/workflows was not on this machine.",
+  "source": "hmk-skills-index.json",
+  "count": 116,
   "groups": [
     {
-      "id": "house",
-      "ar": "البيت",
-      "en": "House",
+      "id": "arabic",
+      "ar": "العربية والإسلام",
+      "en": "Arabic and Islamic",
       "items": [
         {
-          "id": "knx",
-          "ar": "KNX",
-          "en": "KNX",
-          "line": {
-            "ar": "قرار إنارة KNX/DALI · 4 قرارات معلّقة في لقطة البيت",
-            "en": "KNX/DALI lighting decision · 4 open decisions in the house snapshot"
-          },
-          "bot": {"ar": "تصميم البيت", "en": "House design"}
+          "id": "arabic-punctuation-auditor",
+          "name": "arabic-punctuation-auditor",
+          "description": "Use when an Arabic .txt file may contain Latin commas (,) between Arabic words: lists their positions and optionally writes a separate suggestions file with the Arabic comma (،); never edits the original. Stdlib Python. (رصد الفاصلة الإنجلي"
+        },
+        {
+          "id": "arabic-ready",
+          "name": "arabic-ready",
+          "description": "'Makes Arabic output correct the first time. Covers right-to-left layout, connected letter shaping, mixed Arabic/English/number ordering, Arabic fonts and typography, numerals, dates, currency, and natural Arabic wording. Use it whenever th"
+        },
+        {
+          "id": "arabic-rtl-app-qa",
+          "name": "arabic-rtl-app-qa",
+          "description": "Use when testing or reviewing an Android (Kotlin/XML/Compose), Flutter, React Native or web app in Arabic or right-to-left before release, when reviewing Arabic app screenshots, or when someone reports reversed, clipped, mis-aligned or wron"
+        },
+        {
+          "id": "arabic-seo-aso",
+          "name": "arabic-seo-aso",
+          "description": "Use when writing or reviewing Arabic or bilingual Arabic/English app-store listings (Google Play, Apple App Store) or website SEO metadata aimed at the UAE and the GCC. Covers Arabic keyword research with spelling and dialect variants, stor"
+        },
+        {
+          "id": "arabic-text-integrity",
+          "name": "arabic-text-integrity",
+          "description": "Use when comparing an original Arabic text with a converted, OCR'd, translated-back or edited copy to find dropped, swapped or altered words, names, numbers, verses or footnotes without silently correcting them. (فحص سلامة النص العربي عند ا"
+        },
+        {
+          "id": "arabic-writing",
+          "name": "arabic-writing",
+          "description": ">-"
+        },
+        {
+          "id": "gulf-arabic-writing",
+          "name": "gulf-arabic-writing",
+          "description": "Use when writing or rewriting Arabic for an Emirati or wider Gulf (Khaleeji) audience, such as chat replies, WhatsApp messages, social posts, captions, voice-over scripts or kids' content, and when deciding between Emirati/Gulf dialect and "
+        },
+        {
+          "id": "islamic-source-verification",
+          "name": "islamic-source-verification",
+          "description": "Use whenever content you write, review or ship contains a Quran verse, a hadith or athar, a dua attributed to the Prophet ﷺ, or a fatwa or religious ruling, such as an Islamic app, kids' lessons, a social post, a speech, an article or a tra"
+        },
+        {
+          "id": "quran-hadith-quote-auditor",
+          "name": "quran-hadith-quote-auditor",
+          "description": "Use when auditing Quran verses, hadith or athar quoted in an Arabic research paper, book or app content: one card per quote comparing the quoted text with a named reference, separating wording errors from attribution and from hadith grading"
+        },
+        {
+          "id": "scholarly-attribution-chain-review",
+          "name": "scholarly-attribution-chain-review",
+          "description": "Use when reviewing who-said-what in classical or modern Arabic/Islamic texts: separating direct quotes from mediated reports (ذكر فلان أن فلانًا قال), recording the transmission chain and confidence, without upgrading a probable attribution"
+        },
+        {
+          "id": "thakaly-source-attribution-auditor",
+          "name": "thakaly-source-attribution-auditor",
+          "description": "Use when you have a JSON list of attribution records (quote, source, attributed-to, formula, mode) and need a structural, conservative check that flags missing fields, verbatim quotes not found in the excerpt, and direct attributions that l"
         }
       ]
     },
     {
-      "id": "shop",
-      "ar": "المتجر",
-      "en": "Store",
+      "id": "apps",
+      "ar": "التطبيقات والكود",
+      "en": "Apps and code",
       "items": [
         {
-          "id": "shopify",
-          "ar": "Shopify",
-          "en": "Shopify",
-          "line": {
-            "ar": "بانتظار قرار التسعير ومصدر المنتجات",
-            "en": "Waiting on pricing and the product source"
-          },
-          "bot": {"ar": "متجر Shopify", "en": "Shopify store"}
+          "id": "api-and-interface-design",
+          "name": "api-and-interface-design",
+          "description": "Guides stable API and interface design. Use when designing APIs, module boundaries, or any public interface. Use when creating REST or GraphQL endpoints, defining type contracts between modules, or establishing boundaries between frontend a"
+        },
+        {
+          "id": "browser-testing-with-devtools",
+          "name": "browser-testing-with-devtools",
+          "description": "Tests in real browsers via Chrome DevTools MCP. Use when building or debugging anything that runs in a browser. Use when you need to inspect the DOM, capture console errors, analyze network requests, profile performance, or verify visual ou"
+        },
+        {
+          "id": "ci-cd-and-automation",
+          "name": "ci-cd-and-automation",
+          "description": "Automates CI/CD pipeline setup. Use when setting up or modifying build and deployment pipelines. Use when you need to automate quality gates, configure test runners in CI, or establish deployment strategies."
+        },
+        {
+          "id": "code-review-and-quality",
+          "name": "code-review-and-quality",
+          "description": "Conducts multi-axis code review. Use before merging any change. Use when reviewing code written by yourself, another agent, or a human. Use when you need to assess code quality across multiple dimensions before it enters the main branch. Us"
+        },
+        {
+          "id": "dart-resolve-package-conflicts",
+          "name": "dart-resolve-package-conflicts",
+          "description": "Workflow for fixing package version conflicts. Use this when `pub get` fails due to incompatible package versions."
+        },
+        {
+          "id": "dispatching-parallel-agents",
+          "name": "dispatching-parallel-agents",
+          "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies"
+        },
+        {
+          "id": "executing-plans",
+          "name": "executing-plans",
+          "description": "Use when executing an implementation plan in the current session as the implementer yourself — your human partner chose inline execution, or no subagent tool is available"
+        },
+        {
+          "id": "flutter-add-integration-test",
+          "name": "flutter-add-integration-test",
+          "description": "Configures Flutter Driver for app interaction and converts MCP actions into permanent integration tests. Use when adding integration testing to a project, exploring UI components via MCP, or automating user flows with the integration_test p"
+        },
+        {
+          "id": "flutter-add-widget-test",
+          "name": "flutter-add-widget-test",
+          "description": "Implement a component-level test using `WidgetTester` to verify UI rendering and user interactions (tapping, scrolling, entering text). Use when validating that a specific widget displays correct data and responds to events as expected."
+        },
+        {
+          "id": "flutter-apply-architecture-best-practices",
+          "name": "flutter-apply-architecture-best-practices",
+          "description": "Architects a Flutter application using the recommended layered approach (UI, Logic, Data). Use when structuring a new project or refactoring for scalability."
+        },
+        {
+          "id": "flutter-build-responsive-layout",
+          "name": "flutter-build-responsive-layout",
+          "description": "Use `LayoutBuilder`, `MediaQuery`, or `Expanded/Flexible` to create a layout that adapts to different screen sizes. Use when you need the UI to look good on both mobile and tablet/desktop form factors."
+        },
+        {
+          "id": "flutter-expert",
+          "name": "flutter-expert",
+          "description": "Use when building cross-platform applications with Flutter 3+ and Dart. Invoke for widget development, Riverpod/Bloc state management, GoRouter navigation, platform-specific implementations, performance optimization."
+        },
+        {
+          "id": "flutter-fix-layout-issues",
+          "name": "flutter-fix-layout-issues",
+          "description": "Fixes Flutter layout errors (overflows, unbounded constraints) using Dart and Flutter MCP tools. Use when addressing \"RenderFlex overflowed\", \"Vertical viewport was given unbounded height\", or similar layout issues."
+        },
+        {
+          "id": "flutter-setup-declarative-routing",
+          "name": "flutter-setup-declarative-routing",
+          "description": "Configure `MaterialApp.router` using a package like `go_router` for advanced URL-based navigation. Use when developing web applications or mobile apps that require specific deep linking and browser history support."
+        },
+        {
+          "id": "flutter-setup-localization",
+          "name": "flutter-setup-localization",
+          "description": "Add `flutter_localizations` and `intl` dependencies, enable \"generate true\" in `pubspec.yaml`, and create an `l10n.yaml` configuration file. Use when initializing localization support for a new Flutter project."
+        },
+        {
+          "id": "free-ai-models-first",
+          "name": "free-ai-models-first",
+          "description": "Use before any task that needs an LLM, transcription, translation or bulk text, to pick the free model route first (PC Ollama, Groq free key, Gemini free key incl. gemini-4-hydrogen) and keep paid APIs for the hard parts."
+        },
+        {
+          "id": "frontend-design",
+          "name": "frontend-design",
+          "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults."
+        },
+        {
+          "id": "frontend-ui-engineering",
+          "name": "frontend-ui-engineering",
+          "description": "Builds production-quality, accessible, responsive user-facing UIs. Use when building or modifying interfaces and pages, creating components, implementing layouts, meeting WCAG accessibility requirements, managing state, or when the output n"
+        },
+        {
+          "id": "game-developer",
+          "name": "game-developer",
+          "description": "Use when building game systems, implementing Unity/Unreal Engine features, or optimizing game performance. Invoke to implement ECS architecture, configure physics systems and colliders, set up multiplayer networking with lag compensation, o"
+        },
+        {
+          "id": "gh-fix-ci",
+          "name": "gh-fix-ci",
+          "description": "Use when a user asks to debug or fix failing GitHub PR checks that run in GitHub Actions; use `gh` to inspect checks and logs, summarize failure context, draft a fix plan, and implement only after explicit approval. Treat external providers"
+        },
+        {
+          "id": "i18n-localization",
+          "name": "i18n-localization",
+          "description": "Use when adding UI text, adding or shipping a language, reviewing translation files, or building i18n into an app. Checks missing keys, placeholders and CLDR plural forms with locale_sync.py, finds hardcoded strings with hardcoded_strings.p"
+        },
+        {
+          "id": "improve-codebase-architecture",
+          "name": "improve-codebase-architecture",
+          "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick."
+        },
+        {
+          "id": "incremental-implementation",
+          "name": "incremental-implementation",
+          "description": "Delivers changes incrementally in thin, verifiable slices. Use when implementing any feature or change that touches more than one file, or when picking up the next task from a plan. Use when rolling a change out behind a feature flag, when "
+        },
+        {
+          "id": "kotlin-specialist",
+          "name": "kotlin-specialist",
+          "description": "Provides idiomatic Kotlin implementation patterns including coroutine concurrency, Flow stream handling, multiplatform architecture, Compose UI construction, Ktor server setup, and type-safe DSL design. Use when building Kotlin applications"
+        },
+        {
+          "id": "mcp-builder",
+          "name": "mcp-builder",
+          "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (F"
+        },
+        {
+          "id": "nextjs-developer",
+          "name": "nextjs-developer",
+          "description": "Use when building Next.js 14+ applications with App Router, server components, or server actions. Invoke to configure route handlers, implement middleware, set up API routes, add streaming SSR, write generateMetadata for SEO, scaffold loadi"
+        },
+        {
+          "id": "performance-optimization",
+          "name": "performance-optimization",
+          "description": "Optimizes application performance across frontend, backend, queries, and databases. Use when performance requirements exist, when you suspect performance regressions, when Core Web Vitals or load times need improvement, when N+1 query patte"
+        },
+        {
+          "id": "planning-and-task-breakdown",
+          "name": "planning-and-task-breakdown",
+          "description": "Breaks work into ordered tasks. Use when you have a spec or clear requirements and need to break work into implementable tasks. Use when a task feels too large to start, when you need to estimate scope, or when parallel work is possible."
+        },
+        {
+          "id": "playwright-expert",
+          "name": "playwright-expert",
+          "description": "Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke to write test scripts, create page objects, configure test fixtures, set up reporters, add CI integration, implement API mo"
+        },
+        {
+          "id": "prompt-engineer",
+          "name": "prompt-engineer",
+          "description": "Writes, refactors, and evaluates prompts for LLMs — generating optimized prompt templates, structured output schemas, evaluation rubrics, and test suites. Use when designing prompts for new LLM applications, refactoring existing prompts for"
+        },
+        {
+          "id": "prototype",
+          "name": "prototype",
+          "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like."
+        },
+        {
+          "id": "python-pro",
+          "name": "python-pro",
+          "description": "Use when building Python 3.11+ applications requiring type safety, async programming, or robust error handling. Generates type-annotated Python code, configures mypy in strict mode, writes pytest test suites with fixtures and mocking, and v"
+        },
+        {
+          "id": "receiving-code-review",
+          "name": "receiving-code-review",
+          "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation"
+        },
+        {
+          "id": "requesting-code-review",
+          "name": "requesting-code-review",
+          "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements"
+        },
+        {
+          "id": "security-and-hardening",
+          "name": "security-and-hardening",
+          "description": "Hardens code against vulnerabilities. Use when auditing an input handler for vulnerabilities, when handling user input, authentication, data storage, or external integrations, or when checking a login flow is safe against the OWASP Top Ten."
+        },
+        {
+          "id": "security-best-practices",
+          "name": "security-best-practices",
+          "description": "Perform language and framework specific security best-practice reviews and suggest improvements. Trigger only when the user explicitly requests security best practices guidance, a security review/report, or secure-by-default coding help. Tr"
+        },
+        {
+          "id": "security-threat-model",
+          "name": "security-threat-model",
+          "description": "Repository-grounded threat modeling that enumerates trust boundaries, assets, attacker capabilities, abuse paths, and mitigations, and writes a concise Markdown threat model. Trigger only when the user explicitly asks to threat model a code"
+        },
+        {
+          "id": "shipping-and-launch",
+          "name": "shipping-and-launch",
+          "description": "Prepares production launches. Use when preparing to deploy to production, or when asking what needs to be in place before shipping. Use when you need a pre-launch checklist, when setting up monitoring, when planning a staged rollout, or whe"
+        },
+        {
+          "id": "skill-security-auditor",
+          "name": "skill-security-auditor",
+          "description": "Use before installing any skill or plugin from an untrusted source, or when asked if a skill is safe. Scans scripts, SKILL.md and dependencies for exfiltration, dangerous calls and prompt injection with skill_security_auditor.py."
+        },
+        {
+          "id": "source-driven-development",
+          "name": "source-driven-development",
+          "description": "Grounds every implementation decision in official documentation. Use when you want to verify an approach against the official docs before implementing it, or when you want authoritative, source-cited code free from outdated patterns. Use wh"
+        },
+        {
+          "id": "spec-driven-development",
+          "name": "spec-driven-development",
+          "description": "Creates specs before coding. Use when starting a new project, feature, or significant change and no specification exists yet. Use when drafting a PRD or requirements document with objectives and scope, or when requirements are unclear, ambi"
+        },
+        {
+          "id": "subagent-driven-development",
+          "name": "subagent-driven-development",
+          "description": "Use when executing implementation plans with independent tasks in the current session"
+        },
+        {
+          "id": "supabase-postgres-best-practices",
+          "name": "supabase-postgres-best-practices",
+          "description": "Postgres best practices maintained by Supabase, for Postgres running anywhere. Load this skill BEFORE writing or changing anything that lives in a Postgres database: creating or altering tables and columns (including choosing column types),"
+        },
+        {
+          "id": "systematic-debugging",
+          "name": "systematic-debugging",
+          "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes"
+        },
+        {
+          "id": "test-driven-development",
+          "name": "test-driven-development",
+          "description": "Use when implementing any feature or bugfix, before writing implementation code"
+        },
+        {
+          "id": "ui-design-system",
+          "name": "ui-design-system",
+          "description": "Use when building a design system: tokens, component docs, responsive scales or developer handoff. Generates tokens with design_token_generator.py."
+        },
+        {
+          "id": "vercel-react-best-practices",
+          "name": "vercel-react-best-practices",
+          "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React co"
+        },
+        {
+          "id": "vercel-react-native-skills",
+          "name": "vercel-react-native-skills",
+          "description": "React Native and Expo best practices for building performant mobile apps. Use"
+        },
+        {
+          "id": "verification-before-completion",
+          "name": "verification-before-completion",
+          "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always"
+        },
+        {
+          "id": "web-design-guidelines",
+          "name": "web-design-guidelines",
+          "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\"."
+        },
+        {
+          "id": "web-perf",
+          "name": "web-perf",
+          "description": "Audit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores."
+        },
+        {
+          "id": "webapp-testing",
+          "name": "webapp-testing",
+          "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs."
+        },
+        {
+          "id": "writing-plans",
+          "name": "writing-plans",
+          "description": "Use when you have a spec or requirements for a multi-step task, before touching code"
         }
       ]
     },
     {
-      "id": "hq",
-      "ar": "المقر",
-      "en": "HQ",
+      "id": "research",
+      "ar": "البحث والبيانات",
+      "en": "Research and data",
       "items": [
         {
-          "id": "briefs",
-          "ar": "موجزات",
-          "en": "Briefs",
-          "line": {
-            "ar": "أربعة أبرز مستجدات محفوظة في لقطة 9 نوفمبر",
-            "en": "Four highlights stored in the 9 Nov snapshot"
-          },
-          "bot": {"ar": "المدير", "en": "CEO"}
+          "id": "competitive-teardown",
+          "name": "competitive-teardown",
+          "description": "Deep competitor teardown: pricing, reviews, hiring, SEO, UX, scored across 12 dimensions with SWOT and positioning maps. Use whenever the user asks how they compare to a rival or how to respond to a competitor's move."
+        },
+        {
+          "id": "competitor-profiling",
+          "name": "competitor-profiling",
+          "description": "When the user wants to research competitors into dated profiles, or asks what a rival charges, claims, or is doing, or whether a conclusion about them is fair: positioning, pricing, features, reviews, SEO, observed facts kept apart from inf"
+        },
+        {
+          "id": "customer-research",
+          "name": "customer-research",
+          "description": "When the user wants to run or synthesize customer research, or asks what customer quotes, reviews, or feedback really mean, what is safe to conclude, and what to ask next: interviews, surveys, voice of customer, personas, JTBD, mining Reddi"
+        },
+        {
+          "id": "exploratory-data-analysis",
+          "name": "exploratory-data-analysis",
+          "description": "Performs bounded, local exploratory analysis of explicitly supported scientific files. Supports redacted CSV/TSV/JSON profiles; optional NumPy, HDF5, FASTA/FASTQ, and basic image metadata inspection; missingness/leakage audits; outlier and "
+        },
+        {
+          "id": "financial-analyst",
+          "name": "financial-analyst",
+          "description": "Analyze financial statements, value a company with a DCF, explain budget variance, build rolling forecasts. Use whenever the user asks what a business is worth or why spend missed budget."
+        },
+        {
+          "id": "grants",
+          "name": "grants",
+          "description": "Use for any NIH funding question ('find grants for my research', 'which NIH institute'). Maps the idea to institutes, study sections and NOSIs via RePORTER, matches mechanisms with mechanism_matcher.py and writes a .docx strategy. NIH only."
+        },
+        {
+          "id": "jupyter-notebook",
+          "name": "jupyter-notebook",
+          "description": "Use when the user asks to create, scaffold, or edit Jupyter notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer the bundled templates and run the helper script `new_notebook.py` to generate a clean starting notebook."
+        },
+        {
+          "id": "litreview",
+          "name": "litreview",
+          "description": "Use when starting a literature review or a literature-based project. Plans the search (PICO, SPIDER) with framework_recommender.py, searches PubMed and OpenAlex with free_search.py and writes a .docx orientation guide. Single-paper lookups:"
+        },
+        {
+          "id": "market-research",
+          "name": "market-research",
+          "description": "Use for market sizing (TAM, SAM, SOM both top-down and bottom-up), survey sample sizes or segment scoring. Runs market_sizer.py, sample_size_planner.py and segmentation_scorer.py and never returns one unsourced number."
+        },
+        {
+          "id": "matplotlib",
+          "name": "matplotlib",
+          "description": "Creates and customizes scientific plots with Matplotlib. Used for fine-grained control over plot elements, novel plot types, and scientific workflows. Export to PNG/PDF/SVG for publication. For quick statistical plots use seaborn; for inter"
+        },
+        {
+          "id": "research-finance",
+          "name": "research-finance",
+          "description": "Use for R&D program money: multi-period budgets with indirect cost split, burn and runway against milestones, or capitalize vs expense routing. Runs program_budget_planner.py, burn_runway_tracker.py and capex_vs_opex_router.py."
+        },
+        {
+          "id": "research-summarizer",
+          "name": "research-summarizer",
+          "description": "Use when summarizing a research paper, article or report, comparing several sources or extracting citations into a brief. Formats with format_summary.py and pulls citations with extract_citations.py."
+        },
+        {
+          "id": "scientific-writing",
+          "name": "scientific-writing",
+          "description": "Drafts, revises, and audits scientific manuscripts or reports with explicit evidence provenance, reporting-guideline coverage, authorship accountability, confidentiality controls, and local consistency checks. Use for manuscript sections, r"
+        },
+        {
+          "id": "statistical-analysis",
+          "name": "statistical-analysis",
+          "description": "Guided statistical analysis for research data - test selection, assumption checking, effect sizes, power analysis, Bayesian alternatives, and APA-formatted reporting. Use whenever a user wants to compare groups, test a hypothesis, analyze e"
+        },
+        {
+          "id": "statistical-analyst",
+          "name": "statistical-analyst",
+          "description": "Is a difference real? Significance tests, confidence intervals, sample size and test duration for A/B results. Load whenever the user asks if a lift is real or noise, which variant won, or how many users a test needs."
+        },
+        {
+          "id": "stock-analysis",
+          "name": "stock-analysis",
+          "description": "Analyze, research or value a listed stock or company (US, global, NSE or BSE) with verified data, ratios, scores and valuation. Use whenever asked if a stock is a buy, what it is worth, or how a company looks."
+        },
+        {
+          "id": "ux-researcher-designer",
+          "name": "ux-researcher-designer",
+          "description": "UX research: personas, journey maps, usability test plans, synthesis. Use whenever the user asks who their users are or why they struggle."
+        }
+      ]
+    },
+    {
+      "id": "marketing",
+      "ar": "التسويق وSEO",
+      "en": "Marketing and SEO",
+      "items": [
+        {
+          "id": "ad-creative",
+          "name": "ad-creative",
+          "description": "When the user wants to write or judge ad creative, or asks which ad, hook, or angle to run or kill: headlines, primary text, and variations for Google, Meta, LinkedIn, and TikTok, fresh angles when creative fatigues. Test hypotheses name th"
+        },
+        {
+          "id": "ai-seo",
+          "name": "ai-seo",
+          "description": "When the user wants to get cited and recommended in AI answers (ChatGPT, Perplexity, AI Overviews), or asks why AI cites a competitor, which content gets cited, or whether llms.txt or a page format is worth it: AEO, GEO, AI visibility, agen"
+        },
+        {
+          "id": "aso",
+          "name": "aso",
+          "description": "When the user wants to audit or optimize an App Store or Google Play listing, or asks which title, keywords, or screenshots to pick or why downloads are low: subtitle, description, ratings, and comparing listings with competitors."
+        },
+        {
+          "id": "content-humanizer",
+          "name": "content-humanizer",
+          "description": "Make a draft sound less like AI: fix generic, robotic text with rhythm, specifics, personality and brand voice. Use whenever the user says copy sounds like ChatGPT, bland or stiff, or not like them."
+        },
+        {
+          "id": "content-strategy",
+          "name": "content-strategy",
+          "description": "When the user wants to plan content, or asks which topic or piece to prioritize, what to write about, or why posts bring no customers: topic clusters, editorial calendars, roadmaps tied to customers and search. For writing pieces, see copyw"
+        },
+        {
+          "id": "copy-editing",
+          "name": "copy-editing",
+          "description": "When the user wants to edit, tighten, proofread, or refresh existing copy, or asks whether to keep, cut, or change a line in it, without rewriting from scratch. Every edit removes AI tells: 'it's not X, it's Y' reveals, 'no X, no Y, no Z' l"
+        },
+        {
+          "id": "copywriting",
+          "name": "copywriting",
+          "description": "When the user wants to write or rewrite page copy (homepage, landing, pricing, feature), or asks which headline, promise, or message to lead with. Diagnoses the input first (blank brief, real voice, or point edit) and changes only what it c"
+        },
+        {
+          "id": "cro",
+          "name": "cro",
+          "description": "When the user wants more conversions from a page or form, or asks why a page isn't converting, what to change first, or whether to add or remove a field or element: landing and pricing pages, lead forms, or a URL shared for feedback. For si"
+        },
+        {
+          "id": "emails",
+          "name": "emails",
+          "description": "When the user wants to create or improve automated email sequences, or asks what to send, when, or whether an email or flow is working: welcome, onboarding, nurture, and win-back flows. No AI tells like 'it's not X, it's Y', 'no X, no Y, no"
+        },
+        {
+          "id": "launch",
+          "name": "launch",
+          "description": "When the user wants to plan a product or feature launch, or asks whether it's ready, when to announce, or how to get noticed: Product Hunt, beta and early access, waitlists, release go-to-market, launch checklists, release notes. For market"
+        },
+        {
+          "id": "offers",
+          "name": "offers",
+          "description": "When the user wants to design or improve the offer itself, or asks why it isn't selling or how to add urgency honestly: value stacking, bonuses, guarantees, scarcity, payment plans, upsells. Best for services, courses, coaching, and high-ti"
+        },
+        {
+          "id": "onboarding",
+          "name": "onboarding",
+          "description": "When the user wants better onboarding and activation, or asks why new users don't stick or what the first session should do: first-run experience, aha moments, checklists, empty states, time to value. For the signup flow itself, see signup."
+        },
+        {
+          "id": "paywalls",
+          "name": "paywalls",
+          "description": "When the user wants to create or improve in-app paywalls and upgrade moments, or asks when or how hard to ask free users to pay (after they've seen value): upgrade screens, upsell modals, feature gates, limit-reached and trial-expired scree"
+        },
+        {
+          "id": "pricing",
+          "name": "pricing",
+          "description": "When the user wants to set pricing and packaging, or asks what to charge, whether to raise prices, or how to move existing customers: tiers, value metrics, per-seat vs usage, freemium and trials, willingness to pay, pricing pages. For in-ap"
+        },
+        {
+          "id": "product-marketing",
+          "name": "product-marketing",
+          "description": "When the user wants to create or update the product marketing context doc (.agents/product-marketing.md), or asks what belongs in it or whether positioning or ICP is clear enough: product, ICP, positioning, competitors, customer language, b"
+        },
+        {
+          "id": "social",
+          "name": "social",
+          "description": "When the user wants organic social content for LinkedIn, X, Instagram, TikTok, or Facebook, or asks what to post, which format to favor, or from which account: posts, threads, carousels, short-form video scripts, calendars, build-in-public "
+        },
+        {
+          "id": "video",
+          "name": "video",
+          "description": "When the user wants to create video with AI tools or code, or asks which approach to use (screen recording, AI avatar, generated, or templated) or how to make videos repeatably: product demos, AI generation (Veo, Sora, HeyGen), programmatic"
+        }
+      ]
+    },
+    {
+      "id": "docs",
+      "ar": "المستندات",
+      "en": "Documents",
+      "items": [
+        {
+          "id": "academic-footnote-preserver",
+          "name": "academic-footnote-preserver",
+          "description": "Use before editing or converting an Arabic Word/PDF document that has footnotes and cross-references, to inventory them before and after and report any lost, renumbered or detached footnotes. (حماية الحواشي والإحالات عند التحرير والتحويل)"
+        },
+        {
+          "id": "canvas-design",
+          "name": "canvas-design",
+          "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying exis"
+        },
+        {
+          "id": "contract-and-proposal-writer",
+          "name": "contract-and-proposal-writer",
+          "description": "Use when drafting a freelance contract, proposal, SOW, NDA or MSA for US, EU, UK or DACH jurisdictions. Writes structured Markdown with docx conversion steps; not legal advice."
+        },
+        {
+          "id": "doc-coauthoring",
+          "name": "doc-coauthoring",
+          "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer c"
+        },
+        {
+          "id": "documentation-and-adrs",
+          "name": "documentation-and-adrs",
+          "description": "Records decisions and documentation, and detects when documentation has drifted from the code it describes. Use when you need to document an architecture decision (ADR) or the reasoning behind a design choice, when changing public APIs, shi"
+        },
+        {
+          "id": "docx",
+          "name": "docx",
+          "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files) or Word templates (.dotx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx', or requests to produce"
+        },
+        {
+          "id": "docx-bookmark-inventory",
+          "name": "docx-bookmark-inventory",
+          "description": "Use when you need a read-only CSV/JSON inventory of bookmark names, their text ranges and positions in a .docx file, e.g. to check cross-references, without changing the file. Stdlib Python. (جرد الإشارات المرجعية في DOCX)"
+        },
+        {
+          "id": "docx-highlight-extractor",
+          "name": "docx-highlight-extractor",
+          "description": "Use when you need a read-only CSV/JSON list of all explicitly highlighted passages (with colour and position) in a .docx file, e.g. to collect a researcher's marked evidence, without changing the file. Stdlib Python. (جمع المقاطع المظللة من"
+        },
+        {
+          "id": "docx-review-comments-extractor",
+          "name": "docx-review-comments-extractor",
+          "description": "Use when you need a read-only CSV/JSON report of the reviewer comments (author, date, comment text, anchored text) in a .docx file, including Arabic documents, without changing the file. Stdlib Python. (استخراج تعليقات المراجعين من DOCX)"
+        },
+        {
+          "id": "markdown-mermaid-writing",
+          "name": "markdown-mermaid-writing",
+          "description": "Writes scientific Markdown documentation and Mermaid diagrams for workflows, relationships, timelines, and schemas. Provides syntax references, document templates, accessibility guidance, and version-aware rendering checks. Use when a user "
+        },
+        {
+          "id": "markitdown",
+          "name": "markitdown",
+          "description": "Converts heterogeneous documents and selected URIs to Markdown with Microsoft MarkItDown for text analysis, search, and LLM/RAG ingestion. Covers safe local conversion, streams, Office/PDF/data formats, batch workflows, plugins, vision OCR,"
+        },
+        {
+          "id": "pdf",
+          "name": "pdf",
+          "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating "
+        },
+        {
+          "id": "theme-factory",
+          "name": "theme-factory",
+          "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a"
+        },
+        {
+          "id": "xlsx",
+          "name": "xlsx",
+          "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, "
+        }
+      ]
+    },
+    {
+      "id": "other",
+      "ar": "أخرى",
+      "en": "Other",
+      "items": [
+        {
+          "id": "brainstorming",
+          "name": "brainstorming",
+          "description": "You MUST use this before any creative work - creating features, building components, adding functionality, modifying behavior, or planning anything new, in software or out of it (a talk, a business, a renovation)."
+        },
+        {
+          "id": "grilling",
+          "name": "grilling",
+          "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases."
+        },
+        {
+          "id": "idea-refine",
+          "name": "idea-refine",
+          "description": "Refines raw ideas into sharp, actionable concepts through structured divergent and convergent thinking. Use when an idea is still vague, when you need to stress-test assumptions before committing to a plan, or when you want to expand option"
+        },
+        {
+          "id": "the-fool",
+          "name": "the-fool",
+          "description": "Use when challenging ideas, plans, decisions, or proposals using structured critical reasoning. Invoke to play devil's advocate, run a pre-mortem, red team, or audit evidence and assumptions."
         }
       ]
     }

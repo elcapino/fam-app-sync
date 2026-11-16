@@ -1,1 +1,1 @@
-window.HMK_BUILD={version:"1.16-debug",sha:"dev"};
+window.HMK_BUILD={version:"1.16b-debug",sha:"dev"};

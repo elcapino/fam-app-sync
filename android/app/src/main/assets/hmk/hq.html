@@ -100,7 +100,10 @@ header h1{font-size:13px;color:#f1d37a}
 #app.treemode #stage{flex:0 0 46%;height:auto!important;min-height:0}
 #panel .growlist{display:flex;flex-direction:column}
 #panel .growlist .lv{flex:0 0 auto}
-#panel button.lv{width:100%;background:none;border:0;color:inherit;text-align:start;cursor:pointer}
+#panel button.lv{width:100%;background:none;border:0;color:inherit;text-align:start;cursor:pointer;align-items:flex-start}
+#skfind{display:block;width:100%;margin:2px 0 4px;padding:8px;border:1px solid #d4af37;border-radius:8px;background:#1e0f3a;color:#fff;font:14px system-ui}
+.skillline{display:block;font:400 11px/1.35 system-ui;color:#cbb8ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.skillbody{white-space:pre-wrap;font:13px/1.5 system-ui;color:#fff}
 #map.off{display:none}
 .node{border-right:2px solid #d4af37;margin:2px 8px;padding:2px 8px;font-size:12px}
 .node b{color:#f1d37a}
@@ -317,7 +320,7 @@ function fit(){
   if(!map||!stage||treeOn){if(stage&&treeOn)stage.style.height='';if(treeOn)fitTree();return;}
   map.style.transform='none';
   map.style.width='100%';
-  const avail=Math.max(150,Math.round(app.clientHeight*0.42));
+  const avail=Math.max(120,Math.round(app.clientHeight*(tabName==='skills'?0.22:0.42)));
   stage.style.height=avail+'px';
   let need=map.offsetHeight;
   let scale=avail/Math.max(1,need);
@@ -393,7 +396,9 @@ function stepMovers(now){
   if(!reduce&&!treeOn&&tabName!=='levels'&&tabName!=='skills')while(movers.length<4){const before=movers.length;spawn();if(movers.length===before)break;}
 }
 
-let Dpanel=D,tabName='brief',SKILLS=null,openSkill=null,openId=null;
+let Dpanel=D,tabName='brief',SKILLS=null,openSkill=null,openId=null,skillQuery='';
+function skillText(s){const d=String(s&&s.description||'').trim();return d==='>-'||d.length<4?'':d;}
+function skillHits(items){const q=skillQuery.trim().toLowerCase();if(!q)return items;return items.filter(s=>((s.name||'')+' '+(s.id||'')+' '+skillText(s)).toLowerCase().includes(q));}
 function store(){try{return JSON.parse(localStorage.getItem('hq_checks')||'{}');}catch(e){return {};}}
 function botRows(){
   const rows=[];
@@ -405,8 +410,8 @@ function botRows(){
   }));
   return rows;
 }
-function renderPanel(){
-  const p=$('#panel');let h='';
+function renderPanel(keepSkillFocus){
+  const p=$('#panel');const keepTop=keepSkillFocus?p.scrollTop:0;let h='';
   const brief=Dpanel.brief||{your_part:[],needs_you:[]};
   if(openId){
     const row=botRows().find(r=>r.id===openId);
@@ -433,28 +438,45 @@ function renderPanel(){
       h+=`<button type="button" class="lv" data-botid="${esc(r.id)}"><b style="flex:1.2">${esc(r.ar)}</b><span class="mu" style="flex:1">${esc(r.dep)}</span><span>${esc(bubble(r.st))}</span></button>`;
     });
   }else{
-    h+='<h2>مكتبة المهارات</h2>';
-    const groups=SKILLS&&SKILLS.groups;
-    if(openSkill&&groups){
+    const groups=SKILLS&&SKILLS.groups||[];
+    const total=groups.reduce((n,g)=>n+(g.items||[]).length,0);
+    const visible=groups.reduce((n,g)=>n+skillHits(g.items||[]).length,0);
+    h+='<h2>مكتبة المهارات'+(total?(skillQuery.trim()?' · '+visible+' / '+total:' · '+total):'')+'</h2>';
+    h+='<input id="skfind" type="search" placeholder="بحث" value="'+esc(skillQuery)+'" autocomplete="off">';
+    if(openSkill&&groups.length){
       let item=null,group=null;
       groups.forEach(g=>(g.items||[]).forEach(it=>{if(it.id===openSkill){item=it;group=g;}}));
-      if(item)h+=`<button type="button" class="lv" id="skback">رجوع</button><h2>${esc(item.ar)}</h2><div class="card">${esc((item.line&&item.line.ar)||'')}</div><div class="mu">${esc(group?group.ar:'')}${item.bot?' · '+esc(item.bot.ar):''}</div>`;
-    }else if(groups){
+      if(item){
+        const body=skillText(item);
+        h+=`<button type="button" class="lv" id="skback">رجوع</button><h2>${esc(item.name||item.id)}</h2><div class="mu">${esc(group?(group.ar+' · '+group.en):'')} · ${esc(item.id)}</div>`+(body?`<div class="card skillbody">${esc(body)}</div>`:'');
+      }
+    }else if(groups.length){
+      let shownN=0;
       groups.forEach(g=>{
-        const items=(g.items||[]).filter(s=>!privateBlock(s.ar));
+        const items=skillHits(g.items||[]);
         if(!items.length)return;
-        h+='<h2>'+esc(g.ar)+'</h2>';
-        items.forEach(s=>{h+=`<button type="button" class="lv" data-sk="${esc(s.id)}"><b>${esc(s.ar)}</b><span class="mu" style="flex:1">${esc((s.line&&s.line.ar)||'')}</span></button>`;});
+        shownN+=items.length;
+        h+='<h2>'+esc(g.ar)+' · '+esc(g.en)+' · '+items.length+'</h2>';
+        items.forEach(s=>{
+          const line=skillText(s);
+          h+=`<button type="button" class="lv" data-sk="${esc(s.id)}"><span style="flex:1;min-width:0"><b>${esc(s.name||s.id)}</b>${line?`<span class="skillline">${esc(line)}</span>`:''}</span></button>`;
+        });
       });
+      if(!shownN)h+='<div class="empty">لا نتائج</div>';
     }else{
-      const skills=(Dpanel.skills||[]).filter(s=>!privateBlock(s));
-      skills.forEach(s=>{h+=`<div class="lv"><b style="flex:1">${esc(s)}</b></div>`;});
+      (Dpanel.skills||[]).forEach(s=>{h+=`<div class="lv"><b style="flex:1">${esc(s)}</b></div>`;});
     }
   }
   p.innerHTML=h;
+  if(keepSkillFocus)p.scrollTop=keepTop;
   p.querySelectorAll('.chk').forEach(el=>el.onclick=()=>{const s=store();s[el.dataset.k]=!s[el.dataset.k];try{localStorage.setItem('hq_checks',JSON.stringify(s));}catch(e){}renderPanel();});
   p.querySelectorAll('[data-botid]').forEach(el=>el.onclick=()=>{openId=el.dataset.botid;tip(openId);renderPanel();});
   p.querySelectorAll('[data-sk]').forEach(el=>el.onclick=()=>{openSkill=el.dataset.sk;renderPanel();});
+  const find=p.querySelector('#skfind');
+  if(find){
+    find.oninput=()=>{skillQuery=find.value;openSkill=null;renderPanel(true);};
+    if(keepSkillFocus){find.focus();const n=find.value.length;try{find.setSelectionRange(n,n);}catch(e){}}
+  }
   const back=p.querySelector('#skback');if(back)back.onclick=()=>{openSkill=null;renderPanel();};
   const bback=p.querySelector('#botback');if(bback)bback.onclick=()=>{openId=null;renderPanel();};
   fit();

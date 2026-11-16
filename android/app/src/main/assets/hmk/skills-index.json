@@ -1,0 +1,56 @@
+{
+  "source": "hmk-view.json skills · 2026-11-09 snapshot. The box folder /home/box/agent-data/workflows was not on this machine.",
+  "groups": [
+    {
+      "id": "house",
+      "ar": "البيت",
+      "en": "House",
+      "items": [
+        {
+          "id": "knx",
+          "ar": "KNX",
+          "en": "KNX",
+          "line": {
+            "ar": "قرار إنارة KNX/DALI · 4 قرارات معلّقة في لقطة البيت",
+            "en": "KNX/DALI lighting decision · 4 open decisions in the house snapshot"
+          },
+          "bot": {"ar": "تصميم البيت", "en": "House design"}
+        }
+      ]
+    },
+    {
+      "id": "shop",
+      "ar": "المتجر",
+      "en": "Store",
+      "items": [
+        {
+          "id": "shopify",
+          "ar": "Shopify",
+          "en": "Shopify",
+          "line": {
+            "ar": "بانتظار قرار التسعير ومصدر المنتجات",
+            "en": "Waiting on pricing and the product source"
+          },
+          "bot": {"ar": "متجر Shopify", "en": "Shopify store"}
+        }
+      ]
+    },
+    {
+      "id": "hq",
+      "ar": "المقر",
+      "en": "HQ",
+      "items": [
+        {
+          "id": "briefs",
+          "ar": "موجزات",
+          "en": "Briefs",
+          "line": {
+            "ar": "أربعة أبرز مستجدات محفوظة في لقطة 9 نوفمبر",
+            "en": "Four highlights stored in the 9 Nov snapshot"
+          },
+          "bot": {"ar": "المدير", "en": "CEO"}
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20 21:57",
-  "built": "2026-11-20 21:57",
+  "updated": "2026-11-20 21:58",
+  "built": "2026-11-20 21:58",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -405,7 +405,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 21:57 Asia/Dubai",
+    "updated": "2026-11-20 21:58 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -443,8 +443,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 21:57. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 21:57. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 21:58. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 21:58. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3670,6 +3670,101 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · bh-sd01-design-review · delivered (review.md, 22 findings)",
+        "en": "BOARD · bh-sd01-design-review · delivered (review.md, 22 findings)"
+      },
+      "m": "2026-11-20 21:57",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-sd01-design-review · delivered (review.md, 22 findings)",
+        "en": "BOARD · bh-sd01-design-review · delivered (review.md, 22 findings)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-permits-check · delivered (permits.md)",
+        "en": "BOARD · bh-permits-check · delivered (permits.md)"
+      },
+      "m": "2026-11-20 21:57",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-permits-check · delivered (permits.md)",
+        "en": "BOARD · bh-permits-check · delivered (permits.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · usage-push-2026-11-20 · done (prep only)",
+        "en": "BOARD · usage-push-2026-11-20 · done (prep only)"
+      },
+      "m": "2026-11-20 21:57",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · usage-push-2026-11-20 · done (prep only)",
+        "en": "BOARD · usage-push-2026-11-20 · done (prep only)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · usage-push-hmk-play · partial: drafts done; needs name/email/host, targetSdk 36 OK, demo-data build",
+        "en": "BOARD · usage-push-hmk-play · partial: drafts done; needs name/email/host, targetSdk 36 OK, demo-data build"
+      },
+      "m": "2026-11-20 21:57",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · usage-push-hmk-play · partial: drafts done; needs name/email/host, targetSdk 36 OK, demo-data build",
+        "en": "BOARD · usage-push-hmk-play · partial: drafts done; needs name/email/host, targetSdk 36 OK, demo-data build"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · usage-push-capacitor-apks · done: 2 debug APKs + RTL QA; scan/install wait for OK",
+        "en": "BOARD · usage-push-capacitor-apks · done: 2 debug APKs + RTL QA; scan/install wait for OK"
+      },
+      "m": "2026-11-20 21:57",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · usage-push-capacitor-apks · done: 2 debug APKs + RTL QA; scan/install wait for OK",
+        "en": "BOARD · usage-push-capacitor-apks · done: 2 debug APKs + RTL QA; scan/install wait for OK"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · bh-site-roof-eng · delivered R1",
         "en": "BOARD · bh-site-roof-eng · delivered R1"
       },
@@ -4660,7 +4755,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T21:57:02+04:00",
+    "generated": "2026-11-20T21:58:03+04:00",
     "rooms": [],
     "agents": [
       {

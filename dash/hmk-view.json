@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20 17:45",
-  "built": "2026-11-20 17:45",
+  "updated": "2026-11-20 17:48",
+  "built": "2026-11-20 17:48",
   "brief": [
     {
       "ar": "HMK 1.16q و1.16r جاهزان وعدّيا الفحص · اللوحة الحية تُنشر عند تغيّر البيانات",
@@ -405,7 +405,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 17:45 Asia/Dubai",
+    "updated": "2026-11-20 17:48 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -443,8 +443,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 17:45. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 17:45. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 17:48. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 17:48. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3821,6 +3821,25 @@
       "p": "deliver"
     },
     {
+      "t": {
+        "ar": "HMK 1.16q · تحديث مباشر وعدّى الفحص",
+        "en": "HMK 1.16q · live refresh, scan passed"
+      },
+      "m": "2026-11-20 15:15",
+      "f": "تسليم",
+      "from_ar": "تسليم",
+      "from_en": "Delivery",
+      "b": {
+        "ar": "• بناء 1.16q-debug (رمز 50) وفحص رسمي بلا ملاحظات\n• اللوحة الحية تُجلب من المصدر المنشور ثم الاحتياطي ثم الملف المضمّن\n• نشر تلقائي للملخص والاستهلاك وهيكل المقر عند تغيّر البيانات\n• البيانات الخاصة تُصفّى قبل النشر",
+        "en": "• Built 1.16q-debug (versionCode 50) and passed the official scan with no findings\n• The live board is fetched from the published source, then the backup, then the bundled file\n• Auto-publish of the summary, usage and HQ when data changes\n• Private data is filtered out before publish"
+      },
+      "s": {
+        "ar": "زر التحديث صار يجلب اللوحة المنشورة · اللوحة تُنشر عند تغيّر البيانات كل 15 دقيقة كحد أقصى",
+        "en": "Update now loads the published board · the board republishes when data changes, at most every 15 minutes"
+      },
+      "p": "deliver"
+    },
+    {
       "t": "جهاز العمل الجديد · 20 نوفمبر",
       "m": "2026-11-20 14:00",
       "f": "إعداد الأجهزة",
@@ -4204,7 +4223,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T17:45:11+04:00",
+    "generated": "2026-11-20T17:48:02+04:00",
     "rooms": [],
     "agents": [
       {
@@ -4545,6 +4564,24 @@
       "b": {
         "ar": "العنوان فقط.",
         "en": "Title only."
+      }
+    },
+    {
+      "m": "2026-11-20 15:15",
+      "kind": "delivery",
+      "kind_ar": "تسليم",
+      "kind_en": "Delivery",
+      "t": {
+        "ar": "HMK 1.16q · تحديث مباشر وعدّى الفحص",
+        "en": "HMK 1.16q · live refresh, scan passed"
+      },
+      "s": {
+        "ar": "زر التحديث صار يجلب اللوحة المنشورة · اللوحة تُنشر عند تغيّر البيانات كل 15 دقيقة كحد أقصى",
+        "en": "Update now loads the published board · the board republishes when data changes, at most every 15 minutes"
+      },
+      "b": {
+        "ar": "• بناء 1.16q-debug (رمز 50) وفحص رسمي بلا ملاحظات\n• اللوحة الحية تُجلب من المصدر المنشور ثم الاحتياطي ثم الملف المضمّن\n• نشر تلقائي للملخص والاستهلاك وهيكل المقر عند تغيّر البيانات\n• البيانات الخاصة تُصفّى قبل النشر",
+        "en": "• Built 1.16q-debug (versionCode 50) and passed the official scan with no findings\n• The live board is fetched from the published source, then the backup, then the bundled file\n• Auto-publish of the summary, usage and HQ when data changes\n• Private data is filtered out before publish"
       }
     },
     {

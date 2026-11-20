@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-21 03:30",
-  "built": "2026-11-21 03:30",
+  "updated": "2026-11-21 03:45",
+  "built": "2026-11-21 03:45",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -427,7 +427,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-21 03:30 Asia/Dubai",
+    "updated": "2026-11-21 03:45 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -465,8 +465,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 03:30. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 03:30. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 03:45. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 03:45. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3692,6 +3692,120 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · scout2-newpc-lfm3-audio · blocked: DESKTOP-ALM0UPS still offline at 03:35 (sweep 3); tag lfm3-audio:2b re-verified on ollama.com",
+        "en": "BOARD · scout2-newpc-lfm3-audio · blocked: DESKTOP-ALM0UPS still offline at 03:35 (sweep 3); tag lfm3-audio:2b re-verified on ollama.com"
+      },
+      "m": "2026-11-21 03:40",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout2-newpc-lfm3-audio · blocked: DESKTOP-ALM0UPS still offline at 03:35 (sweep 3); tag lfm3-audio:2b re-verified on ollama.com",
+        "en": "BOARD · scout2-newpc-lfm3-audio · blocked: DESKTOP-ALM0UPS still offline at 03:35 (sweep 3); tag lfm3-audio:2b re-verified on ollama.com"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · scout3-skills-staged · done: last30days-research + ffmpeg-video-edit adapted, audit PASS 0/0/0, not installed",
+        "en": "BOARD · scout3-skills-staged · done: last30days-research + ffmpeg-video-edit adapted, audit PASS 0/0/0, not installed"
+      },
+      "m": "2026-11-21 03:40",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout3-skills-staged · done: last30days-research + ffmpeg-video-edit adapted, audit PASS 0/0/0, not installed",
+        "en": "BOARD · scout3-skills-staged · done: last30days-research + ffmpeg-video-edit adapted, audit PASS 0/0/0, not installed"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · scout3-box-yt-tools · done: /workspace/tools/yt-venv (yt-dlp, youtube-transcript-api, google-play-scraper) + yt-transcript",
+        "en": "BOARD · scout3-box-yt-tools · done: /workspace/tools/yt-venv (yt-dlp, youtube-transcript-api, google-play-scraper) + yt-transcript"
+      },
+      "m": "2026-11-21 03:40",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout3-box-yt-tools · done: /workspace/tools/yt-venv (yt-dlp, youtube-transcript-api, google-play-scraper) + yt-transcript",
+        "en": "BOARD · scout3-box-yt-tools · done: /workspace/tools/yt-venv (yt-dlp, youtube-transcript-api, google-play-scraper) + yt-transcript"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hazawi-own-voice-narration · open",
+        "en": "BOARD · hazawi-own-voice-narration · open"
+      },
+      "m": "2026-11-21 03:40",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hazawi-own-voice-narration · open",
+        "en": "BOARD · hazawi-own-voice-narration · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · edumap-emirates-puzzle · open",
+        "en": "BOARD · edumap-emirates-puzzle · open"
+      },
+      "m": "2026-11-21 03:40",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · edumap-emirates-puzzle · open",
+        "en": "BOARD · edumap-emirates-puzzle · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hmk-family-chores-streaks · open",
+        "en": "BOARD · hmk-family-chores-streaks · open"
+      },
+      "m": "2026-11-21 03:40",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hmk-family-chores-streaks · open",
+        "en": "BOARD · hmk-family-chores-streaks · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · bh-game-v761 · delivered (v7.6.1 APK + 4 portrait Cycles stills)",
         "en": "BOARD · bh-game-v761 · delivered (v7.6.1 APK + 4 portrait Cycles stills)"
       },
@@ -5081,7 +5195,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-21T03:30:47+04:00",
+    "generated": "2026-11-21T03:45:07+04:00",
     "rooms": [],
     "agents": [
       {

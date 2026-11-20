@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20 21:30",
-  "built": "2026-11-20 21:30",
+  "updated": "2026-11-20 21:31",
+  "built": "2026-11-20 21:31",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -405,7 +405,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 21:30 Asia/Dubai",
+    "updated": "2026-11-20 21:31 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -443,8 +443,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 21:30. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 21:30. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 21:31. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 21:31. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3670,6 +3670,120 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · bh-game-polish-render · picked up",
+        "en": "BOARD · bh-game-polish-render · picked up"
+      },
+      "m": "2026-11-20 21:30",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-game-polish-render · picked up",
+        "en": "BOARD · bh-game-polish-render · picked up"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-sd01-design-review · picked up",
+        "en": "BOARD · bh-sd01-design-review · picked up"
+      },
+      "m": "2026-11-20 21:30",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-sd01-design-review · picked up",
+        "en": "BOARD · bh-sd01-design-review · picked up"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-site-roof-eng · picked up",
+        "en": "BOARD · bh-site-roof-eng · picked up"
+      },
+      "m": "2026-11-20 21:30",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-site-roof-eng · picked up",
+        "en": "BOARD · bh-site-roof-eng · picked up"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-sd01-cost · picked up",
+        "en": "BOARD · bh-sd01-cost · picked up"
+      },
+      "m": "2026-11-20 21:30",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-sd01-cost · picked up",
+        "en": "BOARD · bh-sd01-cost · picked up"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-permits-check · picked up",
+        "en": "BOARD · bh-permits-check · picked up"
+      },
+      "m": "2026-11-20 21:30",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-permits-check · picked up",
+        "en": "BOARD · bh-permits-check · picked up"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-sd01-extend-rooms · picked up",
+        "en": "BOARD · bh-sd01-extend-rooms · picked up"
+      },
+      "m": "2026-11-20 21:30",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-sd01-extend-rooms · picked up",
+        "en": "BOARD · bh-sd01-extend-rooms · picked up"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · excel-ideas-2026-11-20 · done",
         "en": "BOARD · excel-ideas-2026-11-20 · done"
       },
@@ -4451,7 +4565,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T21:30:10+04:00",
+    "generated": "2026-11-20T21:31:09+04:00",
     "rooms": [],
     "agents": [
       {

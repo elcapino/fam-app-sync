@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20 19:58",
-  "built": "2026-11-20 19:58",
+  "updated": "2026-11-20 20:13",
+  "built": "2026-11-20 20:13",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -405,7 +405,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 19:58 Asia/Dubai",
+    "updated": "2026-11-20 20:13 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -443,8 +443,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 19:58. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 19:58. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 20:13. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 20:13. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3670,6 +3670,63 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · shopify-ops-free-prep · open",
+        "en": "BOARD · shopify-ops-free-prep · open"
+      },
+      "m": "2026-11-20 20:11",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · shopify-ops-free-prep · open",
+        "en": "BOARD · shopify-ops-free-prep · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · shopify-growth-free-seo · open",
+        "en": "BOARD · shopify-growth-free-seo · open"
+      },
+      "m": "2026-11-20 20:11",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · shopify-growth-free-seo · open",
+        "en": "BOARD · shopify-growth-free-seo · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · shopify-finance-free-prep · open",
+        "en": "BOARD · shopify-finance-free-prep · open"
+      },
+      "m": "2026-11-20 20:11",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · shopify-finance-free-prep · open",
+        "en": "BOARD · shopify-finance-free-prep · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "HMK 1.16s · اللوحة الحية بلا تأخير",
         "en": "HMK 1.16s · live board without the stall"
       },
@@ -4242,7 +4299,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T19:58:01+04:00",
+    "generated": "2026-11-20T20:13:40+04:00",
     "rooms": [],
     "agents": [
       {

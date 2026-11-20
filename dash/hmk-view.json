@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20 23:30",
-  "built": "2026-11-20 23:30",
+  "updated": "2026-11-20 23:45",
+  "built": "2026-11-20 23:45",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -405,7 +405,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 23:30 Asia/Dubai",
+    "updated": "2026-11-20 23:45 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -443,8 +443,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 23:30. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 23:30. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 23:45. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 23:45. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3670,6 +3670,25 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · bh-game-polish-render · delivered (v7.5 APK + 4 Cycles stills)",
+        "en": "BOARD · bh-game-polish-render · delivered (v7.5 APK + 4 Cycles stills)"
+      },
+      "m": "2026-11-20 23:44",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-game-polish-render · delivered (v7.5 APK + 4 Cycles stills)",
+        "en": "BOARD · bh-game-polish-render · delivered (v7.5 APK + 4 Cycles stills)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · bh-game-polish-render · in progress (v7.5 APK done, Cycles stills running)",
         "en": "BOARD · bh-game-polish-render · in progress (v7.5 APK done, Cycles stills running)"
       },
@@ -4793,7 +4812,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T23:30:15+04:00",
+    "generated": "2026-11-20T23:45:15+04:00",
     "rooms": [],
     "agents": [
       {

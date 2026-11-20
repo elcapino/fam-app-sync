@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-21 03:00",
-  "built": "2026-11-21 03:00",
+  "updated": "2026-11-21 03:30",
+  "built": "2026-11-21 03:30",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -384,7 +384,7 @@
     },
     {
       "name": "Gemini",
-      "v": 6.29,
+      "v": 6.3,
       "cap": 75,
       "day_cap": 15,
       "day_used": 0.01
@@ -427,7 +427,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-21 03:00 Asia/Dubai",
+    "updated": "2026-11-21 03:30 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -440,7 +440,7 @@
       },
       {
         "name": "Gemini",
-        "used": 6.29,
+        "used": 6.3,
         "cap": 75,
         "day_cap": 15,
         "day_used": 0.01,
@@ -465,8 +465,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 03:00. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 03:00. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 03:30. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 03:30. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3692,6 +3692,25 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · bh-game-v761 · delivered (v7.6.1 APK + 4 portrait Cycles stills)",
+        "en": "BOARD · bh-game-v761 · delivered (v7.6.1 APK + 4 portrait Cycles stills)"
+      },
+      "m": "2026-11-21 03:04",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-game-v761 · delivered (v7.6.1 APK + 4 portrait Cycles stills)",
+        "en": "BOARD · bh-game-v761 · delivered (v7.6.1 APK + 4 portrait Cycles stills)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · bh-game-v76 · delivered (v7.6 APK, no Cycles stills)",
         "en": "BOARD · bh-game-v76 · delivered (v7.6 APK, no Cycles stills)"
       },
@@ -5062,7 +5081,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-21T03:00:08+04:00",
+    "generated": "2026-11-21T03:30:47+04:00",
     "rooms": [],
     "agents": [
       {

@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20 23:45",
-  "built": "2026-11-20 23:45",
+  "updated": "2026-11-21 00:00",
+  "built": "2026-11-21 00:00",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -100,6 +100,28 @@
     },
     {
       "d": "2026-11-20",
+      "n": 4,
+      "items": [
+        {
+          "ar": "HMK 1.16q تحديث مباشر وعدّى الفحص",
+          "en": "HMK 1.16q live refresh passed the scan"
+        },
+        {
+          "ar": "HMK 1.16r زر أضف المهارة وعدّى الفحص",
+          "en": "HMK 1.16r Add-skill passed the scan"
+        },
+        {
+          "ar": "20 مهارة من ECC ومهارة ذوق التصميم في المكتبة",
+          "en": "20 ECC skills and taste-skill added to the library"
+        },
+        {
+          "ar": "هيرمس مربوط ومعزول في دوكر مع طرفية",
+          "en": "Hermes connected, isolated in Docker, with a terminal"
+        }
+      ]
+    },
+    {
+      "d": "2026-11-21",
       "n": 4,
       "items": [
         {
@@ -365,7 +387,7 @@
       "v": 6.29,
       "cap": 75,
       "day_cap": 15,
-      "day_used": 0.12
+      "day_used": 0.0
     },
     {
       "name": "DeepSeek",
@@ -405,7 +427,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 23:45 Asia/Dubai",
+    "updated": "2026-11-21 00:00 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -421,7 +443,7 @@
         "used": 6.29,
         "cap": 75,
         "day_cap": 15,
-        "day_used": 0.12,
+        "day_used": 0.0,
         "unit": "$",
         "pct": 8.4
       },
@@ -443,8 +465,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 23:45. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 23:45. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 00:00. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 00:00. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3670,6 +3692,101 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · scout-ollama-newpc · done: Ollama 0.40.16 already per-user; pulled lfm3:1.7b (smoke ok). Aion blocked (no official Ollama/GGUF tag)",
+        "en": "BOARD · scout-ollama-newpc · done: Ollama 0.40.16 already per-user; pulled lfm3:1.7b (smoke ok). Aion blocked (no official Ollama/GGUF tag)"
+      },
+      "m": "2026-11-20 23:49",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout-ollama-newpc · done: Ollama 0.40.16 already per-user; pulled lfm3:1.7b (smoke ok). Aion blocked (no official Ollama/GGUF tag)",
+        "en": "BOARD · scout-ollama-newpc · done: Ollama 0.40.16 already per-user; pulled lfm3:1.7b (smoke ok). Aion blocked (no official Ollama/GGUF tag)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · scout-hermes-agent-browser · done: image c152cfce-web1-ab1 (71eb33bbf730); web1 kept as rollback; $0 tests run",
+        "en": "BOARD · scout-hermes-agent-browser · done: image c152cfce-web1-ab1 (71eb33bbf730); web1 kept as rollback; $0 tests run"
+      },
+      "m": "2026-11-20 23:49",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout-hermes-agent-browser · done: image c152cfce-web1-ab1 (71eb33bbf730); web1 kept as rollback; $0 tests run",
+        "en": "BOARD · scout-hermes-agent-browser · done: image c152cfce-web1-ab1 (71eb33bbf730); web1 kept as rollback; $0 tests run"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · find-skills-adapted · done: SKILL-adapted.md saved, not installed",
+        "en": "BOARD · find-skills-adapted · done: SKILL-adapted.md saved, not installed"
+      },
+      "m": "2026-11-20 23:49",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · find-skills-adapted · done: SKILL-adapted.md saved, not installed",
+        "en": "BOARD · find-skills-adapted · done: SKILL-adapted.md saved, not installed"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · shopify-scout-noon-prices · delivered (handoff only, no spend)",
+        "en": "BOARD · shopify-scout-noon-prices · delivered (handoff only, no spend)"
+      },
+      "m": "2026-11-20 23:49",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · shopify-scout-noon-prices · delivered (handoff only, no spend)",
+        "en": "BOARD · shopify-scout-noon-prices · delivered (handoff only, no spend)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-game-v76 · picked up",
+        "en": "BOARD · bh-game-v76 · picked up"
+      },
+      "m": "2026-11-20 23:49",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-game-v76 · picked up",
+        "en": "BOARD · bh-game-v76 · picked up"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · bh-game-polish-render · delivered (v7.5 APK + 4 Cycles stills)",
         "en": "BOARD · bh-game-polish-render · delivered (v7.5 APK + 4 Cycles stills)"
       },
@@ -4812,7 +4929,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T23:45:15+04:00",
+    "generated": "2026-11-21T00:00:16+04:00",
     "rooms": [],
     "agents": [
       {
@@ -4876,7 +4993,7 @@
       "موجزات"
     ],
     "brief": {
-      "date": "2026-11-20",
+      "date": "2026-11-21",
       "your_part": [
         "اختر أول تطبيق للنشر",
         "وافق على نشر بيانات HMK المحدّثة",

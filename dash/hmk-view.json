@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20 21:55",
-  "built": "2026-11-20 21:55",
+  "updated": "2026-11-20 21:56",
+  "built": "2026-11-20 21:56",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -405,7 +405,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 21:55 Asia/Dubai",
+    "updated": "2026-11-20 21:56 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -443,8 +443,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 21:55. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 21:55. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 21:56. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 21:56. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3670,6 +3670,44 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · bh-site-roof-eng · delivered R1",
+        "en": "BOARD · bh-site-roof-eng · delivered R1"
+      },
+      "m": "2026-11-20 21:55",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-site-roof-eng · delivered R1",
+        "en": "BOARD · bh-site-roof-eng · delivered R1"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hazawi-ep1 · done: final draft ready, not published",
+        "en": "BOARD · hazawi-ep1 · done: final draft ready, not published"
+      },
+      "m": "2026-11-20 21:55",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hazawi-ep1 · done: final draft ready, not published",
+        "en": "BOARD · hazawi-ep1 · done: final draft ready, not published"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · accessibility-audit-co · done (name check added: research/yusr.md)",
         "en": "BOARD · accessibility-audit-co · done (name check added: research/yusr.md)"
       },
@@ -4622,7 +4660,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T21:55:01+04:00",
+    "generated": "2026-11-20T21:56:02+04:00",
     "rooms": [],
     "agents": [
       {

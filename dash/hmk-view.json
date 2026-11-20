@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20 21:51",
-  "built": "2026-11-20 21:51",
+  "updated": "2026-11-20 21:52",
+  "built": "2026-11-20 21:52",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -405,7 +405,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 21:51 Asia/Dubai",
+    "updated": "2026-11-20 21:52 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -443,8 +443,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 21:51. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 21:51. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 21:52. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 21:52. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3670,6 +3670,63 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · accessibility-audit-co · done (name check added: research/yusr.md)",
+        "en": "BOARD · accessibility-audit-co · done (name check added: research/yusr.md)"
+      },
+      "m": "2026-11-20 21:52",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · accessibility-audit-co · done (name check added: research/yusr.md)",
+        "en": "BOARD · accessibility-audit-co · done (name check added: research/yusr.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-site-roof-eng · delivered v1 (cube PDF re-check pending)",
+        "en": "BOARD · bh-site-roof-eng · delivered v1 (cube PDF re-check pending)"
+      },
+      "m": "2026-11-20 21:52",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-site-roof-eng · delivered v1 (cube PDF re-check pending)",
+        "en": "BOARD · bh-site-roof-eng · delivered v1 (cube PDF re-check pending)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · research-backlog-2026-11-20 · done (6 files + index in research/)",
+        "en": "BOARD · research-backlog-2026-11-20 · done (6 files + index in research/)"
+      },
+      "m": "2026-11-20 21:52",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · research-backlog-2026-11-20 · done (6 files + index in research/)",
+        "en": "BOARD · research-backlog-2026-11-20 · done (6 files + index in research/)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · bh-game-polish-render · picked up",
         "en": "BOARD · bh-game-polish-render · picked up"
       },
@@ -4565,7 +4622,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T21:51:18+04:00",
+    "generated": "2026-11-20T21:52:59+04:00",
     "rooms": [],
     "agents": [
       {

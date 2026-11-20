@@ -1,0 +1,254 @@
+{
+  "label": {
+    "ar": "الأسبوع الحالي حتى 20 نوفمبر",
+    "en": "Current week as of 20 Nov"
+  },
+  "weekly_used_pct": 52.5,
+  "weekly_note": {
+    "ar": "مشترك مع تطبيقات أخرى · رصيد إضافي 0 دولار",
+    "en": "Shared with other apps · extra credits $0"
+  },
+  "reset_label": {
+    "ar": "الأحد 22 نوفمبر 13:02 دبي",
+    "en": "Sun 22 Nov 13:02 Dubai"
+  },
+  "ondemand_label": {
+    "ar": "<1%",
+    "en": "<1%"
+  },
+  "bots": [
+    {
+      "id": "ceo",
+      "ar": "CEO",
+      "en": "CEO",
+      "pct": 70,
+      "room": "meet"
+    },
+    {
+      "id": "house",
+      "ar": "البيت (مشروع 5)",
+      "en": "House (Project 5)",
+      "pct": 8,
+      "room": "house"
+    },
+    {
+      "id": "islam",
+      "ar": "التطبيق الإسلامي",
+      "en": "Islamic app",
+      "pct": 3
+    },
+    {
+      "id": "family_general",
+      "ar": "عام الأسرة في الإمارات",
+      "en": "UAE Year of Family",
+      "pct": 2
+    },
+    {
+      "id": "replica",
+      "ar": "Apps Replica",
+      "en": "Apps Replica",
+      "pct": 2
+    },
+    {
+      "id": "flipper",
+      "ar": "Flipper والأجهزة",
+      "en": "Flipper and devices",
+      "pct": 1
+    },
+    {
+      "id": "rg",
+      "ar": "Red Green UAE Intel",
+      "en": "Red Green UAE Intel",
+      "pct": 1
+    },
+    {
+      "id": "release",
+      "ar": "مدير الإصدارات",
+      "en": "Release manager",
+      "pct": 1
+    },
+    {
+      "id": "news",
+      "ar": "البحث والأخبار",
+      "en": "Search and news",
+      "pct": 1,
+      "room": "research"
+    },
+    {
+      "id": "other",
+      "ar": "أخرى",
+      "en": "Others",
+      "pct": 11,
+      "note": {
+        "ar": "بوتات خاصة وبوتات أقل من 1%",
+        "en": "Private bots and bots under 1%"
+      }
+    }
+  ],
+  "rooms": {
+    "meet": 70,
+    "research": 5,
+    "fahem": 6,
+    "house": 2,
+    "shop": 0,
+    "trade": 0
+  },
+  "ceo": {
+    "chat_pct": 59,
+    "chat_note": {
+      "ar": "عمل المحادثة، ليس روتيناً",
+      "en": "Chat work, not a routine"
+    },
+    "other": {
+      "ar": "بقية الروتينات أقل من 1% لكل واحد",
+      "en": "Other routines are under 1% each"
+    },
+    "routines": [
+      {
+        "ar": "مراقب فاهم وحارس السكربت · موقوف منذ 16 نوفمبر 19:56",
+        "en": "FAHEM monitor and script guard · stopped since 16 Nov 19:56",
+        "pct": 5,
+        "runs": 63
+      },
+      {
+        "ar": "طابور فاهم الموحد · موقوف منذ 16 نوفمبر 19:56",
+        "en": "FAHEM unified queue · stopped since 16 Nov 19:56",
+        "pct": 2,
+        "runs": 42
+      },
+      {
+        "ar": "حارس السكربت كل ساعة · موقوف",
+        "en": "Hourly script guard · paused",
+        "pct": 2,
+        "runs": 0
+      },
+      {
+        "ar": "طابور NotebookLM · موقوف",
+        "en": "NotebookLM queue · paused",
+        "pct": 2,
+        "runs": 0
+      },
+      {
+        "ar": "نشر IQRA اليومي",
+        "en": "Daily IQRA publish",
+        "pct": 0.5,
+        "runs": 7
+      }
+    ]
+  },
+  "rhythm": [
+    {
+      "ar": "التطور اليومي",
+      "en": "Daily evolution",
+      "when_ar": "يومي 7:30",
+      "when_en": "Daily 7:30",
+      "st": "up"
+    },
+    {
+      "ar": "التداول التجريبي الحلال",
+      "en": "Halal paper trading",
+      "when_ar": "يومي 8:00",
+      "when_en": "Daily 8:00",
+      "st": "hold",
+      "since_ar": "موقوف 17 نوفمبر",
+      "since_en": "Paused 17 Nov"
+    },
+    {
+      "ar": "ملخص TradingView",
+      "en": "TradingView brief",
+      "when_ar": "أيام العمل 8:30",
+      "when_en": "Weekdays 8:30",
+      "st": "hold",
+      "since_ar": "موقوف 17 نوفمبر",
+      "since_en": "Paused 17 Nov"
+    },
+    {
+      "ar": "التقرير اليومي للمشاريع",
+      "en": "Daily projects report",
+      "when_ar": "يومي 9:00",
+      "when_en": "Daily 9:00",
+      "st": "up"
+    },
+    {
+      "ar": "أفكار الفرص الأسبوعية",
+      "en": "Weekly opportunity ideas",
+      "when_ar": "الأحد 13:30",
+      "when_en": "Sun 13:30",
+      "st": "up"
+    },
+    {
+      "ar": "فحص الجودة الأسبوعي",
+      "en": "Weekly quality check",
+      "when_ar": "الجمعة 17:30",
+      "when_en": "Fri 17:30",
+      "st": "up",
+      "since_ar": "لم يعمل بعد",
+      "since_en": "Never run yet"
+    },
+    {
+      "ar": "المراجعة الأسبوعية",
+      "en": "Weekly review",
+      "when_ar": "الجمعة 18:00",
+      "when_en": "Fri 18:00",
+      "st": "up"
+    },
+    {
+      "ar": "نشر IQRA اليومي",
+      "en": "Daily IQRA publish",
+      "when_ar": "يومي 18:00",
+      "when_en": "Daily 18:00",
+      "st": "up"
+    },
+    {
+      "ar": "Bridge Bot",
+      "en": "Bridge Bot",
+      "when_ar": "عند ورود طلب",
+      "when_en": "On request",
+      "st": "up"
+    },
+    {
+      "ar": "مراقب فاهم",
+      "en": "FAHEM monitor",
+      "when_ar": "كل 4 ساعات من 7 إلى 23",
+      "when_en": "Every 4 hours, 7–23",
+      "st": "hold",
+      "since_ar": "موقوف 16 نوفمبر",
+      "since_en": "Stopped 16 Nov"
+    },
+    {
+      "ar": "طابور فاهم الموحد",
+      "en": "FAHEM unified queue",
+      "when_ar": "متكرر",
+      "when_en": "Recurring",
+      "st": "hold",
+      "since_ar": "موقوف 16 نوفمبر",
+      "since_en": "Stopped 16 Nov"
+    },
+    {
+      "ar": "حارس السكربت كل ساعة",
+      "en": "Hourly script guard",
+      "when_ar": "كل ساعة",
+      "when_en": "Hourly",
+      "st": "hold",
+      "since_ar": "موقوف",
+      "since_en": "Paused"
+    },
+    {
+      "ar": "طابور NotebookLM",
+      "en": "NotebookLM queue",
+      "when_ar": "متكرر",
+      "when_en": "Recurring",
+      "st": "hold",
+      "since_ar": "موقوف",
+      "since_en": "Paused"
+    }
+  ],
+  "weekly_asof": {
+    "ar": "حتى 20 نوفمبر",
+    "en": "as of 20 Nov"
+  },
+  "bots_asof": {
+    "ar": "تفصيل الحصص من آخر لقطة محفوظة (CEO 70٪) · الإجمالي الأسبوعي محدّث",
+    "en": "Bot-share breakdown from the last stored snapshot (CEO 70%) · weekly total is updated"
+  }
+}

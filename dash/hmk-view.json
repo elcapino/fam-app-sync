@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20 17:48",
-  "built": "2026-11-20 17:48",
+  "updated": "2026-11-20 18:03",
+  "built": "2026-11-20 18:03",
   "brief": [
     {
       "ar": "HMK 1.16q و1.16r جاهزان وعدّيا الفحص · اللوحة الحية تُنشر عند تغيّر البيانات",
@@ -405,7 +405,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 17:48 Asia/Dubai",
+    "updated": "2026-11-20 18:03 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -443,8 +443,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 17:48. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 17:48. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 18:03. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 18:03. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -4223,7 +4223,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T17:48:02+04:00",
+    "generated": "2026-11-20T18:03:26+04:00",
     "rooms": [],
     "agents": [
       {
@@ -4351,6 +4351,42 @@
   },
   "updates": [
     {
+      "m": "2026-11-20 17:59",
+      "kind": "update",
+      "kind_ar": "تحديث",
+      "kind_en": "Update",
+      "t": {
+        "ar": "مذكرة فريق · Handoff: Hermes Agent, connected and Docker-isolated (20 Nov 2026)",
+        "en": "Team handoff · Handoff: Hermes Agent, connected and Docker-isolated (20 Nov 2026)"
+      },
+      "s": {
+        "ar": "آخر تحديث للمذكرة في 2026-11-20 17:59",
+        "en": "Handoff last updated 2026-11-20 17:59"
+      },
+      "b": {
+        "ar": "عنوان المذكرة فقط · بلا تفاصيل داخلية.",
+        "en": "Title only · no internal detail."
+      }
+    },
+    {
+      "m": "2026-11-20 17:49",
+      "kind": "update",
+      "kind_ar": "تحديث",
+      "kind_en": "Update",
+      "t": {
+        "ar": "مذكرة فريق · HMK still showing 14:43 (20 Nov 17:50 Asia/Dubai)",
+        "en": "Team handoff · HMK still showing 14:43 (20 Nov 17:50 Asia/Dubai)"
+      },
+      "s": {
+        "ar": "آخر تحديث للمذكرة في 2026-11-20 17:49",
+        "en": "Handoff last updated 2026-11-20 17:49"
+      },
+      "b": {
+        "ar": "عنوان المذكرة فقط · بلا تفاصيل داخلية.",
+        "en": "Title only · no internal detail."
+      }
+    },
+    {
       "m": "2026-11-20 17:37",
       "kind": "addon",
       "kind_ar": "إضافة",
@@ -4366,24 +4402,6 @@
       "b": {
         "ar": "• إضافة طرفية داخل حاوية هيرمس\n• تجربة: كتب وشغّل سكربت بايثون وأجاب إجابة صحيحة\n• بقي عاجزاً عن الوصول إلى مجلدات الجهاز\n• التكلفة صفر",
         "en": "• Added a terminal inside the Hermes container\n• Test: it wrote and ran a Python script and got the right answer\n• It still could not reach the PC folders\n• Cost was zero"
-      }
-    },
-    {
-      "m": "2026-11-20 17:36",
-      "kind": "update",
-      "kind_ar": "تحديث",
-      "kind_en": "Update",
-      "t": {
-        "ar": "مذكرة فريق · Handoff: Hermes Agent, connected and Docker-isolated (20 Nov 2026)",
-        "en": "Team handoff · Handoff: Hermes Agent, connected and Docker-isolated (20 Nov 2026)"
-      },
-      "s": {
-        "ar": "آخر تحديث للمذكرة في 2026-11-20 17:36",
-        "en": "Handoff last updated 2026-11-20 17:36"
-      },
-      "b": {
-        "ar": "عنوان المذكرة فقط · بلا تفاصيل داخلية.",
-        "en": "Title only · no internal detail."
       }
     },
     {

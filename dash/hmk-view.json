@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20 22:01",
-  "built": "2026-11-20 22:01",
+  "updated": "2026-11-20 23:15",
+  "built": "2026-11-20 23:15",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -405,7 +405,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 22:01 Asia/Dubai",
+    "updated": "2026-11-20 23:15 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -443,8 +443,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 22:01. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 22:01. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 23:15. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 23:15. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3670,6 +3670,25 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · bh-game-polish-render · in progress (v7.5 APK done, Cycles stills running)",
+        "en": "BOARD · bh-game-polish-render · in progress (v7.5 APK done, Cycles stills running)"
+      },
+      "m": "2026-11-20 22:59",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-game-polish-render · in progress (v7.5 APK done, Cycles stills running)",
+        "en": "BOARD · bh-game-polish-render · in progress (v7.5 APK done, Cycles stills running)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · bh-sd01-extend-rooms · delivered (spec.md/json; apply in game v7.6 after v7.5)",
         "en": "BOARD · bh-sd01-extend-rooms · delivered (spec.md/json; apply in game v7.6 after v7.5)"
       },
@@ -4774,7 +4793,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T22:01:06+04:00",
+    "generated": "2026-11-20T23:15:14+04:00",
     "rooms": [],
     "agents": [
       {

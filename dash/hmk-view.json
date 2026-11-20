@@ -1,22 +1,22 @@
 {
-  "updated": "2026-11-20 17:29",
-  "built": "2026-11-20 17:29",
+  "updated": "2026-11-20 17:45",
+  "built": "2026-11-20 17:45",
   "brief": [
     {
-      "ar": "جهاز العمل الجديد انضم اليوم واتجهز",
-      "en": "The new work PC joined and was set up today"
+      "ar": "HMK 1.16q و1.16r جاهزان وعدّيا الفحص · اللوحة الحية تُنشر عند تغيّر البيانات",
+      "en": "HMK 1.16q and 1.16r are ready and both passed the scan · the live board publishes when data changes"
     },
     {
-      "ar": "تحديث بيانات HMK جاهز محلياً · النشر ما زال موقوفاً",
-      "en": "A fresh HMK data rebuild is ready locally · publishing is still paused"
+      "ar": "أُضيفت مهارات ECC وذوق التصميم إلى المكتبة · زر أضف المهارة يرسل الطلب مباشرة بعد تأكيد واحد",
+      "en": "ECC skills and taste-skill are in the library · Add skill sends the request after one confirm"
     },
     {
-      "ar": "التداول موقوف منذ 17 نوفمبر · فاهم موقف منذ 16 نوفمبر",
-      "en": "Trading stopped since 17 Nov · FAHEM stopped since 16 Nov"
+      "ar": "هيرمس مربوط ومعزول داخل دوكر على الجهاز الرئيسي وله طرفية داخل الحاوية",
+      "en": "Hermes is connected, isolated in Docker on the main PC, and has a terminal inside the container"
     },
     {
-      "ar": "الاستهلاك الأسبوعي 52.5٪ · يتجدد الأحد 22 نوفمبر 13:02 دبي",
-      "en": "Weekly usage 52.5% · resets Sun 22 Nov 13:02 Dubai"
+      "ar": "الاستهلاك الأسبوعي يُحدَّث من السجلات · التداول وفاهم ما زالا موقوفين",
+      "en": "Weekly usage updates from the ledgers · trading and FAHEM stay stopped"
     }
   ],
   "waiting": [
@@ -100,19 +100,23 @@
     },
     {
       "d": "2026-11-20",
-      "n": 3,
+      "n": 4,
       "items": [
         {
-          "ar": "ربط وتجهيز جهاز العمل الجديد",
-          "en": "New work PC connected and set up"
+          "ar": "HMK 1.16q تحديث مباشر وعدّى الفحص",
+          "en": "HMK 1.16q live refresh passed the scan"
         },
         {
-          "ar": "تنظيف الجهاز وإعداده للأداء والمظهر",
-          "en": "New PC cleaned and set to high performance"
+          "ar": "HMK 1.16r زر أضف المهارة وعدّى الفحص",
+          "en": "HMK 1.16r Add-skill passed the scan"
         },
         {
-          "ar": "تحديث بيانات HMK محلياً (بانتظار النشر)",
-          "en": "HMK data rebuilt locally (awaiting publish)"
+          "ar": "20 مهارة من ECC ومهارة ذوق التصميم في المكتبة",
+          "en": "20 ECC skills and taste-skill added to the library"
+        },
+        {
+          "ar": "هيرمس مربوط ومعزول في دوكر مع طرفية",
+          "en": "Hermes connected, isolated in Docker, with a terminal"
         }
       ]
     }
@@ -179,8 +183,8 @@
         "en": "HMK",
         "s": "go",
         "pct": 0,
-        "ar_n": "آخر نسخة مفحوصة 1.16n · 17 نوفمبر · بيانات 20 نوفمبر جاهزة محلياً وبانتظار النشر",
-        "en_n": "Latest scanned build 1.16n · 17 Nov · 20 Nov data is ready locally and waiting to be published"
+        "ar_n": "1.16r مفحوصة في 16:55 · اللوحة الحية تُنشر تلقائياً · التثبيت على الهاتف بانتظار الأمر",
+        "en_n": "1.16r scanned at 16:55 · the live board auto-publishes · phone install waits for the order"
       }
     ],
     "ideas": [
@@ -401,7 +405,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 17:29 Asia/Dubai",
+    "updated": "2026-11-20 17:45 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -439,8 +443,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 17:29. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 17:29. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 17:45. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 17:45. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3665,11 +3669,155 @@
   },
   "docs": [
     {
-      "t": "تحديث بيانات HMK محلياً · 20 نوفمبر",
-      "m": "2026-11-20 14:43",
-      "f": "لوحة HMK",
-      "b": "• أُعيد بناء لقطة الملخص والمقر والمشاريع والوكالة والبيت والسوق والإنفاق والأفكار والتقارير\n• النشر إلى الهاتف ما زال موقوفاً بقرار سابق · لا دفع إلى GitHub في هذا البناء\n• زر التحديث في التطبيق الحالي يعيد تحميل الملفات المضمّنة في النسخة ولا يجلب اللوحة المنشورة",
-      "s": "بيانات 20 نوفمبر جاهزة محلياً · بانتظار النشر وإصلاح زر التحديث",
+      "t": {
+        "ar": "طرفية لهيرمس داخل الحاوية",
+        "en": "A terminal for Hermes inside the container"
+      },
+      "m": "2026-11-20 17:37",
+      "f": "إضافة",
+      "from_ar": "إضافة",
+      "from_en": "Add-on",
+      "b": {
+        "ar": "• إضافة طرفية داخل حاوية هيرمس\n• تجربة: كتب وشغّل سكربت بايثون وأجاب إجابة صحيحة\n• بقي عاجزاً عن الوصول إلى مجلدات الجهاز\n• التكلفة صفر",
+        "en": "• Added a terminal inside the Hermes container\n• Test: it wrote and ran a Python script and got the right answer\n• It still could not reach the PC folders\n• Cost was zero"
+      },
+      "s": {
+        "ar": "يشغّل أوامر داخل الحاوية فقط وما زال معزولاً عن مجلدات الجهاز",
+        "en": "It can run commands only inside the container and is still isolated from the PC folders"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "الفحص الأسبوعي للجودة · 20 نوفمبر",
+        "en": "Weekly quality check · 20 Nov"
+      },
+      "m": "2026-11-20 17:30",
+      "f": "فحص",
+      "from_ar": "فحص",
+      "from_en": "Check",
+      "b": {
+        "ar": "• الفحص الأسبوعي للجودة جرى عند 17:30 بتوقيت دبي\n• تقارير المشاريع اليومية للفترة 14–19 نوفمبر غير موجودة\n• الاستهلاك الأسبوعي 55.7٪ · التجديد الأحد 22 نوفمبر 13:02 بتوقيت دبي",
+        "en": "• The weekly quality check ran at 17:30 Dubai time\n• Daily project reports for 14–19 Nov are missing\n• Weekly usage 55.7% · resets Sun 22 Nov 13:02 Dubai time"
+      },
+      "s": {
+        "ar": "تقارير المشاريع اليومية لـ14–19 نوفمبر ناقصة · الاستهلاك الأسبوعي 55.7٪ ويتجدد الأحد 13:02",
+        "en": "Daily project reports for 14–19 Nov are missing · weekly usage 55.7%, resets Sunday 13:02"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "هيرمس داخل دوكر ومعزول",
+        "en": "Hermes isolated in Docker"
+      },
+      "m": "2026-11-20 17:25",
+      "f": "إجراء",
+      "from_ar": "إجراء",
+      "from_en": "Action",
+      "b": {
+        "ar": "• نقل هيرمس إلى حاوية دوكر على الجهاز الرئيسي\n• اختبارات الهروب فشلت في الوصول لأي مجلد خارج مساحته\n• لم يُثبَّت شيء جديد · دوكر كان موجوداً\n• لا منافذ عامة ولا إعادة تشغيل للجهاز",
+        "en": "• Moved Hermes into a Docker container on the main PC\n• Escape tests could not reach any folder outside its workspace\n• Nothing new was installed · Docker was already there\n• No public ports and no PC restart"
+      },
+      "s": {
+        "ar": "لا يصل إلى مجلدات الجهاز · يرى مساحة عمله فقط",
+        "en": "Cannot reach the PC folders · it only sees its own workspace"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "ربط هيرمس على الجهاز الرئيسي",
+        "en": "Hermes connected on the main PC"
+      },
+      "m": "2026-11-20 17:10",
+      "f": "إجراء",
+      "from_ar": "إجراء",
+      "from_en": "Action",
+      "b": {
+        "ar": "• التشغيل محلي بلا منافذ عامة\n• نجح في إجابة سريعة ومهمة ملفات وطابور مهام\n• التكلفة صفر على الطبقة المجانية\n• حدّ المجلد كان بالتعليمات فقط قبل العزل اللاحق",
+        "en": "• Ran locally with no public ports\n• Passed a quick answer, a file task and a job queue\n• Cost was zero on the free tier\n• The folder limit was instruction-only until later isolation"
+      },
+      "s": {
+        "ar": "اجتاز اختبار إجابة وملف وطابور مهام على الطبقة المجانية",
+        "en": "Passed an answer test, a file task and a job queue on the free tier"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "HMK 1.16r · زر أضف المهارة وفحص ناجح",
+        "en": "HMK 1.16r · Add-skill button and a passing scan"
+      },
+      "m": "2026-11-20 16:55",
+      "f": "تسليم",
+      "from_ar": "تسليم",
+      "from_en": "Delivery",
+      "b": {
+        "ar": "• بناء 1.16r-debug (رمز 51) بزر أضف المهارة\n• لا مفاتيح داخل التطبيق · التأكيد يتم من جلسة GitHub على الهاتف\n• مراقب على الصندوق يراجع الطلب كل 15 دقيقة ويضيف المهارة إن عدّت الفحص\n• الفحص الرسمي: بلا ملاحظات في 16:55 بتوقيت دبي\n• التثبيت على الهاتف ما زال بانتظار أمر المالك",
+        "en": "• Built 1.16r-debug (versionCode 51) with the Add-skill button\n• No keys inside the app · confirmation is in the phone GitHub session\n• A box watcher reviews each request every 15 minutes and installs the skill only if the audit passes\n• Official scan: no findings at 16:55 Dubai time\n• Phone install still waits for the owner's order"
+      },
+      "s": {
+        "ar": "أضف المهارة يفتح طلباً جاهزاً للتأكيد · الفحص الرسمي بلا ملاحظات",
+        "en": "Add skill opens a prefilled request to confirm · official scan had no findings"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "إضافة مهارة ذوق التصميم",
+        "en": "Taste-skill added to the library"
+      },
+      "m": "2026-11-20 16:53",
+      "f": "إضافة",
+      "from_ar": "إضافة",
+      "from_en": "Add-on",
+      "b": {
+        "ar": "• استيراد المهارة بعد فحص: لا تثبيت تلقائي ولا قراءة أسرار\n• الاستخدام مضيّق على تصميم الصفحات العامة لا الواجهات الخاصة\n• أُضيفت إلى مكتبة المهارات ومسودة الصندوق",
+        "en": "• Imported after an audit: no auto-installer and no secret reads\n• Trigger narrowed to public page design, not private interfaces\n• Installed in the skill library and drafted on the box"
+      },
+      "s": {
+        "ar": "المهارة عدّت الفحص الأمني وهي جاهزة لصفحات الهبوط والتسويق",
+        "en": "The skill passed the security check and is ready for landing and marketing pages"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "مهارة مضافة · taste-skill",
+        "en": "Skill added · taste-skill"
+      },
+      "m": "2026-11-20 16:46",
+      "f": "إضافة",
+      "from_ar": "إضافة",
+      "from_en": "Add-on",
+      "b": {
+        "ar": "الحالة: installed",
+        "en": "Status: installed"
+      },
+      "s": {
+        "ar": "أُضيفت إلى المكتبة بعد الفحص",
+        "en": "Added to the library after the audit"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "20 مهارة من ECC في المكتبة · ECC يعمل على الجهاز",
+        "en": "20 ECC skills in the library · ECC running on the PC"
+      },
+      "m": "2026-11-20 16:40",
+      "f": "إضافة",
+      "from_ar": "إضافة",
+      "from_en": "Add-on",
+      "b": {
+        "ar": "• فحص أمني لمهارات ECC وإضافة 20 مهارة للمكتبة\n• رفض 9 مهارات مكررة أو تعتمد أدوات خارجية غير مراجعة\n• تشغيل ECC في مجلد معزول على الجهاز الرئيسي بمفتاح كلود الحالي دون اشتراك جديد\n• تجربة أولى نجحت · كل تشغيل يبقى تحت سقف كلود",
+        "en": "• ECC skills were security-checked and 20 were added to the library\n• 9 skills were rejected as duplicates or as pulling in unreviewed outside tools\n• ECC ran in a sandbox folder on the main PC on the existing Claude key, with no new subscription\n• A first test passed · every run stays under the Claude cap"
+      },
+      "s": {
+        "ar": "مهارات التحقق والمراجعة والتطبيقات دخلت المكتبة بعد فحص أمني",
+        "en": "Verification, review and app skills were imported after a security check"
+      },
       "p": "deliver"
     },
     {
@@ -3679,6 +3827,25 @@
       "b": "• انضم جهاز عمل جديد إلى الفريق اليوم\n• تم تثبيت Git وOllama ونموذج محلي صغير وTailscale وNode وWSL\n• الجهاز لا ينام، ووضع الأداء العالي مفعّل، والمظهر داكن\n• تنظيف مؤقتات وبرامج غير لازمة بعد موافقة المالك\n• Docker كان ما زال قيد التثبيت",
       "s": "جهاز جديد مربوط ومتجهز للعمل",
       "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "BOARD · accessibility-audit-co · done",
+        "en": "BOARD · accessibility-audit-co · done"
+      },
+      "m": "2026-11-20 09:30",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · accessibility-audit-co · done",
+        "en": "BOARD · accessibility-audit-co · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
     },
     {
       "t": "تقرير المشاريع اليومي · 20 نوفمبر",
@@ -4037,7 +4204,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T17:29:54+04:00",
+    "generated": "2026-11-20T17:45:11+04:00",
     "rooms": [],
     "agents": [
       {
@@ -4162,5 +4329,331 @@
         "20 Nov HMK data is ready locally"
       ]
     }
-  }
+  },
+  "updates": [
+    {
+      "m": "2026-11-20 17:37",
+      "kind": "addon",
+      "kind_ar": "إضافة",
+      "kind_en": "Add-on",
+      "t": {
+        "ar": "طرفية لهيرمس داخل الحاوية",
+        "en": "A terminal for Hermes inside the container"
+      },
+      "s": {
+        "ar": "يشغّل أوامر داخل الحاوية فقط وما زال معزولاً عن مجلدات الجهاز",
+        "en": "It can run commands only inside the container and is still isolated from the PC folders"
+      },
+      "b": {
+        "ar": "• إضافة طرفية داخل حاوية هيرمس\n• تجربة: كتب وشغّل سكربت بايثون وأجاب إجابة صحيحة\n• بقي عاجزاً عن الوصول إلى مجلدات الجهاز\n• التكلفة صفر",
+        "en": "• Added a terminal inside the Hermes container\n• Test: it wrote and ran a Python script and got the right answer\n• It still could not reach the PC folders\n• Cost was zero"
+      }
+    },
+    {
+      "m": "2026-11-20 17:36",
+      "kind": "update",
+      "kind_ar": "تحديث",
+      "kind_en": "Update",
+      "t": {
+        "ar": "مذكرة فريق · Handoff: Hermes Agent, connected and Docker-isolated (20 Nov 2026)",
+        "en": "Team handoff · Handoff: Hermes Agent, connected and Docker-isolated (20 Nov 2026)"
+      },
+      "s": {
+        "ar": "آخر تحديث للمذكرة في 2026-11-20 17:36",
+        "en": "Handoff last updated 2026-11-20 17:36"
+      },
+      "b": {
+        "ar": "عنوان المذكرة فقط · بلا تفاصيل داخلية.",
+        "en": "Title only · no internal detail."
+      }
+    },
+    {
+      "m": "2026-11-20 17:30",
+      "kind": "check",
+      "kind_ar": "فحص",
+      "kind_en": "Check",
+      "t": {
+        "ar": "الفحص الأسبوعي للجودة · 20 نوفمبر",
+        "en": "Weekly quality check · 20 Nov"
+      },
+      "s": {
+        "ar": "تقارير المشاريع اليومية لـ14–19 نوفمبر ناقصة · الاستهلاك الأسبوعي 55.7٪ ويتجدد الأحد 13:02",
+        "en": "Daily project reports for 14–19 Nov are missing · weekly usage 55.7%, resets Sunday 13:02"
+      },
+      "b": {
+        "ar": "• الفحص الأسبوعي للجودة جرى عند 17:30 بتوقيت دبي\n• تقارير المشاريع اليومية للفترة 14–19 نوفمبر غير موجودة\n• الاستهلاك الأسبوعي 55.7٪ · التجديد الأحد 22 نوفمبر 13:02 بتوقيت دبي",
+        "en": "• The weekly quality check ran at 17:30 Dubai time\n• Daily project reports for 14–19 Nov are missing\n• Weekly usage 55.7% · resets Sun 22 Nov 13:02 Dubai time"
+      }
+    },
+    {
+      "m": "2026-11-20 17:25",
+      "kind": "action",
+      "kind_ar": "إجراء",
+      "kind_en": "Action",
+      "t": {
+        "ar": "هيرمس داخل دوكر ومعزول",
+        "en": "Hermes isolated in Docker"
+      },
+      "s": {
+        "ar": "لا يصل إلى مجلدات الجهاز · يرى مساحة عمله فقط",
+        "en": "Cannot reach the PC folders · it only sees its own workspace"
+      },
+      "b": {
+        "ar": "• نقل هيرمس إلى حاوية دوكر على الجهاز الرئيسي\n• اختبارات الهروب فشلت في الوصول لأي مجلد خارج مساحته\n• لم يُثبَّت شيء جديد · دوكر كان موجوداً\n• لا منافذ عامة ولا إعادة تشغيل للجهاز",
+        "en": "• Moved Hermes into a Docker container on the main PC\n• Escape tests could not reach any folder outside its workspace\n• Nothing new was installed · Docker was already there\n• No public ports and no PC restart"
+      }
+    },
+    {
+      "m": "2026-11-20 17:10",
+      "kind": "action",
+      "kind_ar": "إجراء",
+      "kind_en": "Action",
+      "t": {
+        "ar": "ربط هيرمس على الجهاز الرئيسي",
+        "en": "Hermes connected on the main PC"
+      },
+      "s": {
+        "ar": "اجتاز اختبار إجابة وملف وطابور مهام على الطبقة المجانية",
+        "en": "Passed an answer test, a file task and a job queue on the free tier"
+      },
+      "b": {
+        "ar": "• التشغيل محلي بلا منافذ عامة\n• نجح في إجابة سريعة ومهمة ملفات وطابور مهام\n• التكلفة صفر على الطبقة المجانية\n• حدّ المجلد كان بالتعليمات فقط قبل العزل اللاحق",
+        "en": "• Ran locally with no public ports\n• Passed a quick answer, a file task and a job queue\n• Cost was zero on the free tier\n• The folder limit was instruction-only until later isolation"
+      }
+    },
+    {
+      "m": "2026-11-20 16:55",
+      "kind": "delivery",
+      "kind_ar": "تسليم",
+      "kind_en": "Delivery",
+      "t": {
+        "ar": "HMK 1.16r · زر أضف المهارة وفحص ناجح",
+        "en": "HMK 1.16r · Add-skill button and a passing scan"
+      },
+      "s": {
+        "ar": "أضف المهارة يفتح طلباً جاهزاً للتأكيد · الفحص الرسمي بلا ملاحظات",
+        "en": "Add skill opens a prefilled request to confirm · official scan had no findings"
+      },
+      "b": {
+        "ar": "• بناء 1.16r-debug (رمز 51) بزر أضف المهارة\n• لا مفاتيح داخل التطبيق · التأكيد يتم من جلسة GitHub على الهاتف\n• مراقب على الصندوق يراجع الطلب كل 15 دقيقة ويضيف المهارة إن عدّت الفحص\n• الفحص الرسمي: بلا ملاحظات في 16:55 بتوقيت دبي\n• التثبيت على الهاتف ما زال بانتظار أمر المالك",
+        "en": "• Built 1.16r-debug (versionCode 51) with the Add-skill button\n• No keys inside the app · confirmation is in the phone GitHub session\n• A box watcher reviews each request every 15 minutes and installs the skill only if the audit passes\n• Official scan: no findings at 16:55 Dubai time\n• Phone install still waits for the owner's order"
+      }
+    },
+    {
+      "m": "2026-11-20 16:53",
+      "kind": "addon",
+      "kind_ar": "إضافة",
+      "kind_en": "Add-on",
+      "t": {
+        "ar": "إضافة مهارة ذوق التصميم",
+        "en": "Taste-skill added to the library"
+      },
+      "s": {
+        "ar": "المهارة عدّت الفحص الأمني وهي جاهزة لصفحات الهبوط والتسويق",
+        "en": "The skill passed the security check and is ready for landing and marketing pages"
+      },
+      "b": {
+        "ar": "• استيراد المهارة بعد فحص: لا تثبيت تلقائي ولا قراءة أسرار\n• الاستخدام مضيّق على تصميم الصفحات العامة لا الواجهات الخاصة\n• أُضيفت إلى مكتبة المهارات ومسودة الصندوق",
+        "en": "• Imported after an audit: no auto-installer and no secret reads\n• Trigger narrowed to public page design, not private interfaces\n• Installed in the skill library and drafted on the box"
+      }
+    },
+    {
+      "m": "2026-11-20 16:53",
+      "kind": "update",
+      "kind_ar": "تحديث",
+      "kind_en": "Update",
+      "t": {
+        "ar": "مذكرة فريق · HMK 1.16r add-skill + taste-skill import (20 Nov 2026, Asia/Dubai)",
+        "en": "Team handoff · HMK 1.16r add-skill + taste-skill import (20 Nov 2026, Asia/Dubai)"
+      },
+      "s": {
+        "ar": "آخر تحديث للمذكرة في 2026-11-20 16:53",
+        "en": "Handoff last updated 2026-11-20 16:53"
+      },
+      "b": {
+        "ar": "عنوان المذكرة فقط · بلا تفاصيل داخلية.",
+        "en": "Title only · no internal detail."
+      }
+    },
+    {
+      "m": "2026-11-20 16:46",
+      "kind": "addon",
+      "kind_ar": "إضافة",
+      "kind_en": "Add-on",
+      "t": {
+        "ar": "مهارة مضافة · taste-skill",
+        "en": "Skill added · taste-skill"
+      },
+      "s": {
+        "ar": "أُضيفت إلى المكتبة بعد الفحص",
+        "en": "Added to the library after the audit"
+      },
+      "b": {
+        "ar": "الحالة: installed",
+        "en": "Status: installed"
+      }
+    },
+    {
+      "m": "2026-11-20 16:40",
+      "kind": "addon",
+      "kind_ar": "إضافة",
+      "kind_en": "Add-on",
+      "t": {
+        "ar": "20 مهارة من ECC في المكتبة · ECC يعمل على الجهاز",
+        "en": "20 ECC skills in the library · ECC running on the PC"
+      },
+      "s": {
+        "ar": "مهارات التحقق والمراجعة والتطبيقات دخلت المكتبة بعد فحص أمني",
+        "en": "Verification, review and app skills were imported after a security check"
+      },
+      "b": {
+        "ar": "• فحص أمني لمهارات ECC وإضافة 20 مهارة للمكتبة\n• رفض 9 مهارات مكررة أو تعتمد أدوات خارجية غير مراجعة\n• تشغيل ECC في مجلد معزول على الجهاز الرئيسي بمفتاح كلود الحالي دون اشتراك جديد\n• تجربة أولى نجحت · كل تشغيل يبقى تحت سقف كلود",
+        "en": "• ECC skills were security-checked and 20 were added to the library\n• 9 skills were rejected as duplicates or as pulling in unreviewed outside tools\n• ECC ran in a sandbox folder on the main PC on the existing Claude key, with no new subscription\n• A first test passed · every run stays under the Claude cap"
+      }
+    },
+    {
+      "m": "2026-11-20 16:38",
+      "kind": "update",
+      "kind_ar": "تحديث",
+      "kind_en": "Update",
+      "t": {
+        "ar": "مذكرة فريق · Handoff: ECC apply (20 Nov 2026)",
+        "en": "Team handoff · Handoff: ECC apply (20 Nov 2026)"
+      },
+      "s": {
+        "ar": "آخر تحديث للمذكرة في 2026-11-20 16:38",
+        "en": "Handoff last updated 2026-11-20 16:38"
+      },
+      "b": {
+        "ar": "عنوان المذكرة فقط · بلا تفاصيل داخلية.",
+        "en": "Title only · no internal detail."
+      }
+    },
+    {
+      "m": "2026-11-20 16:38",
+      "kind": "update",
+      "kind_ar": "تحديث",
+      "kind_en": "Update",
+      "t": {
+        "ar": "بحث · 2026 11 20 ecc",
+        "en": "Research · 2026 11 20 ecc"
+      },
+      "s": {
+        "ar": "ملف بحث محدّث اليوم",
+        "en": "A research file updated today"
+      },
+      "b": {
+        "ar": "العنوان فقط.",
+        "en": "Title only."
+      }
+    },
+    {
+      "m": "2026-11-20 14:45",
+      "kind": "update",
+      "kind_ar": "تحديث",
+      "kind_en": "Update",
+      "t": {
+        "ar": "مذكرة فريق · HMK live refresh — plan and exact code changes",
+        "en": "Team handoff · HMK live refresh — plan and exact code changes"
+      },
+      "s": {
+        "ar": "آخر تحديث للمذكرة في 2026-11-20 14:45",
+        "en": "Handoff last updated 2026-11-20 14:45"
+      },
+      "b": {
+        "ar": "عنوان المذكرة فقط · بلا تفاصيل داخلية.",
+        "en": "Title only · no internal detail."
+      }
+    },
+    {
+      "m": "2026-11-20 14:43",
+      "kind": "update",
+      "kind_ar": "تحديث",
+      "kind_en": "Update",
+      "t": {
+        "ar": "بحث · 2026 11 20 karpathy repos",
+        "en": "Research · 2026 11 20 karpathy repos"
+      },
+      "s": {
+        "ar": "ملف بحث محدّث اليوم",
+        "en": "A research file updated today"
+      },
+      "b": {
+        "ar": "العنوان فقط.",
+        "en": "Title only."
+      }
+    },
+    {
+      "m": "2026-11-20 13:50",
+      "kind": "update",
+      "kind_ar": "تحديث",
+      "kind_en": "Update",
+      "t": {
+        "ar": "بحث · 2026 11 20 setup before after",
+        "en": "Research · 2026 11 20 setup before after"
+      },
+      "s": {
+        "ar": "ملف بحث محدّث اليوم",
+        "en": "A research file updated today"
+      },
+      "b": {
+        "ar": "العنوان فقط.",
+        "en": "Title only."
+      }
+    },
+    {
+      "m": "2026-11-20 09:31",
+      "kind": "update",
+      "kind_ar": "تحديث",
+      "kind_en": "Update",
+      "t": {
+        "ar": "بحث · 2026 11 20 accessibility audit standards",
+        "en": "Research · 2026 11 20 accessibility audit standards"
+      },
+      "s": {
+        "ar": "ملف بحث محدّث اليوم",
+        "en": "A research file updated today"
+      },
+      "b": {
+        "ar": "العنوان فقط.",
+        "en": "Title only."
+      }
+    },
+    {
+      "m": "2026-11-20 09:30",
+      "kind": "project",
+      "kind_ar": "مشروع",
+      "kind_en": "Project",
+      "t": {
+        "ar": "BOARD · accessibility-audit-co · done",
+        "en": "BOARD · accessibility-audit-co · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "b": {
+        "ar": "BOARD · accessibility-audit-co · done",
+        "en": "BOARD · accessibility-audit-co · done"
+      }
+    },
+    {
+      "m": "2026-11-20 09:30",
+      "kind": "update",
+      "kind_ar": "تحديث",
+      "kind_en": "Update",
+      "t": {
+        "ar": "مذكرة فريق · HANDOFF: accessibility-audit-co",
+        "en": "Team handoff · HANDOFF: accessibility-audit-co"
+      },
+      "s": {
+        "ar": "آخر تحديث للمذكرة في 2026-11-20 09:30",
+        "en": "Handoff last updated 2026-11-20 09:30"
+      },
+      "b": {
+        "ar": "عنوان المذكرة فقط · بلا تفاصيل داخلية.",
+        "en": "Title only · no internal detail."
+      }
+    }
+  ]
 }

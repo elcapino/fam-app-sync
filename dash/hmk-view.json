@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-20 20:27",
-  "built": "2026-11-20 20:27",
+  "updated": "2026-11-20 20:28",
+  "built": "2026-11-20 20:28",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -405,7 +405,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-20 20:27 Asia/Dubai",
+    "updated": "2026-11-20 20:28 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -443,8 +443,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 20:27. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 20:27. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-20 20:28. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-20 20:28. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3670,6 +3670,63 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · box-runner-restart · done (FAHEM autostart blocked pending OK)",
+        "en": "BOARD · box-runner-restart · done (FAHEM autostart blocked pending OK)"
+      },
+      "m": "2026-11-20 20:28",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · box-runner-restart · done (FAHEM autostart blocked pending OK)",
+        "en": "BOARD · box-runner-restart · done (FAHEM autostart blocked pending OK)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · newpc-docker-power · partial: power done; Docker needs VM Platform + reboot",
+        "en": "BOARD · newpc-docker-power · partial: power done; Docker needs VM Platform + reboot"
+      },
+      "m": "2026-11-20 20:28",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · newpc-docker-power · partial: power done; Docker needs VM Platform + reboot",
+        "en": "BOARD · newpc-docker-power · partial: power done; Docker needs VM Platform + reboot"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · box-pc-ollama · partial: PC side ok over tailnet; box blocked at platform proxy",
+        "en": "BOARD · box-pc-ollama · partial: PC side ok over tailnet; box blocked at platform proxy"
+      },
+      "m": "2026-11-20 20:28",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · box-pc-ollama · partial: PC side ok over tailnet; box blocked at platform proxy",
+        "en": "BOARD · box-pc-ollama · partial: PC side ok over tailnet; box blocked at platform proxy"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · shopify-ops-free-prep · delivered",
         "en": "BOARD · shopify-ops-free-prep · delivered"
       },
@@ -4375,7 +4432,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-20T20:27:51+04:00",
+    "generated": "2026-11-20T20:28:52+04:00",
     "rooms": [],
     "agents": [
       {

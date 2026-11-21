@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-21 07:00",
-  "built": "2026-11-21 07:00",
+  "updated": "2026-11-21 07:15",
+  "built": "2026-11-21 07:15",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -384,10 +384,10 @@
     },
     {
       "name": "Gemini",
-      "v": 6.3,
+      "v": 6.32,
       "cap": 75,
       "day_cap": 15,
-      "day_used": 0.01
+      "day_used": 0.03
     },
     {
       "name": "DeepSeek",
@@ -427,7 +427,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-21 07:00 Asia/Dubai",
+    "updated": "2026-11-21 07:15 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -440,10 +440,10 @@
       },
       {
         "name": "Gemini",
-        "used": 6.3,
+        "used": 6.32,
         "cap": 75,
         "day_cap": 15,
-        "day_used": 0.01,
+        "day_used": 0.03,
         "unit": "$",
         "pct": 8.4
       },
@@ -465,8 +465,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 07:00. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 07:00. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 07:15. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 07:15. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3691,6 +3691,52 @@
   },
   "docs": [
     {
+      "t": "موجز الإمارات اليومي · 21 نوفمبر",
+      "m": "2026-11-21 07:15",
+      "f": "الموجز اليومي",
+      "b": "الخلاصة: الإمارات تواصل ريادتها العالمية في البنية التحتية والتقنية وسط استقرار مالي متين، والشارع الإماراتي يطمئن على صحة حاكم الشارقة تزامناً مع ترقب انطلاق أسبوع بيج فاين الصيني للبناء قريباً. #### أهم العناوين • وول ستريت تشهد يوماً دامياً وناسداك يخسر 1.5 تريليون دولار وسط نزيف أسهم الذكاء الاصطناعي [الخليج] • بيتكوين تهوي دون 60 ألف دولار وسهم إنفيديا يتراجع 12% بأسواق المال [الخليج] • اشتعال ناقلة نفط إثر مقذوف قرب مضيق هرمز وسط تذبذب بأسعار النفط العالمية [رويترز] • الإمارات الأولى عالمياً بالبنية التحتية للاتصالات والخامسة في مؤشر الحكومة الإلكترونية [البيان] • مكتب الذكاء الاصطناعي يطلق مبادرة لتمكين 100 ألف امرأة عربية في 20 دولة [وام] • سمو الشيخة جواهر القاسمي تطمئن الجمهور: صاحب السمو حاكم الشارقة بخير وجراحته تكللت بالنجاح [الإمارات اليوم] • دبي تحدد النصف الأول من عام 2027 موعداً للتشغيل التجاري للتاكسي الجوي [ذا ناشيونال] • صاحب السمو رئيس الدولة ونائباه يهنئون سلطان عُمان بمناسبة اليوم الوطني المجيد [البيان] إيجابي 10 · سلبي 3 · مصادر مفتوحة فقط",
+      "s": "الإمارات تواصل ريادتها العالمية في البنية التحتية والتقنية وسط استقرار مالي متين، والشارع الإماراتي يطمئن على صحة حاكم الشارقة تزامناً مع ترقب انطلاق أسبوع بيج فاين الصيني للبناء قريباً.",
+      "p": "brief"
+    },
+    {
+      "t": {
+        "ar": "BOARD · quran-word-timings · open (scout S65, idea only)",
+        "en": "BOARD · quran-word-timings · open (scout S65, idea only)"
+      },
+      "m": "2026-11-21 07:13",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · quran-word-timings · open (scout S65, idea only)",
+        "en": "BOARD · quran-word-timings · open (scout S65, idea only)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · shopify-uae-payment-stack · open (scout S66, plan only, store paused)",
+        "en": "BOARD · shopify-uae-payment-stack · open (scout S66, plan only, store paused)"
+      },
+      "m": "2026-11-21 07:13",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · shopify-uae-payment-stack · open (scout S66, plan only, store paused)",
+        "en": "BOARD · shopify-uae-payment-stack · open (scout S66, plan only, store paused)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
       "t": {
         "ar": "BOARD · bh-sd01-cost · delivered R1 (lighting + extended rooms)",
         "en": "BOARD · bh-sd01-cost · delivered R1 (lighting + extended rooms)"
@@ -5480,7 +5526,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-21T07:00:17+04:00",
+    "generated": "2026-11-21T07:15:18+04:00",
     "rooms": [],
     "agents": [
       {

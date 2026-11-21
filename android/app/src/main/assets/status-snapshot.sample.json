@@ -1,0 +1,68 @@
+{
+  "sample": false,
+  "generatedAt": "2026-11-09T07:40:00+04:00",
+  "ceoNow": [
+    "إعادة تصميم HMK",
+    "تسليم تقرير المشاريع وخطة الدمج",
+    "تسليم تقرير واتساب الذكي",
+    "إنشاء ملف الأفكار الربحية"
+  ],
+  "tools": [
+    {"name": "Claude", "state": "running", "lastRun": "2026-11-09T07:40:00+04:00", "cost": "$8.31 / $20", "icon": "spark"},
+    {"name": "Gemini", "state": "running", "lastRun": "2026-11-09T07:40:00+04:00", "cost": "$3.78 / $75", "icon": "gem"},
+    {"name": "DeepSeek", "state": "idle", "lastRun": "2026-11-09T07:40:00+04:00", "cost": "سقف $5", "icon": "robot"},
+    {"name": "NotebookLM", "state": "running", "lastRun": "2026-11-09T07:40:00+04:00", "cost": "يعمل", "icon": "book"},
+    {"name": "Cloud agents", "state": "running", "lastRun": "2026-11-09T07:40:00+04:00", "cost": "يعمل", "icon": "cloud"},
+    {"name": "Exa · Bright Data · Apify", "state": "running", "lastRun": "2026-11-09T07:40:00+04:00", "cost": "متصل", "icon": "link"},
+    {"name": "GitHub · Shopify · X", "state": "running", "lastRun": "2026-11-09T07:40:00+04:00", "cost": "متصل", "icon": "store"},
+    {"name": "ChatGPT / Codex", "state": "idle", "lastRun": "2026-11-09T07:40:00+04:00", "cost": "عند الحاجة", "icon": "note"},
+    {"name": "تحديث اللوحة", "state": "stopped", "lastRun": "2026-11-09T07:40:00+04:00", "cost": "موقوف", "icon": "pause"},
+    {"name": "تداول حقيقي / نشر", "state": "hold", "lastRun": "2026-11-09T07:40:00+04:00", "cost": "مقفل", "icon": "lock"}
+  ],
+  "computers": [
+    {"name": "Grok computer", "online": true, "lastSeen": "2026-11-09T07:40:00+04:00"},
+    {"name": "بقية الأجهزة", "online": false, "lastSeen": ""}
+  ],
+  "brief": [
+    {"title": "أبوظبي وOpenAI: 4 اتفاقات", "source": "تقرير اليوم", "url": "", "date": "2 نوفمبر · أدنوك"},
+    {"title": "نتائج Nvidia", "source": "تقرير اليوم", "url": "", "date": "17 نوفمبر"},
+    {"title": "طرح Anthropic", "source": "غير مؤكد", "url": "", "date": "أقرب 16 نوفمبر"},
+    {"title": "تحدي عجمان للابتكار", "source": "موعد", "url": "", "date": "20 نوفمبر"}
+  ],
+  "happened": [
+    "تسليم تقرير المشاريع",
+    "تسليم خطة الدمج",
+    "تسليم تقرير واتساب الذكي",
+    "إنشاء ملف الأفكار الربحية"
+  ],
+  "now": [
+    "إعادة تصميم HMK على التصميم المدمج",
+    "الموجز معروض من اللقطة المحلية"
+  ],
+  "next": [
+    "قرار إنارة البيت: KNX / DALI",
+    "قرار تسعير المتجر",
+    "اعتماد فحص APK"
+  ],
+  "ideas": [
+    "ملف الأفكار الربحية جاهز للمراجعة",
+    "تحدي عجمان للابتكار · 20 نوفمبر"
+  ],
+  "programs": [
+    "مشروع البيت",
+    "متجر Shopify",
+    "الأسواق HMK",
+    "التطبيق الإسلامي",
+    "School",
+    "البحث والأخبار"
+  ],
+  "team": [
+    {"name": "CEO", "role": "نقطة التواصل الوحيدة", "icon": "crown"},
+    {"name": "مشروع البيت", "role": "هندسة وعقود", "icon": "house"},
+    {"name": "متجر Shopify", "role": "تشغيل المتجر", "icon": "store"},
+    {"name": "الأسواق HMK", "role": "ورقي فقط", "icon": "chart"},
+    {"name": "التطبيق الإسلامي", "role": "نموذج v0.3.2", "icon": "mosque"},
+    {"name": "School", "role": "متابعة الدراسة", "icon": "bag"},
+    {"name": "البحث والأخبار", "role": "موجزات Red Green UAE Intel", "icon": "news"}
+  ]
+}

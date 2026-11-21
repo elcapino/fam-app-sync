@@ -1,0 +1,32 @@
+{
+  "label": {"ar": "لقطة 15 نوفمبر 2026، آخر 7 أيام", "en": "Snapshot 15 Nov 2026, last 7 days"},
+  "weekly_used_pct": 0.6,
+  "weekly_note": {"ar": "مشترك مع تطبيقات أخرى", "en": "Shared with other apps"},
+  "reset_label": {"ar": "الأحد 22 نوفمبر 13:02 دبي", "en": "Sun 22 Nov 13:02 Dubai"},
+  "ondemand_label": {"ar": "<1%", "en": "<1%"},
+  "bots": [
+    {"id": "ceo", "ar": "CEO", "en": "CEO", "pct": 70, "room": "meet"},
+    {"id": "family", "ar": "العائلة", "en": "Family", "pct": 9},
+    {"id": "ideas", "ar": "أفكار وبحوث", "en": "Ideas and research", "pct": 4, "paused": true, "room": "research"},
+    {"id": "islam", "ar": "التطبيق الإسلامي", "en": "Islamic app", "pct": 3},
+    {"id": "family_general", "ar": "عام الأسرة", "en": "Family general", "pct": 2},
+    {"id": "house", "ar": "البيت (مشروع 5)", "en": "House (Project 5)", "pct": 2, "room": "house"},
+    {"id": "replica", "ar": "Apps Replica", "en": "Apps Replica", "pct": 2},
+    {"id": "coo", "ar": "COO", "en": "COO", "pct": 1, "paused": true},
+    {"id": "news", "ar": "البحث والأخبار", "en": "Search and news", "pct": 1, "room": "research"},
+    {"id": "rg", "ar": "Red Green UAE Intel", "en": "Red Green UAE Intel", "pct": 1},
+    {"id": "other", "ar": "أخرى", "en": "Others", "pct": 5}
+  ],
+  "rooms": {"meet": 70, "research": 5, "fahem": 6, "house": 2, "shop": 0, "trade": 0},
+  "ceo": {
+    "chat_pct": 58,
+    "chat_note": {"ar": "عمل المحادثة، ليس روتيناً", "en": "Chat work, not a routine"},
+    "other": {"ar": "بقية الروتينات أقل من 1% لكل واحد", "en": "Other routines are under 1% each"},
+    "routines": [
+      {"ar": "مراقب فاهم", "en": "FAHEM monitor", "pct": 6, "runs": 63},
+      {"ar": "حارس السكربت", "en": "Script guard", "pct": 2, "runs": 56},
+      {"ar": "طابور CEO لفاهم", "en": "CEO queue for FAHEM", "pct": 2, "runs": 56},
+      {"ar": "طابور NotebookLM لفاهم", "en": "NotebookLM queue for FAHEM", "pct": 2, "runs": 56}
+    ]
+  }
+}

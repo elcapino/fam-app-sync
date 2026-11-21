@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-21 16:15",
-  "built": "2026-11-21 16:15",
+  "updated": "2026-11-21 16:30",
+  "built": "2026-11-21 16:30",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -427,7 +427,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-21 16:15 Asia/Dubai",
+    "updated": "2026-11-21 16:30 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -465,8 +465,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 16:15. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 16:15. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 16:30. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 16:30. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3692,6 +3692,196 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · hq01-rhythm-v3b · live: Mon 07:30 card + Wed/Fri 18:00 KPI, stale.py + dispatch.py --sla; v4 rule posted to 90/92/05/06/94/99/81",
+        "en": "BOARD · hq01-rhythm-v3b · live: Mon 07:30 card + Wed/Fri 18:00 KPI, stale.py + dispatch.py --sla; v4 rule posted to 90/92/05/06/94/99/81"
+      },
+      "m": "2026-11-21 16:20",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hq01-rhythm-v3b · live: Mon 07:30 card + Wed/Fri 18:00 KPI, stale.py + dispatch.py --sla; v4 rule posted to 90/92/05/06/94/99/81",
+        "en": "BOARD · hq01-rhythm-v3b · live: Mon 07:30 card + Wed/Fri 18:00 KPI, stale.py + dispatch.py --sla; v4 rule posted to 90/92/05/06/94/99/81"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · task-dispatch-v4 · done: proposal decisions/task-dispatch-v4-proposal.md + bin/dispatch.py prototype (14/14 tests, dry-run default); not switched on",
+        "en": "BOARD · task-dispatch-v4 · done: proposal decisions/task-dispatch-v4-proposal.md + bin/dispatch.py prototype (14/14 tests, dry-run default); not switched on"
+      },
+      "m": "2026-11-21 16:20",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · task-dispatch-v4 · done: proposal decisions/task-dispatch-v4-proposal.md + bin/dispatch.py prototype (14/14 tests, dry-run default); not switched on",
+        "en": "BOARD · task-dispatch-v4 · done: proposal decisions/task-dispatch-v4-proposal.md + bin/dispatch.py prototype (14/14 tests, dry-run default); not switched on"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · prompt-usage-routine-v2 · done: v2 draft in prompts/out/usage-routine-v2.md, nothing live changed",
+        "en": "BOARD · prompt-usage-routine-v2 · done: v2 draft in prompts/out/usage-routine-v2.md, nothing live changed"
+      },
+      "m": "2026-11-21 16:20",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · prompt-usage-routine-v2 · done: v2 draft in prompts/out/usage-routine-v2.md, nothing live changed",
+        "en": "BOARD · prompt-usage-routine-v2 · done: v2 draft in prompts/out/usage-routine-v2.md, nothing live changed"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-90 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-90 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "m": "2026-11-21 16:20",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-90 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-90 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-92 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-92 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "m": "2026-11-21 16:20",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-92 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-92 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-05 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-05 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "m": "2026-11-21 16:20",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-05 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-05 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-06 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-06 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "m": "2026-11-21 16:20",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-06 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-06 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-94 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-94 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "m": "2026-11-21 16:20",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-94 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-94 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-99 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-99 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "m": "2026-11-21 16:20",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-99 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-99 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-81 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-81 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "m": "2026-11-21 16:20",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-81 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)",
+        "en": "BOARD · v4-rule-HQ-81 · done (notice: states running→review→done, WIP max 3, see handoffs/v4-rule-control-tower.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · backlog-8-advertiser-permit · done: permit note, personal-account exemption, brand account unclear",
         "en": "BOARD · backlog-8-advertiser-permit · done: permit note, personal-account exemption, brand account unclear"
       },
@@ -5716,7 +5906,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-21T16:15:15+04:00",
+    "generated": "2026-11-21T16:30:16+04:00",
     "rooms": [],
     "agents": [
       {

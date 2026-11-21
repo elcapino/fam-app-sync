@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-21 13:45",
-  "built": "2026-11-21 13:45",
+  "updated": "2026-11-21 14:00",
+  "built": "2026-11-21 14:00",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -427,7 +427,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-21 13:45 Asia/Dubai",
+    "updated": "2026-11-21 14:00 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -465,8 +465,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 13:45. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 13:45. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 14:00. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 14:00. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3692,6 +3692,63 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · hq93-house-deals · delivered (baseline + Noon round; research/2026-11-21-house-deals.md §7)",
+        "en": "BOARD · hq93-house-deals · delivered (baseline + Noon round; research/2026-11-21-house-deals.md §7)"
+      },
+      "m": "2026-11-21 13:59",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hq93-house-deals · delivered (baseline + Noon round; research/2026-11-21-house-deals.md §7)",
+        "en": "BOARD · hq93-house-deals · delivered (baseline + Noon round; research/2026-11-21-house-deals.md §7)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · fix-sprint-2026-11-21 · done: paper/TV marker lifted + scheduler autostart, weekly_inputs.py, gateway 33 models, keepalive env fixed; HMK live push failing (needs OK)",
+        "en": "BOARD · fix-sprint-2026-11-21 · done: paper/TV marker lifted + scheduler autostart, weekly_inputs.py, gateway 33 models, keepalive env fixed; HMK live push failing (needs OK)"
+      },
+      "m": "2026-11-21 13:59",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · fix-sprint-2026-11-21 · done: paper/TV marker lifted + scheduler autostart, weekly_inputs.py, gateway 33 models, keepalive env fixed; HMK live push failing (needs OK)",
+        "en": "BOARD · fix-sprint-2026-11-21 · done: paper/TV marker lifted + scheduler autostart, weekly_inputs.py, gateway 33 models, keepalive env fixed; HMK live push failing (needs OK)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · ceo-only-comms-2026-11-21 · partial: lines 1-20 already messaged (verified); SendToAgent 21-40 and UpdateAgent x40 blocked (tools not on executor); inbox written",
+        "en": "BOARD · ceo-only-comms-2026-11-21 · partial: lines 1-20 already messaged (verified); SendToAgent 21-40 and UpdateAgent x40 blocked (tools not on executor); inbox written"
+      },
+      "m": "2026-11-21 13:59",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · ceo-only-comms-2026-11-21 · partial: lines 1-20 already messaged (verified); SendToAgent 21-40 and UpdateAgent x40 blocked (tools not on executor); inbox written",
+        "en": "BOARD · ceo-only-comms-2026-11-21 · partial: lines 1-20 already messaged (verified); SendToAgent 21-40 and UpdateAgent x40 blocked (tools not on executor); inbox written"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · quran-word-timings · done: prototype note (Alafasy 112) + threshold + flagged ayahs + licence draft; terms of mp3quran still to verify",
         "en": "BOARD · quran-word-timings · done: prototype note (Alafasy 112) + threshold + flagged ayahs + licence draft; terms of mp3quran still to verify"
       },
@@ -5621,7 +5678,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-21T13:45:10+04:00",
+    "generated": "2026-11-21T14:00:11+04:00",
     "rooms": [],
     "agents": [
       {

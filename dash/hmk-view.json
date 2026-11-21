@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-21 06:15",
-  "built": "2026-11-21 06:15",
+  "updated": "2026-11-21 06:30",
+  "built": "2026-11-21 06:30",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -427,7 +427,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-21 06:15 Asia/Dubai",
+    "updated": "2026-11-21 06:30 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -465,8 +465,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 06:15. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 06:15. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 06:30. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 06:30. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -5480,7 +5480,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-21T06:15:08+04:00",
+    "generated": "2026-11-21T06:30:09+04:00",
     "rooms": [],
     "agents": [
       {

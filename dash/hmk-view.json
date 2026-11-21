@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-21 12:15",
-  "built": "2026-11-21 12:15",
+  "updated": "2026-11-21 12:45",
+  "built": "2026-11-21 12:45",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -427,7 +427,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-21 12:15 Asia/Dubai",
+    "updated": "2026-11-21 12:45 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -465,8 +465,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 12:15. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 12:15. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 12:45. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 12:45. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3692,6 +3692,44 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · quran-word-timings · done: prototype note (Alafasy 112) + threshold + flagged ayahs + licence draft; terms of mp3quran still to verify",
+        "en": "BOARD · quran-word-timings · done: prototype note (Alafasy 112) + threshold + flagged ayahs + licence draft; terms of mp3quran still to verify"
+      },
+      "m": "2026-11-21 12:19",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · quran-word-timings · done: prototype note (Alafasy 112) + threshold + flagged ayahs + licence draft; terms of mp3quran still to verify",
+        "en": "BOARD · quran-word-timings · done: prototype note (Alafasy 112) + threshold + flagged ayahs + licence draft; terms of mp3quran still to verify"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · shopify-uae-payment-stack · done: official availability confirmed (Advanced+), fee table, COD/WhatsApp draft; no spend or sign-up",
+        "en": "BOARD · shopify-uae-payment-stack · done: official availability confirmed (Advanced+), fee table, COD/WhatsApp draft; no spend or sign-up"
+      },
+      "m": "2026-11-21 12:19",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · shopify-uae-payment-stack · done: official availability confirmed (Advanced+), fee table, COD/WhatsApp draft; no spend or sign-up",
+        "en": "BOARD · shopify-uae-payment-stack · done: official availability confirmed (Advanced+), fee table, COD/WhatsApp draft; no spend or sign-up"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · edumap-emirates-puzzle · in-progress",
         "en": "BOARD · edumap-emirates-puzzle · in-progress"
       },
@@ -5583,7 +5621,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-21T12:15:17+04:00",
+    "generated": "2026-11-21T12:45:08+04:00",
     "rooms": [],
     "agents": [
       {

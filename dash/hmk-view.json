@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-21 18:15",
-  "built": "2026-11-21 18:15",
+  "updated": "2026-11-21 18:30",
+  "built": "2026-11-21 18:30",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -427,7 +427,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-21 18:15 Asia/Dubai",
+    "updated": "2026-11-21 18:30 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -465,8 +465,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 18:15. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 18:15. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 18:30. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 18:30. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3692,6 +3692,63 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · hmk-family-chores-streaks · in-progress (usage routine)",
+        "en": "BOARD · hmk-family-chores-streaks · in-progress (usage routine)"
+      },
+      "m": "2026-11-21 18:27",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hmk-family-chores-streaks · in-progress (usage routine)",
+        "en": "BOARD · hmk-family-chores-streaks · in-progress (usage routine)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hmk-family-chores-streaks · done (shortlist: 1 «اليوم في البيت» card replaces wins strip; chores+streak, المقاضي list, next-today; no-scroll 797/797 & 622/622; drafts/hmk/family-features-shortlist.md)",
+        "en": "BOARD · hmk-family-chores-streaks · done (shortlist: 1 «اليوم في البيت» card replaces wins strip; chores+streak, المقاضي list, next-today; no-scroll 797/797 & 622/622; drafts/hmk/family-features-shortlist.md)"
+      },
+      "m": "2026-11-21 18:27",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hmk-family-chores-streaks · done (shortlist: 1 «اليوم في البيت» card replaces wins strip; chores+streak, المقاضي list, next-today; no-scroll 797/797 & 622/622; drafts/hmk/family-features-shortlist.md)",
+        "en": "BOARD · hmk-family-chores-streaks · done (shortlist: 1 «اليوم في البيت» card replaces wins strip; chores+streak, المقاضي list, next-today; no-scroll 797/797 & 622/622; drafts/hmk/family-features-shortlist.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · openvino-new-pc · done: openvino-genai 2026.4.1.0 + Qwen2.5-1.5B-Instruct-int4-ov on DESKTOP-ALM0UPS; GPU 29.87 / NPU 13.98 / CPU 37.19 tok/s; runner ai-tools\\openvino-run.ps1; no server",
+        "en": "BOARD · openvino-new-pc · done: openvino-genai 2026.4.1.0 + Qwen2.5-1.5B-Instruct-int4-ov on DESKTOP-ALM0UPS; GPU 29.87 / NPU 13.98 / CPU 37.19 tok/s; runner ai-tools\\openvino-run.ps1; no server"
+      },
+      "m": "2026-11-21 18:27",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · openvino-new-pc · done: openvino-genai 2026.4.1.0 + Qwen2.5-1.5B-Instruct-int4-ov on DESKTOP-ALM0UPS; GPU 29.87 / NPU 13.98 / CPU 37.19 tok/s; runner ai-tools\\openvino-run.ps1; no server",
+        "en": "BOARD · openvino-new-pc · done: openvino-genai 2026.4.1.0 + Qwen2.5-1.5B-Instruct-int4-ov on DESKTOP-ALM0UPS; GPU 29.87 / NPU 13.98 / CPU 37.19 tok/s; runner ai-tools\\openvino-run.ps1; no server"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · edumap-emirates-puzzle · done (ODbL geoBoundaries data 33 KB + puzzle-spec.md 3 levels/32 sourced items + offline L1 prototype, 7/7 placed in headless test; islands question flagged)",
         "en": "BOARD · edumap-emirates-puzzle · done (ODbL geoBoundaries data 33 KB + puzzle-spec.md 3 levels/32 sourced items + offline L1 prototype, 7/7 placed in headless test; islands question flagged)"
       },
@@ -5944,7 +6001,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-21T18:15:31+04:00",
+    "generated": "2026-11-21T18:30:10+04:00",
     "rooms": [],
     "agents": [
       {

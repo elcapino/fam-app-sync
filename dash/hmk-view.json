@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-21 05:30",
-  "built": "2026-11-21 05:30",
+  "updated": "2026-11-21 05:45",
+  "built": "2026-11-21 05:45",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -427,7 +427,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-21 05:30 Asia/Dubai",
+    "updated": "2026-11-21 05:45 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -465,8 +465,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 05:30. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 05:30. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 05:45. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 05:45. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3692,6 +3692,158 @@
   "docs": [
     {
       "t": {
+        "ar": "BOARD · gov-services-intake · open (tracker.md built)",
+        "en": "BOARD · gov-services-intake · open (tracker.md built)"
+      },
+      "m": "2026-11-21 05:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · gov-services-intake · open (tracker.md built)",
+        "en": "BOARD · gov-services-intake · open (tracker.md built)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · customer-service-setup · done (drafts only, not published)",
+        "en": "BOARD · customer-service-setup · done (drafts only, not published)"
+      },
+      "m": "2026-11-21 05:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · customer-service-setup · done (drafts only, not published)",
+        "en": "BOARD · customer-service-setup · done (drafts only, not published)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · cfo-baseline · done (ledger: research/2026-11-21-cfo-ledger.md)",
+        "en": "BOARD · cfo-baseline · done (ledger: research/2026-11-21-cfo-ledger.md)"
+      },
+      "m": "2026-11-21 05:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · cfo-baseline · done (ledger: research/2026-11-21-cfo-ledger.md)",
+        "en": "BOARD · cfo-baseline · done (ledger: research/2026-11-21-cfo-ledger.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · legal-risk-sweep · delivered",
+        "en": "BOARD · legal-risk-sweep · delivered"
+      },
+      "m": "2026-11-21 05:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · legal-risk-sweep · delivered",
+        "en": "BOARD · legal-risk-sweep · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · security-baseline-2026-11-21 · done (read-only audit; report: research/2026-11-21-security-audit.md)",
+        "en": "BOARD · security-baseline-2026-11-21 · done (read-only audit; report: research/2026-11-21-security-audit.md)"
+      },
+      "m": "2026-11-21 05:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · security-baseline-2026-11-21 · done (read-only audit; report: research/2026-11-21-security-audit.md)",
+        "en": "BOARD · security-baseline-2026-11-21 · done (read-only audit; report: research/2026-11-21-security-audit.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · data-dashboard · done (Page + /workspace/team/research/2026-11-21-hq-kpis.md)",
+        "en": "BOARD · data-dashboard · done (Page + /workspace/team/research/2026-11-21-hq-kpis.md)"
+      },
+      "m": "2026-11-21 05:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · data-dashboard · done (Page + /workspace/team/research/2026-11-21-hq-kpis.md)",
+        "en": "BOARD · data-dashboard · done (Page + /workspace/team/research/2026-11-21-hq-kpis.md)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · legal-hmk-play · delivered (research + clauses; no publish)",
+        "en": "BOARD · legal-hmk-play · delivered (research + clauses; no publish)"
+      },
+      "m": "2026-11-21 05:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · legal-hmk-play · delivered (research + clauses; no publish)",
+        "en": "BOARD · legal-hmk-play · delivered (research + clauses; no publish)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bizdev-uae-programs · done (research first pass, no apply)",
+        "en": "BOARD · bizdev-uae-programs · done (research first pass, no apply)"
+      },
+      "m": "2026-11-21 05:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bizdev-uae-programs · done (research first pass, no apply)",
+        "en": "BOARD · bizdev-uae-programs · done (research first pass, no apply)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
         "ar": "BOARD · scout2-newpc-lfm3-audio · blocked: DESKTOP-ALM0UPS still offline at 03:35 (sweep 3); tag lfm3-audio:2b re-verified on ollama.com",
         "en": "BOARD · scout2-newpc-lfm3-audio · blocked: DESKTOP-ALM0UPS still offline at 03:35 (sweep 3); tag lfm3-audio:2b re-verified on ollama.com"
       },
@@ -5195,7 +5347,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-21T05:30:16+04:00",
+    "generated": "2026-11-21T05:45:16+04:00",
     "rooms": [],
     "agents": [
       {

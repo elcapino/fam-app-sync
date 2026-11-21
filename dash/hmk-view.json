@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-21 07:15",
-  "built": "2026-11-21 07:15",
+  "updated": "2026-11-21 07:30",
+  "built": "2026-11-21 07:30",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -427,7 +427,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-21 07:15 Asia/Dubai",
+    "updated": "2026-11-21 07:30 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -465,8 +465,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 07:15. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 07:15. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-21 07:30. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-21 07:30. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3691,6 +3691,44 @@
   },
   "docs": [
     {
+      "t": {
+        "ar": "BOARD · islamic-app-v0.8-plan-DRAFT · draft delivered (planning only, no build)",
+        "en": "BOARD · islamic-app-v0.8-plan-DRAFT · draft delivered (planning only, no build)"
+      },
+      "m": "2026-11-21 07:18",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · islamic-app-v0.8-plan-DRAFT · draft delivered (planning only, no build)",
+        "en": "BOARD · islamic-app-v0.8-plan-DRAFT · draft delivered (planning only, no build)"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · backlog-s24-vs-s7 · done: ThinkRail vs OpenCode comparison in IDEAS-BACKLOG S24; rec. OpenCode, ThinkRail watch",
+        "en": "BOARD · backlog-s24-vs-s7 · done: ThinkRail vs OpenCode comparison in IDEAS-BACKLOG S24; rec. OpenCode, ThinkRail watch"
+      },
+      "m": "2026-11-21 07:18",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · backlog-s24-vs-s7 · done: ThinkRail vs OpenCode comparison in IDEAS-BACKLOG S24; rec. OpenCode, ThinkRail watch",
+        "en": "BOARD · backlog-s24-vs-s7 · done: ThinkRail vs OpenCode comparison in IDEAS-BACKLOG S24; rec. OpenCode, ThinkRail watch"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
       "t": "موجز الإمارات اليومي · 21 نوفمبر",
       "m": "2026-11-21 07:15",
       "f": "الموجز اليومي",
@@ -5526,7 +5564,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-21T07:15:18+04:00",
+    "generated": "2026-11-21T07:30:19+04:00",
     "rooms": [],
     "agents": [
       {

@@ -1,16 +1,16 @@
 {
   "label": {
-    "ar": "الأسبوع الحالي حتى 20 نوفمبر",
-    "en": "Current week as of 20 Nov"
+    "ar": "الأسبوع الحالي حتى 24 نوفمبر",
+    "en": "Current week as of 24 Nov"
   },
-  "weekly_used_pct": 52.5,
+  "weekly_used_pct": 41,
   "weekly_note": {
     "ar": "مشترك مع تطبيقات أخرى · رصيد إضافي 0 دولار",
     "en": "Shared with other apps · extra credits $0"
   },
   "reset_label": {
-    "ar": "الأحد 22 نوفمبر 13:02 دبي",
-    "en": "Sun 22 Nov 13:02 Dubai"
+    "ar": "الأحد 29 نوفمبر 13:02 دبي",
+    "en": "Sun 29 Nov 13:02 Dubai"
   },
   "ondemand_label": {
     "ar": "<1%",
@@ -244,8 +244,8 @@
     }
   ],
   "weekly_asof": {
-    "ar": "حتى 20 نوفمبر",
-    "en": "as of 20 Nov"
+    "ar": "حتى 24 نوفمبر",
+    "en": "as of 24 Nov"
   },
   "bots_asof": {
     "ar": "تفصيل الحصص من آخر لقطة محفوظة (CEO 70٪) · الإجمالي الأسبوعي محدّث",

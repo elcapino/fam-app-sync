@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-25 18:15",
-  "built": "2026-11-25 18:15",
+  "updated": "2026-11-25 19:45",
+  "built": "2026-11-25 19:45",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -472,10 +472,10 @@
     },
     {
       "name": "Gemini",
-      "v": 7.12,
+      "v": 7.2,
       "cap": 75,
       "day_cap": 15,
-      "day_used": 0.08
+      "day_used": 0.17
     },
     {
       "name": "DeepSeek",
@@ -515,7 +515,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-25 18:15 Asia/Dubai",
+    "updated": "2026-11-25 19:45 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -528,12 +528,12 @@
       },
       {
         "name": "Gemini",
-        "used": 7.12,
+        "used": 7.2,
         "cap": 75,
         "day_cap": 15,
-        "day_used": 0.08,
+        "day_used": 0.17,
         "unit": "$",
-        "pct": 9.5
+        "pct": 9.6
       },
       {
         "name": "DeepSeek",
@@ -553,8 +553,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-25 18:15. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-25 18:15. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-25 19:45. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-25 19:45. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -6406,7 +6406,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-25T18:15:10+04:00",
+    "generated": "2026-11-25T19:45:09+04:00",
     "rooms": [],
     "agents": [
       {

@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-26 15:30",
-  "built": "2026-11-26 15:30",
+  "updated": "2026-11-26 15:45",
+  "built": "2026-11-26 15:45",
   "brief": [
     {
       "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
@@ -537,7 +537,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-26 15:30 Asia/Dubai",
+    "updated": "2026-11-26 15:45 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -575,8 +575,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-26 15:30. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-26 15:30. Trading and FAHEM stay stopped."
+    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-26 15:45. التداول وفاهم موقوفان.",
+    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-26 15:45. Trading and FAHEM stay stopped."
   },
   "routing": [],
   "apps": [],
@@ -3801,2045 +3801,2045 @@
   },
   "docs": [
     {
+      "t": {
+        "ar": "BOARD · accessibility-audit-co · done",
+        "en": "BOARD · accessibility-audit-co · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · accessibility-audit-co · done",
+        "en": "BOARD · accessibility-audit-co · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · shopify-ops-free-prep · delivered",
+        "en": "BOARD · shopify-ops-free-prep · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · shopify-ops-free-prep · delivered",
+        "en": "BOARD · shopify-ops-free-prep · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · shopify-growth-free-seo · delivered",
+        "en": "BOARD · shopify-growth-free-seo · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · shopify-growth-free-seo · delivered",
+        "en": "BOARD · shopify-growth-free-seo · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · shopify-finance-free-prep · delivered",
+        "en": "BOARD · shopify-finance-free-prep · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · shopify-finance-free-prep · delivered",
+        "en": "BOARD · shopify-finance-free-prep · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · tools-tuneup-2026-11-20 · done",
+        "en": "BOARD · tools-tuneup-2026-11-20 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · tools-tuneup-2026-11-20 · done",
+        "en": "BOARD · tools-tuneup-2026-11-20 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · box-runner-restart · done",
+        "en": "BOARD · box-runner-restart · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · box-runner-restart · done",
+        "en": "BOARD · box-runner-restart · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · newpc-docker-power · partial",
+        "en": "BOARD · newpc-docker-power · partial"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · newpc-docker-power · partial",
+        "en": "BOARD · newpc-docker-power · partial"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · box-pc-ollama · partial",
+        "en": "BOARD · box-pc-ollama · partial"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · box-pc-ollama · partial",
+        "en": "BOARD · box-pc-ollama · partial"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · excel-ideas-2026-11-20 · done",
+        "en": "BOARD · excel-ideas-2026-11-20 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · excel-ideas-2026-11-20 · done",
+        "en": "BOARD · excel-ideas-2026-11-20 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · scout-ollama-newpc · done",
+        "en": "BOARD · scout-ollama-newpc · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout-ollama-newpc · done",
+        "en": "BOARD · scout-ollama-newpc · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · scout-hermes-agent-browser · done",
+        "en": "BOARD · scout-hermes-agent-browser · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout-hermes-agent-browser · done",
+        "en": "BOARD · scout-hermes-agent-browser · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · find-skills-adapted · done",
+        "en": "BOARD · find-skills-adapted · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · find-skills-adapted · done",
+        "en": "BOARD · find-skills-adapted · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · shopify-scout-noon-prices · delivered",
+        "en": "BOARD · shopify-scout-noon-prices · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · shopify-scout-noon-prices · delivered",
+        "en": "BOARD · shopify-scout-noon-prices · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-game-polish-render · delivered",
+        "en": "BOARD · bh-game-polish-render · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-game-polish-render · delivered",
+        "en": "BOARD · bh-game-polish-render · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-game-v76 · delivered",
+        "en": "BOARD · bh-game-v76 · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-game-v76 · delivered",
+        "en": "BOARD · bh-game-v76 · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-game-v761 · delivered",
+        "en": "BOARD · bh-game-v761 · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-game-v761 · delivered",
+        "en": "BOARD · bh-game-v761 · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-sd01-design-review · delivered",
+        "en": "BOARD · bh-sd01-design-review · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-sd01-design-review · delivered",
+        "en": "BOARD · bh-sd01-design-review · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-site-roof-eng · delivered",
+        "en": "BOARD · bh-site-roof-eng · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-site-roof-eng · delivered",
+        "en": "BOARD · bh-site-roof-eng · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-sd01-cost · delivered",
+        "en": "BOARD · bh-sd01-cost · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-sd01-cost · delivered",
+        "en": "BOARD · bh-sd01-cost · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-permits-check · delivered",
+        "en": "BOARD · bh-permits-check · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-permits-check · delivered",
+        "en": "BOARD · bh-permits-check · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-sd01-extend-rooms · delivered",
+        "en": "BOARD · bh-sd01-extend-rooms · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-sd01-extend-rooms · delivered",
+        "en": "BOARD · bh-sd01-extend-rooms · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · research-backlog-2026-11-20 · done",
+        "en": "BOARD · research-backlog-2026-11-20 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · research-backlog-2026-11-20 · done",
+        "en": "BOARD · research-backlog-2026-11-20 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hazawi-ep1 · EP1",
+        "en": "BOARD · hazawi-ep1 · EP1"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hazawi-ep1 · EP1",
+        "en": "BOARD · hazawi-ep1 · EP1"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · usage-push-2026-11-20 · done",
+        "en": "BOARD · usage-push-2026-11-20 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · usage-push-2026-11-20 · done",
+        "en": "BOARD · usage-push-2026-11-20 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · usage-push-hmk-play · partial",
+        "en": "BOARD · usage-push-hmk-play · partial"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · usage-push-hmk-play · partial",
+        "en": "BOARD · usage-push-hmk-play · partial"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · usage-push-capacitor-apks · done",
+        "en": "BOARD · usage-push-capacitor-apks · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · usage-push-capacitor-apks · done",
+        "en": "BOARD · usage-push-capacitor-apks · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · scout2-gateway-refresh · done",
+        "en": "BOARD · scout2-gateway-refresh · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout2-gateway-refresh · done",
+        "en": "BOARD · scout2-gateway-refresh · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · scout2-skills-staged · done",
+        "en": "BOARD · scout2-skills-staged · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout2-skills-staged · done",
+        "en": "BOARD · scout2-skills-staged · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hmk-play-org-account-trigger · draft",
+        "en": "BOARD · hmk-play-org-account-trigger · draft"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hmk-play-org-account-trigger · draft",
+        "en": "BOARD · hmk-play-org-account-trigger · draft"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hmk-play-store-drafts · drafts",
+        "en": "BOARD · hmk-play-store-drafts · drafts"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hmk-play-store-drafts · drafts",
+        "en": "BOARD · hmk-play-store-drafts · drafts"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · kids-ai-literacy-pack · open",
+        "en": "BOARD · kids-ai-literacy-pack · open"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · kids-ai-literacy-pack · open",
+        "en": "BOARD · kids-ai-literacy-pack · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · scout2-newpc-lfm3-audio · blocked",
+        "en": "BOARD · scout2-newpc-lfm3-audio · blocked"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout2-newpc-lfm3-audio · blocked",
+        "en": "BOARD · scout2-newpc-lfm3-audio · blocked"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · scout3-skills-staged · done",
+        "en": "BOARD · scout3-skills-staged · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout3-skills-staged · done",
+        "en": "BOARD · scout3-skills-staged · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · scout3-box-yt-tools · done",
+        "en": "BOARD · scout3-box-yt-tools · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · scout3-box-yt-tools · done",
+        "en": "BOARD · scout3-box-yt-tools · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hazawi-own-voice-narration · open",
+        "en": "BOARD · hazawi-own-voice-narration · open"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hazawi-own-voice-narration · open",
+        "en": "BOARD · hazawi-own-voice-narration · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · edumap-emirates-puzzle · superseded",
+        "en": "BOARD · edumap-emirates-puzzle · superseded"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · edumap-emirates-puzzle · superseded",
+        "en": "BOARD · edumap-emirates-puzzle · superseded"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hmk-family-chores-streaks · open",
+        "en": "BOARD · hmk-family-chores-streaks · open"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hmk-family-chores-streaks · open",
+        "en": "BOARD · hmk-family-chores-streaks · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · gov-services-intake · open",
+        "en": "BOARD · gov-services-intake · open"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · gov-services-intake · open",
+        "en": "BOARD · gov-services-intake · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · customer-service-setup · done",
+        "en": "BOARD · customer-service-setup · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · customer-service-setup · done",
+        "en": "BOARD · customer-service-setup · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · cfo-baseline · done",
+        "en": "BOARD · cfo-baseline · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · cfo-baseline · done",
+        "en": "BOARD · cfo-baseline · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · legal-risk-sweep · delivered",
+        "en": "BOARD · legal-risk-sweep · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · legal-risk-sweep · delivered",
+        "en": "BOARD · legal-risk-sweep · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · security-baseline-2026-11-21 · done",
+        "en": "BOARD · security-baseline-2026-11-21 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · security-baseline-2026-11-21 · done",
+        "en": "BOARD · security-baseline-2026-11-21 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · data-dashboard · done",
+        "en": "BOARD · data-dashboard · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · data-dashboard · done",
+        "en": "BOARD · data-dashboard · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · legal-hmk-play · delivered",
+        "en": "BOARD · legal-hmk-play · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · legal-hmk-play · delivered",
+        "en": "BOARD · legal-hmk-play · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bizdev-uae-programs · done",
+        "en": "BOARD · bizdev-uae-programs · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bizdev-uae-programs · done",
+        "en": "BOARD · bizdev-uae-programs · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hq93-house-deals · delivered",
+        "en": "BOARD · hq93-house-deals · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hq93-house-deals · delivered",
+        "en": "BOARD · hq93-house-deals · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-contract-clauses-occupancy · delivered",
+        "en": "BOARD · bh-contract-clauses-occupancy · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-contract-clauses-occupancy · delivered",
+        "en": "BOARD · bh-contract-clauses-occupancy · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · bh-contract-clauses-legal-review · delivered",
+        "en": "BOARD · bh-contract-clauses-legal-review · delivered"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · bh-contract-clauses-legal-review · delivered",
+        "en": "BOARD · bh-contract-clauses-legal-review · delivered"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hq01-rhythm-v3b · live",
+        "en": "BOARD · hq01-rhythm-v3b · live"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hq01-rhythm-v3b · live",
+        "en": "BOARD · hq01-rhythm-v3b · live"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hq05-scout-vetting-2026-11-21 · fixes",
+        "en": "BOARD · hq05-scout-vetting-2026-11-21 · fixes"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hq05-scout-vetting-2026-11-21 · fixes",
+        "en": "BOARD · hq05-scout-vetting-2026-11-21 · fixes"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hq05-scout-vetting-2026-11-21 · closed",
+        "en": "BOARD · hq05-scout-vetting-2026-11-21 · closed"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hq05-scout-vetting-2026-11-21 · closed",
+        "en": "BOARD · hq05-scout-vetting-2026-11-21 · closed"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · eid-al-etihad-55-content · VIDEOS",
+        "en": "BOARD · eid-al-etihad-55-content · VIDEOS"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · eid-al-etihad-55-content · VIDEOS",
+        "en": "BOARD · eid-al-etihad-55-content · VIDEOS"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · quran-word-timings · done",
+        "en": "BOARD · quran-word-timings · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · quran-word-timings · done",
+        "en": "BOARD · quran-word-timings · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · shopify-uae-payment-stack · done",
+        "en": "BOARD · shopify-uae-payment-stack · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · shopify-uae-payment-stack · done",
+        "en": "BOARD · shopify-uae-payment-stack · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · islamic-app-v0.8-plan-DRAFT · draft",
+        "en": "BOARD · islamic-app-v0.8-plan-DRAFT · draft"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · islamic-app-v0.8-plan-DRAFT · draft",
+        "en": "BOARD · islamic-app-v0.8-plan-DRAFT · draft"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · backlog-s24-vs-s7 · done",
+        "en": "BOARD · backlog-s24-vs-s7 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · backlog-s24-vs-s7 · done",
+        "en": "BOARD · backlog-s24-vs-s7 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · fix-sprint-2026-11-21 · done",
+        "en": "BOARD · fix-sprint-2026-11-21 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · fix-sprint-2026-11-21 · done",
+        "en": "BOARD · fix-sprint-2026-11-21 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · ceo-only-comms-2026-11-21 · partial",
+        "en": "BOARD · ceo-only-comms-2026-11-21 · partial"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · ceo-only-comms-2026-11-21 · partial",
+        "en": "BOARD · ceo-only-comms-2026-11-21 · partial"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · backlog-20-open-data-scan · done",
+        "en": "BOARD · backlog-20-open-data-scan · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · backlog-20-open-data-scan · done",
+        "en": "BOARD · backlog-20-open-data-scan · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · backlog-8-advertiser-permit · done",
+        "en": "BOARD · backlog-8-advertiser-permit · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · backlog-8-advertiser-permit · done",
+        "en": "BOARD · backlog-8-advertiser-permit · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · task-dispatch-v4 · done",
+        "en": "BOARD · task-dispatch-v4 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · task-dispatch-v4 · done",
+        "en": "BOARD · task-dispatch-v4 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · prompt-usage-routine-v2 · done",
+        "en": "BOARD · prompt-usage-routine-v2 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · prompt-usage-routine-v2 · done",
+        "en": "BOARD · prompt-usage-routine-v2 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-90 · done",
+        "en": "BOARD · v4-rule-HQ-90 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-90 · done",
+        "en": "BOARD · v4-rule-HQ-90 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-92 · done",
+        "en": "BOARD · v4-rule-HQ-92 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-92 · done",
+        "en": "BOARD · v4-rule-HQ-92 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-05 · done",
+        "en": "BOARD · v4-rule-HQ-05 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-05 · done",
+        "en": "BOARD · v4-rule-HQ-05 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-06 · done",
+        "en": "BOARD · v4-rule-HQ-06 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-06 · done",
+        "en": "BOARD · v4-rule-HQ-06 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-94 · done",
+        "en": "BOARD · v4-rule-HQ-94 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-94 · done",
+        "en": "BOARD · v4-rule-HQ-94 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-99 · done",
+        "en": "BOARD · v4-rule-HQ-99 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-99 · done",
+        "en": "BOARD · v4-rule-HQ-99 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · v4-rule-HQ-81 · done",
+        "en": "BOARD · v4-rule-HQ-81 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · v4-rule-HQ-81 · done",
+        "en": "BOARD · v4-rule-HQ-81 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · edumap-emirates-puzzle · done",
+        "en": "BOARD · edumap-emirates-puzzle · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · edumap-emirates-puzzle · done",
+        "en": "BOARD · edumap-emirates-puzzle · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hmk-family-chores-streaks · in-progress",
+        "en": "BOARD · hmk-family-chores-streaks · in-progress"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hmk-family-chores-streaks · in-progress",
+        "en": "BOARD · hmk-family-chores-streaks · in-progress"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hmk-family-chores-streaks · done",
+        "en": "BOARD · hmk-family-chores-streaks · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hmk-family-chores-streaks · done",
+        "en": "BOARD · hmk-family-chores-streaks · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · openvino-new-pc · done",
+        "en": "BOARD · openvino-new-pc · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · openvino-new-pc · done",
+        "en": "BOARD · openvino-new-pc · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · emirati-voice-ab-2026-11-21 · done",
+        "en": "BOARD · emirati-voice-ab-2026-11-21 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · emirati-voice-ab-2026-11-21 · done",
+        "en": "BOARD · emirati-voice-ab-2026-11-21 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hmk-1.16u-today-at-home · built",
+        "en": "BOARD · hmk-1.16u-today-at-home · built"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hmk-1.16u-today-at-home · built",
+        "en": "BOARD · hmk-1.16u-today-at-home · built"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · ai-pulse-academy · done",
+        "en": "BOARD · ai-pulse-academy · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · ai-pulse-academy · done",
+        "en": "BOARD · ai-pulse-academy · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · uae-deep-past-cards · in-progress",
+        "en": "BOARD · uae-deep-past-cards · in-progress"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · uae-deep-past-cards · in-progress",
+        "en": "BOARD · uae-deep-past-cards · in-progress"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · uae-deep-past-cards · done",
+        "en": "BOARD · uae-deep-past-cards · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · uae-deep-past-cards · done",
+        "en": "BOARD · uae-deep-past-cards · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hazawi-own-voice-narration · in-progress",
+        "en": "BOARD · hazawi-own-voice-narration · in-progress"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hazawi-own-voice-narration · in-progress",
+        "en": "BOARD · hazawi-own-voice-narration · in-progress"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hazawi-own-voice-narration · done",
+        "en": "BOARD · hazawi-own-voice-narration · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hazawi-own-voice-narration · done",
+        "en": "BOARD · hazawi-own-voice-narration · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hmk-play-org-account-trigger · in-progress",
+        "en": "BOARD · hmk-play-org-account-trigger · in-progress"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hmk-play-org-account-trigger · in-progress",
+        "en": "BOARD · hmk-play-org-account-trigger · in-progress"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · hmk-play-org-account-trigger · done",
+        "en": "BOARD · hmk-play-org-account-trigger · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · hmk-play-org-account-trigger · done",
+        "en": "BOARD · hmk-play-org-account-trigger · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · kids-ai-literacy-pack · in-progress",
+        "en": "BOARD · kids-ai-literacy-pack · in-progress"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · kids-ai-literacy-pack · in-progress",
+        "en": "BOARD · kids-ai-literacy-pack · in-progress"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · kids-ai-literacy-pack · done",
+        "en": "BOARD · kids-ai-literacy-pack · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · kids-ai-literacy-pack · done",
+        "en": "BOARD · kids-ai-literacy-pack · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · usage-cut-2026-11-22 · done",
+        "en": "BOARD · usage-cut-2026-11-22 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · usage-cut-2026-11-22 · done",
+        "en": "BOARD · usage-cut-2026-11-22 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · wasmi-scan-domain-check-3.6 · done",
+        "en": "BOARD · wasmi-scan-domain-check-3.6 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · wasmi-scan-domain-check-3.6 · done",
+        "en": "BOARD · wasmi-scan-domain-check-3.6 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · books-setup · done",
+        "en": "BOARD · books-setup · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · books-setup · done",
+        "en": "BOARD · books-setup · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · wasmi-rc3.7-prescan · done",
+        "en": "BOARD · wasmi-rc3.7-prescan · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · wasmi-rc3.7-prescan · done",
+        "en": "BOARD · wasmi-rc3.7-prescan · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · books-kids-letter-tracing · done",
+        "en": "BOARD · books-kids-letter-tracing · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · books-kids-letter-tracing · done",
+        "en": "BOARD · books-kids-letter-tracing · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · books-ramadan-planner-2027 · v1.2",
+        "en": "BOARD · books-ramadan-planner-2027 · v1.2"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · books-ramadan-planner-2027 · v1.2",
+        "en": "BOARD · books-ramadan-planner-2027 · v1.2"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · books-kids-letter-tracing · v1.1",
+        "en": "BOARD · books-kids-letter-tracing · v1.1"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · books-kids-letter-tracing · v1.1",
+        "en": "BOARD · books-kids-letter-tracing · v1.1"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · books-kids-letter-tracing · v1.2",
+        "en": "BOARD · books-kids-letter-tracing · v1.2"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · books-kids-letter-tracing · v1.2",
+        "en": "BOARD · books-kids-letter-tracing · v1.2"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · books-kids-letter-tracing · v1.3",
+        "en": "BOARD · books-kids-letter-tracing · v1.3"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · books-kids-letter-tracing · v1.3",
+        "en": "BOARD · books-kids-letter-tracing · v1.3"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · youtube-setup · done",
+        "en": "BOARD · youtube-setup · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · youtube-setup · done",
+        "en": "BOARD · youtube-setup · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · youtube-ai-in-a-minute · v1",
+        "en": "BOARD · youtube-ai-in-a-minute · v1"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · youtube-ai-in-a-minute · v1",
+        "en": "BOARD · youtube-ai-in-a-minute · v1"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · youtube-ai-in-a-minute · v2",
+        "en": "BOARD · youtube-ai-in-a-minute · v2"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · youtube-ai-in-a-minute · v2",
+        "en": "BOARD · youtube-ai-in-a-minute · v2"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · youtube-perseverance-parachute · done",
+        "en": "BOARD · youtube-perseverance-parachute · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · youtube-perseverance-parachute · done",
+        "en": "BOARD · youtube-perseverance-parachute · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3",
+        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3",
+        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3.1",
+        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3.1"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3.1",
+        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3.1"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3.2",
+        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3.2"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3.2",
+        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3.2"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · quran-shorts · plan",
+        "en": "BOARD · quran-shorts · plan"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · quran-shorts · plan",
+        "en": "BOARD · quran-shorts · plan"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · victims-eye-championship-pack · open",
+        "en": "BOARD · victims-eye-championship-pack · open"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · victims-eye-championship-pack · open",
+        "en": "BOARD · victims-eye-championship-pack · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · youtube-internal-batch-2026-11-26-free-first · open",
+        "en": "BOARD · youtube-internal-batch-2026-11-26-free-first · open"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · youtube-internal-batch-2026-11-26-free-first · open",
+        "en": "BOARD · youtube-internal-batch-2026-11-26-free-first · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · islamic-v07-scholar-briefing · open",
+        "en": "BOARD · islamic-v07-scholar-briefing · open"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · islamic-v07-scholar-briefing · open",
+        "en": "BOARD · islamic-v07-scholar-briefing · open"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · uae-knowledge-cards-next · done-draft",
+        "en": "BOARD · uae-knowledge-cards-next · done-draft"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · uae-knowledge-cards-next · done-draft",
+        "en": "BOARD · uae-knowledge-cards-next · done-draft"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · free-first-nonstop-2026-11-25 · done",
+        "en": "BOARD · free-first-nonstop-2026-11-25 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · free-first-nonstop-2026-11-25 · done",
+        "en": "BOARD · free-first-nonstop-2026-11-25 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "BOARD · usage-enhancements-2-5-2026-11-25 · done",
+        "en": "BOARD · usage-enhancements-2-5-2026-11-25 · done"
+      },
+      "m": "2026-11-26 15:42",
+      "f": "مشروع",
+      "from_ar": "مشروع",
+      "from_en": "Project",
+      "b": {
+        "ar": "BOARD · usage-enhancements-2-5-2026-11-25 · done",
+        "en": "BOARD · usage-enhancements-2-5-2026-11-25 · done"
+      },
+      "s": {
+        "ar": "من لوحة المهام المفتوحة",
+        "en": "From the open-task board"
+      },
+      "p": "reports"
+    },
+    {
       "t": "موجز الإمارات اليومي · 26 نوفمبر",
       "m": "2026-11-26 07:35",
       "f": "الموجز اليومي",
       "b": "الخلاصة: الإمارات تواصل تعزيز صدارتها الاقتصادية باندماجات كبرى وحوكمة رقمية وسط يقظة أمنية واستقرار تنموي شامل. #### أهم العناوين • تصعيد إقليمي عقب هجمات حوثية معلنة (ادعاء) وغارات على ميناء الحديدة [ذا ناشيونال] • تراجع حاد لمؤشرات الأسهم الأمريكية بقيادة ناسداك وسط مخاوف التضخم والرسوم [الخليج] • مصر: مقتل 30 شخصاً على الأقل في انفجار شاحنة وقود بالقاهرة [ذا ناشيونال] • دبي الإسلامي يستحوذ على الإمارات الإسلامي في صفقة اندماج مصرفي ضخمة [الخليج] • الإمارات تطلق المنصة الموحدة ميرة لتسهيل الخدمات الحكومية الذكية [الإمارات اليوم] • الاتحاد للماء والكهرباء تغلق تمويل محطة معالجة الصرف برأس الخيمة [وام] • بتوجيهات سمو الشيخ منصور بن زايد إطلاق شراكة استراتيجية لتعزيز قيم الطلبة [البيان] • سمو الشيخة فاطمة بنت مبارك تستقبل مشاركات المجلس التنفيذي للأمم المتحدة للسياحة [وام] إيجابي 6 · سلبي 6 · مصادر مفتوحة فقط",
       "s": "الإمارات تواصل تعزيز صدارتها الاقتصادية باندماجات كبرى وحوكمة رقمية وسط يقظة أمنية واستقرار تنموي شامل.",
       "p": "brief"
-    },
-    {
-      "t": {
-        "ar": "BOARD · accessibility-audit-co · done",
-        "en": "BOARD · accessibility-audit-co · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · accessibility-audit-co · done",
-        "en": "BOARD · accessibility-audit-co · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · shopify-ops-free-prep · delivered",
-        "en": "BOARD · shopify-ops-free-prep · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · shopify-ops-free-prep · delivered",
-        "en": "BOARD · shopify-ops-free-prep · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · shopify-growth-free-seo · delivered",
-        "en": "BOARD · shopify-growth-free-seo · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · shopify-growth-free-seo · delivered",
-        "en": "BOARD · shopify-growth-free-seo · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · shopify-finance-free-prep · delivered",
-        "en": "BOARD · shopify-finance-free-prep · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · shopify-finance-free-prep · delivered",
-        "en": "BOARD · shopify-finance-free-prep · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · tools-tuneup-2026-11-20 · done",
-        "en": "BOARD · tools-tuneup-2026-11-20 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · tools-tuneup-2026-11-20 · done",
-        "en": "BOARD · tools-tuneup-2026-11-20 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · box-runner-restart · done",
-        "en": "BOARD · box-runner-restart · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · box-runner-restart · done",
-        "en": "BOARD · box-runner-restart · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · newpc-docker-power · partial",
-        "en": "BOARD · newpc-docker-power · partial"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · newpc-docker-power · partial",
-        "en": "BOARD · newpc-docker-power · partial"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · box-pc-ollama · partial",
-        "en": "BOARD · box-pc-ollama · partial"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · box-pc-ollama · partial",
-        "en": "BOARD · box-pc-ollama · partial"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · excel-ideas-2026-11-20 · done",
-        "en": "BOARD · excel-ideas-2026-11-20 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · excel-ideas-2026-11-20 · done",
-        "en": "BOARD · excel-ideas-2026-11-20 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · scout-ollama-newpc · done",
-        "en": "BOARD · scout-ollama-newpc · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · scout-ollama-newpc · done",
-        "en": "BOARD · scout-ollama-newpc · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · scout-hermes-agent-browser · done",
-        "en": "BOARD · scout-hermes-agent-browser · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · scout-hermes-agent-browser · done",
-        "en": "BOARD · scout-hermes-agent-browser · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · find-skills-adapted · done",
-        "en": "BOARD · find-skills-adapted · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · find-skills-adapted · done",
-        "en": "BOARD · find-skills-adapted · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · shopify-scout-noon-prices · delivered",
-        "en": "BOARD · shopify-scout-noon-prices · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · shopify-scout-noon-prices · delivered",
-        "en": "BOARD · shopify-scout-noon-prices · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · bh-game-polish-render · delivered",
-        "en": "BOARD · bh-game-polish-render · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · bh-game-polish-render · delivered",
-        "en": "BOARD · bh-game-polish-render · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · bh-game-v76 · delivered",
-        "en": "BOARD · bh-game-v76 · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · bh-game-v76 · delivered",
-        "en": "BOARD · bh-game-v76 · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · bh-game-v761 · delivered",
-        "en": "BOARD · bh-game-v761 · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · bh-game-v761 · delivered",
-        "en": "BOARD · bh-game-v761 · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · bh-sd01-design-review · delivered",
-        "en": "BOARD · bh-sd01-design-review · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · bh-sd01-design-review · delivered",
-        "en": "BOARD · bh-sd01-design-review · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · bh-site-roof-eng · delivered",
-        "en": "BOARD · bh-site-roof-eng · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · bh-site-roof-eng · delivered",
-        "en": "BOARD · bh-site-roof-eng · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · bh-sd01-cost · delivered",
-        "en": "BOARD · bh-sd01-cost · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · bh-sd01-cost · delivered",
-        "en": "BOARD · bh-sd01-cost · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · bh-permits-check · delivered",
-        "en": "BOARD · bh-permits-check · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · bh-permits-check · delivered",
-        "en": "BOARD · bh-permits-check · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · bh-sd01-extend-rooms · delivered",
-        "en": "BOARD · bh-sd01-extend-rooms · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · bh-sd01-extend-rooms · delivered",
-        "en": "BOARD · bh-sd01-extend-rooms · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · research-backlog-2026-11-20 · done",
-        "en": "BOARD · research-backlog-2026-11-20 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · research-backlog-2026-11-20 · done",
-        "en": "BOARD · research-backlog-2026-11-20 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hazawi-ep1 · done",
-        "en": "BOARD · hazawi-ep1 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hazawi-ep1 · done",
-        "en": "BOARD · hazawi-ep1 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · usage-push-2026-11-20 · done",
-        "en": "BOARD · usage-push-2026-11-20 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · usage-push-2026-11-20 · done",
-        "en": "BOARD · usage-push-2026-11-20 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · usage-push-hmk-play · partial",
-        "en": "BOARD · usage-push-hmk-play · partial"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · usage-push-hmk-play · partial",
-        "en": "BOARD · usage-push-hmk-play · partial"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · usage-push-capacitor-apks · done",
-        "en": "BOARD · usage-push-capacitor-apks · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · usage-push-capacitor-apks · done",
-        "en": "BOARD · usage-push-capacitor-apks · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · scout2-gateway-refresh · done",
-        "en": "BOARD · scout2-gateway-refresh · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · scout2-gateway-refresh · done",
-        "en": "BOARD · scout2-gateway-refresh · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · scout2-skills-staged · done",
-        "en": "BOARD · scout2-skills-staged · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · scout2-skills-staged · done",
-        "en": "BOARD · scout2-skills-staged · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hmk-play-org-account-trigger · draft",
-        "en": "BOARD · hmk-play-org-account-trigger · draft"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hmk-play-org-account-trigger · draft",
-        "en": "BOARD · hmk-play-org-account-trigger · draft"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hmk-play-store-drafts · drafts",
-        "en": "BOARD · hmk-play-store-drafts · drafts"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hmk-play-store-drafts · drafts",
-        "en": "BOARD · hmk-play-store-drafts · drafts"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · kids-ai-literacy-pack · open",
-        "en": "BOARD · kids-ai-literacy-pack · open"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · kids-ai-literacy-pack · open",
-        "en": "BOARD · kids-ai-literacy-pack · open"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · scout2-newpc-lfm3-audio · blocked",
-        "en": "BOARD · scout2-newpc-lfm3-audio · blocked"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · scout2-newpc-lfm3-audio · blocked",
-        "en": "BOARD · scout2-newpc-lfm3-audio · blocked"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · scout3-skills-staged · done",
-        "en": "BOARD · scout3-skills-staged · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · scout3-skills-staged · done",
-        "en": "BOARD · scout3-skills-staged · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · scout3-box-yt-tools · done",
-        "en": "BOARD · scout3-box-yt-tools · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · scout3-box-yt-tools · done",
-        "en": "BOARD · scout3-box-yt-tools · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hazawi-own-voice-narration · open",
-        "en": "BOARD · hazawi-own-voice-narration · open"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hazawi-own-voice-narration · open",
-        "en": "BOARD · hazawi-own-voice-narration · open"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · edumap-emirates-puzzle · superseded",
-        "en": "BOARD · edumap-emirates-puzzle · superseded"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · edumap-emirates-puzzle · superseded",
-        "en": "BOARD · edumap-emirates-puzzle · superseded"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hmk-family-chores-streaks · open",
-        "en": "BOARD · hmk-family-chores-streaks · open"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hmk-family-chores-streaks · open",
-        "en": "BOARD · hmk-family-chores-streaks · open"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · gov-services-intake · open",
-        "en": "BOARD · gov-services-intake · open"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · gov-services-intake · open",
-        "en": "BOARD · gov-services-intake · open"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · customer-service-setup · done",
-        "en": "BOARD · customer-service-setup · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · customer-service-setup · done",
-        "en": "BOARD · customer-service-setup · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · cfo-baseline · done",
-        "en": "BOARD · cfo-baseline · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · cfo-baseline · done",
-        "en": "BOARD · cfo-baseline · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · legal-risk-sweep · delivered",
-        "en": "BOARD · legal-risk-sweep · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · legal-risk-sweep · delivered",
-        "en": "BOARD · legal-risk-sweep · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · security-baseline-2026-11-21 · done",
-        "en": "BOARD · security-baseline-2026-11-21 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · security-baseline-2026-11-21 · done",
-        "en": "BOARD · security-baseline-2026-11-21 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · data-dashboard · done",
-        "en": "BOARD · data-dashboard · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · data-dashboard · done",
-        "en": "BOARD · data-dashboard · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · legal-hmk-play · delivered",
-        "en": "BOARD · legal-hmk-play · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · legal-hmk-play · delivered",
-        "en": "BOARD · legal-hmk-play · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · bizdev-uae-programs · done",
-        "en": "BOARD · bizdev-uae-programs · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · bizdev-uae-programs · done",
-        "en": "BOARD · bizdev-uae-programs · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hq93-house-deals · delivered",
-        "en": "BOARD · hq93-house-deals · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hq93-house-deals · delivered",
-        "en": "BOARD · hq93-house-deals · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · bh-contract-clauses-occupancy · delivered",
-        "en": "BOARD · bh-contract-clauses-occupancy · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · bh-contract-clauses-occupancy · delivered",
-        "en": "BOARD · bh-contract-clauses-occupancy · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · bh-contract-clauses-legal-review · delivered",
-        "en": "BOARD · bh-contract-clauses-legal-review · delivered"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · bh-contract-clauses-legal-review · delivered",
-        "en": "BOARD · bh-contract-clauses-legal-review · delivered"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hq01-rhythm-v3b · live",
-        "en": "BOARD · hq01-rhythm-v3b · live"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hq01-rhythm-v3b · live",
-        "en": "BOARD · hq01-rhythm-v3b · live"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hq05-scout-vetting-2026-11-21 · fixes",
-        "en": "BOARD · hq05-scout-vetting-2026-11-21 · fixes"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hq05-scout-vetting-2026-11-21 · fixes",
-        "en": "BOARD · hq05-scout-vetting-2026-11-21 · fixes"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hq05-scout-vetting-2026-11-21 · closed",
-        "en": "BOARD · hq05-scout-vetting-2026-11-21 · closed"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hq05-scout-vetting-2026-11-21 · closed",
-        "en": "BOARD · hq05-scout-vetting-2026-11-21 · closed"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · eid-al-etihad-55-content · VIDEOS",
-        "en": "BOARD · eid-al-etihad-55-content · VIDEOS"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · eid-al-etihad-55-content · VIDEOS",
-        "en": "BOARD · eid-al-etihad-55-content · VIDEOS"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · quran-word-timings · done",
-        "en": "BOARD · quran-word-timings · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · quran-word-timings · done",
-        "en": "BOARD · quran-word-timings · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · shopify-uae-payment-stack · done",
-        "en": "BOARD · shopify-uae-payment-stack · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · shopify-uae-payment-stack · done",
-        "en": "BOARD · shopify-uae-payment-stack · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · islamic-app-v0.8-plan-DRAFT · draft",
-        "en": "BOARD · islamic-app-v0.8-plan-DRAFT · draft"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · islamic-app-v0.8-plan-DRAFT · draft",
-        "en": "BOARD · islamic-app-v0.8-plan-DRAFT · draft"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · backlog-s24-vs-s7 · done",
-        "en": "BOARD · backlog-s24-vs-s7 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · backlog-s24-vs-s7 · done",
-        "en": "BOARD · backlog-s24-vs-s7 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · fix-sprint-2026-11-21 · done",
-        "en": "BOARD · fix-sprint-2026-11-21 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · fix-sprint-2026-11-21 · done",
-        "en": "BOARD · fix-sprint-2026-11-21 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · ceo-only-comms-2026-11-21 · partial",
-        "en": "BOARD · ceo-only-comms-2026-11-21 · partial"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · ceo-only-comms-2026-11-21 · partial",
-        "en": "BOARD · ceo-only-comms-2026-11-21 · partial"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · backlog-20-open-data-scan · done",
-        "en": "BOARD · backlog-20-open-data-scan · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · backlog-20-open-data-scan · done",
-        "en": "BOARD · backlog-20-open-data-scan · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · backlog-8-advertiser-permit · done",
-        "en": "BOARD · backlog-8-advertiser-permit · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · backlog-8-advertiser-permit · done",
-        "en": "BOARD · backlog-8-advertiser-permit · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · task-dispatch-v4 · done",
-        "en": "BOARD · task-dispatch-v4 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · task-dispatch-v4 · done",
-        "en": "BOARD · task-dispatch-v4 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · prompt-usage-routine-v2 · done",
-        "en": "BOARD · prompt-usage-routine-v2 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · prompt-usage-routine-v2 · done",
-        "en": "BOARD · prompt-usage-routine-v2 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · v4-rule-HQ-90 · done",
-        "en": "BOARD · v4-rule-HQ-90 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · v4-rule-HQ-90 · done",
-        "en": "BOARD · v4-rule-HQ-90 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · v4-rule-HQ-92 · done",
-        "en": "BOARD · v4-rule-HQ-92 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · v4-rule-HQ-92 · done",
-        "en": "BOARD · v4-rule-HQ-92 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · v4-rule-HQ-05 · done",
-        "en": "BOARD · v4-rule-HQ-05 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · v4-rule-HQ-05 · done",
-        "en": "BOARD · v4-rule-HQ-05 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · v4-rule-HQ-06 · done",
-        "en": "BOARD · v4-rule-HQ-06 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · v4-rule-HQ-06 · done",
-        "en": "BOARD · v4-rule-HQ-06 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · v4-rule-HQ-94 · done",
-        "en": "BOARD · v4-rule-HQ-94 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · v4-rule-HQ-94 · done",
-        "en": "BOARD · v4-rule-HQ-94 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · v4-rule-HQ-99 · done",
-        "en": "BOARD · v4-rule-HQ-99 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · v4-rule-HQ-99 · done",
-        "en": "BOARD · v4-rule-HQ-99 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · v4-rule-HQ-81 · done",
-        "en": "BOARD · v4-rule-HQ-81 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · v4-rule-HQ-81 · done",
-        "en": "BOARD · v4-rule-HQ-81 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · edumap-emirates-puzzle · done",
-        "en": "BOARD · edumap-emirates-puzzle · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · edumap-emirates-puzzle · done",
-        "en": "BOARD · edumap-emirates-puzzle · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hmk-family-chores-streaks · in-progress",
-        "en": "BOARD · hmk-family-chores-streaks · in-progress"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hmk-family-chores-streaks · in-progress",
-        "en": "BOARD · hmk-family-chores-streaks · in-progress"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hmk-family-chores-streaks · done",
-        "en": "BOARD · hmk-family-chores-streaks · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hmk-family-chores-streaks · done",
-        "en": "BOARD · hmk-family-chores-streaks · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · openvino-new-pc · done",
-        "en": "BOARD · openvino-new-pc · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · openvino-new-pc · done",
-        "en": "BOARD · openvino-new-pc · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · emirati-voice-ab-2026-11-21 · done",
-        "en": "BOARD · emirati-voice-ab-2026-11-21 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · emirati-voice-ab-2026-11-21 · done",
-        "en": "BOARD · emirati-voice-ab-2026-11-21 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hmk-1.16u-today-at-home · built",
-        "en": "BOARD · hmk-1.16u-today-at-home · built"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hmk-1.16u-today-at-home · built",
-        "en": "BOARD · hmk-1.16u-today-at-home · built"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · ai-pulse-academy · done",
-        "en": "BOARD · ai-pulse-academy · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · ai-pulse-academy · done",
-        "en": "BOARD · ai-pulse-academy · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · uae-deep-past-cards · in-progress",
-        "en": "BOARD · uae-deep-past-cards · in-progress"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · uae-deep-past-cards · in-progress",
-        "en": "BOARD · uae-deep-past-cards · in-progress"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · uae-deep-past-cards · done",
-        "en": "BOARD · uae-deep-past-cards · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · uae-deep-past-cards · done",
-        "en": "BOARD · uae-deep-past-cards · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hazawi-own-voice-narration · in-progress",
-        "en": "BOARD · hazawi-own-voice-narration · in-progress"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hazawi-own-voice-narration · in-progress",
-        "en": "BOARD · hazawi-own-voice-narration · in-progress"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hazawi-own-voice-narration · done",
-        "en": "BOARD · hazawi-own-voice-narration · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hazawi-own-voice-narration · done",
-        "en": "BOARD · hazawi-own-voice-narration · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hmk-play-org-account-trigger · in-progress",
-        "en": "BOARD · hmk-play-org-account-trigger · in-progress"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hmk-play-org-account-trigger · in-progress",
-        "en": "BOARD · hmk-play-org-account-trigger · in-progress"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · hmk-play-org-account-trigger · done",
-        "en": "BOARD · hmk-play-org-account-trigger · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · hmk-play-org-account-trigger · done",
-        "en": "BOARD · hmk-play-org-account-trigger · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · kids-ai-literacy-pack · in-progress",
-        "en": "BOARD · kids-ai-literacy-pack · in-progress"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · kids-ai-literacy-pack · in-progress",
-        "en": "BOARD · kids-ai-literacy-pack · in-progress"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · kids-ai-literacy-pack · done",
-        "en": "BOARD · kids-ai-literacy-pack · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · kids-ai-literacy-pack · done",
-        "en": "BOARD · kids-ai-literacy-pack · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · usage-cut-2026-11-22 · done",
-        "en": "BOARD · usage-cut-2026-11-22 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · usage-cut-2026-11-22 · done",
-        "en": "BOARD · usage-cut-2026-11-22 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · wasmi-scan-domain-check-3.6 · done",
-        "en": "BOARD · wasmi-scan-domain-check-3.6 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · wasmi-scan-domain-check-3.6 · done",
-        "en": "BOARD · wasmi-scan-domain-check-3.6 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · books-setup · done",
-        "en": "BOARD · books-setup · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · books-setup · done",
-        "en": "BOARD · books-setup · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · wasmi-rc3.7-prescan · done",
-        "en": "BOARD · wasmi-rc3.7-prescan · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · wasmi-rc3.7-prescan · done",
-        "en": "BOARD · wasmi-rc3.7-prescan · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · books-kids-letter-tracing · done",
-        "en": "BOARD · books-kids-letter-tracing · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · books-kids-letter-tracing · done",
-        "en": "BOARD · books-kids-letter-tracing · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · books-ramadan-planner-2027 · v1.2",
-        "en": "BOARD · books-ramadan-planner-2027 · v1.2"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · books-ramadan-planner-2027 · v1.2",
-        "en": "BOARD · books-ramadan-planner-2027 · v1.2"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · books-kids-letter-tracing · v1.1",
-        "en": "BOARD · books-kids-letter-tracing · v1.1"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · books-kids-letter-tracing · v1.1",
-        "en": "BOARD · books-kids-letter-tracing · v1.1"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · books-kids-letter-tracing · v1.2",
-        "en": "BOARD · books-kids-letter-tracing · v1.2"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · books-kids-letter-tracing · v1.2",
-        "en": "BOARD · books-kids-letter-tracing · v1.2"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · books-kids-letter-tracing · v1.3",
-        "en": "BOARD · books-kids-letter-tracing · v1.3"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · books-kids-letter-tracing · v1.3",
-        "en": "BOARD · books-kids-letter-tracing · v1.3"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · youtube-setup · done",
-        "en": "BOARD · youtube-setup · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · youtube-setup · done",
-        "en": "BOARD · youtube-setup · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · youtube-ai-in-a-minute · v1",
-        "en": "BOARD · youtube-ai-in-a-minute · v1"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · youtube-ai-in-a-minute · v1",
-        "en": "BOARD · youtube-ai-in-a-minute · v1"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · youtube-ai-in-a-minute · v2",
-        "en": "BOARD · youtube-ai-in-a-minute · v2"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · youtube-ai-in-a-minute · v2",
-        "en": "BOARD · youtube-ai-in-a-minute · v2"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · youtube-perseverance-parachute · done",
-        "en": "BOARD · youtube-perseverance-parachute · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · youtube-perseverance-parachute · done",
-        "en": "BOARD · youtube-perseverance-parachute · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3",
-        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3",
-        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3.1",
-        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3.1"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3.1",
-        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3.1"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3.2",
-        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3.2"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3.2",
-        "en": "BOARD · youtube-ai-in-a-minute-v3 · v3.2"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · quran-shorts · plan",
-        "en": "BOARD · quran-shorts · plan"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · quran-shorts · plan",
-        "en": "BOARD · quran-shorts · plan"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · victims-eye-championship-pack · open",
-        "en": "BOARD · victims-eye-championship-pack · open"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · victims-eye-championship-pack · open",
-        "en": "BOARD · victims-eye-championship-pack · open"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · youtube-internal-batch-2026-11-26-free-first · open",
-        "en": "BOARD · youtube-internal-batch-2026-11-26-free-first · open"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · youtube-internal-batch-2026-11-26-free-first · open",
-        "en": "BOARD · youtube-internal-batch-2026-11-26-free-first · open"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · islamic-v07-scholar-briefing · open",
-        "en": "BOARD · islamic-v07-scholar-briefing · open"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · islamic-v07-scholar-briefing · open",
-        "en": "BOARD · islamic-v07-scholar-briefing · open"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · uae-knowledge-cards-next · done-draft",
-        "en": "BOARD · uae-knowledge-cards-next · done-draft"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · uae-knowledge-cards-next · done-draft",
-        "en": "BOARD · uae-knowledge-cards-next · done-draft"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · free-first-nonstop-2026-11-25 · done",
-        "en": "BOARD · free-first-nonstop-2026-11-25 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · free-first-nonstop-2026-11-25 · done",
-        "en": "BOARD · free-first-nonstop-2026-11-25 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
-    },
-    {
-      "t": {
-        "ar": "BOARD · usage-enhancements-2-5-2026-11-25 · done",
-        "en": "BOARD · usage-enhancements-2-5-2026-11-25 · done"
-      },
-      "m": "2026-11-25 14:52",
-      "f": "مشروع",
-      "from_ar": "مشروع",
-      "from_en": "Project",
-      "b": {
-        "ar": "BOARD · usage-enhancements-2-5-2026-11-25 · done",
-        "en": "BOARD · usage-enhancements-2-5-2026-11-25 · done"
-      },
-      "s": {
-        "ar": "من لوحة المهام المفتوحة",
-        "en": "From the open-task board"
-      },
-      "p": "reports"
     },
     {
       "t": "موجز الإمارات اليومي · 25 نوفمبر",
@@ -6436,7 +6436,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-26T15:30:03+04:00",
+    "generated": "2026-11-26T15:45:11+04:00",
     "rooms": [],
     "agents": [
       {

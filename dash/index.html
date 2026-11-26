@@ -17,9 +17,9 @@ html,body{font-family:Plex,system-ui,sans-serif}
 <link rel="stylesheet" href="restore.css"><link rel="stylesheet" href="rows.css">
 </head>
 <body class="restore" data-hq-src="hq.html">
-<div id="qa-banner">بيانات تجريبية</div>
+<div id="qa-banner">بيانات تجريبية · Synthetic demo — not live business data</div>
 <div id="app">
-<header><button id="back" type="button" hidden>↩</button><div class="logo">HMK<small id="upd">بيانات تجريبية · العين</small></div></header>
+<header><button id="back" type="button" hidden aria-label="رجوع">↩</button><div class="logo">HMK<small id="upd">بيانات تجريبية · العين</small></div><div id="mode" role="group" aria-label="الوضع"><button type="button" data-mode="demo">المعاينة</button><button type="button" data-mode="mine">مساحتي</button></div></header>
 <main id="pages"></main>
 <footer id="nav"></footer>
 </div>
@@ -32,6 +32,6 @@ window.theme=function(){};
 </script>
 <script src="report-registry.js"></script>
 <script src="restore.js"></script>
-<script src="fixture-adapter.js"></script><script src="fill.js"></script>
+<script src="fixture-adapter.js"></script><script src="fill.js"></script><script src="workspace.js"></script>
 </body>
 </html>

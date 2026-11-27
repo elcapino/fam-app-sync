@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-27 17:04",
-  "built": "2026-11-27 17:04",
+  "updated": "2026-11-27 17:19",
+  "built": "2026-11-27 17:19",
   "brief": [
     {
       "ar": "رخصة HMK AI صدرت في 27 نوفمبر",
@@ -575,7 +575,7 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-27 17:04 Asia/Dubai",
+    "updated": "2026-11-27 17:19 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
@@ -613,8 +613,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "كلود 32.83 درهم (8.94 دولار) وجيميناي 27.76 درهم (7.56 دولار) من السجلات المحلية في 2026-11-27 17:04. التداول وفاهم موقوفان. السعر 3.6725 درهم للدولار.",
-    "caps_note_en": "Claude 32.83 AED ($8.94) and Gemini 27.76 AED ($7.56) from local ledgers at 2026-11-27 17:04. Trading and FAHEM stay stopped. Peg 3.6725 AED per USD."
+    "caps_note": "كلود 32.83 درهم (8.94 دولار) وجيميناي 27.76 درهم (7.56 دولار) من السجلات المحلية في 2026-11-27 17:19. التداول وفاهم موقوفان. السعر 3.6725 درهم للدولار.",
+    "caps_note_en": "Claude 32.83 AED ($8.94) and Gemini 27.76 AED ($7.56) from local ledgers at 2026-11-27 17:19. Trading and FAHEM stay stopped. Peg 3.6725 AED per USD."
   },
   "routing": [],
   "apps": [],
@@ -6721,7 +6721,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-27T17:04:12+04:00",
+    "generated": "2026-11-27T17:19:16+04:00",
     "rooms": [],
     "agents": [
       {

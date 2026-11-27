@@ -1,18 +1,18 @@
 {
-  "updated": "2026-11-26 16:15",
-  "built": "2026-11-26 16:15",
+  "updated": "2026-11-27 09:30",
+  "built": "2026-11-27 09:30",
   "brief": [
     {
-      "ar": "HMK 1.16s حيّ واللوحة تُنشر تلقائياً",
-      "en": "HMK 1.16s is live · board auto-publishes"
+      "ar": "رخصة HMK AI صدرت في 27 نوفمبر",
+      "en": "HMK AI licence issued 27 Nov"
     },
     {
-      "ar": "مهارات ECC وذوق التصميم في المكتبة",
-      "en": "ECC and taste-skill are in the library"
+      "ar": "مُخالَصة وحَبْك: نسخ تجريبية جاهزة",
+      "en": "Mukhalasa and Habk debug builds are ready"
     },
     {
-      "ar": "هيرمس في دوكر مع طرفية",
-      "en": "Hermes is in Docker with a terminal"
+      "ar": "مُطابِق: خطة الفوترة الإلكترونية",
+      "en": "Mutabiq: e-invoicing blueprint"
     },
     {
       "ar": "الاستهلاك حيّ · التداول وفاهم متوقفان",
@@ -23,6 +23,10 @@
     {
       "ar": "اختيار أول تطبيق للنشر",
       "en": "Choose the first app to publish"
+    },
+    {
+      "ar": "فحص وتثبيت النسخ التجريبية الجديدة",
+      "en": "Scan and install the new debug builds"
     },
     {
       "ar": "موعد Google Play قرابة 28 نوفمبر",
@@ -251,6 +255,40 @@
           "en": "Hermes connected, isolated in Docker, with a terminal"
         }
       ]
+    },
+    {
+      "d": "2026-11-27",
+      "n": 7,
+      "items": [
+        {
+          "ar": "مُخالَصة وحَبْك: نسختان تجريبيتان جاهزتان",
+          "en": "Mukhalasa and Habk debug builds are ready"
+        },
+        {
+          "ar": "مهارات رسم ومحاذاة في صندوق التصميم",
+          "en": "Diagram and alignment skills in the design kit"
+        },
+        {
+          "ar": "دراسة الواجهات وأدوات التصميم المجانية",
+          "en": "Pro UI study and a free design kit"
+        },
+        {
+          "ar": "HMK 1.17 نسخة تجريبية جاهزة",
+          "en": "HMK 1.17 debug build is ready"
+        },
+        {
+          "ar": "صافي 0.2.0 نسخة تجريبية جاهزة",
+          "en": "Safi 0.2.0 debug build is ready"
+        },
+        {
+          "ar": "خطة مُطابِق لجاهزية الفوترة الإلكترونية",
+          "en": "Mutabiq e-invoicing readiness blueprint"
+        },
+        {
+          "ar": "رخصة HMK AI صدرت في أبوظبي",
+          "en": "HMK AI trade licence issued in Abu Dhabi"
+        }
+      ]
     }
   ],
   "kpi": {
@@ -315,8 +353,8 @@
         "en": "HMK",
         "s": "go",
         "pct": 0,
-        "ar_n": "1.16s مثبت على الهاتف · اللوحة الحية تُنشر تلقائياً",
-        "en_n": "1.16s is on the phone · the live board auto-publishes"
+        "ar_n": "نسخة 1.17 التجريبية جاهزة · اللوحة تُنشر تلقائياً",
+        "en_n": "The 1.17 debug build is ready · the board auto-publishes"
       }
     ],
     "ideas": [
@@ -489,15 +527,15 @@
   "spend": [
     {
       "name": "Claude",
-      "v": 8.44,
+      "v": 8.94,
       "cap": 20
     },
     {
       "name": "Gemini",
-      "v": 7.27,
+      "v": 7.56,
       "cap": 75,
       "day_cap": 15,
-      "day_used": 0.06
+      "day_used": 0.25
     },
     {
       "name": "DeepSeek",
@@ -537,25 +575,25 @@
     }
   ],
   "usage": {
-    "updated": "2026-11-26 16:15 Asia/Dubai",
+    "updated": "2026-11-27 09:30 Asia/Dubai",
     "free_calls_month": 0,
     "saved_usd_month": 0,
     "tools": [
       {
         "name": "Claude",
-        "used": 8.44,
+        "used": 8.94,
         "cap": 20,
         "unit": "$",
-        "pct": 42.2
+        "pct": 44.7
       },
       {
         "name": "Gemini",
-        "used": 7.27,
+        "used": 7.56,
         "cap": 75,
         "day_cap": 15,
-        "day_used": 0.06,
+        "day_used": 0.25,
         "unit": "$",
-        "pct": 9.7
+        "pct": 10.1
       },
       {
         "name": "DeepSeek",
@@ -575,8 +613,8 @@
         "unit": "$"
       }
     ],
-    "caps_note": "مبالغ كلود وجيميناي من السجلات المحلية في 2026-11-26 16:15. التداول وفاهم موقوفان.",
-    "caps_note_en": "Claude and Gemini amounts from local ledgers at 2026-11-26 16:15. Trading and FAHEM stay stopped."
+    "caps_note": "كلود 32.83 درهم (8.94 دولار) وجيميناي 27.76 درهم (7.56 دولار) من السجلات المحلية في 2026-11-27 09:30. التداول وفاهم موقوفان. السعر 3.6725 درهم للدولار.",
+    "caps_note_en": "Claude 32.83 AED ($8.94) and Gemini 27.76 AED ($7.56) from local ledgers at 2026-11-27 09:30. Trading and FAHEM stay stopped. Peg 3.6725 AED per USD."
   },
   "routing": [],
   "apps": [],
@@ -3802,10 +3840,238 @@
   "docs": [
     {
       "t": {
+        "ar": "مُخالَصة وحَبْك · نسختان تجريبيتان جاهزتان",
+        "en": "Mukhalasa and Habk · debug builds are ready"
+      },
+      "m": "2026-11-27 08:41",
+      "f": "تسليم",
+      "from_ar": "تسليم",
+      "from_en": "Delivery",
+      "b": {
+        "ar": "• مُخالَصة 0.1.0: تقدير مخالصة نهاية الخدمة في الإمارات • حَبْك 0.1.0: لعبة ألغاز للحل والعقد • نسختان تجريبيتان تعملان بلا إنترنت وشراء مرة واحدة لاحقاً بعد الموافقة • الفحص الرسمي والتثبيت على الهاتف والنشر في المتاجر ما زالت بانتظار الموافقة",
+        "en": "• Mukhalasa 0.1.0: a UAE end-of-service settlement estimate • Habk 0.1.0: an untangle / weave puzzle game • Both are offline debug builds · a later one-time purchase still needs approval • Official scan, phone install and store publishing still wait for approval"
+      },
+      "s": {
+        "ar": "حاسبة نهاية الخدمة ولعبة ألغاز · يعملان بلا إنترنت · الفحص والتثبيت بانتظار الموافقة",
+        "en": "An end-of-service calculator and a puzzle game · both work offline · scan and install still wait for approval"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "مُخالَصة وحَبْك: نسختان تجريبيتان",
+        "en": "Mukhalasa and Habk debug builds are ready"
+      },
+      "m": "2026-11-27 08:41",
+      "f": "تسليم",
+      "from_ar": "تسليم",
+      "from_en": "Delivery",
+      "b": {
+        "ar": "• مُخالَصة 0.1.0: تقدير مخالصة نهاية الخدمة في الإمارات • حَبْك 0.1.0: لعبة ألغاز للحل والعقد • نسختان تجريبيتان تعملان بلا إنترنت وشراء مرة واحدة لاحقاً بعد الموافقة • الفحص الرسمي والتثبيت على الهاتف والنشر في المتاجر ما زالت بانتظار الموافقة",
+        "en": "• Mukhalasa 0.1.0: a UAE end-of-service settlement estimate • Habk 0.1.0: an untangle / weave puzzle game • Both are offline debug builds · a later one-time purchase still needs approval • Official scan, phone install and store publishing still wait for approval"
+      },
+      "s": {
+        "ar": "حاسبة نهاية الخدمة ولعبة ألغاز · يعملان بلا إنترنت · الفحص والتثبيت بانتظار الموافقة",
+        "en": "An end-of-service calculator and a puzzle game · both work offline · scan and install still wait for approval"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "التحديث اليومي للأدوات: مهارات رسم ومحاذاة",
+        "en": "Daily tools update: diagram and alignment skills"
+      },
+      "m": "2026-11-27 07:55",
+      "f": "إضافة",
+      "from_ar": "إضافة",
+      "from_en": "Add-on",
+      "b": {
+        "ar": "• التحديث اليومي المجاني للأدوات والمهارات • إضافة مهارة الرسم التوضيحي ومهارة محاذاة الشاشات إلى صندوق التصميم • فحص أمني: بلا تثبيت تلقائي وبلا اتصال خارجي في السكربتات • لا شراء ولا تثبيت على الجهاز الرئيسي",
+        "en": "• The free daily tools and skills update • Diagram-design and screen-alignment skills were added to the design kit • Security check: no auto-install and no outbound calls in the scripts • Nothing was bought or installed on the main PC"
+      },
+      "s": {
+        "ar": "أُضيفت مهارتا الرسم التوضيحي ومحاذاة الشاشات إلى صندوق التصميم بعد الفحص",
+        "en": "Diagram-design and screen-alignment skills were added to the design kit after a check"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "التحديث اليومي: مهارات رسم ومحاذاة",
+        "en": "Daily tools update: diagram and alignment"
+      },
+      "m": "2026-11-27 07:55",
+      "f": "إضافة",
+      "from_ar": "إضافة",
+      "from_en": "Add-on",
+      "b": {
+        "ar": "• التحديث اليومي المجاني للأدوات والمهارات • إضافة مهارة الرسم التوضيحي ومهارة محاذاة الشاشات إلى صندوق التصميم • فحص أمني: بلا تثبيت تلقائي وبلا اتصال خارجي في السكربتات • لا شراء ولا تثبيت على الجهاز الرئيسي",
+        "en": "• The free daily tools and skills update • Diagram-design and screen-alignment skills were added to the design kit • Security check: no auto-install and no outbound calls in the scripts • Nothing was bought or installed on the main PC"
+      },
+      "s": {
+        "ar": "أُضيفت مهارتا الرسم التوضيحي ومحاذاة الشاشات إلى صندوق التصميم بعد الفحص",
+        "en": "Diagram-design and screen-alignment skills were added to the design kit after a check"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "دراسة واجهات التطبيقات وأدوات التصميم",
+        "en": "Pro UI study and a free design kit"
+      },
+      "m": "2026-11-27 07:54",
+      "f": "فحص",
+      "from_ar": "فحص",
+      "from_en": "Check",
+      "b": {
+        "ar": "• دراسة لواجهات تطبيقاتنا مقابل أفضل تطبيقات المتاجر • تجميع أدوات التصميم والمونتاج: المجاني أولاً ثم المدفوع • أدوات التصميم حُفظت على الصندوق بعد فحص أمني • لا شراء ولا تثبيت على الجهاز الرئيسي",
+        "en": "• A study of our app interfaces against the best store apps • Design and editing tools were gathered: free first, then paid options • The design kit was saved on the box after a security check • Nothing was bought or installed on the main PC"
+      },
+      "s": {
+        "ar": "مقارنة مع أفضل تطبيقات المتاجر وجمع أدوات مجانية أولاً ثم الخيارات المدفوعة",
+        "en": "Compared with top store apps and gathered free tools first, then paid options"
+      },
+      "p": "reports"
+    },
+    {
+      "t": {
+        "ar": "HMK 1.17 · نسخة تجريبية جاهزة",
+        "en": "HMK 1.17 · debug build is ready"
+      },
+      "m": "2026-11-27 07:52",
+      "f": "تسليم",
+      "from_ar": "تسليم",
+      "from_en": "Delivery",
+      "b": {
+        "ar": "• بناء HMK 1.17-debug برمز الإصدار 55 • الملف جاهز على الصندوق • الفحص الرسمي والتثبيت على الهاتف ما زالا بانتظار الموافقة • النسخة الحالية على الهاتف تبقى 1.16s حتى يتم التثبيت",
+        "en": "• Built HMK 1.17-debug (versionCode 55) • The file is ready on the box • Official scan and phone install still wait for approval • The phone stays on 1.16s until that install"
+      },
+      "s": {
+        "ar": "النسخة 1.17-debug (رمز 55) جاهزة على الصندوق · الفحص والتثبيت بانتظار الموافقة",
+        "en": "Version 1.17-debug (versionCode 55) is on the box · scan and install still wait for approval"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "صافي 0.2.0 · حاسبة المستقل بنسخة تجريبية",
+        "en": "Safi 0.2.0 · freelancer calculator debug build"
+      },
+      "m": "2026-11-27 07:35",
+      "f": "تسليم",
+      "from_ar": "تسليم",
+      "from_en": "Delivery",
+      "b": {
+        "ar": "• نسخة 0.2.0 تجريبية من حاسبة المستقل «صافي» • يحسب الصافي من منصات العمل الحر بعد العمولة، بالدرهم أولاً ثم الدولار • تصميم محدّث مع ثلاث شاشات ترحيب • الفحص الرسمي والتثبيت على الهاتف ما زالا بانتظار الموافقة",
+        "en": "• Debug build 0.2.0 of the freelancer calculator Safi • It calculates net income from freelance platforms after fees, AED first then USD • Updated design with a three-screen onboarding • Official scan and phone install still wait for approval"
+      },
+      "s": {
+        "ar": "يحسب الصافي بعد العمولة بالدرهم والدولار · التصميم الجديد وعلى متنه شاشات ترحيب",
+        "en": "It calculates net income after fees in AED and USD · new design with onboarding screens"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "صافي 0.2.0 · حاسبة المستقل التجريبية",
+        "en": "Safi 0.2.0 · freelancer calculator debug"
+      },
+      "m": "2026-11-27 07:35",
+      "f": "تسليم",
+      "from_ar": "تسليم",
+      "from_en": "Delivery",
+      "b": {
+        "ar": "• نسخة 0.2.0 تجريبية من حاسبة المستقل «صافي» • يحسب الصافي من منصات العمل الحر بعد العمولة، بالدرهم أولاً ثم الدولار • تصميم محدّث مع ثلاث شاشات ترحيب • الفحص الرسمي والتثبيت على الهاتف ما زالا بانتظار الموافقة",
+        "en": "• Debug build 0.2.0 of the freelancer calculator Safi • It calculates net income from freelance platforms after fees, AED first then USD • Updated design with a three-screen onboarding • Official scan and phone install still wait for approval"
+      },
+      "s": {
+        "ar": "يحسب الصافي بعد العمولة بالدرهم والدولار · التصميم الجديد وعلى متنه شاشات ترحيب",
+        "en": "It calculates net income after fees in AED and USD · new design with onboarding screens"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "مُطابِق · خطة جاهزية الفوترة الإلكترونية",
+        "en": "Mutabiq · e-invoicing readiness blueprint"
+      },
+      "m": "2026-11-27 05:16",
+      "f": "تسليم",
+      "from_ar": "تسليم",
+      "from_en": "Delivery",
+      "b": {
+        "ar": "• المنتج: مُطابِق، وكيل عربي أولاً لتنظيف البيانات وجاهزية الفوترة الإلكترونية في الإمارات • يراجع الحقول المطلوبة ويصدّر ملفاً نظيفاً جاهزاً لأي مزوّد خدمة معتمد • لا يرسل الفواتير · يجهّز البيانات وأسئلة المقارنة فقط • الأسعار المقترحة: تقرير 1,500 درهم، تأسيس 3,500 درهم، متابعة شهرية 450 درهماً • النموذج الأولي محفوظ محلياً · النشر والحسابات بانتظار الموافقة",
+        "en": "• Product: Mutabiq, an Arabic-first agent for UAE e-invoicing readiness and data clean-up • It checks the required fields and exports a cleaned file ready for any approved service provider • It does not send invoices · it prepares the data and the comparison questions only • Proposed prices: report 1,500 AED, setup 3,500 AED, monthly desk 450 AED • The local prototype is on the box · publishing and accounts still need approval"
+      },
+      "s": {
+        "ar": "أداة محلية تجهّز بيانات المنشآت الصغيرة قبل موعد 31 مارس 2027 · لا ترسل الفواتير",
+        "en": "A local tool that prepares SME data before the 31 Mar 2027 deadline · it does not send invoices"
+      },
+      "p": "ideas"
+    },
+    {
+      "t": {
+        "ar": "مُطابِق: خطة الفوترة الإلكترونية",
+        "en": "Mutabiq: e-invoicing readiness blueprint"
+      },
+      "m": "2026-11-27 05:16",
+      "f": "تسليم",
+      "from_ar": "تسليم",
+      "from_en": "Delivery",
+      "b": {
+        "ar": "• المنتج: مُطابِق، وكيل عربي أولاً لتنظيف البيانات وجاهزية الفوترة الإلكترونية في الإمارات • يراجع الحقول المطلوبة ويصدّر ملفاً نظيفاً جاهزاً لأي مزوّد خدمة معتمد • لا يرسل الفواتير · يجهّز البيانات وأسئلة المقارنة فقط • الأسعار المقترحة: تقرير 1,500 درهم، تأسيس 3,500 درهم، متابعة شهرية 450 درهماً • النموذج الأولي محفوظ محلياً · النشر والحسابات بانتظار الموافقة",
+        "en": "• Product: Mutabiq, an Arabic-first agent for UAE e-invoicing readiness and data clean-up • It checks the required fields and exports a cleaned file ready for any approved service provider • It does not send invoices · it prepares the data and the comparison questions only • Proposed prices: report 1,500 AED, setup 3,500 AED, monthly desk 450 AED • The local prototype is on the box · publishing and accounts still need approval"
+      },
+      "s": {
+        "ar": "أداة محلية تجهّز بيانات المنشآت الصغيرة قبل موعد 31 مارس 2027 · لا ترسل الفواتير",
+        "en": "A local tool that prepares SME data before the 31 Mar 2027 deadline · it does not send invoices"
+      },
+      "p": "ideas"
+    },
+    {
+      "t": {
+        "ar": "رخصة HMK AI CONSULTANCIES صدرت في أبوظبي",
+        "en": "HMK AI CONSULTANCIES trade licence issued in Abu Dhabi"
+      },
+      "m": "2026-11-27 00:40",
+      "f": "تسليم",
+      "from_ar": "تسليم",
+      "from_en": "Delivery",
+      "b": {
+        "ar": "• الاسم الرسمي: اتش ام كي للاستشارات الذكاء الاصطناعي • رخصة تجارية في أبوظبي برقم CN-6901062 • صدرت في 27 نوفمبر 2026 وتسري حتى 26 نوفمبر 2027 • النشاطان: استشارات وابتكار الذكاء الاصطناعي، وخدمات تطوير الذكاء الاصطناعي",
+        "en": "• Official name: HMK AI Consultancies • Abu Dhabi trade licence CN-6901062 • Issued 27 Nov 2026 and valid until 26 Nov 2027 • Activities: AI innovation consultancy, and AI development services"
+      },
+      "s": {
+        "ar": "مؤسسة فردية في أبوظبي · رخصة CN-6901062 صادرة 27 نوفمبر وسارية حتى 26 نوفمبر 2027",
+        "en": "Abu Dhabi sole establishment · licence CN-6901062 issued 27 Nov, valid until 26 Nov 2027"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
+        "ar": "رخصة HMK AI صدرت في أبوظبي",
+        "en": "HMK AI trade licence issued in Abu Dhabi"
+      },
+      "m": "2026-11-27 00:40",
+      "f": "تسليم",
+      "from_ar": "تسليم",
+      "from_en": "Delivery",
+      "b": {
+        "ar": "• الاسم الرسمي: اتش ام كي للاستشارات الذكاء الاصطناعي • رخصة تجارية في أبوظبي برقم CN-6901062 • صدرت في 27 نوفمبر 2026 وتسري حتى 26 نوفمبر 2027 • النشاطان: استشارات وابتكار الذكاء الاصطناعي، وخدمات تطوير الذكاء الاصطناعي",
+        "en": "• Official name: HMK AI Consultancies • Abu Dhabi trade licence CN-6901062 • Issued 27 Nov 2026 and valid until 26 Nov 2027 • Activities: AI innovation consultancy, and AI development services"
+      },
+      "s": {
+        "ar": "مؤسسة فردية في أبوظبي · رخصة CN-6901062 صادرة 27 نوفمبر وسارية حتى 26 نوفمبر 2027",
+        "en": "Abu Dhabi sole establishment · licence CN-6901062 issued 27 Nov, valid until 26 Nov 2027"
+      },
+      "p": "deliver"
+    },
+    {
+      "t": {
         "ar": "BOARD · accessibility-audit-co · done",
         "en": "BOARD · accessibility-audit-co · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -3824,7 +4090,7 @@
         "ar": "BOARD · shopify-ops-free-prep · delivered",
         "en": "BOARD · shopify-ops-free-prep · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -3843,7 +4109,7 @@
         "ar": "BOARD · shopify-growth-free-seo · delivered",
         "en": "BOARD · shopify-growth-free-seo · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -3862,7 +4128,7 @@
         "ar": "BOARD · shopify-finance-free-prep · delivered",
         "en": "BOARD · shopify-finance-free-prep · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -3881,7 +4147,7 @@
         "ar": "BOARD · tools-tuneup-2026-11-20 · done",
         "en": "BOARD · tools-tuneup-2026-11-20 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -3900,7 +4166,7 @@
         "ar": "BOARD · box-runner-restart · done",
         "en": "BOARD · box-runner-restart · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -3919,7 +4185,7 @@
         "ar": "BOARD · newpc-docker-power · partial",
         "en": "BOARD · newpc-docker-power · partial"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -3938,7 +4204,7 @@
         "ar": "BOARD · box-pc-ollama · partial",
         "en": "BOARD · box-pc-ollama · partial"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -3957,7 +4223,7 @@
         "ar": "BOARD · excel-ideas-2026-11-20 · done",
         "en": "BOARD · excel-ideas-2026-11-20 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -3976,7 +4242,7 @@
         "ar": "BOARD · scout-ollama-newpc · done",
         "en": "BOARD · scout-ollama-newpc · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -3995,7 +4261,7 @@
         "ar": "BOARD · scout-hermes-agent-browser · done",
         "en": "BOARD · scout-hermes-agent-browser · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4014,7 +4280,7 @@
         "ar": "BOARD · find-skills-adapted · done",
         "en": "BOARD · find-skills-adapted · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4033,7 +4299,7 @@
         "ar": "BOARD · shopify-scout-noon-prices · delivered",
         "en": "BOARD · shopify-scout-noon-prices · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4052,7 +4318,7 @@
         "ar": "BOARD · bh-game-polish-render · delivered",
         "en": "BOARD · bh-game-polish-render · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4071,7 +4337,7 @@
         "ar": "BOARD · bh-game-v76 · delivered",
         "en": "BOARD · bh-game-v76 · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4090,7 +4356,7 @@
         "ar": "BOARD · bh-game-v761 · delivered",
         "en": "BOARD · bh-game-v761 · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4109,7 +4375,7 @@
         "ar": "BOARD · bh-sd01-design-review · delivered",
         "en": "BOARD · bh-sd01-design-review · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4128,7 +4394,7 @@
         "ar": "BOARD · bh-site-roof-eng · delivered",
         "en": "BOARD · bh-site-roof-eng · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4147,7 +4413,7 @@
         "ar": "BOARD · bh-sd01-cost · delivered",
         "en": "BOARD · bh-sd01-cost · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4166,7 +4432,7 @@
         "ar": "BOARD · bh-permits-check · delivered",
         "en": "BOARD · bh-permits-check · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4185,7 +4451,7 @@
         "ar": "BOARD · bh-sd01-extend-rooms · delivered",
         "en": "BOARD · bh-sd01-extend-rooms · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4204,7 +4470,7 @@
         "ar": "BOARD · research-backlog-2026-11-20 · done",
         "en": "BOARD · research-backlog-2026-11-20 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4223,7 +4489,7 @@
         "ar": "BOARD · hazawi-ep1 · EP1",
         "en": "BOARD · hazawi-ep1 · EP1"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4242,7 +4508,7 @@
         "ar": "BOARD · usage-push-2026-11-20 · done",
         "en": "BOARD · usage-push-2026-11-20 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4261,7 +4527,7 @@
         "ar": "BOARD · usage-push-hmk-play · partial",
         "en": "BOARD · usage-push-hmk-play · partial"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4280,7 +4546,7 @@
         "ar": "BOARD · usage-push-capacitor-apks · done",
         "en": "BOARD · usage-push-capacitor-apks · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4299,7 +4565,7 @@
         "ar": "BOARD · scout2-gateway-refresh · done",
         "en": "BOARD · scout2-gateway-refresh · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4318,7 +4584,7 @@
         "ar": "BOARD · scout2-skills-staged · done",
         "en": "BOARD · scout2-skills-staged · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4337,7 +4603,7 @@
         "ar": "BOARD · hmk-play-org-account-trigger · draft",
         "en": "BOARD · hmk-play-org-account-trigger · draft"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4356,7 +4622,7 @@
         "ar": "BOARD · hmk-play-store-drafts · drafts",
         "en": "BOARD · hmk-play-store-drafts · drafts"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4375,7 +4641,7 @@
         "ar": "BOARD · kids-ai-literacy-pack · open",
         "en": "BOARD · kids-ai-literacy-pack · open"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4394,7 +4660,7 @@
         "ar": "BOARD · scout2-newpc-lfm3-audio · blocked",
         "en": "BOARD · scout2-newpc-lfm3-audio · blocked"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4413,7 +4679,7 @@
         "ar": "BOARD · scout3-skills-staged · done",
         "en": "BOARD · scout3-skills-staged · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4432,7 +4698,7 @@
         "ar": "BOARD · scout3-box-yt-tools · done",
         "en": "BOARD · scout3-box-yt-tools · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4451,7 +4717,7 @@
         "ar": "BOARD · hazawi-own-voice-narration · open",
         "en": "BOARD · hazawi-own-voice-narration · open"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4470,7 +4736,7 @@
         "ar": "BOARD · edumap-emirates-puzzle · superseded",
         "en": "BOARD · edumap-emirates-puzzle · superseded"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4489,7 +4755,7 @@
         "ar": "BOARD · hmk-family-chores-streaks · open",
         "en": "BOARD · hmk-family-chores-streaks · open"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4508,7 +4774,7 @@
         "ar": "BOARD · gov-services-intake · open",
         "en": "BOARD · gov-services-intake · open"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4527,7 +4793,7 @@
         "ar": "BOARD · customer-service-setup · done",
         "en": "BOARD · customer-service-setup · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4546,7 +4812,7 @@
         "ar": "BOARD · cfo-baseline · done",
         "en": "BOARD · cfo-baseline · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4565,7 +4831,7 @@
         "ar": "BOARD · legal-risk-sweep · delivered",
         "en": "BOARD · legal-risk-sweep · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4584,7 +4850,7 @@
         "ar": "BOARD · security-baseline-2026-11-21 · done",
         "en": "BOARD · security-baseline-2026-11-21 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4603,7 +4869,7 @@
         "ar": "BOARD · data-dashboard · done",
         "en": "BOARD · data-dashboard · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4622,7 +4888,7 @@
         "ar": "BOARD · legal-hmk-play · delivered",
         "en": "BOARD · legal-hmk-play · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4641,7 +4907,7 @@
         "ar": "BOARD · bizdev-uae-programs · done",
         "en": "BOARD · bizdev-uae-programs · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4660,7 +4926,7 @@
         "ar": "BOARD · hq93-house-deals · delivered",
         "en": "BOARD · hq93-house-deals · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4679,7 +4945,7 @@
         "ar": "BOARD · bh-contract-clauses-occupancy · delivered",
         "en": "BOARD · bh-contract-clauses-occupancy · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4698,7 +4964,7 @@
         "ar": "BOARD · bh-contract-clauses-legal-review · delivered",
         "en": "BOARD · bh-contract-clauses-legal-review · delivered"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4717,7 +4983,7 @@
         "ar": "BOARD · hq01-rhythm-v3b · live",
         "en": "BOARD · hq01-rhythm-v3b · live"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4736,7 +5002,7 @@
         "ar": "BOARD · hq05-scout-vetting-2026-11-21 · fixes",
         "en": "BOARD · hq05-scout-vetting-2026-11-21 · fixes"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4755,7 +5021,7 @@
         "ar": "BOARD · hq05-scout-vetting-2026-11-21 · closed",
         "en": "BOARD · hq05-scout-vetting-2026-11-21 · closed"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4774,7 +5040,7 @@
         "ar": "BOARD · eid-al-etihad-55-content · VIDEOS",
         "en": "BOARD · eid-al-etihad-55-content · VIDEOS"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4793,7 +5059,7 @@
         "ar": "BOARD · quran-word-timings · done",
         "en": "BOARD · quran-word-timings · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4812,7 +5078,7 @@
         "ar": "BOARD · shopify-uae-payment-stack · done",
         "en": "BOARD · shopify-uae-payment-stack · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4831,7 +5097,7 @@
         "ar": "BOARD · islamic-app-v0.8-plan-DRAFT · draft",
         "en": "BOARD · islamic-app-v0.8-plan-DRAFT · draft"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4850,7 +5116,7 @@
         "ar": "BOARD · backlog-s24-vs-s7 · done",
         "en": "BOARD · backlog-s24-vs-s7 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4869,7 +5135,7 @@
         "ar": "BOARD · fix-sprint-2026-11-21 · done",
         "en": "BOARD · fix-sprint-2026-11-21 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4888,7 +5154,7 @@
         "ar": "BOARD · ceo-only-comms-2026-11-21 · partial",
         "en": "BOARD · ceo-only-comms-2026-11-21 · partial"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4907,7 +5173,7 @@
         "ar": "BOARD · backlog-20-open-data-scan · done",
         "en": "BOARD · backlog-20-open-data-scan · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4926,7 +5192,7 @@
         "ar": "BOARD · backlog-8-advertiser-permit · done",
         "en": "BOARD · backlog-8-advertiser-permit · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4945,7 +5211,7 @@
         "ar": "BOARD · task-dispatch-v4 · done",
         "en": "BOARD · task-dispatch-v4 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4964,7 +5230,7 @@
         "ar": "BOARD · prompt-usage-routine-v2 · done",
         "en": "BOARD · prompt-usage-routine-v2 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -4983,7 +5249,7 @@
         "ar": "BOARD · v4-rule-HQ-90 · done",
         "en": "BOARD · v4-rule-HQ-90 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5002,7 +5268,7 @@
         "ar": "BOARD · v4-rule-HQ-92 · done",
         "en": "BOARD · v4-rule-HQ-92 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5021,7 +5287,7 @@
         "ar": "BOARD · v4-rule-HQ-05 · done",
         "en": "BOARD · v4-rule-HQ-05 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5040,7 +5306,7 @@
         "ar": "BOARD · v4-rule-HQ-06 · done",
         "en": "BOARD · v4-rule-HQ-06 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5059,7 +5325,7 @@
         "ar": "BOARD · v4-rule-HQ-94 · done",
         "en": "BOARD · v4-rule-HQ-94 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5078,7 +5344,7 @@
         "ar": "BOARD · v4-rule-HQ-99 · done",
         "en": "BOARD · v4-rule-HQ-99 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5097,7 +5363,7 @@
         "ar": "BOARD · v4-rule-HQ-81 · done",
         "en": "BOARD · v4-rule-HQ-81 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5116,7 +5382,7 @@
         "ar": "BOARD · edumap-emirates-puzzle · done",
         "en": "BOARD · edumap-emirates-puzzle · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5135,7 +5401,7 @@
         "ar": "BOARD · hmk-family-chores-streaks · in-progress",
         "en": "BOARD · hmk-family-chores-streaks · in-progress"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5154,7 +5420,7 @@
         "ar": "BOARD · hmk-family-chores-streaks · done",
         "en": "BOARD · hmk-family-chores-streaks · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5173,7 +5439,7 @@
         "ar": "BOARD · openvino-new-pc · done",
         "en": "BOARD · openvino-new-pc · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5192,7 +5458,7 @@
         "ar": "BOARD · emirati-voice-ab-2026-11-21 · done",
         "en": "BOARD · emirati-voice-ab-2026-11-21 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5211,7 +5477,7 @@
         "ar": "BOARD · hmk-1.16u-today-at-home · built",
         "en": "BOARD · hmk-1.16u-today-at-home · built"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5230,7 +5496,7 @@
         "ar": "BOARD · ai-pulse-academy · done",
         "en": "BOARD · ai-pulse-academy · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5249,7 +5515,7 @@
         "ar": "BOARD · uae-deep-past-cards · in-progress",
         "en": "BOARD · uae-deep-past-cards · in-progress"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5268,7 +5534,7 @@
         "ar": "BOARD · uae-deep-past-cards · done",
         "en": "BOARD · uae-deep-past-cards · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5287,7 +5553,7 @@
         "ar": "BOARD · hazawi-own-voice-narration · in-progress",
         "en": "BOARD · hazawi-own-voice-narration · in-progress"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5306,7 +5572,7 @@
         "ar": "BOARD · hazawi-own-voice-narration · done",
         "en": "BOARD · hazawi-own-voice-narration · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5325,7 +5591,7 @@
         "ar": "BOARD · hmk-play-org-account-trigger · in-progress",
         "en": "BOARD · hmk-play-org-account-trigger · in-progress"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5344,7 +5610,7 @@
         "ar": "BOARD · hmk-play-org-account-trigger · done",
         "en": "BOARD · hmk-play-org-account-trigger · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5363,7 +5629,7 @@
         "ar": "BOARD · kids-ai-literacy-pack · in-progress",
         "en": "BOARD · kids-ai-literacy-pack · in-progress"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5382,7 +5648,7 @@
         "ar": "BOARD · kids-ai-literacy-pack · done",
         "en": "BOARD · kids-ai-literacy-pack · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5401,7 +5667,7 @@
         "ar": "BOARD · usage-cut-2026-11-22 · done",
         "en": "BOARD · usage-cut-2026-11-22 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5420,7 +5686,7 @@
         "ar": "BOARD · wasmi-scan-domain-check-3.6 · done",
         "en": "BOARD · wasmi-scan-domain-check-3.6 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5439,7 +5705,7 @@
         "ar": "BOARD · books-setup · done",
         "en": "BOARD · books-setup · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5458,7 +5724,7 @@
         "ar": "BOARD · wasmi-rc3.7-prescan · done",
         "en": "BOARD · wasmi-rc3.7-prescan · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5477,7 +5743,7 @@
         "ar": "BOARD · books-kids-letter-tracing · done",
         "en": "BOARD · books-kids-letter-tracing · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5496,7 +5762,7 @@
         "ar": "BOARD · books-ramadan-planner-2027 · v1.2",
         "en": "BOARD · books-ramadan-planner-2027 · v1.2"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5515,7 +5781,7 @@
         "ar": "BOARD · books-kids-letter-tracing · v1.1",
         "en": "BOARD · books-kids-letter-tracing · v1.1"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5534,7 +5800,7 @@
         "ar": "BOARD · books-kids-letter-tracing · v1.2",
         "en": "BOARD · books-kids-letter-tracing · v1.2"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5553,7 +5819,7 @@
         "ar": "BOARD · books-kids-letter-tracing · v1.3",
         "en": "BOARD · books-kids-letter-tracing · v1.3"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5572,7 +5838,7 @@
         "ar": "BOARD · youtube-setup · done",
         "en": "BOARD · youtube-setup · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5591,7 +5857,7 @@
         "ar": "BOARD · youtube-ai-in-a-minute · v1",
         "en": "BOARD · youtube-ai-in-a-minute · v1"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5610,7 +5876,7 @@
         "ar": "BOARD · youtube-ai-in-a-minute · v2",
         "en": "BOARD · youtube-ai-in-a-minute · v2"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5629,7 +5895,7 @@
         "ar": "BOARD · youtube-perseverance-parachute · done",
         "en": "BOARD · youtube-perseverance-parachute · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5648,7 +5914,7 @@
         "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3",
         "en": "BOARD · youtube-ai-in-a-minute-v3 · v3"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5667,7 +5933,7 @@
         "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3.1",
         "en": "BOARD · youtube-ai-in-a-minute-v3 · v3.1"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5686,7 +5952,7 @@
         "ar": "BOARD · youtube-ai-in-a-minute-v3 · v3.2",
         "en": "BOARD · youtube-ai-in-a-minute-v3 · v3.2"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5705,7 +5971,7 @@
         "ar": "BOARD · quran-shorts · plan",
         "en": "BOARD · quran-shorts · plan"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5724,7 +5990,7 @@
         "ar": "BOARD · victims-eye-championship-pack · open",
         "en": "BOARD · victims-eye-championship-pack · open"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5743,7 +6009,7 @@
         "ar": "BOARD · youtube-internal-batch-2026-11-26-free-first · open",
         "en": "BOARD · youtube-internal-batch-2026-11-26-free-first · open"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5762,7 +6028,7 @@
         "ar": "BOARD · islamic-v07-scholar-briefing · open",
         "en": "BOARD · islamic-v07-scholar-briefing · open"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5781,7 +6047,7 @@
         "ar": "BOARD · uae-knowledge-cards-next · done-draft",
         "en": "BOARD · uae-knowledge-cards-next · done-draft"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5800,7 +6066,7 @@
         "ar": "BOARD · free-first-nonstop-2026-11-25 · done",
         "en": "BOARD · free-first-nonstop-2026-11-25 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -5819,7 +6085,7 @@
         "ar": "BOARD · usage-enhancements-2-5-2026-11-25 · done",
         "en": "BOARD · usage-enhancements-2-5-2026-11-25 · done"
       },
-      "m": "2026-11-26 15:42",
+      "m": "2026-11-26 16:30",
       "f": "مشروع",
       "from_ar": "مشروع",
       "from_en": "Project",
@@ -6436,7 +6702,7 @@
   ],
   "hq": {
     "ceo_id": "ceo",
-    "generated": "2026-11-26T16:15:13+04:00",
+    "generated": "2026-11-27T09:30:57+04:00",
     "rooms": [],
     "agents": [
       {
@@ -6500,7 +6766,7 @@
       "موجزات"
     ],
     "brief": {
-      "date": "2026-11-26",
+      "date": "2026-11-27",
       "your_part": [
         "اختر أول تطبيق للنشر",
         "وافق على نشر بيانات HMK المحدّثة",
@@ -6564,93 +6830,93 @@
   },
   "updates": [
     {
-      "m": "20/11 17:49",
+      "m": "27/11 08:41",
       "kind": "delivery",
       "kind_ar": "تسليم",
       "kind_en": "Delivery",
       "t": {
-        "ar": "HMK 1.16s · اللوحة الحية بلا تأخير",
-        "en": "HMK 1.16s · live board without the stall"
+        "ar": "مُخالَصة وحَبْك: نسختان تجريبيتان",
+        "en": "Mukhalasa and Habk debug builds are ready"
       },
       "s": {
-        "ar": "التحديث يجلب المصدر المباشر أولاً حتى لا تتجمّد اللوحة",
-        "en": "Update fetches the raw feed first so the board cannot stall"
+        "ar": "حاسبة نهاية الخدمة ولعبة ألغاز · يعملان بلا إنترنت · الفحص والتثبيت بانتظار…",
+        "en": "An end-of-service calculator and a puzzle game · both work offline · scan and install…"
       },
       "b": {
-        "ar": "• إصلاح جلب اللوحة الحية بدون ترويسة مخصّصة • المصدر المباشر أولاً ثم الصفحات ثم الملف المضمّن • الملخص يعرض آخر المستجدات والإضافات والإجراءات",
-        "en": "• Live fetch no longer sends custom headers • Raw feed first, then Pages, then the bundled file • Summary lists latest updates, add-ons and actions"
+        "ar": "• مُخالَصة 0.1.0: تقدير مخالصة نهاية الخدمة في الإمارات • حَبْك 0.1.0: لعبة ألغاز للحل والعقد • نسختان تجريبيتان تعملان بلا إنترنت وشراء مرة واحدة لاحقاً بعد الموافقة • الفحص الرسمي والتثبيت على الهاتف والنشر في المتاجر ما زالت بانتظار الموافقة",
+        "en": "• Mukhalasa 0.1.0: a UAE end-of-service settlement estimate • Habk 0.1.0: an untangle / weave puzzle game • Both are offline debug builds · a later one-time purchase still needs approval • Official scan, phone install and store publishing still wait for approval"
       }
     },
     {
-      "m": "20/11 17:37",
+      "m": "27/11 07:55",
       "kind": "addon",
       "kind_ar": "إضافة",
       "kind_en": "Add-on",
       "t": {
-        "ar": "طرفية لهيرمس داخل الحاوية",
-        "en": "A terminal for Hermes inside the container"
+        "ar": "التحديث اليومي: مهارات رسم ومحاذاة",
+        "en": "Daily tools update: diagram and alignment"
       },
       "s": {
-        "ar": "يشغّل أوامر داخل الحاوية فقط وما زال معزولاً عن مجلدات الجهاز",
-        "en": "It can run commands only inside the container and is still isolated from the PC folders"
+        "ar": "أُضيفت مهارتا الرسم التوضيحي ومحاذاة الشاشات إلى صندوق التصميم بعد الفحص",
+        "en": "Diagram-design and screen-alignment skills were added to the design kit after a check"
       },
       "b": {
-        "ar": "• إضافة طرفية داخل حاوية هيرمس • تجربة: كتب وشغّل سكربت بايثون وأجاب إجابة صحيحة • بقي عاجزاً عن الوصول إلى مجلدات الجهاز • التكلفة صفر",
-        "en": "• Added a terminal inside the Hermes container • Test: it wrote and ran a Python script and got the right answer • It still could not reach the PC folders • Cost was zero"
+        "ar": "• التحديث اليومي المجاني للأدوات والمهارات • إضافة مهارة الرسم التوضيحي ومهارة محاذاة الشاشات إلى صندوق التصميم • فحص أمني: بلا تثبيت تلقائي وبلا اتصال خارجي في السكربتات • لا شراء ولا تثبيت على الجهاز الرئيسي",
+        "en": "• The free daily tools and skills update • Diagram-design and screen-alignment skills were added to the design kit • Security check: no auto-install and no outbound calls in the scripts • Nothing was bought or installed on the main PC"
       }
     },
     {
-      "m": "20/11 17:30",
+      "m": "27/11 07:54",
       "kind": "check",
       "kind_ar": "فحص",
       "kind_en": "Check",
       "t": {
-        "ar": "الفحص الأسبوعي للجودة · 20 نوفمبر",
-        "en": "Weekly quality check · 20 Nov"
+        "ar": "دراسة واجهات التطبيقات وأدوات التصميم",
+        "en": "Pro UI study and a free design kit"
       },
       "s": {
-        "ar": "تقارير المشاريع اليومية لـ14–19 نوفمبر ناقصة · الاستهلاك الأسبوعي 55.7٪ ويتجدد…",
-        "en": "Daily project reports for 14–19 Nov are missing · weekly usage 55.7%, resets Sunday 13:02"
+        "ar": "مقارنة مع أفضل تطبيقات المتاجر وجمع أدوات مجانية أولاً ثم الخيارات المدفوعة",
+        "en": "Compared with top store apps and gathered free tools first, then paid options"
       },
       "b": {
-        "ar": "• الفحص الأسبوعي للجودة جرى عند 17:30 بتوقيت دبي • تقارير المشاريع اليومية للفترة 14–19 نوفمبر غير موجودة • الاستهلاك الأسبوعي 55.7٪ · التجديد الأحد 22 نوفمبر 13:02 بتوقيت دبي",
-        "en": "• The weekly quality check ran at 17:30 Dubai time • Daily project reports for 14–19 Nov are missing • Weekly usage 55.7% · resets Sun 22 Nov 13:02 Dubai time"
+        "ar": "• دراسة لواجهات تطبيقاتنا مقابل أفضل تطبيقات المتاجر • تجميع أدوات التصميم والمونتاج: المجاني أولاً ثم المدفوع • أدوات التصميم حُفظت على الصندوق بعد فحص أمني • لا شراء ولا تثبيت على الجهاز الرئيسي",
+        "en": "• A study of our app interfaces against the best store apps • Design and editing tools were gathered: free first, then paid options • The design kit was saved on the box after a security check • Nothing was bought or installed on the main PC"
       }
     },
     {
-      "m": "20/11 16:55",
+      "m": "27/11 07:52",
       "kind": "delivery",
       "kind_ar": "تسليم",
       "kind_en": "Delivery",
       "t": {
-        "ar": "HMK 1.16r · زر أضف المهارة وفحص ناجح",
-        "en": "HMK 1.16r · Add-skill button and a passing…"
+        "ar": "HMK 1.17 · نسخة تجريبية جاهزة",
+        "en": "HMK 1.17 · debug build is ready"
       },
       "s": {
-        "ar": "أضف المهارة يفتح طلباً جاهزاً للتأكيد · الفحص الرسمي بلا ملاحظات",
-        "en": "Add skill opens a prefilled request to confirm · official scan had no findings"
+        "ar": "النسخة 1.17-debug (رمز 55) جاهزة على الصندوق · الفحص والتثبيت بانتظار الموافقة",
+        "en": "Version 1.17-debug (versionCode 55) is on the box · scan and install still wait for…"
       },
       "b": {
-        "ar": "• بناء 1.16r-debug (رمز 51) بزر أضف المهارة • لا مفاتيح داخل التطبيق · التأكيد يتم من جلسة GitHub على الهاتف • مراقب على الصندوق يراجع الطلب كل 15 دقيقة ويضيف المهارة إن عدّت الفحص • الفحص الرسمي: بلا ملاحظات في 16:55 بتوقيت دبي • التثبيت على الهاتف ما زال بانتظار أمر المالك",
-        "en": "• Built 1.16r-debug (versionCode 51) with the Add-skill button • No keys inside the app · confirmation is in the phone GitHub session • A box watcher reviews each request every 15 minutes and installs the skill only if the audit passes • Official scan: no findings at 16:55 Dubai time • Phone install still waits for the owner's order"
+        "ar": "• بناء HMK 1.17-debug برمز الإصدار 55 • الملف جاهز على الصندوق • الفحص الرسمي والتثبيت على الهاتف ما زالا بانتظار الموافقة • النسخة الحالية على الهاتف تبقى 1.16s حتى يتم التثبيت",
+        "en": "• Built HMK 1.17-debug (versionCode 55) • The file is ready on the box • Official scan and phone install still wait for approval • The phone stays on 1.16s until that install"
       }
     },
     {
-      "m": "20/11 16:53",
-      "kind": "addon",
-      "kind_ar": "إضافة",
-      "kind_en": "Add-on",
+      "m": "27/11 07:35",
+      "kind": "delivery",
+      "kind_ar": "تسليم",
+      "kind_en": "Delivery",
       "t": {
-        "ar": "إضافة مهارة ذوق التصميم",
-        "en": "Taste-skill added to the library"
+        "ar": "صافي 0.2.0 · حاسبة المستقل التجريبية",
+        "en": "Safi 0.2.0 · freelancer calculator debug"
       },
       "s": {
-        "ar": "المهارة عدّت الفحص الأمني وهي جاهزة لصفحات الهبوط والتسويق",
-        "en": "The skill passed the security check and is ready for landing and marketing pages"
+        "ar": "يحسب الصافي بعد العمولة بالدرهم والدولار · التصميم الجديد وعلى متنه شاشات ترحيب",
+        "en": "It calculates net income after fees in AED and USD · new design with onboarding screens"
       },
       "b": {
-        "ar": "• استيراد المهارة بعد فحص: لا تثبيت تلقائي ولا قراءة أسرار • الاستخدام مضيّق على تصميم الصفحات العامة لا الواجهات الخاصة • أُضيفت إلى مكتبة المهارات ومسودة الصندوق",
-        "en": "• Imported after an audit: no auto-installer and no secret reads • Trigger narrowed to public page design, not private interfaces • Installed in the skill library and drafted on the box"
+        "ar": "• نسخة 0.2.0 تجريبية من حاسبة المستقل «صافي» • يحسب الصافي من منصات العمل الحر بعد العمولة، بالدرهم أولاً ثم الدولار • تصميم محدّث مع ثلاث شاشات ترحيب • الفحص الرسمي والتثبيت على الهاتف ما زالا بانتظار الموافقة",
+        "en": "• Debug build 0.2.0 of the freelancer calculator Safi • It calculates net income from freelance platforms after fees, AED first then USD • Updated design with a three-screen onboarding • Official scan and phone install still wait for approval"
       }
     }
   ]
